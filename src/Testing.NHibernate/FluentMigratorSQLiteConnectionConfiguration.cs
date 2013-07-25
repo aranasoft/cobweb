@@ -3,7 +3,7 @@ using Aranasoft.Cobweb.Testing.NHibernate.Dialect;
 using FluentNHibernate.Cfg.Db;
 
 namespace Aranasoft.Cobweb.Testing.NHibernate {
-    public class FluentMigratorSqLiteInMemoryConnectionConfiguration : INHibernateConnectionConfiguration {
+    public class FluentMigratorSQLiteInMemoryConnectionConfiguration : INHibernateConnectionConfiguration {
         public IPersistenceConfigurer Configuration() {
             return
                 SQLiteConfiguration.Standard.InMemory()
