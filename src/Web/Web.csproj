@@ -72,6 +72,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mvc\AnonymousOnlyAttribute.cs" />
+    <Compile Include="Mvc\AuthenticatedOnlyAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\ResolvingMembershipProvider.cs" />
     <Compile Include="Security\ResolvingRoleProvider.cs" />
