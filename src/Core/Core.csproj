@@ -43,6 +43,7 @@
     <Compile Include="Data\IDataTransactionManager.cs" />
     <Compile Include="DependencyInjection\ICacheContainer.cs" />
     <Compile Include="DependencyInjection\IDependency.cs" />
+    <Compile Include="Extentions\EnumExtensions.cs" />
     <Compile Include="Extentions\TypeExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
