@@ -2,7 +2,8 @@
 
 namespace Cobweb.Data {
     /// <summary>
-    /// Base class for objects to be persisted in a relational database. Equates on reference or non-default identifier value
+    ///     Base class for objects to be persisted in a relational database. Equates on reference or non-default identifier
+    ///     value
     /// </summary>
     /// <typeparam name="TEntity">Derived entity type</typeparam>
     /// <typeparam name="TIdentifier">Itentifier-property type, such as Int32 or Guid</typeparam>

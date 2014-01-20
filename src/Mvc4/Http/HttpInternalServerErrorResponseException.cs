@@ -10,7 +10,6 @@ namespace Cobweb.Web.Http {
                 new HttpResponseMessage(HttpStatusCode.InternalServerError) {
                     ReasonPhrase = reason,
                     Content = new JsonErrorObjectContent(errorMessage)
-                }) {
-        }
+                }) {}
     }
 }

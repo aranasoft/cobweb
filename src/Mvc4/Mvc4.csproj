@@ -113,6 +113,7 @@
     <Compile Include="Security\ResolvingRoleProvider.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Mvc4.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />

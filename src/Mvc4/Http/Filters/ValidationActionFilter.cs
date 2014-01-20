@@ -12,9 +12,9 @@ namespace Cobweb.Web.Http.Filters {
 
             if (!modelState.IsValid) {
                 var clientModelState = new ModelStateDictionary();
-                foreach (var key in modelState.Keys.Where(key => !string.IsNullOrWhiteSpace(key))) {
-                    var revisedKey = key.IndexOf('.') > -1 ? key.Substring(key.IndexOf('.') + 1) : key;
-                    foreach (var error in modelState[key].Errors) {
+                foreach (string key in modelState.Keys.Where(key => !string.IsNullOrWhiteSpace(key))) {
+                    string revisedKey = key.IndexOf('.') > -1 ? key.Substring(key.IndexOf('.') + 1) : key;
+                    foreach (ModelError error in modelState[key].Errors) {
                         clientModelState.AddModelError(revisedKey, error.ErrorMessage);
                     }
                 }

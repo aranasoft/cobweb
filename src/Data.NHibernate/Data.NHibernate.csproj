@@ -63,6 +63,7 @@
     <Compile Include="Fetching\NHibernateFetchingProvider.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Data.NHibernate.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

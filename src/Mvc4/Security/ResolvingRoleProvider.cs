@@ -4,12 +4,17 @@ using System.Web.Security;
 
 namespace Cobweb.Web.Security {
     public class ResolvingRoleProvider : RoleProvider {
+        public override string ApplicationName {
+            get { return GetProvider().ApplicationName; }
+            set { GetProvider().ApplicationName = value; }
+        }
+
         public virtual IDependencyResolver GetResolver() {
             return DependencyResolver.Current;
         }
 
         private RoleProvider GetProvider() {
-            var container = GetResolver();
+            IDependencyResolver container = GetResolver();
             var provider = container.GetService<RoleProvider>();
             if (provider == null) {
                 throw new Exception("Unable to resolve RoleProvider");
@@ -55,11 +60,6 @@ namespace Cobweb.Web.Security {
 
         public override string[] FindUsersInRole(string roleName, string usernameToMatch) {
             return GetProvider().FindUsersInRole(roleName, usernameToMatch);
-        }
-
-        public override string ApplicationName {
-            get { return GetProvider().ApplicationName; }
-            set { GetProvider().ApplicationName = value; }
         }
     }
 }

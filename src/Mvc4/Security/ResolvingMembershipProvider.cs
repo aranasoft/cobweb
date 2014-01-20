@@ -4,12 +4,57 @@ using System.Web.Security;
 
 namespace Cobweb.Web.Security {
     public class ResolvingMembershipProvider : MembershipProvider {
+        public override bool EnablePasswordRetrieval {
+            get { return GetProvider().EnablePasswordRetrieval; }
+        }
+
+        public override bool EnablePasswordReset {
+            get { return GetProvider().EnablePasswordReset; }
+        }
+
+        public override bool RequiresQuestionAndAnswer {
+            get { return GetProvider().RequiresQuestionAndAnswer; }
+        }
+
+        public override string ApplicationName {
+            get { return GetProvider().ApplicationName; }
+            set { GetProvider().ApplicationName = value; }
+        }
+
+        public override int MaxInvalidPasswordAttempts {
+            get { return GetProvider().MaxInvalidPasswordAttempts; }
+        }
+
+        public override int PasswordAttemptWindow {
+            get { return GetProvider().PasswordAttemptWindow; }
+        }
+
+        public override bool RequiresUniqueEmail {
+            get { return GetProvider().RequiresUniqueEmail; }
+        }
+
+        public override MembershipPasswordFormat PasswordFormat {
+            get { return GetProvider().PasswordFormat; }
+        }
+
+        public override int MinRequiredPasswordLength {
+            get { return GetProvider().MinRequiredPasswordLength; }
+        }
+
+        public override int MinRequiredNonAlphanumericCharacters {
+            get { return GetProvider().MinRequiredNonAlphanumericCharacters; }
+        }
+
+        public override string PasswordStrengthRegularExpression {
+            get { return GetProvider().PasswordStrengthRegularExpression; }
+        }
+
         public virtual IDependencyResolver GetResolver() {
             return DependencyResolver.Current;
         }
 
         private MembershipProvider GetProvider() {
-            var container = GetResolver();
+            IDependencyResolver container = GetResolver();
             var provider = container.GetService<MembershipProvider>();
             if (provider == null) {
                 throw new Exception("Unable to resolve MembershipProvider");
@@ -87,51 +132,6 @@ namespace Cobweb.Web.Security {
         public override MembershipUserCollection FindUsersByEmail(string emailToMatch, int pageIndex, int pageSize,
                                                                   out int totalRecords) {
             return GetProvider().FindUsersByEmail(emailToMatch, pageIndex, pageSize, out totalRecords);
-        }
-
-        public override bool EnablePasswordRetrieval {
-            get { return GetProvider().EnablePasswordRetrieval; }
-        }
-
-        public override bool EnablePasswordReset {
-            get { return GetProvider().EnablePasswordReset; }
-        }
-
-        public override bool RequiresQuestionAndAnswer {
-            get { return GetProvider().RequiresQuestionAndAnswer; }
-        }
-
-        public override string ApplicationName {
-            get { return GetProvider().ApplicationName; }
-            set { GetProvider().ApplicationName = value; }
-        }
-
-        public override int MaxInvalidPasswordAttempts {
-            get { return GetProvider().MaxInvalidPasswordAttempts; }
-        }
-
-        public override int PasswordAttemptWindow {
-            get { return GetProvider().PasswordAttemptWindow; }
-        }
-
-        public override bool RequiresUniqueEmail {
-            get { return GetProvider().RequiresUniqueEmail; }
-        }
-
-        public override MembershipPasswordFormat PasswordFormat {
-            get { return GetProvider().PasswordFormat; }
-        }
-
-        public override int MinRequiredPasswordLength {
-            get { return GetProvider().MinRequiredPasswordLength; }
-        }
-
-        public override int MinRequiredNonAlphanumericCharacters {
-            get { return GetProvider().MinRequiredNonAlphanumericCharacters; }
-        }
-
-        public override string PasswordStrengthRegularExpression {
-            get { return GetProvider().PasswordStrengthRegularExpression; }
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -6,11 +7,17 @@ using System.Linq.Expressions;
 namespace Cobweb.Data.NHibernate.Fetching {
     public class FetchRequest<TRequest, TQueried> : IFetchRequest<TQueried>
         where TRequest : IQueryable<TQueried> {
+        public FetchRequest(TRequest source) {
+            Queryable = source;
+        }
+
+        public TRequest Queryable { get; private set; }
+
         public IEnumerator<TQueried> GetEnumerator() {
             return Queryable.GetEnumerator();
         }
 
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() {
+        IEnumerator IEnumerable.GetEnumerator() {
             return Queryable.GetEnumerator();
         }
 
@@ -24,12 +31,6 @@ namespace Cobweb.Data.NHibernate.Fetching {
 
         public IQueryProvider Provider {
             get { return Queryable.Provider; }
-        }
-
-        public TRequest Queryable { get; private set; }
-
-        public FetchRequest(TRequest source) {
-            Queryable = source;
         }
     }
 }

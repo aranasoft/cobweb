@@ -5,7 +5,7 @@ using System.Web.Mvc;
 namespace Cobweb.Web.Mvc.Json {
     public static class ModelStateExtensions {
         public static object[] ToSerializedObject(this ModelStateDictionary modelState) {
-            return modelState.Where(e => e.Value.Errors.Any()).Select(GetModelErrorObjectForJson).ToArray<object>();
+            return modelState.Where(e => e.Value.Errors.Any()).Select(GetModelErrorObjectForJson).ToArray();
         }
 
         private static object GetModelErrorObjectForJson(KeyValuePair<string, ModelState> error) {
