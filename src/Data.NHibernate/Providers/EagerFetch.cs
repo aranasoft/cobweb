@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using Aranasoft.Cobweb.Data.NHibernate.Fetching;
+using Cobweb.Data.NHibernate.Fetching;
 
-namespace Aranasoft.Cobweb.Data.NHibernate.Providers {
+namespace Cobweb.Data.NHibernate.Providers {
     public static class EagerFetch {
         private static Func<IFetchingProvider> _currentProvider = () => new NHibernateFetchingProvider();
 

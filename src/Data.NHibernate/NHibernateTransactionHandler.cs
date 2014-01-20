@@ -1,6 +1,6 @@
 ﻿using NHibernate;
 
-namespace Aranasoft.Cobweb.Data.NHibernate {
+namespace Cobweb.Data.NHibernate {
     public class NHibernateTransactionHandler : IDataTransaction {
         private readonly ITransaction _transaction;
 

@@ -1,8 +1,8 @@
-﻿using Aranasoft.Cobweb.DependencyInjection;
+﻿using Cobweb.DependencyInjection;
 using NHibernate;
 using NHibernate.Cfg;
 
-namespace Aranasoft.Cobweb.Data.NHibernate {
+namespace Cobweb.Data.NHibernate {
     public interface INHibernateFactoryBuilder : ISingletonDependency {
         ISessionFactory GetCurrentFactory();
         void CloseCurrentFactory();

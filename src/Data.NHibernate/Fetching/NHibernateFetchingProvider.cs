@@ -4,7 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using NHibernate.Linq;
 
-namespace Aranasoft.Cobweb.Data.NHibernate.Fetching {
+namespace Cobweb.Data.NHibernate.Fetching {
     public class NHibernateFetchingProvider : IFetchingProvider {
         public IFetchRequest<T> Fetch<T, TProperty>(
             IQueryable<T> source,

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace Aranasoft.Cobweb.Data.NHibernate.Fetching {
+namespace Cobweb.Data.NHibernate.Fetching {
     public class FetchRequest<TRequest, TQueried> : IFetchRequest<TQueried>
         where TRequest : IQueryable<TQueried> {
         public IEnumerator<TQueried> GetEnumerator() {

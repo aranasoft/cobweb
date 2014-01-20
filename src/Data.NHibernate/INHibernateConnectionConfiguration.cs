@@ -1,7 +1,7 @@
-﻿using Aranasoft.Cobweb.DependencyInjection;
+﻿using Cobweb.DependencyInjection;
 using FluentNHibernate.Cfg.Db;
 
-namespace Aranasoft.Cobweb.Data.NHibernate {
+namespace Cobweb.Data.NHibernate {
     public interface INHibernateConnectionConfiguration : ISingletonDependency {
         IPersistenceConfigurer Configuration();
     }
