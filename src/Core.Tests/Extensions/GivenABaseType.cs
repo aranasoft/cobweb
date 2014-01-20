@@ -1,8 +1,8 @@
-﻿using Aranasoft.Cobweb.Extentions;
+﻿using Cobweb.Extentions;
 using FluentAssertions;
 using NUnit.Framework;
 
-namespace Aranasoft.Cobweb.Tests.Extensions {
+namespace Cobweb.Tests.Extensions {
     [TestFixture]
     public class GivenABaseTypeThatIsGeneric {
         public class Animal<T> {}

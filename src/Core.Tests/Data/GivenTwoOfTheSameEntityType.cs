@@ -1,9 +1,9 @@
 using System;
-using Aranasoft.Cobweb.Data;
+using Cobweb.Data;
 using FluentAssertions;
 using NUnit.Framework;
 
-namespace Aranasoft.Cobweb.Tests.Data {
+namespace Cobweb.Tests.Data {
     [TestFixture]
     public class GivenTwoOfTheSameEntityType {
         private class SampleEntity : Entity<SampleEntity, Guid>, IEquatable<SampleEntity> {}
