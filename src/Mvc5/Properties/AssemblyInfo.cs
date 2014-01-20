@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Cobweb.Web.Mvc")]
-[assembly: AssemblyDescription("Cobweb is a base-class utility library for .NET")]
+[assembly: AssemblyDescription("MVC5 utilities and classes for Cobweb, a base-class utility library for .NET")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Arana Software")]
 [assembly: AssemblyProduct("Aranasoft's Cobweb")]
