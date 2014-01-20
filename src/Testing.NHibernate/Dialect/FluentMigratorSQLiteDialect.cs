@@ -1,7 +1,7 @@
 using System.Data;
 using NHibernate.Dialect;
 
-namespace Aranasoft.Cobweb.Testing.NHibernate.Dialect {
+namespace Cobweb.Testing.NHibernate.Dialect {
     public class FluentMigratorSQLiteDialect : SQLiteDialect {
         protected override void RegisterColumnTypes() {
             RegisterColumnType(DbType.Binary, "BLOB");

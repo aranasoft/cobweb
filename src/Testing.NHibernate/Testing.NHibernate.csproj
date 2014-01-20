@@ -7,12 +7,13 @@
     <ProjectGuid>{25087342-CC11-451A-8BB0-765D1AB3FD52}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Aranasoft.Cobweb.Testing.NHibernate</RootNamespace>
-    <AssemblyName>Aranasoft.Cobweb.Testing.NHibernate</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <RootNamespace>Cobweb.Testing.NHibernate</RootNamespace>
+    <AssemblyName>Cobweb.Testing.NHibernate</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
