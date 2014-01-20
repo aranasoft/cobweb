@@ -7,12 +7,17 @@ namespace Aranasoft.Cobweb.Data {
     /// <summary>
     /// Static methods to gather types that implement Entity.
     /// </summary>
-    public static class EntityManager {
-        public static IQueryable<Type> GetEntityTypes(IQueryable<Assembly> assemblies) {
+    public class EntityManager {
+        private static EntityManager _current;
+        public static EntityManager Current {
+            get { return _current ?? (_current = new EntityManager()); }
+        }
+
+        public IQueryable<Type> GetEntityTypes(IQueryable<Assembly> assemblies) {
             return assemblies.SelectMany(assembly => assembly.GetTypes().Where(IsEntity));
         }
 
-        public static bool IsEntity(Type type) {
+        public bool IsEntity(Type type) {
             return type.IsClass && !type.IsAbstract && type.IsAssignableToGeneric(typeof (Entity<,>));
         }
     }
