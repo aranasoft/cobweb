@@ -7,7 +7,7 @@
     <ProjectGuid>{6D4EDE58-0A9F-47C6-BEB4-AA738DEA5137}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Cobweb.Web</RootNamespace>
+    <RootNamespace>Cobweb.Web.Mvc</RootNamespace>
     <AssemblyName>Cobweb.Web.Mvc5</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -75,18 +75,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Mvc\AnonymousOnlyAttribute.cs" />
-    <Compile Include="Mvc\AuthenticatedOnlyAttribute.cs" />
-    <Compile Include="Mvc\HttpBadRequestException.cs" />
-    <Compile Include="Mvc\HttpForbiddenException.cs" />
-    <Compile Include="Mvc\HttpInternalServerErrorException.cs" />
-    <Compile Include="Mvc\HttpNotFoundException.cs" />
-    <Compile Include="Mvc\HttpUnauthorizedException.cs" />
-    <Compile Include="Mvc\Json\CamelJsonConvert.cs" />
-    <Compile Include="Mvc\Json\ModelStateExtensions.cs" />
+    <Compile Include="AnonymousOnlyAttribute.cs" />
+    <Compile Include="AuthenticatedOnlyAttribute.cs" />
+    <Compile Include="HttpBadRequestException.cs" />
+    <Compile Include="HttpForbiddenException.cs" />
+    <Compile Include="HttpInternalServerErrorException.cs" />
+    <Compile Include="HttpNotFoundException.cs" />
+    <Compile Include="HttpUnauthorizedException.cs" />
+    <Compile Include="Json\CamelJsonConvert.cs" />
+    <Compile Include="Json\ModelStateExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Mvc\Security\ResolvingMembershipProvider.cs" />
-    <Compile Include="Mvc\Security\ResolvingRoleProvider.cs" />
+    <Compile Include="Security\ResolvingMembershipProvider.cs" />
+    <Compile Include="Security\ResolvingRoleProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Mvc5.nuspec" />
