@@ -7,12 +7,13 @@
     <ProjectGuid>{CC6E0089-2D42-4A18-9525-3EDF09560E27}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Aranasoft.Cobweb.Web</RootNamespace>
-    <AssemblyName>Aranasoft.Cobweb.Web</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <RootNamespace>Cobweb.Web</RootNamespace>
+    <AssemblyName>Cobweb.Web.Mvc4</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -89,12 +90,14 @@
     <Compile Include="Http\Filters\ValidationActionFilter.cs" />
     <Compile Include="Http\Formatting\JsonErrorObjectContent.cs" />
     <Compile Include="Http\Formatting\JsonObjectContent.cs" />
+    <Compile Include="Http\HttpInternalServerErrorResponseException.cs" />
     <Compile Include="Http\HttpBadRequestResponseException.cs" />
     <Compile Include="Http\HttpForbiddenResponseException.cs" />
     <Compile Include="Http\HttpNotFoundResponseException.cs" />
     <Compile Include="Http\HttpUnauthorizedResponseException.cs" />
     <Compile Include="Mvc\AnonymousOnlyAttribute.cs" />
     <Compile Include="Mvc\AuthenticatedOnlyAttribute.cs" />
+    <Compile Include="Mvc\HttpInternalServerErrorException.cs" />
     <Compile Include="Mvc\HttpBadRequestException.cs" />
     <Compile Include="Mvc\HttpForbiddenException.cs" />
     <Compile Include="Mvc\HttpNotFoundException.cs" />

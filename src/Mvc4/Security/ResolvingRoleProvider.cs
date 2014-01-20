@@ -2,7 +2,7 @@ using System;
 using System.Web.Mvc;
 using System.Web.Security;
 
-namespace Aranasoft.Cobweb.Web.Security {
+namespace Cobweb.Web.Security {
     public class ResolvingRoleProvider : RoleProvider {
         public virtual IDependencyResolver GetResolver() {
             return DependencyResolver.Current;

@@ -2,7 +2,7 @@
 using System.Web.Mvc;
 using System.Web.Security;
 
-namespace Aranasoft.Cobweb.Web.Security {
+namespace Cobweb.Web.Security {
     public class ResolvingMembershipProvider : MembershipProvider {
         public virtual IDependencyResolver GetResolver() {
             return DependencyResolver.Current;

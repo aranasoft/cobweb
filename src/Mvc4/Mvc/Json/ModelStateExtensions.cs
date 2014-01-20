@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Web.Mvc;
 
-namespace Aranasoft.Cobweb.Web.Mvc.Json {
+namespace Cobweb.Web.Mvc.Json {
     public static class ModelStateExtensions {
         public static object[] ToSerializedObject(this ModelStateDictionary modelState) {
             return modelState.Where(e => e.Value.Errors.Any()).Select(GetModelErrorObjectForJson).ToArray<object>();
