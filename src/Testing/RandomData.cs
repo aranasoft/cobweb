@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Security.Cryptography;
 
-namespace Aranasoft.Cobweb.Testing {
+namespace Cobweb.Testing {
     public static class RandomData {
         public static int GetInt32(int maxValue) {
             if (maxValue < 1) {
