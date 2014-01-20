@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <package >
     <metadata>
-        <id>$id$</id>
+        <id>Cobweb</id>
         <version>$version$</version>
-        <title>$title$</title>
+        <title>Cobweb</title>
         <authors>$author$</authors>
         <owners>$author$</owners>
         <licenseUrl>https://github.com/aranasoft/cobweb/blob/master/LICENSE-BSD</licenseUrl>

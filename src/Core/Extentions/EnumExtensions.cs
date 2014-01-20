@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Linq;
 
-namespace Aranasoft.Cobweb.Extentions {
+namespace Cobweb.Extentions {
     public static class EnumExtensions {
         public static string GetDescription(this Enum enumeration)
         {

@@ -1,7 +1,7 @@
 ﻿using System.Data;
-using Aranasoft.Cobweb.DependencyInjection;
+using Cobweb.DependencyInjection;
 
-namespace Aranasoft.Cobweb.Data {
+namespace Cobweb.Data {
     public interface IDataTransactionManager : IDependency {
         IDataTransaction BeginTransaction();
         IDataTransaction BeginTransaction(IsolationLevel isolationLevel);

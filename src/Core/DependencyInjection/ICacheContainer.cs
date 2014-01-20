@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Aranasoft.Cobweb.DependencyInjection {
+namespace Cobweb.DependencyInjection {
     /// <summary>
     /// Wrapper interface for dependency-injected cache implementations
     /// </summary>
