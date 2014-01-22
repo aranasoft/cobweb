@@ -1,13 +1,16 @@
 ﻿using System;
 
 namespace Cobweb.Data {
+    public interface IEntity<TEntity>
+        where TEntity : IEntity<TEntity>, IEquatable<TEntity> {}
+
     /// <summary>
     ///     Base class for objects to be persisted in a relational database. Equates on reference or non-default identifier
     ///     value
     /// </summary>
     /// <typeparam name="TEntity">Derived entity type</typeparam>
     /// <typeparam name="TIdentifier">Itentifier-property type, such as Int32 or Guid</typeparam>
-    public abstract class Entity<TEntity, TIdentifier>
+    public abstract class Entity<TEntity, TIdentifier> : IEntity<TEntity>
         where TEntity : Entity<TEntity, TIdentifier>, IEquatable<TEntity>
         where TIdentifier : struct, IComparable, IComparable<TIdentifier>, IEquatable<TIdentifier> {
         public virtual TIdentifier Id { get; set; }

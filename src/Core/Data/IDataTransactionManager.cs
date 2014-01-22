@@ -7,43 +7,36 @@ namespace Cobweb.Data {
         IDataTransaction BeginTransaction();
         IDataTransaction BeginTransaction(IsolationLevel isolationLevel);
 
-        TEntity ExecuteTransaction<TEntity, TIdentifier>(TEntity entity, Action<TEntity> work)
-            where TEntity : Entity<TEntity, TIdentifier>, IEquatable<TEntity>, new()
-            where TIdentifier : struct, IComparable, IComparable<TIdentifier>, IEquatable<TIdentifier>;
-
         void ExecuteTransaction(Action work);
+
+        TEntity ExecuteTransaction<TEntity>(TEntity entity, Action<TEntity> work)
+            where TEntity : IEntity<TEntity>, IEquatable<TEntity>, new();
     }
 
     public abstract class DataTransactionManager : IDataTransactionManager {
         public abstract IDataTransaction BeginTransaction();
         public abstract IDataTransaction BeginTransaction(IsolationLevel isolationLevel);
 
-         public virtual TEntity ExecuteTransaction<TEntity, TIdentifier>(TEntity entity, Action<TEntity> work)
-            where TEntity : Entity<TEntity, TIdentifier>, IEquatable<TEntity>, new()
-            where TIdentifier : struct, IComparable, IComparable<TIdentifier>, IEquatable<TIdentifier>
-        {
-            using (IDataTransaction tx = BeginTransaction())
-            {
-                try
-                {
-                    work.Invoke(entity);
+        public virtual void ExecuteTransaction(Action work) {
+            using (IDataTransaction tx = BeginTransaction()) {
+                try {
+                    work.Invoke();
                     tx.Commit();
-                    return entity;
                 }
-                catch (Exception)
-                {
+                catch (Exception) {
                     tx.Rollback();
                     throw;
                 }
             }
         }
 
-        public virtual void ExecuteTransaction(Action work)
-        {
+        public virtual TEntity ExecuteTransaction<TEntity>(TEntity entity, Action<TEntity> work)
+            where TEntity : IEntity<TEntity>, IEquatable<TEntity>, new() {
             using (IDataTransaction tx = BeginTransaction()) {
                 try {
-                    work.Invoke();
+                    work.Invoke(entity);
                     tx.Commit();
+                    return entity;
                 }
                 catch (Exception) {
                     tx.Rollback();
