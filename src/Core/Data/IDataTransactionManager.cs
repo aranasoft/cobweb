@@ -6,6 +6,12 @@ namespace Cobweb.Data {
     public interface IDataTransactionManager : IDependency {
         IDataTransaction BeginTransaction();
         IDataTransaction BeginTransaction(IsolationLevel isolationLevel);
+
+        TEntity ExecuteTransaction<TEntity, TIdentifier>(TEntity entity, Action<TEntity> work)
+            where TEntity : Entity<TEntity, TIdentifier>, IEquatable<TEntity>, new()
+            where TIdentifier : struct, IComparable, IComparable<TIdentifier>, IEquatable<TIdentifier>;
+
+        void ExecuteTransaction(Action work);
     }
 
     public abstract class DataTransactionManager : IDataTransactionManager {
