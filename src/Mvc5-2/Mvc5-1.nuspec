@@ -8,6 +8,7 @@
         <owners>$author$</owners>
         <licenseUrl>https://github.com/aranasoft/cobweb/blob/master/LICENSE-BSD</licenseUrl>
         <projectUrl>https://github.com/aranasoft/cobweb/</projectUrl>
+        <iconUrl>https://raw.githubusercontent.com/aranasoft/cobweb/master/docs/logo-128px.png</iconUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>$description$</description>
         <copyright>Copyright (c) 2013-2015, Arana Software</copyright>
