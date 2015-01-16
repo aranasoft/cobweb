@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testing.NHibernate", "Testing.NHibernate\Testing.NHibernate.csproj", "{25087342-CC11-451A-8BB0-765D1AB3FD52}"
 EndProject
@@ -36,6 +36,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi\WebApi.csproj", "{A21D94D3-0AB1-4932-88D6-8EC247B11F8F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.NHibernate.Tests", "Tests\Data.NHibernate.Tests\Data.NHibernate.Tests.csproj", "{05328E70-9ADD-4790-B61B-3902000301FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mvc5-1", "Mvc5-1\Mvc5-1.csproj", "{8C412F85-067E-4E0A-B114-EF780BC98D5F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mvc5-2", "Mvc5-2\Mvc5-2.csproj", "{AC2CD4B8-B2CC-490B-A9DB-BA4FCA0897DB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -83,6 +87,14 @@ Global
 		{05328E70-9ADD-4790-B61B-3902000301FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05328E70-9ADD-4790-B61B-3902000301FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{05328E70-9ADD-4790-B61B-3902000301FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C412F85-067E-4E0A-B114-EF780BC98D5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C412F85-067E-4E0A-B114-EF780BC98D5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C412F85-067E-4E0A-B114-EF780BC98D5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C412F85-067E-4E0A-B114-EF780BC98D5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC2CD4B8-B2CC-490B-A9DB-BA4FCA0897DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC2CD4B8-B2CC-490B-A9DB-BA4FCA0897DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC2CD4B8-B2CC-490B-A9DB-BA4FCA0897DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC2CD4B8-B2CC-490B-A9DB-BA4FCA0897DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
