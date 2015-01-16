@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package >
     <metadata>
-        <id>Cobweb.Web.WebApi2</id>
+        <id>Cobweb.Web.WebApi</id>
         <version>$version$</version>
         <title>Cobweb Extensions for WebAPI v2</title>
         <authors>$author$</authors>
@@ -10,7 +10,7 @@
         <projectUrl>https://github.com/aranasoft/cobweb/</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>$description$</description>
-        <copyright>Copyright (c) 2013-2014, Arana Software</copyright>
+        <copyright>Copyright (c) 2013-2015, Arana Software</copyright>
         <tags></tags>
     </metadata>
     <files>
