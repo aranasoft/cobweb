@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Cobweb.Data.NHibernate")]
-[assembly: AssemblyDescription("NHibernate v3 utilities and classes for Cobweb, a base-class utility library for .NET")]
+[assembly: AssemblyDescription("NHibernate v4 utilities and classes for Cobweb, a base-class utility library for .NET")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Arana Software")]
 [assembly: AssemblyProduct("Aranasoft's Cobweb")]
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.4")]
-[assembly: AssemblyFileVersion("1.0.4")]
+[assembly: AssemblyVersion("1.4.1")]
+[assembly: AssemblyFileVersion("1.4.1")]

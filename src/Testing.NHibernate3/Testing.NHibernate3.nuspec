@@ -3,7 +3,7 @@
     <metadata>
         <id>Cobweb.Testing.NHibernate</id>
         <version>$version$</version>
-        <title>Cobweb Testing Extensions for NHibernate</title>
+        <title>Cobweb Testing Extensions for NHibernate v3</title>
         <authors>$author$</authors>
         <owners>$author$</owners>
         <licenseUrl>https://github.com/aranasoft/cobweb/blob/master/LICENSE-BSD</licenseUrl>

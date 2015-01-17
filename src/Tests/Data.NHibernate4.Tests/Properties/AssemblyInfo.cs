@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Cobweb.Data.NHibernate")]
-[assembly: AssemblyDescription("NHibernate v3 utilities and classes for Cobweb, a base-class utility library for .NET")]
+[assembly: AssemblyTitle("Data.NHibernate4.Tests")]
+[assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Arana Software")]
-[assembly: AssemblyProduct("Aranasoft's Cobweb")]
-[assembly: AssemblyCopyright("Copyright © 2013-2015")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("Data.NHibernate4.Tests")]
+[assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("794b5fa1-9174-4620-b19b-56cc3d12ecd7")]
+[assembly: Guid("1fbd4c50-4e02-4aa9-97d4-f7e56c675aca")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.4")]
-[assembly: AssemblyFileVersion("1.0.4")]
+[assembly: AssemblyVersion("1.0.0.0")]
+[assembly: AssemblyFileVersion("1.0.0.0")]
