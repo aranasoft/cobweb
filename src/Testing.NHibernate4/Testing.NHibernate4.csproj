@@ -36,6 +36,9 @@
       <HintPath>..\packages\Cobweb.1.1.1.0\lib\net40\Cobweb.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Cobweb.Data.NHibernate">
+      <HintPath>..\packages\Cobweb.Data.NHibernate.1.40.1.0\lib\net45\Cobweb.Data.NHibernate.dll</HintPath>
+    </Reference>
     <Reference Include="FluentNHibernate">
       <HintPath>..\packages\FluentNHibernate.2.0.1.0\lib\net40\FluentNHibernate.dll</HintPath>
     </Reference>
@@ -55,7 +58,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dialect\FluentMigratorSQLiteDialect.cs" />
+    <Compile Include="Fetching\FakeFetchingProvider.cs" />
+    <Compile Include="FluentMigratorSQLiteConnectionConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SQLiteConnectionConfiguration.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
