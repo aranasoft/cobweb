@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testing.NHibernate", "Testing.NHibernate\Testing.NHibernate.csproj", "{25087342-CC11-451A-8BB0-765D1AB3FD52}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testing.NHibernate3", "Testing.NHibernate3\Testing.NHibernate3.csproj", "{25087342-CC11-451A-8BB0-765D1AB3FD52}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{856B41BF-BFA3-40CC-B90D-4B2098FE3B74}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.NHibernate", "Data.NHibernate\Data.NHibernate.csproj", "{4CB65D8A-99BA-4274-B323-9ACCF19606EB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.NHibernate3", "Data.NHibernate3\Data.NHibernate3.csproj", "{4CB65D8A-99BA-4274-B323-9ACCF19606EB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Tests", "Core.Tests\Core.Tests.csproj", "{8B606909-594B-4894-A651-7652C45E87B4}"
 EndProject
@@ -35,7 +35,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi2", "WebApi2\WebApi2.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi\WebApi.csproj", "{A21D94D3-0AB1-4932-88D6-8EC247B11F8F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.NHibernate.Tests", "Tests\Data.NHibernate.Tests\Data.NHibernate.Tests.csproj", "{05328E70-9ADD-4790-B61B-3902000301FA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.NHibernate3.Tests", "Tests\Data.NHibernate3.Tests\Data.NHibernate3.Tests.csproj", "{05328E70-9ADD-4790-B61B-3902000301FA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mvc5-1", "Mvc5-1\Mvc5-1.csproj", "{8C412F85-067E-4E0A-B114-EF780BC98D5F}"
 EndProject
