@@ -89,7 +89,7 @@
     <Compile Include="Security\ResolvingRoleProvider.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Mvc5-2.nuspec" />
+    <None Include="Mvc5-1.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
