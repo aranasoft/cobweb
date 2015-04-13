@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 
 namespace Cobweb.Extentions {
-    public static class EnumExtensions {
+    public static class WithEnum {
         public static string GetDescription(this Enum enumeration) {
             Type type = enumeration.GetType();
             MemberInfo[] enumMemberInfo = type.GetMember(enumeration.ToString());

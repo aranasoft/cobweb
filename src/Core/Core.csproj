@@ -45,9 +45,9 @@
     <Compile Include="DependencyInjection\ICacheContainer.cs" />
     <Compile Include="DependencyInjection\IDependency.cs" />
     <Compile Include="Extentions\WithEnumerableOfT.cs" />
-    <Compile Include="Extentions\EnumExtensions.cs" />
+    <Compile Include="Extentions\WithEnum.cs" />
     <Compile Include="Extentions\ObjectExtentions\WithObject.cs" />
-    <Compile Include="Extentions\TypeExtensions.cs" />
+    <Compile Include="Extentions\WithType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

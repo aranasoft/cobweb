@@ -1,7 +1,7 @@
 ﻿using System;
 
 namespace Cobweb.Extentions {
-    public static class TypeExtensions {
+    public static class WithType {
         public static bool IsAssignableToGeneric(this Type checkType, Type genericType) {
             if (genericType == null) {
                 throw new ArgumentNullException("genericType");
