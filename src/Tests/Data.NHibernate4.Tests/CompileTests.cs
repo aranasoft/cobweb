@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Data;
 using System.Linq;
-using Cobweb.Data;
-using Cobweb.Data.NHibernate;
 using NHibernate;
 
-namespace Data.NHibernate.Tests {
+namespace Cobweb.Data.NHibernate.Tests {
     /// <summary>
     ///     These tests are not executed by NUnit. They are here for compile-time checking. 'If it builds, ship it.'
     /// </summary>
