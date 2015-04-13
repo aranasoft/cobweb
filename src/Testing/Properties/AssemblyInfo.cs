@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Cobweb.Testing")]
+[assembly: AssemblyTitle("Cobweb Testing Extensions")]
 [assembly: AssemblyDescription("Testing utilities and classes for Cobweb, a base-class utility library for .NET")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Arana Software")]
 [assembly: AssemblyProduct("Aranasoft's Cobweb")]
-[assembly: AssemblyCopyright("Copyright © 2013-2014")]
+[assembly: AssemblyCopyright("Copyright © 2013-2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Cobweb.Web.Http")]
+[assembly: AssemblyTitle("Cobweb Extensions for WebAPI v2.2")]
 [assembly: AssemblyDescription("WebAPI v2.2 utilities and classes for Cobweb, a base-class utility library for .NET")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Arana Software")]
@@ -13,7 +13,6 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyCopyright("Copyright © 2013-2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 

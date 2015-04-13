@@ -7,8 +7,8 @@
     <ProjectGuid>{7FD6C25F-D2A1-492D-9067-CC8772E7E4D5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Cobweb.Data.NHibernate</RootNamespace>
-    <AssemblyName>Cobweb.Data.NHibernate</AssemblyName>
+    <RootNamespace>Cobweb.Data.NHibernate.Tests</RootNamespace>
+    <AssemblyName>Cobweb.Data.NHibernate.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>

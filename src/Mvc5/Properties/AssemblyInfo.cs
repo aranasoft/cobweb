@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Cobweb.Web.Mvc for MVC5")]
+[assembly: AssemblyTitle("Cobweb Extensions for MVC5")]
 [assembly: AssemblyDescription("MVC5 utilities and classes for Cobweb, a base-class utility library for .NET")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Arana Software")]

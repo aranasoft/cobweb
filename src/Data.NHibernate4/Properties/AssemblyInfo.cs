@@ -5,8 +5,8 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Cobweb.Data.NHibernate.Tests")]
-[assembly: AssemblyDescription("Unit tests for Cobweb's NHibernate v4 utilities and classes. Cobweb is a base-class utility library for .NET")]
+[assembly: AssemblyTitle("Cobweb Extensions for NHibernate v4")]
+[assembly: AssemblyDescription("NHibernate v4 utilities and classes for Cobweb, a base-class utility library for .NET")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Arana Software")]
 [assembly: AssemblyProduct("Aranasoft's Cobweb")]
