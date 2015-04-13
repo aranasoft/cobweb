@@ -7,7 +7,7 @@
     <ProjectGuid>{931C567D-D336-4540-82DF-A12FAC6E37CF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WebApi2_1</RootNamespace>
+    <RootNamespace>Cobweb.Web.Http</RootNamespace>
     <AssemblyName>WebApi2-1</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
