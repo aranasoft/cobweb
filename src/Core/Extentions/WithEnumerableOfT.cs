@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace Cobweb.Extentions {
     public static class WithEnumerableOfT {
         /// <summary>
-        /// Execute a delegate on each item within an IEnumerble.
+        ///     Execute a delegate on each item within an IEnumerble.
         /// </summary>
         /// <typeparam name="T">The element type of the enumerable.</typeparam>
         /// <param name="items">The enumerable of items.</param>

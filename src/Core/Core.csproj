@@ -49,6 +49,7 @@
     <Compile Include="Extentions\ObjectExtentions\WithObject.cs" />
     <Compile Include="Extentions\WithType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reflection\Extensions\WithExpression.cs" />
     <Compile Include="Reflection\Extensions\WithMember.cs" />
   </ItemGroup>
   <ItemGroup>

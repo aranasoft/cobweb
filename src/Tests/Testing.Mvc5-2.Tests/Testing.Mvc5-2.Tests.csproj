@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3CCD2CA9-761E-430E-9ED0-47B0CB5084D0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Cobweb.Testing.Mvc.Tests</RootNamespace>
+    <AssemblyName>Cobweb.Testing.Mvc.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FluentAssertions, Version=3.3.0.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\FluentAssertions.3.3.0\lib\net45\FluentAssertions.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentAssertions.Core">
+      <HintPath>..\..\packages\FluentAssertions.3.3.0\lib\net45\FluentAssertions.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Moq">
+      <HintPath>..\..\packages\Moq.4.2.1502.0911\lib\net40\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\..\packages\NUnit.2.6.2\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.Mvc.5.2.2\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.Razor.3.2.2\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Fakes\SessionState\GivenAnEmptyFakeHttpSessionState.cs" />
+    <Compile Include="Fakes\SessionState\GivenAnEmptyHttpSessionState.cs" />
+    <Compile Include="Fakes\SessionState\GivenAPopulatedFakeHttpSessionState.cs" />
+    <Compile Include="Fakes\FileCollection\GivenAnEmptyFakeHttpFileCollection.cs" />
+    <Compile Include="Fakes\FileCollection\GivenAnEmptyHttpFileCollection.cs" />
+    <Compile Include="Fakes\FileCollection\GivenAPopulatedHttpFileCollection.cs" />
+    <Compile Include="Fakes\SessionState\GivenAPopulatedHttpSessionState.cs" />
+    <Compile Include="Routing\GivenDefaultRoute\GivenDefaultRoute.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Routing\GivenDefaultRoute\WithAlternateNamingControllerActionRootUrlAndTrailingSlash.cs" />
+    <Compile Include="Routing\GivenDefaultRoute\WithAlternateNamingControllerActionRootUrl.cs" />
+    <Compile Include="Routing\GivenDefaultRoute\WithAlternateNamingControllerActionExpression.cs" />
+    <Compile Include="Routing\GivenDefaultRoute\WithControllerInNameControllerActionRootUrl.cs" />
+    <Compile Include="Routing\GivenDefaultRoute\WithControllerInNameControllerActionRootUrlAndTrailingSlash.cs" />
+    <Compile Include="Routing\GivenDefaultRoute\WithControllerInNameControllerActionExpression.cs" />
+    <Compile Include="Routing\GivenDefaultRoute\WithControllerInNameControllerDefaultActionExpression.cs" />
+    <Compile Include="Routing\GivenDefaultRoute\WithControllerInNameControllerRootUrlAndTrailingSlash.cs" />
+    <Compile Include="Routing\GivenDefaultRoute\WithControllerInNameControllerRootUrl.cs" />
+    <Compile Include="Routing\GivenDefaultRoute\WithDataTypeControllerExpression.cs" />
+    <Compile Include="Routing\GivenDefaultRoute\WithDataTypeControllerUrl.cs" />
+    <Compile Include="Routing\GivenDefaultRoute\WithActionRootUrl.cs" />
+    <Compile Include="Routing\GivenDefaultRoute\WithActionRootUrlAndTrailingSlash.cs" />
+    <Compile Include="Routing\GivenDefaultRoute\WithDefaultControllerAleternateActionExpression.cs" />
+    <Compile Include="Routing\GivenDefaultRoute\WithAlternateControllerActionRootUrl.cs" />
+    <Compile Include="Routing\GivenDefaultRoute\WithAlternateControllerActionRootUrlAndTrailingSlash.cs" />
+    <Compile Include="Routing\GivenDefaultRoute\WithAlternateControllerActionExpression.cs" />
+    <Compile Include="Routing\GivenDefaultRoute\WithAlternateControllerRootUrl.cs" />
+    <Compile Include="Routing\GivenDefaultRoute\WithAlternateControllerRootUrlAndTrailingSlash.cs" />
+    <Compile Include="Routing\GivenDefaultRoute\WithAlternateControllerDefaultActionExpression.cs" />
+    <Compile Include="Routing\GivenDefaultRoute\WithDefaultControllerActionExpression.cs" />
+    <Compile Include="Routing\GivenDefaultRoute\WithDefaultControllerRootUrl.cs" />
+    <Compile Include="Routing\GivenDefaultRoute\WithDefaultControllerRootUrlAndTrailingSlash.cs" />
+    <Compile Include="Routing\GivenDefaultRoute\WithRootUrl.cs" />
+    <Compile Include="Routing\GivenNamedRoute\GivenNamedRoute.cs" />
+    <Compile Include="Routing\GivenNamedRoute\WithIncorrectRouteName.cs" />
+    <Compile Include="Routing\GivenNamedRoute\WithRouteName.cs" />
+    <Compile Include="Routing\GivenPageRoute\GivenPageRoute.cs" />
+    <Compile Include="Routing\GivenPageRoute\WithNonPageUrl.cs" />
+    <Compile Include="Routing\GivenPageRoute\WithPageUrl.cs" />
+    <Compile Include="Routing\GivenPageRoute\WithRootUrl.cs" />
+    <Compile Include="Routing\GivenIgnoredRoute\GivenIgnoredRoute.cs" />
+    <Compile Include="Routing\GivenIgnoredRoute\WithIgnoredUrl.cs" />
+    <Compile Include="Routing\GivenIgnoredRoute\WithIgnoredUrlWithPathInfo.cs" />
+    <Compile Include="Routing\GivenIgnoredRoute\WithRootUrl.cs" />
+    <Compile Include="TestableTypes\AlternateNamingController.cs" />
+    <Compile Include="TestableTypes\AnObject.cs" />
+    <Compile Include="TestableTypes\DataTypeInputController.cs" />
+    <Compile Include="TestableTypes\EmptyController.cs" />
+    <Compile Include="TestableTypes\OtherController.cs" />
+    <Compile Include="TestableTypes\HomeController.cs" />
+    <Compile Include="TestableTypes\HasControllerInNameController.cs" />
+    <Compile Include="TestableTypes\RedirectResultController.cs" />
+    <Compile Include="TestableTypes\ViewResultController.cs" />
+    <Compile Include="Fakes\FileCollection\GivenAPopulatedFakeHttpFileCollection.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Core.csproj">
+      <Project>{856b41bf-bfa3-40cc-b90d-4b2098fe3b74}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Testing.Mvc5-2\Testing.Mvc5-2.csproj">
+      <Project>{7ef3f4be-80c6-4e81-8571-e7435bcc3233}</Project>
+      <Name>Testing.Mvc5-2</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

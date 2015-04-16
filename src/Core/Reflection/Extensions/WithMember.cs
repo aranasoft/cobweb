@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Reflection;
 
 namespace Cobweb.Reflection.Extensions {
@@ -31,48 +30,6 @@ namespace Cobweb.Reflection.Extensions {
                                                                               bool inherit = true)
             where TAttribute : Attribute {
             return member.GetCustomAttributes(typeof (TAttribute), inherit).Cast<TAttribute>();
-        }
-    }
-
-    public static class WithExpression {
-        public static Dictionary<ParameterInfo, Expression> GetMethodArguments<TDelegate>(
-            this Expression<TDelegate> expression) {
-            var methodCall = ((MethodCallExpression) expression.Body);
-
-            return methodCall.Arguments.Select((arg, argIndex) => {
-                return new KeyValuePair<ParameterInfo, Expression>(
-                    methodCall.Method.GetParameters()[argIndex],
-                    arg);
-            }).ToDictionary(pair => pair.Key, pair => pair.Value);
-        }
-
-        public static Dictionary<ParameterInfo, object> GetMethodArgumentValues<TDelegate>(
-            this Expression<TDelegate> expression) {
-            var args = GetMethodArguments(expression);
-
-            return args.Select(arg => {
-                var argInfo = arg.Key;
-                var argInput = arg.Value;
-
-                return new KeyValuePair<ParameterInfo, object>(argInfo, GetExpressionValue(argInput));
-            }).ToDictionary(pair => pair.Key, pair => pair.Value);
-        }
-
-        private static object GetExpressionValue(Expression argInput) {
-            if (argInput.NodeType == ExpressionType.Convert && argInput is UnaryExpression) {
-                return GetExpressionValue(((UnaryExpression) argInput).Operand);
-            }
-
-            switch (argInput.NodeType) {
-                case ExpressionType.Constant:
-                    return ((ConstantExpression) argInput).Value;
-
-                case ExpressionType.New:
-                case ExpressionType.MemberAccess:
-                case ExpressionType.Convert:
-                    return Expression.Lambda(argInput).Compile().DynamicInvoke();
-            }
-            return null;
         }
     }
 }

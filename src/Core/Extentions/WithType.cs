@@ -58,7 +58,7 @@ namespace Cobweb.Extentions {
         }
 
         /// <summary>
-        /// Determines whether an variable of the specified <paramref name="type" /> can be assigned null.
+        ///     Determines whether an variable of the specified <paramref name="type" /> can be assigned null.
         /// </summary>
         /// <param name="type">The specified type.</param>
         /// <returns>true if a variable of the specified type can be assigned null, otherwise false</returns>
