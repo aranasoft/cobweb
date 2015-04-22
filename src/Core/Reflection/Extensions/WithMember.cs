@@ -1,4 +1,5 @@
 using System;
+using Cobweb.Extentions.ObjectExtentions;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -30,6 +31,19 @@ namespace Cobweb.Reflection.Extensions {
                                                                               bool inherit = true)
             where TAttribute : Attribute {
             return member.GetCustomAttributes(typeof (TAttribute), inherit).Cast<TAttribute>();
+        }
+
+        /// <summary>
+        ///     Returns a custom attributes defined on this member, identified by type.
+        /// </summary>
+        /// <typeparam name="TAttribute">The attribute type.</typeparam>
+        /// <param name="member">The member to analyze.</param>
+        /// <param name="inherit">When true, look up the hierarchy chain for the inherited custom attribute.</param>
+        /// <returns>An instance of <typeparamref name="TAttribute" /> representing custom attributes, or null.</returns>
+        public static TAttribute GetCustomAttribute<TAttribute>(this ICustomAttributeProvider member,
+                                                                bool inherit = true)
+            where TAttribute : Attribute {
+            return GetCustomAttributes<TAttribute>(member, inherit).IfExists(collection => collection.FirstOrDefault());
         }
     }
 }

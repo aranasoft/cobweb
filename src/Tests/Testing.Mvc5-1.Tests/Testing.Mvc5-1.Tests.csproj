@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3CCD2CA9-761E-430E-9ED0-47B0CB5084D0}</ProjectGuid>
+    <ProjectGuid>{FE2AB164-9C23-474D-9C98-7BAD93A1516D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Cobweb.Testing.Mvc.Tests</RootNamespace>
-    <AssemblyName>Cobweb.Testing.Mvc.Tests</AssemblyName>
+    <RootNamespace>Testing.Mvc5_1.Tests</RootNamespace>
+    <AssemblyName>Testing.Mvc5-1.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,8 +30,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FluentAssertions, Version=3.3.0.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="FluentAssertions">
       <HintPath>..\..\packages\FluentAssertions.3.3.0\lib\net45\FluentAssertions.dll</HintPath>
     </Reference>
     <Reference Include="FluentAssertions.Core">
@@ -52,27 +51,27 @@
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.Helpers.dll</HintPath>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.1.2\lib\net45\System.Web.Helpers.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web.Mvc, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Microsoft.AspNet.Mvc.5.2.2\lib\net45\System.Web.Mvc.dll</HintPath>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\..\packages\Microsoft.AspNet.Mvc.5.1.3\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Microsoft.AspNet.Razor.3.2.2\lib\net45\System.Web.Razor.dll</HintPath>
+      <HintPath>..\..\packages\Microsoft.AspNet.Razor.3.1.2\lib\net45\System.Web.Razor.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.WebPages.dll</HintPath>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.1.2\lib\net45\System.Web.WebPages.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.1.2\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.1.2\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -81,163 +80,163 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Testing.Mvc4.Tests\Fakes\FileCollection\GivenAnEmptyFakeHttpFileCollection.cs">
+    <Compile Include="..\testing.mvc4.tests\fakes\filecollection\GivenAnEmptyFakeHttpFileCollection.cs">
       <Link>Fakes\FileCollection\GivenAnEmptyFakeHttpFileCollection.cs</Link>
     </Compile>
-    <Compile Include="..\Testing.Mvc4.Tests\Fakes\FileCollection\GivenAnEmptyHttpFileCollection.cs">
+    <Compile Include="..\testing.mvc4.tests\fakes\filecollection\GivenAnEmptyHttpFileCollection.cs">
       <Link>Fakes\FileCollection\GivenAnEmptyHttpFileCollection.cs</Link>
     </Compile>
-    <Compile Include="..\Testing.Mvc4.Tests\Fakes\FileCollection\GivenAPopulatedFakeHttpFileCollection.cs">
+    <Compile Include="..\testing.mvc4.tests\fakes\filecollection\GivenAPopulatedFakeHttpFileCollection.cs">
       <Link>Fakes\FileCollection\GivenAPopulatedFakeHttpFileCollection.cs</Link>
     </Compile>
-    <Compile Include="..\Testing.Mvc4.Tests\Fakes\FileCollection\GivenAPopulatedHttpFileCollection.cs">
+    <Compile Include="..\testing.mvc4.tests\fakes\filecollection\GivenAPopulatedHttpFileCollection.cs">
       <Link>Fakes\FileCollection\GivenAPopulatedHttpFileCollection.cs</Link>
     </Compile>
-    <Compile Include="..\Testing.Mvc4.Tests\Fakes\SessionState\GivenAnEmptyFakeHttpSessionState.cs">
+    <Compile Include="..\testing.mvc4.tests\fakes\sessionstate\GivenAnEmptyFakeHttpSessionState.cs">
       <Link>Fakes\SessionState\GivenAnEmptyFakeHttpSessionState.cs</Link>
     </Compile>
-    <Compile Include="..\Testing.Mvc4.Tests\Fakes\SessionState\GivenAnEmptyHttpSessionState.cs">
+    <Compile Include="..\testing.mvc4.tests\fakes\sessionstate\GivenAnEmptyHttpSessionState.cs">
       <Link>Fakes\SessionState\GivenAnEmptyHttpSessionState.cs</Link>
     </Compile>
-    <Compile Include="..\Testing.Mvc4.Tests\Fakes\SessionState\GivenAPopulatedFakeHttpSessionState.cs">
+    <Compile Include="..\testing.mvc4.tests\fakes\sessionstate\GivenAPopulatedFakeHttpSessionState.cs">
       <Link>Fakes\SessionState\GivenAPopulatedFakeHttpSessionState.cs</Link>
     </Compile>
-    <Compile Include="..\Testing.Mvc4.Tests\Fakes\SessionState\GivenAPopulatedHttpSessionState.cs">
+    <Compile Include="..\testing.mvc4.tests\fakes\sessionstate\GivenAPopulatedHttpSessionState.cs">
       <Link>Fakes\SessionState\GivenAPopulatedHttpSessionState.cs</Link>
     </Compile>
-    <Compile Include="..\Testing.Mvc4.Tests\Routing\GivenDefaultRoute\GivenDefaultRoute.cs">
+    <Compile Include="..\testing.mvc4.tests\routing\givendefaultroute\GivenDefaultRoute.cs">
       <Link>Routing\GivenDefaultRoute\GivenDefaultRoute.cs</Link>
     </Compile>
-    <Compile Include="..\Testing.Mvc4.Tests\Routing\GivenDefaultRoute\WithActionRootUrl.cs">
+    <Compile Include="..\testing.mvc4.tests\routing\givendefaultroute\WithActionRootUrl.cs">
       <Link>Routing\GivenDefaultRoute\WithActionRootUrl.cs</Link>
     </Compile>
-    <Compile Include="..\Testing.Mvc4.Tests\Routing\GivenDefaultRoute\WithActionRootUrlAndTrailingSlash.cs">
+    <Compile Include="..\testing.mvc4.tests\routing\givendefaultroute\WithActionRootUrlAndTrailingSlash.cs">
       <Link>Routing\GivenDefaultRoute\WithActionRootUrlAndTrailingSlash.cs</Link>
     </Compile>
-    <Compile Include="..\Testing.Mvc4.Tests\Routing\GivenDefaultRoute\WithAlternateControllerActionExpression.cs">
+    <Compile Include="..\testing.mvc4.tests\routing\givendefaultroute\WithAlternateControllerActionExpression.cs">
       <Link>Routing\GivenDefaultRoute\WithAlternateControllerActionExpression.cs</Link>
     </Compile>
-    <Compile Include="..\Testing.Mvc4.Tests\Routing\GivenDefaultRoute\WithAlternateControllerActionRootUrl.cs">
+    <Compile Include="..\testing.mvc4.tests\routing\givendefaultroute\WithAlternateControllerActionRootUrl.cs">
       <Link>Routing\GivenDefaultRoute\WithAlternateControllerActionRootUrl.cs</Link>
     </Compile>
-    <Compile Include="..\Testing.Mvc4.Tests\Routing\GivenDefaultRoute\WithAlternateControllerActionRootUrlAndTrailingSlash.cs">
+    <Compile Include="..\testing.mvc4.tests\routing\givendefaultroute\WithAlternateControllerActionRootUrlAndTrailingSlash.cs">
       <Link>Routing\GivenDefaultRoute\WithAlternateControllerActionRootUrlAndTrailingSlash.cs</Link>
     </Compile>
-    <Compile Include="..\Testing.Mvc4.Tests\Routing\GivenDefaultRoute\WithAlternateControllerDefaultActionExpression.cs">
+    <Compile Include="..\testing.mvc4.tests\routing\givendefaultroute\WithAlternateControllerDefaultActionExpression.cs">
       <Link>Routing\GivenDefaultRoute\WithAlternateControllerDefaultActionExpression.cs</Link>
     </Compile>
-    <Compile Include="..\Testing.Mvc4.Tests\Routing\GivenDefaultRoute\WithAlternateControllerRootUrl.cs">
+    <Compile Include="..\testing.mvc4.tests\routing\givendefaultroute\WithAlternateControllerRootUrl.cs">
       <Link>Routing\GivenDefaultRoute\WithAlternateControllerRootUrl.cs</Link>
     </Compile>
-    <Compile Include="..\Testing.Mvc4.Tests\Routing\GivenDefaultRoute\WithAlternateControllerRootUrlAndTrailingSlash.cs">
+    <Compile Include="..\testing.mvc4.tests\routing\givendefaultroute\WithAlternateControllerRootUrlAndTrailingSlash.cs">
       <Link>Routing\GivenDefaultRoute\WithAlternateControllerRootUrlAndTrailingSlash.cs</Link>
     </Compile>
-    <Compile Include="..\Testing.Mvc4.Tests\Routing\GivenDefaultRoute\WithAlternateNamingControllerActionExpression.cs">
+    <Compile Include="..\testing.mvc4.tests\routing\givendefaultroute\WithAlternateNamingControllerActionExpression.cs">
       <Link>Routing\GivenDefaultRoute\WithAlternateNamingControllerActionExpression.cs</Link>
     </Compile>
-    <Compile Include="..\Testing.Mvc4.Tests\Routing\GivenDefaultRoute\WithAlternateNamingControllerActionRootUrl.cs">
+    <Compile Include="..\testing.mvc4.tests\routing\givendefaultroute\WithAlternateNamingControllerActionRootUrl.cs">
       <Link>Routing\GivenDefaultRoute\WithAlternateNamingControllerActionRootUrl.cs</Link>
     </Compile>
-    <Compile Include="..\Testing.Mvc4.Tests\Routing\GivenDefaultRoute\WithAlternateNamingControllerActionRootUrlAndTrailingSlash.cs">
+    <Compile Include="..\testing.mvc4.tests\routing\givendefaultroute\WithAlternateNamingControllerActionRootUrlAndTrailingSlash.cs">
       <Link>Routing\GivenDefaultRoute\WithAlternateNamingControllerActionRootUrlAndTrailingSlash.cs</Link>
     </Compile>
-    <Compile Include="..\Testing.Mvc4.Tests\Routing\GivenDefaultRoute\WithControllerInNameControllerActionExpression.cs">
+    <Compile Include="..\testing.mvc4.tests\routing\givendefaultroute\WithControllerInNameControllerActionExpression.cs">
       <Link>Routing\GivenDefaultRoute\WithControllerInNameControllerActionExpression.cs</Link>
     </Compile>
-    <Compile Include="..\Testing.Mvc4.Tests\Routing\GivenDefaultRoute\WithControllerInNameControllerActionRootUrl.cs">
+    <Compile Include="..\testing.mvc4.tests\routing\givendefaultroute\WithControllerInNameControllerActionRootUrl.cs">
       <Link>Routing\GivenDefaultRoute\WithControllerInNameControllerActionRootUrl.cs</Link>
     </Compile>
-    <Compile Include="..\Testing.Mvc4.Tests\Routing\GivenDefaultRoute\WithControllerInNameControllerActionRootUrlAndTrailingSlash.cs">
+    <Compile Include="..\testing.mvc4.tests\routing\givendefaultroute\WithControllerInNameControllerActionRootUrlAndTrailingSlash.cs">
       <Link>Routing\GivenDefaultRoute\WithControllerInNameControllerActionRootUrlAndTrailingSlash.cs</Link>
     </Compile>
-    <Compile Include="..\Testing.Mvc4.Tests\Routing\GivenDefaultRoute\WithControllerInNameControllerDefaultActionExpression.cs">
+    <Compile Include="..\testing.mvc4.tests\routing\givendefaultroute\WithControllerInNameControllerDefaultActionExpression.cs">
       <Link>Routing\GivenDefaultRoute\WithControllerInNameControllerDefaultActionExpression.cs</Link>
     </Compile>
-    <Compile Include="..\Testing.Mvc4.Tests\Routing\GivenDefaultRoute\WithControllerInNameControllerRootUrl.cs">
+    <Compile Include="..\testing.mvc4.tests\routing\givendefaultroute\WithControllerInNameControllerRootUrl.cs">
       <Link>Routing\GivenDefaultRoute\WithControllerInNameControllerRootUrl.cs</Link>
     </Compile>
-    <Compile Include="..\Testing.Mvc4.Tests\Routing\GivenDefaultRoute\WithControllerInNameControllerRootUrlAndTrailingSlash.cs">
+    <Compile Include="..\testing.mvc4.tests\routing\givendefaultroute\WithControllerInNameControllerRootUrlAndTrailingSlash.cs">
       <Link>Routing\GivenDefaultRoute\WithControllerInNameControllerRootUrlAndTrailingSlash.cs</Link>
     </Compile>
-    <Compile Include="..\Testing.Mvc4.Tests\Routing\GivenDefaultRoute\WithDataTypeControllerExpression.cs">
+    <Compile Include="..\testing.mvc4.tests\routing\givendefaultroute\WithDataTypeControllerExpression.cs">
       <Link>Routing\GivenDefaultRoute\WithDataTypeControllerExpression.cs</Link>
     </Compile>
-    <Compile Include="..\Testing.Mvc4.Tests\Routing\GivenDefaultRoute\WithDataTypeControllerUrl.cs">
+    <Compile Include="..\testing.mvc4.tests\routing\givendefaultroute\WithDataTypeControllerUrl.cs">
       <Link>Routing\GivenDefaultRoute\WithDataTypeControllerUrl.cs</Link>
     </Compile>
-    <Compile Include="..\Testing.Mvc4.Tests\Routing\GivenDefaultRoute\WithDefaultControllerActionExpression.cs">
+    <Compile Include="..\testing.mvc4.tests\routing\givendefaultroute\WithDefaultControllerActionExpression.cs">
       <Link>Routing\GivenDefaultRoute\WithDefaultControllerActionExpression.cs</Link>
     </Compile>
-    <Compile Include="..\Testing.Mvc4.Tests\Routing\GivenDefaultRoute\WithDefaultControllerAleternateActionExpression.cs">
+    <Compile Include="..\testing.mvc4.tests\routing\givendefaultroute\WithDefaultControllerAleternateActionExpression.cs">
       <Link>Routing\GivenDefaultRoute\WithDefaultControllerAleternateActionExpression.cs</Link>
     </Compile>
-    <Compile Include="..\Testing.Mvc4.Tests\Routing\GivenDefaultRoute\WithDefaultControllerRootUrl.cs">
+    <Compile Include="..\testing.mvc4.tests\routing\givendefaultroute\WithDefaultControllerRootUrl.cs">
       <Link>Routing\GivenDefaultRoute\WithDefaultControllerRootUrl.cs</Link>
     </Compile>
-    <Compile Include="..\Testing.Mvc4.Tests\Routing\GivenDefaultRoute\WithDefaultControllerRootUrlAndTrailingSlash.cs">
+    <Compile Include="..\testing.mvc4.tests\routing\givendefaultroute\WithDefaultControllerRootUrlAndTrailingSlash.cs">
       <Link>Routing\GivenDefaultRoute\WithDefaultControllerRootUrlAndTrailingSlash.cs</Link>
     </Compile>
-    <Compile Include="..\Testing.Mvc4.Tests\Routing\GivenDefaultRoute\WithRootUrl.cs">
+    <Compile Include="..\testing.mvc4.tests\routing\givendefaultroute\WithRootUrl.cs">
       <Link>Routing\GivenDefaultRoute\WithRootUrl.cs</Link>
     </Compile>
-    <Compile Include="..\Testing.Mvc4.Tests\Routing\GivenIgnoredRoute\GivenIgnoredRoute.cs">
+    <Compile Include="..\testing.mvc4.tests\routing\givenignoredroute\GivenIgnoredRoute.cs">
       <Link>Routing\GivenIgnoredRoute\GivenIgnoredRoute.cs</Link>
     </Compile>
-    <Compile Include="..\Testing.Mvc4.Tests\Routing\GivenIgnoredRoute\WithIgnoredUrl.cs">
+    <Compile Include="..\testing.mvc4.tests\routing\givenignoredroute\WithIgnoredUrl.cs">
       <Link>Routing\GivenIgnoredRoute\WithIgnoredUrl.cs</Link>
     </Compile>
-    <Compile Include="..\Testing.Mvc4.Tests\Routing\GivenIgnoredRoute\WithIgnoredUrlWithPathInfo.cs">
+    <Compile Include="..\testing.mvc4.tests\routing\givenignoredroute\WithIgnoredUrlWithPathInfo.cs">
       <Link>Routing\GivenIgnoredRoute\WithIgnoredUrlWithPathInfo.cs</Link>
     </Compile>
-    <Compile Include="..\Testing.Mvc4.Tests\Routing\GivenIgnoredRoute\WithRootUrl.cs">
+    <Compile Include="..\testing.mvc4.tests\routing\givenignoredroute\WithRootUrl.cs">
       <Link>Routing\GivenIgnoredRoute\WithRootUrl.cs</Link>
     </Compile>
-    <Compile Include="..\Testing.Mvc4.Tests\Routing\GivenNamedRoute\GivenNamedRoute.cs">
+    <Compile Include="..\testing.mvc4.tests\routing\givennamedroute\GivenNamedRoute.cs">
       <Link>Routing\GivenNamedRoute\GivenNamedRoute.cs</Link>
     </Compile>
-    <Compile Include="..\Testing.Mvc4.Tests\Routing\GivenNamedRoute\WithIncorrectRouteName.cs">
+    <Compile Include="..\testing.mvc4.tests\routing\givennamedroute\WithIncorrectRouteName.cs">
       <Link>Routing\GivenNamedRoute\WithIncorrectRouteName.cs</Link>
     </Compile>
-    <Compile Include="..\Testing.Mvc4.Tests\Routing\GivenNamedRoute\WithRouteName.cs">
+    <Compile Include="..\testing.mvc4.tests\routing\givennamedroute\WithRouteName.cs">
       <Link>Routing\GivenNamedRoute\WithRouteName.cs</Link>
     </Compile>
-    <Compile Include="..\Testing.Mvc4.Tests\Routing\GivenPageRoute\GivenPageRoute.cs">
+    <Compile Include="..\testing.mvc4.tests\routing\givenpageroute\GivenPageRoute.cs">
       <Link>Routing\GivenPageRoute\GivenPageRoute.cs</Link>
     </Compile>
-    <Compile Include="..\Testing.Mvc4.Tests\Routing\GivenPageRoute\WithNonPageUrl.cs">
+    <Compile Include="..\testing.mvc4.tests\routing\givenpageroute\WithNonPageUrl.cs">
       <Link>Routing\GivenPageRoute\WithNonPageUrl.cs</Link>
     </Compile>
-    <Compile Include="..\Testing.Mvc4.Tests\Routing\GivenPageRoute\WithPageUrl.cs">
+    <Compile Include="..\testing.mvc4.tests\routing\givenpageroute\WithPageUrl.cs">
       <Link>Routing\GivenPageRoute\WithPageUrl.cs</Link>
     </Compile>
-    <Compile Include="..\Testing.Mvc4.Tests\Routing\GivenPageRoute\WithRootUrl.cs">
+    <Compile Include="..\testing.mvc4.tests\routing\givenpageroute\WithRootUrl.cs">
       <Link>Routing\GivenPageRoute\WithRootUrl.cs</Link>
     </Compile>
-    <Compile Include="..\Testing.Mvc4.Tests\TestableTypes\AlternateNamingController.cs">
+    <Compile Include="..\testing.mvc4.tests\testabletypes\AlternateNamingController.cs">
       <Link>TestableTypes\AlternateNamingController.cs</Link>
     </Compile>
-    <Compile Include="..\Testing.Mvc4.Tests\TestableTypes\AnObject.cs">
+    <Compile Include="..\testing.mvc4.tests\testabletypes\AnObject.cs">
       <Link>TestableTypes\AnObject.cs</Link>
     </Compile>
-    <Compile Include="..\Testing.Mvc4.Tests\TestableTypes\DataTypeInputController.cs">
+    <Compile Include="..\testing.mvc4.tests\testabletypes\DataTypeInputController.cs">
       <Link>TestableTypes\DataTypeInputController.cs</Link>
     </Compile>
-    <Compile Include="..\Testing.Mvc4.Tests\TestableTypes\EmptyController.cs">
+    <Compile Include="..\testing.mvc4.tests\testabletypes\EmptyController.cs">
       <Link>TestableTypes\EmptyController.cs</Link>
     </Compile>
-    <Compile Include="..\Testing.Mvc4.Tests\TestableTypes\HasControllerInNameController.cs">
+    <Compile Include="..\testing.mvc4.tests\testabletypes\HasControllerInNameController.cs">
       <Link>TestableTypes\HasControllerInNameController.cs</Link>
     </Compile>
-    <Compile Include="..\Testing.Mvc4.Tests\TestableTypes\HomeController.cs">
+    <Compile Include="..\testing.mvc4.tests\testabletypes\HomeController.cs">
       <Link>TestableTypes\HomeController.cs</Link>
     </Compile>
-    <Compile Include="..\Testing.Mvc4.Tests\TestableTypes\OtherController.cs">
+    <Compile Include="..\testing.mvc4.tests\testabletypes\OtherController.cs">
       <Link>TestableTypes\OtherController.cs</Link>
     </Compile>
-    <Compile Include="..\Testing.Mvc4.Tests\TestableTypes\RedirectResultController.cs">
+    <Compile Include="..\testing.mvc4.tests\testabletypes\RedirectResultController.cs">
       <Link>TestableTypes\RedirectResultController.cs</Link>
     </Compile>
-    <Compile Include="..\Testing.Mvc4.Tests\TestableTypes\ViewResultController.cs">
+    <Compile Include="..\testing.mvc4.tests\testabletypes\ViewResultController.cs">
       <Link>TestableTypes\ViewResultController.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -250,12 +249,11 @@
       <Project>{856b41bf-bfa3-40cc-b90d-4b2098fe3b74}</Project>
       <Name>Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Testing.Mvc5-2\Testing.Mvc5-2.csproj">
-      <Project>{7ef3f4be-80c6-4e81-8571-e7435bcc3233}</Project>
-      <Name>Testing.Mvc5-2</Name>
+    <ProjectReference Include="..\..\Testing.Mvc5-1\Testing.Mvc5-1.csproj">
+      <Project>{1cedd2a2-ae11-4904-992f-480fbcd2a93a}</Project>
+      <Name>Testing.Mvc5-1</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

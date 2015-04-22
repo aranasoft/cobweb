@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Cobweb.Extentions.ObjectExtentions;
+using Cobweb.Reflection.Extensions;
 using Cobweb.Testing.Mvc.Fakes;
 
 namespace Cobweb.Testing.Mvc.Extensions {
@@ -30,6 +31,7 @@ namespace Cobweb.Testing.Mvc.Extensions {
         public static string ActionName<TController>(this Expression<Func<TController, ActionResult>> action)
             where TController : IController {
             var method = ((MethodCallExpression) action.Body).Method;
+
             var actionNameAttribute = method.GetCustomAttribute<ActionNameAttribute>();
             return actionNameAttribute != null ? actionNameAttribute.Name : method.Name;
         }

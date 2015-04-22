@@ -5,8 +5,8 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Cobweb Testing Extensions for MVC5.2, Unit Tests")]
-[assembly: AssemblyDescription("Unit tests for Cobweb's MVC5.2 testing utilities and classes. Cobweb is a base-class utility library for .NET")]
+[assembly: AssemblyTitle("Cobweb Testing Extensions for MVC5, Unit Tests")]
+[assembly: AssemblyDescription("Unit tests for Cobweb's MVC5 testing utilities and classes. Cobweb is a base-class utility library for .NET")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Arana Software")]
 [assembly: AssemblyProduct("Aranasoft's Cobweb")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("d047ec3d-60e5-4b15-9df6-cc159d170a8d")]
+[assembly: Guid("c5b80bcf-4115-4c95-96ea-69815580d33f")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.52.0.0")]
-[assembly: AssemblyFileVersion("1.52.0.0")]
+[assembly: AssemblyVersion("1.50.0.0")]
+[assembly: AssemblyFileVersion("1.50.0.0")]
