@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testing.NHibernate3", "Testing.NHibernate3\Testing.NHibernate3.csproj", "{25087342-CC11-451A-8BB0-765D1AB3FD52}"
 EndProject
@@ -59,6 +59,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testing.Mvc5.Tests", "Tests\Testing.Mvc5.Tests\Testing.Mvc5.Tests.csproj", "{28FF68F9-36D9-40F3-80D2-6F179932782D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testing.Mvc5-1.Tests", "Tests\Testing.Mvc5-1.Tests\Testing.Mvc5-1.Tests.csproj", "{FE2AB164-9C23-474D-9C98-7BAD93A1516D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.FluentMigrator", "Data.FluentMigrator\Data.FluentMigrator.csproj", "{A7396F85-22B8-42CE-BFB7-65300E028B8D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.FluentMigrator.Tests", "Tests\Data.FluentMigrator.Tests\Data.FluentMigrator.Tests.csproj", "{37992F6F-C7E3-4743-B965-C176337142FF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -166,6 +170,14 @@ Global
 		{FE2AB164-9C23-474D-9C98-7BAD93A1516D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE2AB164-9C23-474D-9C98-7BAD93A1516D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE2AB164-9C23-474D-9C98-7BAD93A1516D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7396F85-22B8-42CE-BFB7-65300E028B8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7396F85-22B8-42CE-BFB7-65300E028B8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7396F85-22B8-42CE-BFB7-65300E028B8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7396F85-22B8-42CE-BFB7-65300E028B8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37992F6F-C7E3-4743-B965-C176337142FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37992F6F-C7E3-4743-B965-C176337142FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37992F6F-C7E3-4743-B965-C176337142FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37992F6F-C7E3-4743-B965-C176337142FF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
