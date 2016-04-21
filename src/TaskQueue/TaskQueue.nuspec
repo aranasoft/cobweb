@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package >
+    <metadata>
+        <id>Cobweb.TaskQueue</id>
+        <version>$version$</version>
+        <title>Cobweb Task Queue</title>
+        <authors>$author$</authors>
+        <owners>$author$</owners>
+        <licenseUrl>https://github.com/aranasoft/cobweb/blob/master/LICENSE-BSD</licenseUrl>
+        <projectUrl>https://github.com/aranasoft/cobweb/</projectUrl>
+        <iconUrl>https://raw.githubusercontent.com/aranasoft/cobweb/master/docs/logo-128px.png</iconUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>$description$</description>
+        <copyright>Copyright (c) 2013-2016, Arana Software</copyright>
+        <tags>TaskQueue Azure TableStorage ServiceBus Cobweb Arana</tags>
+    </metadata>
+    <files>
+        <file src="..\..\LICENSE-BSD" target="license" />
+    </files>
+</package>
