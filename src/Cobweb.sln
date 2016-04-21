@@ -64,6 +64,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.FluentMigrator", "Data
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.FluentMigrator.Tests", "Tests\Data.FluentMigrator.Tests\Data.FluentMigrator.Tests.csproj", "{37992F6F-C7E3-4743-B965-C176337142FF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Azure", "Azure\Azure.csproj", "{F883911F-E2C9-49D2-9ED8-9FF3AF7C1734}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -178,6 +180,10 @@ Global
 		{37992F6F-C7E3-4743-B965-C176337142FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{37992F6F-C7E3-4743-B965-C176337142FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{37992F6F-C7E3-4743-B965-C176337142FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F883911F-E2C9-49D2-9ED8-9FF3AF7C1734}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F883911F-E2C9-49D2-9ED8-9FF3AF7C1734}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F883911F-E2C9-49D2-9ED8-9FF3AF7C1734}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F883911F-E2C9-49D2-9ED8-9FF3AF7C1734}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
