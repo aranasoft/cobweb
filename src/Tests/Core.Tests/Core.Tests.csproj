@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\GivenAStringTypeDerivedFromEntity.cs" />
     <Compile Include="Data\GivenATypeDerivedFromEntity.cs" />
     <Compile Include="Data\GivenDifferentTypesDerivedFromEntity.cs" />
     <Compile Include="Data\GivenTwoOfTheSameEntityType.cs" />

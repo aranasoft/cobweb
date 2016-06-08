@@ -12,7 +12,7 @@ namespace Cobweb.Data {
     /// <typeparam name="TIdentifier">Itentifier-property type, such as Int32 or Guid</typeparam>
     public abstract class Entity<TEntity, TIdentifier> : IEntity<TEntity>
         where TEntity : Entity<TEntity, TIdentifier>, IEquatable<TEntity>
-        where TIdentifier : struct, IComparable, IComparable<TIdentifier>, IEquatable<TIdentifier> {
+        where TIdentifier : IComparable, IComparable<TIdentifier>, IEquatable<TIdentifier> {
         public virtual TIdentifier Id { get; set; }
 
         public override int GetHashCode() {
@@ -28,7 +28,7 @@ namespace Cobweb.Data {
             if (ReferenceEquals(this, other)) {
                 return true;
             }
-            if (Id.Equals(default(TIdentifier))) {
+            if (Id == null || Id.Equals(default(TIdentifier))) {
                 return false;
             }
             return Id.Equals(other.Id);
