@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace Cobweb.Extentions {
     public static class WithType {
@@ -20,7 +21,11 @@ namespace Cobweb.Extentions {
                 return true;
             }
 
-            return currentType.BaseType != null && IsAssignableToGeneric(currentType.BaseType, genericBaseType);
+            if (!genericBaseType.IsInterface) {
+                return currentType.BaseType != null && IsAssignableToGeneric(currentType.BaseType, genericBaseType);
+            }
+
+            return currentType.GetInterfaces().Any(interfaceType => IsAssignableToGeneric(interfaceType, genericBaseType));
         }
 
         /// <summary>
