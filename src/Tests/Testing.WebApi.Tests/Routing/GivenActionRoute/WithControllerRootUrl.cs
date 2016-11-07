@@ -14,43 +14,41 @@ namespace Cobweb.Testing.WebApi.Tests.Routing.GivenActionRoute {
 
         [TestCase(CurrentUrl)]
         [TestCase(CurrentUrlWithTrailingSlash)]
-        public void ItShould404(string url)
-        {
-            Action act = () => url.AsRequest().GetControllerDescriptor();
+        public void ItShould404(string url) {
+            Action act = () => url.UsingConfiguration(HttpConfiguration).SelectController();
             act.ShouldThrow<HttpResponseException>().And.Response.StatusCode.Should().Be(HttpStatusCode.NotFound);
         }
 
         [TestCase(CurrentUrl)]
         [TestCase(CurrentUrlWithTrailingSlash)]
-        public void ItShould404OnDelete(string url)
-        {
-            Action act = () => url.WithHttpMethod(HttpMethod.Delete).GetControllerDescriptor();
+        public void ItShould404OnDelete(string url) {
+            Action act =
+                () => url.WithHttpMethod(HttpMethod.Delete).UsingConfiguration(HttpConfiguration).SelectController();
             act.ShouldThrow<HttpResponseException>().And.Response.StatusCode.Should().Be(HttpStatusCode.NotFound);
         }
 
         [TestCase(CurrentUrl)]
         [TestCase(CurrentUrlWithTrailingSlash)]
-        public void ItShould404OnGet(string url)
-        {
-            Action act = () => url.WithHttpMethod(HttpMethod.Get).GetControllerDescriptor();
+        public void ItShould404OnGet(string url) {
+            Action act =
+                () => url.WithHttpMethod(HttpMethod.Get).UsingConfiguration(HttpConfiguration).SelectController();
             act.ShouldThrow<HttpResponseException>().And.Response.StatusCode.Should().Be(HttpStatusCode.NotFound);
         }
 
         [TestCase(CurrentUrl)]
         [TestCase(CurrentUrlWithTrailingSlash)]
-        public void ItShould404OnPost(string url)
-        {
-            Action act = () => url.WithHttpMethod(HttpMethod.Post).GetControllerDescriptor();
+        public void ItShould404OnPost(string url) {
+            Action act =
+                () => url.WithHttpMethod(HttpMethod.Post).UsingConfiguration(HttpConfiguration).SelectController();
             act.ShouldThrow<HttpResponseException>().And.Response.StatusCode.Should().Be(HttpStatusCode.NotFound);
         }
 
         [TestCase(CurrentUrl)]
         [TestCase(CurrentUrlWithTrailingSlash)]
-        public void ItShould404OnPut(string url)
-        {
-            Action act = () => url.WithHttpMethod(HttpMethod.Put).GetControllerDescriptor();
+        public void ItShould404OnPut(string url) {
+            Action act =
+                () => url.WithHttpMethod(HttpMethod.Put).UsingConfiguration(HttpConfiguration).SelectController();
             act.ShouldThrow<HttpResponseException>().And.Response.StatusCode.Should().Be(HttpStatusCode.NotFound);
         }
-
     }
 }

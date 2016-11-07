@@ -2,10 +2,7 @@
 using System.Diagnostics;
 using System.Linq.Expressions;
 using System.Net.Http;
-using System.Web.Http;
 using System.Web.Http.Controllers;
-using System.Web.Http.Dispatcher;
-using System.Web.Http.Hosting;
 using System.Web.Http.Routing;
 using Cobweb.Extentions;
 using Cobweb.Extentions.ObjectExtentions;
@@ -20,7 +17,8 @@ namespace Cobweb.Testing.WebApi.Assertions {
     ///     Contains a number of methods to assert that a <see cref="HttpRouteData" /> is in the expected state.
     /// </summary>
     [DebuggerNonUserCode]
-    public class HttpRequestMessageAssertions : ReferenceTypeAssertions<HttpRequestMessage, HttpRequestMessageAssertions> {
+    public class HttpRequestMessageAssertions :
+        ReferenceTypeAssertions<HttpRequestMessage, HttpRequestMessageAssertions> {
         public HttpRequestMessageAssertions(HttpRequestMessage value) {
             Subject = value;
         }
@@ -42,7 +40,8 @@ namespace Cobweb.Testing.WebApi.Assertions {
         /// <param name="reasonArgs">
         ///     Zero or more objects to format using the placeholders in <see cref="because" />.
         /// </param>
-        public AndConstraint<HttpRequestMessageAssertions> MapTo<THttpController>(string because = "", params object[] reasonArgs)
+        public AndConstraint<HttpRequestMessageAssertions> MapTo<THttpController>(string because = "",
+                                                                                  params object[] reasonArgs)
             where THttpController : IHttpController {
             if (ReferenceEquals(Subject, null)) {
                 Execute.Assertion
@@ -68,16 +67,17 @@ namespace Cobweb.Testing.WebApi.Assertions {
         /// <param name="reasonArgs">
         ///     Zero or more objects to format using the placeholders in <see cref="because" />.
         /// </param>
-        public AndConstraint<HttpRequestMessageAssertions> MapToController(string expectedController, string because = "",
-                                                                  params object[] reasonArgs) {
+        public AndConstraint<HttpRequestMessageAssertions> MapToController(string expectedController,
+                                                                           string because = "",
+                                                                           params object[] reasonArgs) {
             if (ReferenceEquals(Subject, null)) {
                 Execute.Assertion
                        .BecauseOf(because, reasonArgs)
                        .FailWith("Expected {context:requestmessage} to not be <null>{reason}.");
             }
 
-            var controllerDescriptor = Subject.GetControllerDescriptor();
-            var actualController = controllerDescriptor.IfExists(descriptor => descriptor.ControllerType.Name);
+            var controllerDescriptor = Subject.SelectController();
+            var actualController = controllerDescriptor?.ControllerType.Name;
 
             Execute.Assertion
                    .BecauseOf(because, reasonArgs)
@@ -86,12 +86,11 @@ namespace Cobweb.Testing.WebApi.Assertions {
                              "Expected {context:requestmessage} to resolve to controller {0}{reason}, but controller was {1}.",
                              expectedController,
                              actualController
-                );
+                            );
 
             return new AndConstraint<HttpRequestMessageAssertions>(this);
         }
 
-      
 
         /// <summary>
         ///     Asserts that a <see cref="HttpRequestMessage">requestmessage</see> maps to a specified
@@ -106,14 +105,14 @@ namespace Cobweb.Testing.WebApi.Assertions {
         ///     Zero or more objects to format using the placeholders in <see cref="because" />.
         /// </param>
         public AndConstraint<HttpRequestMessageAssertions> MapToAction(string expectedAction, string because = "",
-                                                              params object[] reasonArgs) {
+                                                                       params object[] reasonArgs) {
             if (ReferenceEquals(Subject, null)) {
                 Execute.Assertion
                        .BecauseOf(because, reasonArgs)
                        .FailWith("Expected {context:requestmessage} to not be <null>{reason}.");
             }
 
-            var actionDescriptor = Subject.GetActionDescriptor();
+            var actionDescriptor = Subject.SelectAction();
             var actualAction = actionDescriptor.IfExists(descriptor => descriptor.ActionName);
 
             Execute.Assertion
@@ -123,12 +122,11 @@ namespace Cobweb.Testing.WebApi.Assertions {
                              "Expected {context:requestmessage} to resolve to action {0}{reason}, but action was {1}.",
                              expectedAction,
                              actualAction
-                );
+                            );
 
             return new AndConstraint<HttpRequestMessageAssertions>(this);
         }
 
-     
 
         /// <summary>
         ///     Asserts that a <see cref="HttpRequestMessage">requestmessage</see> maps to a specified <paramref name="action">action</paramref>.
@@ -143,19 +141,18 @@ namespace Cobweb.Testing.WebApi.Assertions {
         ///     Zero or more objects to format using the placeholders in <see cref="because" />.
         /// </param>
         /// <remarks>Assertions are peformed against the specified controller, action, and action parameters.</remarks>
-        public AndConstraint<HttpRequestMessageAssertions> MapTo<THttpController>(Expression<Action<THttpController>> action,
-                                                                     string because = "",
-                                                                     params object[] reasonArgs)
-            where THttpController : IHttpController
-        {
+        public AndConstraint<HttpRequestMessageAssertions> MapTo<THttpController>(
+            Expression<Action<THttpController>> action,
+            string because = "",
+            params object[] reasonArgs)
+            where THttpController : IHttpController {
             if (ReferenceEquals(Subject, null)) {
                 Execute.Assertion
                        .BecauseOf(because, reasonArgs)
                        .FailWith("Expected {context:requestmessage} to not be <null>{reason}.");
             }
 
-            if (ReferenceEquals(Subject, null))
-            {
+            if (ReferenceEquals(Subject, null)) {
                 Execute.Assertion
                        .BecauseOf(because, reasonArgs)
                        .FailWith("Expected {context:routevalues} to not be <null>{reason}.");
@@ -166,18 +163,22 @@ namespace Cobweb.Testing.WebApi.Assertions {
 
             //check parameters
             var methodArguments = action.GetMethodArgumentValues();
-            foreach (var methodArgument in methodArguments)
-            {
+            foreach (var methodArgument in methodArguments) {
                 var param = methodArgument.Key;
                 var expectedValue = methodArgument.Value;
                 var paramName = param.Name;
 
-                if (param.ParameterType.CanBeNull())
-                {
-                    Subject.AsHttpRoute().Values.ToHttpRouteValueDictionary().Should().HaveOptionalParameter(paramName, expectedValue, param.ParameterType);
+                if (param.ParameterType.CanBeNull()) {
+                    Subject.AsHttpRoute()
+                           .Values.ToHttpRouteValueDictionary()
+                           .Should()
+                           .HaveOptionalParameter(paramName, expectedValue, param.ParameterType);
                 }
                 else {
-                    Subject.AsHttpRoute().Values.ToHttpRouteValueDictionary().Should().HaveParameter(paramName, expectedValue, param.ParameterType);
+                    Subject.AsHttpRoute()
+                           .Values.ToHttpRouteValueDictionary()
+                           .Should()
+                           .HaveParameter(paramName, expectedValue, param.ParameterType);
                 }
             }
 

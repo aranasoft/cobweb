@@ -1,23 +1,29 @@
 using System.Web.Http;
 
-namespace Cobweb.Testing.WebApi.Tests.TestableTypes
-{
+namespace Cobweb.Testing.WebApi.Tests.TestableTypes {
     public class HasControllerInNameActionController : ApiController {
         [HttpGet]
-        public void OtherGet() { }
+        public void OtherGet() {}
+
         [HttpGet]
-        public void OtherGet(int id) { }
+        public void OtherGet(int id) {}
+
         [HttpPost]
-        public void OtherPost() { }
+        public void OtherPost() {}
+
         [HttpPost]
-        public void OtherPost(int id) { }
+        public void OtherPost(int id) {}
+
         [HttpPut]
-        public void OtherPut() { }
+        public void OtherPut() {}
+
         [HttpPut]
-        public void OtherPut(int id) { }
+        public void OtherPut(int id) {}
+
         [HttpDelete]
-        public void OtherDelete() { }
+        public void OtherDelete() {}
+
         [HttpDelete]
-        public void OtherDelete(int id) { }
+        public void OtherDelete(int id) {}
     }
 }

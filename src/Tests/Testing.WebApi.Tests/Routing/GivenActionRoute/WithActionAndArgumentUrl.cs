@@ -1,9 +1,7 @@
 using System;
-using System.Collections.Generic;
 using System.Net.Http;
 using Cobweb.Testing.WebApi.Assertions;
 using Cobweb.Testing.WebApi.Tests.TestableTypes;
-using FluentAssertions;
 using NUnit.Framework;
 
 namespace Cobweb.Testing.WebApi.Tests.Routing.GivenActionRoute {
@@ -15,26 +13,30 @@ namespace Cobweb.Testing.WebApi.Tests.Routing.GivenActionRoute {
         [TestCase(CurrentUrl)]
         [TestCase(CurrentUrlWithTrailingSlash)]
         public void ItShouldMapToActionExpression(string url) {
-            url.Should().MapTo<ActionController>(controller => controller.OtherGet(5));
+            url.UsingConfiguration(HttpConfiguration)
+               .Should()
+               .MapTo<ActionController>(controller => controller.OtherGet(5));
         }
 
         [TestCase(CurrentUrl)]
         [TestCase(CurrentUrlWithTrailingSlash)]
         public void ItShouldMapToControllerType(string url) {
-            url.Should().MapTo<ActionController>();
-            Dictionary<WithActionAndArgumentUrl, GivenActionRoute> foo;
+            url.UsingConfiguration(HttpConfiguration).Should().MapTo<ActionController>();
         }
 
         [TestCase(CurrentUrl)]
         [TestCase(CurrentUrlWithTrailingSlash)]
         public void ItShouldMapGetToActionExpression(string url) {
-            url.WithHttpMethod(HttpMethod.Get).Should().MapTo<ActionController>(controller => controller.OtherGet(5));
+            url.WithHttpMethod(HttpMethod.Get)
+               .UsingConfiguration(HttpConfiguration)
+               .Should()
+               .MapTo<ActionController>(controller => controller.OtherGet(5));
         }
 
         [TestCase(CurrentUrl)]
         [TestCase(CurrentUrlWithTrailingSlash)]
         public void ItShouldMapGetToControllerType(string url) {
-            url.WithHttpMethod(HttpMethod.Get).Should().MapTo<ActionController>();
+            url.WithHttpMethod(HttpMethod.Get).UsingConfiguration(HttpConfiguration).Should().MapTo<ActionController>();
         }
     }
 }

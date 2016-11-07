@@ -17,6 +17,15 @@ namespace Cobweb.Testing.WebApi.Assertions {
         }
 
         /// <summary>
+        ///     Returns a <see cref="HttpRouteDataAssertions" /> object that can be used to assert the current
+        ///     <see cref="IHttpRouteData" />.
+        /// </summary>
+        public static HttpRouteDataAssertions Should(this IHttpRouteData actualValue) {
+            return new HttpRouteDataAssertions(actualValue);
+        }
+
+
+        /// <summary>
         ///     Returns a <see cref="HttpRequestMessageAssertions" /> object that can be used to assert the current
         ///     <see cref="HttpRouteData" />.
         /// </summary>

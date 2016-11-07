@@ -70,13 +70,8 @@
       <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Web" />
     <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Xml" />
@@ -86,24 +81,13 @@
     <Compile Include="Assertions\AssertionExtensions.cs" />
     <Compile Include="Assertions\HttpRequestMessageAssertions.cs" />
     <Compile Include="Assertions\HttpRouteValueDictionaryAssertions.cs" />
-    <Compile Include="Assertions\StringAssertionExtentions.cs" />
+    <Compile Include="Assertions\HttpRouteDataAssertions.cs" />
     <Compile Include="Extensions\WithHttpController.cs" />
     <Compile Include="Extensions\WithHttpRequestMessage.cs" />
     <Compile Include="Extensions\WithKeyValuePair.cs" />
-    <Compile Include="Fakes\FakeHttpContext.cs" />
-    <Compile Include="Fakes\FakeHttpContextBase.cs" />
-    <Compile Include="Fakes\FakeHttpFileCollection.cs" />
-    <Compile Include="Fakes\FakeHttpFileCollectionBase.cs" />
-    <Compile Include="Fakes\FakeHttpRequest.cs" />
-    <Compile Include="Fakes\FakeHttpRequestBase.cs" />
-    <Compile Include="Fakes\FakeHttpResponse.cs" />
-    <Compile Include="Fakes\FakeHttpResponseBase.cs" />
-    <Compile Include="Fakes\FakeHttpSessionState.cs" />
-    <Compile Include="Fakes\NameObjectCollection.cs" />
-    <Compile Include="ContextFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PropertyKeys.cs" />
-    <Compile Include="RouteDataFactory.cs" />
+    <Compile Include="HttpRouteDataFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -112,6 +96,7 @@
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

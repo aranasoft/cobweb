@@ -17,66 +17,80 @@ namespace Cobweb.Testing.WebApi.Tests.Routing.GivenDefaultRoute {
         [TestCase(CurrentUrl)]
         [TestCase(CurrentUrlWithTrailingSlash)]
         public void ItShouldMapToControllerType(string url) {
-            url.Should().MapTo<EmptyController>();
+            url.UsingConfiguration(HttpConfiguration).Should().MapTo<EmptyController>();
         }
 
         [TestCase(CurrentUrl)]
         [TestCase(CurrentUrlWithTrailingSlash)]
         public void ItShould405(string url) {
-            Action act = () => url.AsRequest().GetActionDescriptor();
-            act.ShouldThrow<HttpResponseException>().And.Response.StatusCode.Should().Be(HttpStatusCode.MethodNotAllowed);
+            Action act = () => url.UsingConfiguration(HttpConfiguration).SelectAction();
+            act.ShouldThrow<HttpResponseException>()
+               .And.Response.StatusCode.Should()
+               .Be(HttpStatusCode.MethodNotAllowed);
         }
 
         [TestCase(CurrentUrl)]
         [TestCase(CurrentUrlWithTrailingSlash)]
         public void ItShouldMapDeleteToControllerType(string url) {
-            url.WithHttpMethod(HttpMethod.Delete).Should().MapTo<EmptyController>();
+            url.WithHttpMethod(HttpMethod.Delete)
+               .UsingConfiguration(HttpConfiguration)
+               .Should()
+               .MapTo<EmptyController>();
         }
 
         [TestCase(CurrentUrl)]
         [TestCase(CurrentUrlWithTrailingSlash)]
         public void ItShould405OnDelete(string url) {
-            Action act = () => url.WithHttpMethod(HttpMethod.Delete).GetActionDescriptor();
-            act.ShouldThrow<HttpResponseException>().And.Response.StatusCode.Should().Be(HttpStatusCode.MethodNotAllowed);
+            Action act =
+                () => url.WithHttpMethod(HttpMethod.Delete).UsingConfiguration(HttpConfiguration).SelectAction();
+            act.ShouldThrow<HttpResponseException>()
+               .And.Response.StatusCode.Should()
+               .Be(HttpStatusCode.MethodNotAllowed);
         }
 
         [TestCase(CurrentUrl)]
         [TestCase(CurrentUrlWithTrailingSlash)]
         public void ItShouldMapGetToControllerType(string url) {
-            url.WithHttpMethod(HttpMethod.Get).Should().MapTo<EmptyController>();
+            url.WithHttpMethod(HttpMethod.Get).UsingConfiguration(HttpConfiguration).Should().MapTo<EmptyController>();
         }
 
         [TestCase(CurrentUrl)]
         [TestCase(CurrentUrlWithTrailingSlash)]
         public void ItShould405OnGet(string url) {
-            Action act = () => url.WithHttpMethod(HttpMethod.Get).GetActionDescriptor();
-            act.ShouldThrow<HttpResponseException>().And.Response.StatusCode.Should().Be(HttpStatusCode.MethodNotAllowed);
+            Action act = () => url.WithHttpMethod(HttpMethod.Get).UsingConfiguration(HttpConfiguration).SelectAction();
+            act.ShouldThrow<HttpResponseException>()
+               .And.Response.StatusCode.Should()
+               .Be(HttpStatusCode.MethodNotAllowed);
         }
 
         [TestCase(CurrentUrl)]
         [TestCase(CurrentUrlWithTrailingSlash)]
         public void ItShouldMapPostToControllerType(string url) {
-            url.WithHttpMethod(HttpMethod.Post).Should().MapTo<EmptyController>();
+            url.WithHttpMethod(HttpMethod.Post).UsingConfiguration(HttpConfiguration).Should().MapTo<EmptyController>();
         }
 
         [TestCase(CurrentUrl)]
         [TestCase(CurrentUrlWithTrailingSlash)]
         public void ItShould405OnPost(string url) {
-            Action act = () => url.WithHttpMethod(HttpMethod.Post).GetActionDescriptor();
-            act.ShouldThrow<HttpResponseException>().And.Response.StatusCode.Should().Be(HttpStatusCode.MethodNotAllowed);
+            Action act = () => url.WithHttpMethod(HttpMethod.Post).UsingConfiguration(HttpConfiguration).SelectAction();
+            act.ShouldThrow<HttpResponseException>()
+               .And.Response.StatusCode.Should()
+               .Be(HttpStatusCode.MethodNotAllowed);
         }
 
         [TestCase(CurrentUrl)]
         [TestCase(CurrentUrlWithTrailingSlash)]
         public void ItShouldMapPutToControllerType(string url) {
-            url.WithHttpMethod(HttpMethod.Put).Should().MapTo<EmptyController>();
+            url.WithHttpMethod(HttpMethod.Put).UsingConfiguration(HttpConfiguration).Should().MapTo<EmptyController>();
         }
 
         [TestCase(CurrentUrl)]
         [TestCase(CurrentUrlWithTrailingSlash)]
         public void ItShould405OnPut(string url) {
-            Action act = () => url.WithHttpMethod(HttpMethod.Put).GetActionDescriptor();
-            act.ShouldThrow<HttpResponseException>().And.Response.StatusCode.Should().Be(HttpStatusCode.MethodNotAllowed);
+            Action act = () => url.WithHttpMethod(HttpMethod.Put).UsingConfiguration(HttpConfiguration).SelectAction();
+            act.ShouldThrow<HttpResponseException>()
+               .And.Response.StatusCode.Should()
+               .Be(HttpStatusCode.MethodNotAllowed);
         }
     }
 }
