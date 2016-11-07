@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package>
+    <metadata>
+        <id>Cobweb.Testing.WebApi</id>
+        <version>$version$</version>
+        <title>Cobweb Testing Extensions for WebAPI v2</title>
+        <authors>$author$</authors>
+        <owners>$author$</owners>
+        <licenseUrl>https://github.com/aranasoft/cobweb/blob/master/LICENSE-BSD</licenseUrl>
+        <projectUrl>https://github.com/aranasoft/cobweb/</projectUrl>
+        <iconUrl>https://raw.githubusercontent.com/aranasoft/cobweb/master/docs/logo-128px.png</iconUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>$description$</description>
+        <copyright>Copyright (c) 2013-2016, Arana Software</copyright>
+        <tags>AspNet WebApi AspNetWebApi testing Cobweb Arana</tags>
+    </metadata>
+    <files>
+        <file src="..\..\LICENSE-BSD" target="license" />
+    </files>
+</package>
