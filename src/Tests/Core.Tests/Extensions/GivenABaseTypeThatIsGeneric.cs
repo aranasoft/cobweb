@@ -5,7 +5,7 @@ using NUnit.Framework;
 namespace Cobweb.Tests.Extensions {
     [TestFixture]
     public class GivenABaseTypeThatIsGeneric {
-        public class Animal<T> {}
+        public class Animal<T> where T : Animal<T> {}
 
         [Test]
         public void ItShouldNotIdentifyANonDerivedTypeAsDerived() {

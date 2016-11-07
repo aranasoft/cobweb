@@ -59,7 +59,7 @@ namespace Cobweb.Testing.Mvc.Assertions {
         }
 
         /// <summary>
-        ///     Returns a <see cref="ControllerActionExpressionAssertions" /> object that can be used to assert the current
+        ///     Returns a <see cref="ControllerActionExpressionAssertions{TController}" /> object that can be used to assert the current
         ///     ControllerActionExpression.
         /// </summary>
         public static ControllerActionExpressionAssertions<TController> Should<TController>(

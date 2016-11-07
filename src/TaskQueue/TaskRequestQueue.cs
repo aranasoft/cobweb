@@ -33,7 +33,7 @@ namespace Cobweb.TaskQueue
                 message.ScheduledEnqueueTimeUtc = executionTime.Value;
             }
 
-            this.SendMessage(message);
+            SendMessage(message);
         }
     }
 }

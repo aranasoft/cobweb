@@ -11,10 +11,10 @@ namespace Cobweb.Extentions {
         /// <returns>true if <paramref name="currentType" /> derives from <paramref name="genericBaseType" />, otherwise false.</returns>
         public static bool IsAssignableToGeneric(this Type currentType, Type genericBaseType) {
             if (genericBaseType == null) {
-                throw new ArgumentNullException("genericBaseType");
+                throw new ArgumentNullException(nameof(genericBaseType));
             }
             if (!genericBaseType.IsGenericType) {
-                throw new ArgumentException("Type must be generic", "genericBaseType");
+                throw new ArgumentException("Type must be generic", nameof(genericBaseType));
             }
 
             if (currentType.IsGenericType && currentType.GetGenericTypeDefinition() == genericBaseType) {
@@ -36,7 +36,7 @@ namespace Cobweb.Extentions {
         /// <returns>true if <paramref name="currentType" /> derives from <paramref name="baseType" />, otherwise false.</returns>
         public static bool IsAssignableTo(this Type currentType, Type baseType) {
             if (baseType == null) {
-                throw new ArgumentNullException("baseType");
+                throw new ArgumentNullException(nameof(baseType));
             }
 
             return baseType.IsAssignableFrom(currentType);
@@ -57,7 +57,7 @@ namespace Cobweb.Extentions {
         /// </summary>
         /// <param name="baseType">The base type to analyze.</param>
         /// <typeparam name="TDerived">The type to compare with the current type.</typeparam>
-        /// <returns>true if <typeparamref name="TBase" /> derives from <paramref name="baseType" />, otherwise false.</returns>
+        /// <returns>true if <typeparamref name="TDerived" /> derives from <paramref name="baseType" />, otherwise false.</returns>
         public static bool IsAssignableFrom<TDerived>(this Type baseType) {
             return IsAssignableTo(typeof (TDerived), baseType);
         }

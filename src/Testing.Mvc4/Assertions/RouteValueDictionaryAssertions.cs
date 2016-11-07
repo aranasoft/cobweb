@@ -9,7 +9,6 @@ using Cobweb.Extentions.ObjectExtentions;
 using Cobweb.Reflection.Extensions;
 using Cobweb.Testing.Mvc.Extensions;
 using FluentAssertions;
-using FluentAssertions.Collections;
 using FluentAssertions.Execution;
 using FluentAssertions.Primitives;
 
@@ -27,9 +26,7 @@ namespace Cobweb.Testing.Mvc.Assertions {
         /// <summary>
         ///     Returns the type of the subject the assertion applies on.
         /// </summary>
-        protected override string Context {
-            get { return "RouteValueDictionary"; }
-        }
+        protected override string Context => "RouteValueDictionary";
 
         /// <summary>
         /// Asserts that a <see cref="RouteValueDictionary">routeValueDictionary</see> does not contain any items.

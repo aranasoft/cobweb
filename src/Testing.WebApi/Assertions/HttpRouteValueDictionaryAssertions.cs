@@ -318,7 +318,7 @@ namespace Cobweb.Testing.WebApi.Assertions {
 
 
         /// <summary>
-        ///     Asserts that a <see cref="RouteValueDictionary">routeValueDictionary</see> maps to a specified
+        ///     Asserts that a <see cref="HttpRouteValueDictionary">routeValueDictionary</see> maps to a specified
         ///     <typeparamref name="THttpController">controller</typeparamref>.
         /// </summary>
         /// <typeparam name="THttpController">The type of Controller.</typeparam>
@@ -345,7 +345,7 @@ namespace Cobweb.Testing.WebApi.Assertions {
         }
 
         /// <summary>
-        ///     Asserts that a <see cref="RouteValueDictionary">routeValueDictionary</see> maps to a specified
+        ///     Asserts that a <see cref="HttpRouteValueDictionary">routeValueDictionary</see> maps to a specified
         ///     <paramref name="expectedController">controller</paramref>.
         /// </summary>
         /// <param name="expectedController">The name of the controller.</param>
@@ -371,7 +371,7 @@ namespace Cobweb.Testing.WebApi.Assertions {
         }
 
         /// <summary>
-        ///     Asserts that a <see cref="RouteValueDictionary">routeValueDictionary</see> maps to a specified
+        ///     Asserts that a <see cref="HttpRouteValueDictionary">routeValueDictionary</see> maps to a specified
         ///     <paramref name="expectedAction">action</paramref>.
         /// </summary>
         /// <param name="expectedAction">The name of the action.</param>
@@ -397,7 +397,7 @@ namespace Cobweb.Testing.WebApi.Assertions {
         }
 
         /// <summary>
-        ///     Asserts that a <see cref="RouteValueDictionary">routeValueDictionary</see> maps to a specified action.
+        ///     Asserts that a <see cref="HttpRouteValueDictionary">routeValueDictionary</see> maps to a specified action.
         /// </summary>
         /// <typeparam name="THttpController">The type of controller.</typeparam>
         /// <param name="action">The action to call on <typeparamref name="THttpController" />.</param>
