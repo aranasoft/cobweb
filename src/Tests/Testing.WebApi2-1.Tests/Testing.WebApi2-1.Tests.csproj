@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Cobweb.Testing.WebApi.Tests</RootNamespace>
-    <AssemblyName>Cobweb.Testing.WebApi.Tests</AssemblyName>
+    <AssemblyName>Cobweb.Testing.WebApi2-1.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />

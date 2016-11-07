@@ -7,8 +7,8 @@
     <ProjectGuid>{28FF68F9-36D9-40F3-80D2-6F179932782D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Testing.Mvc5.Tests</RootNamespace>
-    <AssemblyName>Testing.Mvc5.Tests</AssemblyName>
+    <RootNamespace>Cobweb.Testing.Mvc.Tests</RootNamespace>
+    <AssemblyName>Cobweb.Testing.Mvc5.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Cobweb.Testing.Mvc.Tests</RootNamespace>
-    <AssemblyName>Cobweb.Testing.Mvc.Tests</AssemblyName>
+    <AssemblyName>Cobweb.Testing.Mvc5-2.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
