@@ -80,6 +80,7 @@
     <Compile Include="Assertions\HttpRouteDataAssertions.cs" />
     <Compile Include="Extensions\WithHttpController.cs" />
     <Compile Include="Extensions\WithHttpRequestMessage.cs" />
+    <Compile Include="Extensions\WithHttpRouteValueDictionary.cs" />
     <Compile Include="Extensions\WithKeyValuePair.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PropertyKeys.cs" />
@@ -88,9 +89,6 @@
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="Testing.WebApi.nuspec" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

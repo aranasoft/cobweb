@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Linq.Expressions;
@@ -7,6 +8,7 @@ using System.Web.Http.Routing;
 using Cobweb.Extentions;
 using Cobweb.Extentions.ObjectExtentions;
 using Cobweb.Reflection.Extensions;
+using Cobweb.Testing.WebApi.Extensions;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using FluentAssertions.Primitives;
@@ -153,6 +155,8 @@ namespace Cobweb.Testing.WebApi.Assertions {
             return HaveParameter(key, expectedValue, typeof(TValue), because, reasonArgs);
         }
 
+  
+
         /// <summary>
         ///     Asserts that a <see cref="HttpRouteValueDictionary">routeValueDictionary</see> has a specified route parameter.
         /// </summary>
@@ -171,6 +175,7 @@ namespace Cobweb.Testing.WebApi.Assertions {
                                                                                Type expectedValueType,
                                                                                string because = "",
                                                                                params object[] reasonArgs) {
+
             if (ReferenceEquals(Subject, null)) {
                 Execute.Assertion
                        .BecauseOf(because, reasonArgs)
@@ -181,16 +186,18 @@ namespace Cobweb.Testing.WebApi.Assertions {
 
             Execute.Assertion
                    .BecauseOf(because, reasonArgs)
-                   .ForCondition(Subject.ContainsKey(key))
+                   .ForCondition(Subject.ContainsRouteValue(key))
                    .FailWith(
                              "Expected {context:routevalues} to to have parameter {0}{reason}, but parameter {0} was not found in {context:routevalues}.",
                              key
                             );
 
-            var actualValue = Subject.ContainsKey(key) &&
-                              !string.IsNullOrEmpty(Subject[key].IfExists(val => val.ToString()))
-                                  ? Subject[key]
-                                  : null;
+
+            object actualValue = null;
+            Subject.TryGetRouteValue(key, out actualValue);
+            if (string.IsNullOrEmpty(actualValue?.ToString())) {
+                actualValue = null;
+            }
 
             Execute.Assertion
                    .BecauseOf(because, reasonArgs)
@@ -258,7 +265,7 @@ namespace Cobweb.Testing.WebApi.Assertions {
             if (!ReferenceEquals(expectedValue, null)) {
                 Execute.Assertion
                        .BecauseOf(because, reasonArgs)
-                       .ForCondition(Subject.ContainsKey(key))
+                       .ForCondition(Subject.ContainsRouteValue(key))
                        .FailWith(
                                  "Expected {context:routevalues} to to have parameter {0} with value {1}{reason}, but parameter {0} was not found in {context:routevalues}.",
                                  key,
@@ -266,11 +273,11 @@ namespace Cobweb.Testing.WebApi.Assertions {
                                 );
             }
 
-            var actualValue = Subject.ContainsKey(key) &&
-                              !string.IsNullOrEmpty(Subject[key].IfExists(val => val.ToString()))
-                                  ? Subject[key]
-                                  : null;
-
+            object actualValue = null;
+            Subject.TryGetRouteValue(key, out actualValue);
+            if (string.IsNullOrEmpty(actualValue?.ToString())) {
+                actualValue = null;
+            }
 
             Execute.Assertion
                    .BecauseOf(because, reasonArgs)

@@ -6,8 +6,8 @@ using NUnit.Framework;
 namespace Cobweb.Testing.WebApi.Tests.Routing.GivenDefaultRoute {
     [TestFixture]
     public class WithVerbAttributeControllerAndArgumentUrl : GivenDefaultRoute {
-        private const string CurrentUrl = "~/HttpMethodAttribute";
-        private const string CurrentUrlWithTrailingSlash = "~/HttpMethodAttribute/";
+        private const string CurrentUrl = "~/HttpMethodAttribute/5";
+        private const string CurrentUrlWithTrailingSlash = "~/HttpMethodAttribute/5/";
 
         [TestCase(CurrentUrl)]
         [TestCase(CurrentUrlWithTrailingSlash)]
@@ -20,7 +20,7 @@ namespace Cobweb.Testing.WebApi.Tests.Routing.GivenDefaultRoute {
         public void ItShouldMapToActionExpression(string url) {
             url.UsingConfiguration(HttpConfiguration)
                .Should()
-               .MapTo<HttpMethodAttributeController>(controller => controller.ExecuteMethodGet());
+               .MapTo<HttpMethodAttributeController>(controller => controller.ExecuteMethodGet(5));
         }
 
         [TestCase(CurrentUrl)]
@@ -38,7 +38,7 @@ namespace Cobweb.Testing.WebApi.Tests.Routing.GivenDefaultRoute {
             url.WithHttpMethod(HttpMethod.Get)
                .UsingConfiguration(HttpConfiguration)
                .Should()
-               .MapTo<HttpMethodAttributeController>(controller => controller.ExecuteMethodGet());
+               .MapTo<HttpMethodAttributeController>(controller => controller.ExecuteMethodGet(5));
         }
 
         [TestCase(CurrentUrl)]
@@ -56,7 +56,7 @@ namespace Cobweb.Testing.WebApi.Tests.Routing.GivenDefaultRoute {
             url.WithHttpMethod(HttpMethod.Post)
                .UsingConfiguration(HttpConfiguration)
                .Should()
-               .MapTo<HttpMethodAttributeController>(controller => controller.ExecuteMethodPost());
+               .MapTo<HttpMethodAttributeController>(controller => controller.ExecuteMethodPost(5));
         }
 
         [TestCase(CurrentUrl)]
@@ -74,7 +74,7 @@ namespace Cobweb.Testing.WebApi.Tests.Routing.GivenDefaultRoute {
             url.WithHttpMethod(HttpMethod.Put)
                .UsingConfiguration(HttpConfiguration)
                .Should()
-               .MapTo<HttpMethodAttributeController>(controller => controller.ExecuteMethodPut());
+               .MapTo<HttpMethodAttributeController>(controller => controller.ExecuteMethodPut(5));
         }
 
         [TestCase(CurrentUrl)]
@@ -92,7 +92,7 @@ namespace Cobweb.Testing.WebApi.Tests.Routing.GivenDefaultRoute {
             url.WithHttpMethod(HttpMethod.Delete)
                .UsingConfiguration(HttpConfiguration)
                .Should()
-               .MapTo<HttpMethodAttributeController>(controller => controller.ExecuteMethodDelete());
+               .MapTo<HttpMethodAttributeController>(controller => controller.ExecuteMethodDelete(5));
         }
     }
 }

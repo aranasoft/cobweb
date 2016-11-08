@@ -88,6 +88,7 @@
       <Link>Extensions\WithKeyValuePair.cs</Link>
     </Compile>
     <Compile Include="Assertions\HttpRouteDataAssertions.cs" />
+    <Compile Include="Extensions\WithHttpRouteValueDictionary.cs" />
     <Compile Include="HttpRouteDataFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

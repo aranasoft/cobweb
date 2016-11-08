@@ -20,7 +20,7 @@ namespace Cobweb.Testing.WebApi.Tests.Routing.GivenDefaultRoute {
         public void ItShouldMapToActionExpression(string url) {
             url.UsingConfiguration(HttpConfiguration)
                .Should()
-               .MapTo<HasControllerInNameController>(controller => controller.Get());
+               .MapTo<HasControllerInNameController>(controller => controller.Get(5));
         }
 
         [TestCase(CurrentUrl)]
@@ -37,7 +37,7 @@ namespace Cobweb.Testing.WebApi.Tests.Routing.GivenDefaultRoute {
         public void ItShouldMapGetToActionExpression(string url) {
             url.WithHttpMethod(HttpMethod.Get).UsingConfiguration(HttpConfiguration)
                .Should()
-               .MapTo<HasControllerInNameController>(controller => controller.Get());
+               .MapTo<HasControllerInNameController>(controller => controller.Get(5));
         }
 
         [TestCase(CurrentUrl)]
@@ -54,7 +54,7 @@ namespace Cobweb.Testing.WebApi.Tests.Routing.GivenDefaultRoute {
         public void ItShouldMapPostToActionExpression(string url) {
             url.WithHttpMethod(HttpMethod.Post).UsingConfiguration(HttpConfiguration)
                .Should()
-               .MapTo<HasControllerInNameController>(controller => controller.Post());
+               .MapTo<HasControllerInNameController>(controller => controller.Post(5));
         }
 
         [TestCase(CurrentUrl)]
@@ -71,7 +71,7 @@ namespace Cobweb.Testing.WebApi.Tests.Routing.GivenDefaultRoute {
         public void ItShouldMapPutToActionExpression(string url) {
             url.WithHttpMethod(HttpMethod.Put).UsingConfiguration(HttpConfiguration)
                .Should()
-               .MapTo<HasControllerInNameController>(controller => controller.Put());
+               .MapTo<HasControllerInNameController>(controller => controller.Put(5));
         }
 
         [TestCase(CurrentUrl)]
@@ -88,7 +88,7 @@ namespace Cobweb.Testing.WebApi.Tests.Routing.GivenDefaultRoute {
         public void ItShouldMapDeleteToActionExpression(string url) {
             url.WithHttpMethod(HttpMethod.Delete).UsingConfiguration(HttpConfiguration)
                .Should()
-               .MapTo<HasControllerInNameController>(controller => controller.Delete());
+               .MapTo<HasControllerInNameController>(controller => controller.Delete(5));
         }
     }
 }

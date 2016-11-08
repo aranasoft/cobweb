@@ -160,8 +160,20 @@
     <Compile Include="..\Testing.WebApi.Tests\TestableTypes\ResultController.cs">
       <Link>TestableTypes\ResultController.cs</Link>
     </Compile>
+    <Compile Include="..\Testing.WebApi2.Tests\Routing\GivenAttributeRoute\GivenAttributeRoute.cs">
+      <Link>Routing\GivenAttributeRoute\GivenAttributeRoute.cs</Link>
+    </Compile>
+    <Compile Include="..\Testing.WebApi2.Tests\Routing\GivenAttributeRoute\WithControllerAndArgumentUrl.cs">
+      <Link>Routing\GivenAttributeRoute\WithControllerAndArgumentUrl.cs</Link>
+    </Compile>
+    <Compile Include="..\Testing.WebApi2.Tests\Routing\GivenAttributeRoute\WithControllerAndNoArgumentUrl.cs">
+      <Link>Routing\GivenAttributeRoute\WithControllerAndNoArgumentUrl.cs</Link>
+    </Compile>
     <Compile Include="..\Testing.WebApi2.Tests\Routing\GivenDefaultRoute\WithEmptyControllerUrl.cs">
       <Link>Routing\GivenDefaultRoute\WithEmptyControllerUrl.cs</Link>
+    </Compile>
+    <Compile Include="..\Testing.WebApi2.Tests\TestableTypes\RouteAttributeController.cs">
+      <Link>TestableTypes\RouteAttributeController.cs</Link>
     </Compile>
     <Compile Include="Routing\GivenIgnoredRoute\GivenIgnoredRoute.cs" />
     <Compile Include="Routing\GivenIgnoredRoute\WithIgnoredUrl.cs" />

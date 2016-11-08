@@ -72,6 +72,9 @@
     <Compile Include="..\Testing.WebApi2\Assertions\HttpRouteDataAssertions.cs">
       <Link>Assertions\HttpRouteDataAssertions.cs</Link>
     </Compile>
+    <Compile Include="..\Testing.WebApi2\Extensions\WithHttpRouteValueDictionary.cs">
+      <Link>Extensions\WithHttpRouteValueDictionary.cs</Link>
+    </Compile>
     <Compile Include="..\Testing.WebApi2\HttpRouteDataFactory.cs">
       <Link>HttpRouteDataFactory.cs</Link>
     </Compile>
