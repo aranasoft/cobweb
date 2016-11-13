@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Net.Http;
+using System.Web.Http.Controllers;
 using System.Web.Http.Routing;
 
 namespace Cobweb.Testing.WebApi.Assertions {
@@ -8,6 +9,14 @@ namespace Cobweb.Testing.WebApi.Assertions {
     /// </summary>
     [DebuggerNonUserCode]
     public static class AssertionExtensions {
+        /// <summary>
+        ///     Returns a <see cref="HttpActionContextAssertions" /> object that can be used to assert the current
+        ///     <see cref="HttpActionContext" />.
+        /// </summary>
+        public static HttpActionContextAssertions Should(this HttpActionContext actualValue) {
+            return new HttpActionContextAssertions(actualValue);
+        }
+
         /// <summary>
         ///     Returns a <see cref="HttpRouteValueDictionaryAssertions" /> object that can be used to assert the current
         ///     <see cref="HttpRouteValueDictionary" />.
@@ -23,7 +32,6 @@ namespace Cobweb.Testing.WebApi.Assertions {
         public static HttpRouteDataAssertions Should(this IHttpRouteData actualValue) {
             return new HttpRouteDataAssertions(actualValue);
         }
-
 
         /// <summary>
         ///     Returns a <see cref="HttpRequestMessageAssertions" /> object that can be used to assert the current

@@ -31,8 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Cobweb, Version=1.2.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Cobweb.1.2.3.0\lib\net40\Cobweb.dll</HintPath>
+    <Reference Include="Cobweb, Version=1.3.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Cobweb.1.3.1.0\lib\net40\Cobweb.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="FluentAssertions, Version=3.3.0.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
@@ -73,6 +73,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\Testing.WebApi.Tests\Extensions\WithParameterInfo.cs">
+      <Link>Extensions\WithParameterInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Testing.WebApi.Tests\Extensions\WithType.cs">
+      <Link>Extensions\WithType.cs</Link>
+    </Compile>
     <Compile Include="..\Testing.WebApi.Tests\Routing\GivenActionRoute\GivenActionRoute.cs">
       <Link>Routing\GivenActionRoute\GivenActionRoute.cs</Link>
     </Compile>
@@ -117,6 +123,9 @@
     </Compile>
     <Compile Include="..\Testing.WebApi.Tests\Routing\GivenDefaultRoute\WithControllerInNameAndNoArgumentUrl.cs">
       <Link>Routing\GivenDefaultRoute\WithControllerInNameAndNoArgumentUrl.cs</Link>
+    </Compile>
+    <Compile Include="..\Testing.WebApi.Tests\Routing\GivenDefaultRoute\WithControllerUrlAndContent.cs">
+      <Link>Routing\GivenDefaultRoute\WithControllerUrlAndContent.cs</Link>
     </Compile>
     <Compile Include="..\Testing.WebApi.Tests\Routing\GivenDefaultRoute\WithMissingControllerUrl.cs">
       <Link>Routing\GivenDefaultRoute\WithMissingControllerUrl.cs</Link>

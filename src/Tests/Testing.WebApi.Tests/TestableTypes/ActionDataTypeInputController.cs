@@ -20,6 +20,9 @@ namespace Cobweb.Testing.WebApi.Tests.TestableTypes {
         [HttpGet]
         public void WithInteger(int id) {}
 
+        [HttpGet]
+        public void WithDefaultInteger(int id = default(int)) {}
+
         [HttpPost]
         public void PostInteger(int id) {}
 
@@ -28,6 +31,9 @@ namespace Cobweb.Testing.WebApi.Tests.TestableTypes {
 
         [HttpGet]
         public void WithGuid(Guid id) {}
+
+        [HttpGet]
+        public void WithDefaultGuid(Guid id = default(Guid)) {}
 
         [HttpGet]
         public void WithDateTime(DateTime id) {}

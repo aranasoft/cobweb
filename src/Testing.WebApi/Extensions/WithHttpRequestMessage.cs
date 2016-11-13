@@ -15,15 +15,28 @@ namespace Cobweb.Testing.WebApi.Extensions {
         }
 
         public static HttpActionDescriptor SelectAction(this HttpRequestMessage subject) {
-            var controllerDescriptor = SelectController(subject);
-            var httpConfiguration = subject.GetConfiguration();
-            var routeData = httpConfiguration.Routes.GetRouteData(subject);
-            var controllerContext = new HttpControllerContext(httpConfiguration, routeData, subject) {
-                ControllerDescriptor = controllerDescriptor
-            };
+            var controllerContext = CreateControllerContext(subject);
+            return SelectAction(controllerContext);
+        }
+
+        private static HttpActionDescriptor SelectAction(HttpControllerContext controllerContext) {
             var actionSelector = new ApiControllerActionSelector();
             var actionDescriptor = actionSelector.SelectAction(controllerContext);
             return actionDescriptor;
+        }
+
+        public static HttpControllerContext CreateControllerContext(this HttpRequestMessage subject) {
+            var httpConfiguration = subject.GetConfiguration();
+            var routeData = httpConfiguration.Routes.GetRouteData(subject);
+            return new HttpControllerContext(httpConfiguration, routeData, subject) {
+                ControllerDescriptor = SelectController(subject)
+            };
+        }
+
+        public static HttpActionContext AsHttpActionContext(this HttpRequestMessage request) {
+            var controllerContext = CreateControllerContext(request);
+            var actionDescriptor = SelectAction(controllerContext);
+            return new HttpActionContext(controllerContext, actionDescriptor);
         }
     }
 }

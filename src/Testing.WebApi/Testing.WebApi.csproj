@@ -31,8 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Cobweb, Version=1.2.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Cobweb.1.2.3.0\lib\net40\Cobweb.dll</HintPath>
+    <Reference Include="Cobweb, Version=1.3.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Cobweb.1.3.1.0\lib\net40\Cobweb.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="FluentAssertions, Version=3.3.0.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
@@ -76,12 +76,16 @@
   <ItemGroup>
     <Compile Include="Assertions\AssertionExtensions.cs" />
     <Compile Include="Assertions\HttpRequestMessageAssertions.cs" />
+    <Compile Include="Assertions\HttpActionContextAssertions.cs" />
     <Compile Include="Assertions\HttpRouteValueDictionaryAssertions.cs" />
     <Compile Include="Assertions\HttpRouteDataAssertions.cs" />
+    <Compile Include="Extensions\WithHttpActionContext.cs" />
     <Compile Include="Extensions\WithHttpController.cs" />
     <Compile Include="Extensions\WithHttpRequestMessage.cs" />
     <Compile Include="Extensions\WithHttpRouteValueDictionary.cs" />
     <Compile Include="Extensions\WithKeyValuePair.cs" />
+    <Compile Include="Extensions\WithParameterInfo.cs" />
+    <Compile Include="Extensions\WithType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PropertyKeys.cs" />
     <Compile Include="HttpRouteDataFactory.cs" />

@@ -13,11 +13,9 @@ namespace Cobweb.Testing.WebApi.Tests.Routing.GivenActionRoute {
     public class WithActionDataTypeControllerUrl : GivenActionRoute {
         [TestCase("~/ActionDataTypeInput/WithNothing/27/1")]
         [TestCase("~/ActionDataTypeInput/WithNothing/27/1/")]
-        [Ignore("Fix Me?")]
-        public void ItShouldIgnoreMultipleValuesOnUrlToNoArgumentAction(string url) {
-            url.UsingConfiguration(HttpConfiguration).Should()
-               .MapTo<ActionDataTypeInputController>(controller =>
-                                                             controller.WithNothing());
+        public void ItShould404OnMultipleValuesOnUrlToNoArgumentAction(string url) {
+            Action act = () => url.UsingConfiguration(HttpConfiguration).SelectController();
+            act.ShouldThrow<HttpResponseException>().And.Response.StatusCode.Should().Be(HttpStatusCode.NotFound);
         }
 
         [TestCase("~/ActionDataTypeInput/WithNothing/27")]
@@ -40,20 +38,43 @@ namespace Cobweb.Testing.WebApi.Tests.Routing.GivenActionRoute {
 
         [TestCase("~/ActionDataTypeInput/WithGuid")]
         [TestCase("~/ActionDataTypeInput/WithGuid/")]
-        [Ignore("Fix Me?")]
-        public void ItShouldMapEmptyGuidToEmptyActionParamater(string url) {
+        [Ignore("Fix. Should return 405.")]
+        public void ItShould405OnEmptyGuidToAction(string url) {
+            Action act = () => url.UsingConfiguration(HttpConfiguration).Should()
+                                  .MapTo<ActionDataTypeInputController>(controller =>
+                                                                                controller.WithGuid(default(Guid)));
+            act.ShouldThrow<HttpResponseException>()
+               .And.Response.StatusCode.Should()
+               .Be(HttpStatusCode.MethodNotAllowed);
+        }
+
+
+        [TestCase("~/ActionDataTypeInput/WithDefaultGuid")]
+        [TestCase("~/ActionDataTypeInput/WithDefaultGuid/")]
+        public void ItShouldMapEmptyGuidToActionWithDefaultParameterValue(string url) {
             url.UsingConfiguration(HttpConfiguration).Should()
                .MapTo<ActionDataTypeInputController>(controller =>
-                                                             controller.WithGuid(default(Guid)));
+                                                             controller.WithDefaultGuid(default(Guid)));
         }
 
         [TestCase("~/ActionDataTypeInput/WithInteger")]
         [TestCase("~/ActionDataTypeInput/WithInteger/")]
-        [Ignore("Fix Me?")]
-        public void ItShouldMapEmptyIntAndTrailingSlashToDefaultActionParamaterValue(string url) {
+        [Ignore("Fix. Should return 405.")]
+        public void ItShould405OnEmptyIntToAction(string url) {
+            Action act = () => url.UsingConfiguration(HttpConfiguration).Should()
+                                  .MapTo<ActionDataTypeInputController>(controller =>
+                                                                                controller.WithInteger(default(int)));
+            act.ShouldThrow<HttpResponseException>()
+               .And.Response.StatusCode.Should()
+               .Be(HttpStatusCode.MethodNotAllowed);
+        }
+
+        [TestCase("~/ActionDataTypeInput/WithDefaultInteger")]
+        [TestCase("~/ActionDataTypeInput/WithDefaultInteger/")]
+        public void ItShouldMapEmptyIntToActionWithDefaultParameterValue(string url) {
             url.UsingConfiguration(HttpConfiguration).Should()
                .MapTo<ActionDataTypeInputController>(controller =>
-                                                             controller.WithInteger(default(int)));
+                                                             controller.WithDefaultInteger(default(int)));
         }
 
         [TestCase("~/ActionDataTypeInput/WithNullDateTime")]

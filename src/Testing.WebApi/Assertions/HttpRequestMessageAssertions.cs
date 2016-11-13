@@ -2,7 +2,11 @@
 using System.Diagnostics;
 using System.Linq.Expressions;
 using System.Net.Http;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Web.Http;
 using System.Web.Http.Controllers;
+using System.Web.Http.ModelBinding;
 using System.Web.Http.Routing;
 using Cobweb.Extentions;
 using Cobweb.Extentions.ObjectExtentions;
@@ -11,6 +15,7 @@ using Cobweb.Testing.WebApi.Extensions;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using FluentAssertions.Primitives;
+using Moq;
 
 namespace Cobweb.Testing.WebApi.Assertions {
     /// <summary>
@@ -163,22 +168,21 @@ namespace Cobweb.Testing.WebApi.Assertions {
 
             //check parameters
             var methodArguments = action.GetMethodArgumentValues();
+            var actionContext = Subject.AsHttpActionContext().WithBoundArguments();
+
             foreach (var methodArgument in methodArguments) {
                 var param = methodArgument.Key;
                 var expectedValue = methodArgument.Value;
                 var paramName = param.Name;
 
-                if (param.ParameterType.CanBeNull()) {
-                    Subject.AsHttpRoute()
-                           .Values.ToHttpRouteValueDictionary()
-                           .Should()
-                           .HaveOptionalParameter(paramName, expectedValue, param.ParameterType);
+
+                if (param.IsOptional || param.ParameterType.CanBeNull()) {
+                    actionContext.Should()
+                                 .HaveOptionalActionArgument(paramName, expectedValue, param.ParameterType);
                 }
                 else {
-                    Subject.AsHttpRoute()
-                           .Values.ToHttpRouteValueDictionary()
-                           .Should()
-                           .HaveParameter(paramName, expectedValue, param.ParameterType);
+                    actionContext.Should()
+                                 .HaveActionArgument(paramName, expectedValue, param.ParameterType);
                 }
             }
 

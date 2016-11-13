@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq.Expressions;
 using System.Net.Http;
+using System.Net.Mime;
+using System.Text;
 using System.Web.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.Hosting;
@@ -86,6 +88,22 @@ namespace Cobweb.Testing.WebApi {
             return GetHttpRequestMessage(url, httpMethod);
         }
 
+        public static HttpRequestMessage WithContent(this string url, string content) {
+            return url.AsRequest().WithContent(content);
+        }
+
+        public static HttpRequestMessage WithContent(this HttpRequestMessage requestMessage, string content) {
+            var payload = new StringContent(content);
+            requestMessage.Content = payload;
+            return requestMessage;
+        }
+
+        public static HttpRequestMessage WithJsonContent(this HttpRequestMessage requestMessage, string jsonContent)
+        {
+            var payload = new StringContent(jsonContent, Encoding.UTF8, "application/json");
+            requestMessage.Content = payload;
+            return requestMessage;
+        }
 
         private static HttpRequestMessage GetHttpRequestMessage(string url, HttpMethod httpMethod = null) {
             if (httpMethod == null) {

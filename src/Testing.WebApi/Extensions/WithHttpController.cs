@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Web.Http;
 using System.Web.Http.Controllers;
@@ -7,7 +8,7 @@ using Cobweb.Reflection.Extensions;
 namespace Cobweb.Testing.WebApi.Extensions {
     public static class WithHttpController {
         public static string ControllerName<THttpController>() where THttpController : IHttpController {
-            return ControllerName(typeof (THttpController));
+            return ControllerName(typeof(THttpController));
         }
 
         public static string ControllerName(this Type type) {
