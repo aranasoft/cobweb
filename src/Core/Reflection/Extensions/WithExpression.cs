@@ -48,10 +48,7 @@ namespace Cobweb.Reflection.Extensions {
             switch (argInput.NodeType) {
                 case ExpressionType.Constant:
                     return ((ConstantExpression) argInput).Value;
-
-                case ExpressionType.New:
-                case ExpressionType.MemberAccess:
-                case ExpressionType.Convert:
+                default:
                     return Expression.Lambda(argInput).Compile().DynamicInvoke();
             }
             return null;
