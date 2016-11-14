@@ -10,7 +10,7 @@ namespace Cobweb.Data {
         void ExecuteTransaction(Action work);
 
         TEntity ExecuteTransaction<TEntity>(TEntity entity, Action<TEntity> work)
-            where TEntity : IEntity<TEntity>, IEquatable<TEntity>, new();
+            where TEntity : IEntity<TEntity>, IEquatable<TEntity>;
     }
 
     public abstract class DataTransactionManager : IDataTransactionManager {
@@ -31,7 +31,7 @@ namespace Cobweb.Data {
         }
 
         public virtual TEntity ExecuteTransaction<TEntity>(TEntity entity, Action<TEntity> work)
-            where TEntity : IEntity<TEntity>, IEquatable<TEntity>, new() {
+            where TEntity : IEntity<TEntity>, IEquatable<TEntity> {
             using (IDataTransaction tx = BeginTransaction()) {
                 try {
                     work.Invoke(entity);
