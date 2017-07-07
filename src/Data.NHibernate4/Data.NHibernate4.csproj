@@ -54,6 +54,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Caching\CacheRequest.cs" />
+    <Compile Include="Caching\ICachingProvider.cs" />
+    <Compile Include="Caching\ICacheRequest.cs" />
+    <Compile Include="Caching\NHibernateCachingProvider.cs" />
+    <Compile Include="Caching\NHibernateCacheRequest.cs" />
     <Compile Include="Fetching\FetchRequest.cs" />
     <Compile Include="Fetching\IFetchingProvider.cs" />
     <Compile Include="Fetching\IFetchRequest.cs" />
@@ -64,6 +69,7 @@
     <Compile Include="INHibernateSessionBuilder.cs" />
     <Compile Include="NHibernateTransactionHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Providers\CachingProvider.cs" />
     <Compile Include="Providers\EagerFetch.cs" />
   </ItemGroup>
   <ItemGroup>
