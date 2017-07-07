@@ -24,7 +24,7 @@ namespace Cobweb.Data.NHibernate.Providers {
             return cachingProvider;
         }
 
-        public static ICacheRequest<T> Cachable<T>(this IQueryable<T> source) {
+        public static ICacheRequest<T> Cacheable<T>(this IQueryable<T> source) {
             return GetCurrentProvider().Cacheable(source);
         }
     }
