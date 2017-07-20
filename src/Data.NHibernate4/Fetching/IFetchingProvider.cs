@@ -5,20 +5,20 @@ using System.Linq.Expressions;
 
 namespace Cobweb.Data.NHibernate.Fetching {
     public interface IFetchingProvider {
-        IFetchRequest<T> Fetch<T, TProperty>(
-            IQueryable<T> source,
-            Expression<Func<T, TProperty>> path);
+        IFetchRequest<TOriginatingEntity, TFetch> Fetch<TOriginatingEntity, TFetch>(
+            IQueryable<TOriginatingEntity> source,
+            Expression<Func<TOriginatingEntity, TFetch>> path);
 
-        IFetchRequest<T> FetchMany<T, TProperty>(
-            IQueryable<T> source,
-            Expression<Func<T, IEnumerable<TProperty>>> path);
+        IFetchRequest<TOriginatingEntity, TFetch> FetchMany<TOriginatingEntity, TFetch>(
+            IQueryable<TOriginatingEntity> source,
+            Expression<Func<TOriginatingEntity, IEnumerable<TFetch>>> path);
 
-        IFetchRequest<T> ThenFetch<T, TFetchedProperty, TChildProperty>(
-            IFetchRequest<T> query,
-            Expression<Func<TFetchedProperty, TChildProperty>> relatedObjectSelector);
+        IFetchRequest<TOriginatingEntity, TNestedFetch> ThenFetch<TOriginatingEntity, TFetchOn, TNestedFetch>(
+            IFetchRequest<TOriginatingEntity, TFetchOn> query,
+            Expression<Func<TFetchOn, TNestedFetch>> relatedObjectSelector);
 
-        IFetchRequest<T> ThenFetchMany<T, TFetchedProperty, TChildProperty>(
-            IFetchRequest<T> source,
-            Expression<Func<TFetchedProperty, IEnumerable<TChildProperty>>> path);
+        IFetchRequest<TOriginatingEntity, TNestedFetch> ThenFetchMany<TOriginatingEntity, TFetchOn, TNestedFetch>(
+            IFetchRequest<TOriginatingEntity, TFetchOn> source,
+            Expression<Func<TFetchOn, IEnumerable<TNestedFetch>>> path);
     }
 }

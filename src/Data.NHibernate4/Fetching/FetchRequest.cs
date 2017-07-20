@@ -5,15 +5,15 @@ using System.Linq;
 using System.Linq.Expressions;
 
 namespace Cobweb.Data.NHibernate.Fetching {
-    public class FetchRequest<TRequest, TQueried> : IFetchRequest<TQueried>
-        where TRequest : IQueryable<TQueried> {
-        public FetchRequest(TRequest source) {
+    public class FetchRequest<TCollection, TOriginatingEntity, TFetch> : IFetchRequest<TOriginatingEntity, TFetch>
+        where TCollection : IQueryable<TOriginatingEntity> {
+        public FetchRequest(TCollection source) {
             Queryable = source;
         }
 
-        public TRequest Queryable { get; private set; }
+        public TCollection Queryable { get; private set; }
 
-        public IEnumerator<TQueried> GetEnumerator() {
+        public IEnumerator<TOriginatingEntity> GetEnumerator() {
             return Queryable.GetEnumerator();
         }
 

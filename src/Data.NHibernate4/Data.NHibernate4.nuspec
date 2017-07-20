@@ -11,7 +11,7 @@
         <iconUrl>https://raw.githubusercontent.com/aranasoft/cobweb/master/docs/logo-128px.png</iconUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>$description$</description>
-        <copyright>Copyright (c) 2013-2015, Arana Software</copyright>
+        <copyright>Copyright (c) 2013-2017, Arana Software</copyright>
         <tags>nhibernate FluentNHibernate orm Cobweb Arana</tags>
     </metadata>
     <files>

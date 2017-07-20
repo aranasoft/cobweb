@@ -37,7 +37,7 @@
       <HintPath>..\packages\Cobweb.1.1.1.0\lib\net40\Cobweb.dll</HintPath>
     </Reference>
     <Reference Include="Cobweb.Data.NHibernate, Version=1.40.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Cobweb.Data.NHibernate.1.40.2-beta\lib\net45\Cobweb.Data.NHibernate.dll</HintPath>
+      <HintPath>..\packages\Cobweb.Data.NHibernate.1.40.2-beta2\lib\net45\Cobweb.Data.NHibernate.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="FluentNHibernate">

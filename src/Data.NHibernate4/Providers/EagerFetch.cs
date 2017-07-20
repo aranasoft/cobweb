@@ -26,27 +26,27 @@ namespace Cobweb.Data.NHibernate.Providers {
             return fetchingProvider;
         }
 
-        public static IFetchRequest<T> Fetch<T, TProperty>(
-            this IQueryable<T> source,
-            Expression<Func<T, TProperty>> path) {
+        public static IFetchRequest<TOriginatingEntity, TFetch> Fetch<TOriginatingEntity, TFetch>(
+            this IQueryable<TOriginatingEntity> source,
+            Expression<Func<TOriginatingEntity, TFetch>> path) {
             return GetCurrentProvider().Fetch(source, path);
         }
 
-        public static IFetchRequest<T> FetchMany<T, TProperty>(
-            this IQueryable<T> source,
-            Expression<Func<T, IEnumerable<TProperty>>> path) {
+        public static IFetchRequest<TOriginatingEntity, TFetch> FetchMany<TOriginatingEntity, TFetch>(
+            this IQueryable<TOriginatingEntity> source,
+            Expression<Func<TOriginatingEntity, IEnumerable<TFetch>>> path) {
             return GetCurrentProvider().FetchMany(source, path);
         }
 
-        public static IFetchRequest<T> ThenFetch<T, TFetchedProperty, TChildProperty>(
-            this IFetchRequest<T> source,
-            Expression<Func<TFetchedProperty, TChildProperty>> path) {
+        public static IFetchRequest<TOriginatingEntity, TNestedFetch> ThenFetch<TOriginatingEntity, TFetchOn, TNestedFetch>(
+            this IFetchRequest<TOriginatingEntity, TFetchOn> source,
+            Expression<Func<TFetchOn, TNestedFetch>> path) {
             return GetCurrentProvider().ThenFetch(source, path);
         }
 
-        public static IFetchRequest<T> ThenFetchMany<T, TFetchedProperty, TChildProperty>(
-            this IFetchRequest<T> source,
-            Expression<Func<TFetchedProperty, IEnumerable<TChildProperty>>> path) {
+        public static IFetchRequest<TOriginatingEntity, TNestedFetch> ThenFetchMany<TOriginatingEntity, TFetchOn, TNestedFetch>(
+            this IFetchRequest<TOriginatingEntity, TFetchOn> source,
+            Expression<Func<TFetchOn, IEnumerable<TNestedFetch>>> path) {
             return GetCurrentProvider().ThenFetchMany(source, path);
         }
     }

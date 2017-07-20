@@ -6,32 +6,32 @@ using NHibernate.Linq;
 
 namespace Cobweb.Data.NHibernate.Fetching {
     public class NHibernateFetchingProvider : IFetchingProvider {
-        public IFetchRequest<T> Fetch<T, TProperty>(
-            IQueryable<T> source,
-            Expression<Func<T, TProperty>> path) {
+        public IFetchRequest<TOriginatingEntity, TFetch> Fetch<TOriginatingEntity, TFetch>(
+            IQueryable<TOriginatingEntity> source,
+            Expression<Func<TOriginatingEntity, TFetch>> path) {
             var fetchQuery = source.Fetch(path);
-            return new NHibernateFetchRequest<T, TProperty>(fetchQuery);
+            return new NHibernateFetchRequest<TOriginatingEntity, TFetch>(fetchQuery);
         }
 
-        public IFetchRequest<T> FetchMany<T, TProperty>(
-            IQueryable<T> source,
-            Expression<Func<T, IEnumerable<TProperty>>> path) {
+        public IFetchRequest<TOriginatingEntity, TFetch> FetchMany<TOriginatingEntity, TFetch>(
+            IQueryable<TOriginatingEntity> source,
+            Expression<Func<TOriginatingEntity, IEnumerable<TFetch>>> path) {
             var fetchQuery = source.FetchMany(path);
-            return new NHibernateFetchRequest<T, TProperty>(fetchQuery);
+            return new NHibernateFetchRequest<TOriginatingEntity, TFetch>(fetchQuery);
         }
 
-        public IFetchRequest<T> ThenFetch<T, TFetchedProperty, TChildProperty>(
-            IFetchRequest<T> query, Expression<Func<TFetchedProperty, TChildProperty>> relatedObjectSelector) {
-            var fetchRequest = (NHibernateFetchRequest<T, TFetchedProperty>) query;
+        public IFetchRequest<TOriginalEntity, TNestedFetch> ThenFetch<TOriginalEntity, TFetchOn, TNestedFetch>(
+            IFetchRequest<TOriginalEntity, TFetchOn> query, Expression<Func<TFetchOn, TNestedFetch>> relatedObjectSelector) {
+            var fetchRequest = (NHibernateFetchRequest<TOriginalEntity, TFetchOn>) query;
             var fetchQuery = fetchRequest.Queryable.ThenFetch(relatedObjectSelector);
-            return new NHibernateFetchRequest<T, TChildProperty>(fetchQuery);
+            return new NHibernateFetchRequest<TOriginalEntity, TNestedFetch>(fetchQuery);
         }
 
-        public IFetchRequest<T> ThenFetchMany<T, TFetchedProperty, TChildProperty>(
-            IFetchRequest<T> source, Expression<Func<TFetchedProperty, IEnumerable<TChildProperty>>> path) {
-            var fetchRequest = (NHibernateFetchRequest<T, TFetchedProperty>) source;
+        public IFetchRequest<TOriginalEntity, TNestedFetch> ThenFetchMany<TOriginalEntity, TFetchOn, TNestedFetch>(
+            IFetchRequest<TOriginalEntity, TFetchOn> source, Expression<Func<TFetchOn, IEnumerable<TNestedFetch>>> path) {
+            var fetchRequest = (NHibernateFetchRequest<TOriginalEntity, TFetchOn>) source;
             var fetchQuery = fetchRequest.Queryable.ThenFetchMany(path);
-            return new NHibernateFetchRequest<T, TChildProperty>(fetchQuery);
+            return new NHibernateFetchRequest<TOriginalEntity, TNestedFetch>(fetchQuery);
         }
     }
 }
