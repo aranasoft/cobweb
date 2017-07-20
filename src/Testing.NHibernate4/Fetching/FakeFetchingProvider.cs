@@ -18,7 +18,7 @@ namespace Cobweb.Testing.NHibernate.Fetching {
 
         public IFetchRequest<TOriginatingEntity, TNestedFetch> ThenFetch<TOriginatingEntity, TFetchOn, TNestedFetch>(
             IFetchRequest<TOriginatingEntity, TFetchOn> source,
-            Expression<Func<TFetchOn, TNestedFetch>> relatedObjectSelector) {
+            Expression<Func<TFetchOn, TNestedFetch>> path) {
             var fetchRequest = (FetchRequest<IQueryable<TOriginatingEntity>, TOriginatingEntity, TNestedFetch>) source;
             return new FetchRequest<IQueryable<TOriginatingEntity>, TOriginatingEntity, TNestedFetch>(fetchRequest.Queryable);
         }
