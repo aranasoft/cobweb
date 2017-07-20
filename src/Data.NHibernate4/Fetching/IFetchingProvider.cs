@@ -14,8 +14,8 @@ namespace Cobweb.Data.NHibernate.Fetching {
             Expression<Func<TOriginatingEntity, IEnumerable<TFetch>>> path);
 
         IFetchRequest<TOriginatingEntity, TNestedFetch> ThenFetch<TOriginatingEntity, TFetchOn, TNestedFetch>(
-            IFetchRequest<TOriginatingEntity, TFetchOn> query,
-            Expression<Func<TFetchOn, TNestedFetch>> relatedObjectSelector);
+            IFetchRequest<TOriginatingEntity, TFetchOn> source,
+            Expression<Func<TFetchOn, TNestedFetch>> path);
 
         IFetchRequest<TOriginatingEntity, TNestedFetch> ThenFetchMany<TOriginatingEntity, TFetchOn, TNestedFetch>(
             IFetchRequest<TOriginatingEntity, TFetchOn> source,

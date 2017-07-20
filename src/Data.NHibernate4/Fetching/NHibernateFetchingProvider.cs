@@ -21,9 +21,9 @@ namespace Cobweb.Data.NHibernate.Fetching {
         }
 
         public IFetchRequest<TOriginalEntity, TNestedFetch> ThenFetch<TOriginalEntity, TFetchOn, TNestedFetch>(
-            IFetchRequest<TOriginalEntity, TFetchOn> query, Expression<Func<TFetchOn, TNestedFetch>> relatedObjectSelector) {
-            var fetchRequest = (NHibernateFetchRequest<TOriginalEntity, TFetchOn>) query;
-            var fetchQuery = fetchRequest.Queryable.ThenFetch(relatedObjectSelector);
+            IFetchRequest<TOriginalEntity, TFetchOn> source, Expression<Func<TFetchOn, TNestedFetch>> path) {
+            var fetchRequest = (NHibernateFetchRequest<TOriginalEntity, TFetchOn>) source;
+            var fetchQuery = fetchRequest.Queryable.ThenFetch(path);
             return new NHibernateFetchRequest<TOriginalEntity, TNestedFetch>(fetchQuery);
         }
 
