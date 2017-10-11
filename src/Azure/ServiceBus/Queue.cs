@@ -57,5 +57,9 @@ namespace Cobweb.Azure.ServiceBus {
         public void OnMessage(Action<BrokeredMessage> callback) {
             QueueClient.OnMessage(callback);
         }
+
+        public void OnMessage(Action<BrokeredMessage> callback, OnMessageOptions options) {
+            QueueClient.OnMessage(callback, options);
+        }
     }
 }
