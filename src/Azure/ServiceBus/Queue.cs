@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using Cobweb.Azure.ServiceBus.Extensions;
 using Microsoft.ServiceBus;
 using Microsoft.ServiceBus.Messaging;
 
@@ -38,20 +40,26 @@ namespace Cobweb.Azure.ServiceBus {
             }
         }
 
-        public void SendMessage(BrokeredMessage message) {
+        public void SendMessage(BrokeredMessage message, int delaySeconds = 0) {
+            message.Delay(TimeSpan.FromSeconds(delaySeconds));
             QueueClient.Send(message);
         }
 
-        public Task SendMessageAsync(BrokeredMessage message) {
+        public Task SendMessageAsync(BrokeredMessage message, int delaySeconds = 0) {
+            message.Delay(TimeSpan.FromSeconds(delaySeconds));
             return QueueClient.SendAsync(message);
         }
 
-        public void SendMessages(IEnumerable<BrokeredMessage> messages) {
-            QueueClient.SendBatch(messages);
+        public void SendMessages(IEnumerable<BrokeredMessage> messages, int delaySeconds = 0) {
+            var brokeredMessages = messages as IList<BrokeredMessage> ?? messages.ToList();
+            SetEnqueueTime(brokeredMessages, delaySeconds);
+            QueueClient.SendBatch(brokeredMessages);
         }
 
-        public Task SendMessagesAsync(IEnumerable<BrokeredMessage> messages) {
-            return QueueClient.SendBatchAsync(messages);
+        public Task SendMessagesAsync(IEnumerable<BrokeredMessage> messages, int delaySeconds = 0) {
+            var brokeredMessages = messages as IList<BrokeredMessage> ?? messages.ToList();
+            SetEnqueueTime(brokeredMessages, delaySeconds);
+            return QueueClient.SendBatchAsync(brokeredMessages);
         }
 
         public void OnMessage(Action<BrokeredMessage> callback) {
@@ -61,5 +69,22 @@ namespace Cobweb.Azure.ServiceBus {
         public void OnMessage(Action<BrokeredMessage> callback, OnMessageOptions options) {
             QueueClient.OnMessage(callback, options);
         }
+
+        private void SetEnqueueTime(BrokeredMessage message, int delaySeconds) {
+            if (delaySeconds == 0) return;
+
+            var now = DateTime.UtcNow;
+            var then = now + TimeSpan.FromSeconds(delaySeconds);
+
+            message.ScheduledEnqueueTimeUtc = then;
+        }
+
+        private void SetEnqueueTime(IList<BrokeredMessage> messages, int delaySeconds) {
+            foreach (var message in messages) {
+                message.Delay(TimeSpan.FromSeconds(delaySeconds));
+            }
+        }
     }
+
+
 }

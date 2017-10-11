@@ -78,6 +78,7 @@
   <ItemGroup>
     <Compile Include="Configuration\IAzureConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceBus\Extensions\WithBrokeredMessage.cs" />
     <Compile Include="ServiceBus\Queue.cs" />
     <Compile Include="Storage\LogTable.cs" />
     <Compile Include="Storage\Table.cs" />
