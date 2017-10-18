@@ -9,6 +9,7 @@ namespace Cobweb.TaskQueue
     public interface ITaskRequestQueue {
         void AddTask(TaskRequest taskRequest, TimeSpan? delay = null);
         void OnMessage(Action<BrokeredMessage> message);
+        void OnMessage(Action<BrokeredMessage> callback, OnMessageOptions options);
     }
 
     public class TaskRequestQueue : Queue, ITaskRequestQueue

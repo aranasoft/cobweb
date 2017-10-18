@@ -40,26 +40,20 @@ namespace Cobweb.Azure.ServiceBus {
             }
         }
 
-        public void SendMessage(BrokeredMessage message, int delaySeconds = 0) {
-            message.Delay(TimeSpan.FromSeconds(delaySeconds));
+        public void SendMessage(BrokeredMessage message) {
             QueueClient.Send(message);
         }
 
-        public Task SendMessageAsync(BrokeredMessage message, int delaySeconds = 0) {
-            message.Delay(TimeSpan.FromSeconds(delaySeconds));
+        public Task SendMessageAsync(BrokeredMessage message) {
             return QueueClient.SendAsync(message);
         }
 
-        public void SendMessages(IEnumerable<BrokeredMessage> messages, int delaySeconds = 0) {
-            var brokeredMessages = messages as IList<BrokeredMessage> ?? messages.ToList();
-            SetEnqueueTime(brokeredMessages, delaySeconds);
-            QueueClient.SendBatch(brokeredMessages);
+        public void SendMessages(IEnumerable<BrokeredMessage> messages) {
+            QueueClient.SendBatch(messages);
         }
 
-        public Task SendMessagesAsync(IEnumerable<BrokeredMessage> messages, int delaySeconds = 0) {
-            var brokeredMessages = messages as IList<BrokeredMessage> ?? messages.ToList();
-            SetEnqueueTime(brokeredMessages, delaySeconds);
-            return QueueClient.SendBatchAsync(brokeredMessages);
+        public Task SendMessagesAsync(IEnumerable<BrokeredMessage> messages) {
+            return QueueClient.SendBatchAsync(messages);
         }
 
         public void OnMessage(Action<BrokeredMessage> callback) {
