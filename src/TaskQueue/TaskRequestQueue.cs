@@ -12,7 +12,7 @@ namespace Cobweb.TaskQueue
         void OnMessage(Action<BrokeredMessage> callback, OnMessageOptions options);
     }
 
-    public class TaskRequestQueue : Queue //, ITaskRequestQueue
+    public class TaskRequestQueue : Queue, ITaskRequestQueue
     {
         private readonly IAzureConfiguration _azureConfiguration;
 
