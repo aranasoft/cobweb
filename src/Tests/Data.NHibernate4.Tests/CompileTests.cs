@@ -22,10 +22,26 @@ namespace Cobweb.Data.NHibernate.Tests {
 
         internal class ExtensionMethodCompiler {
             public void ShouldCompile() {
-                var fetchThenFetchThenFetch = new Collection<SampleParentEntity>() { }.AsQueryable().Fetch(thing => thing.Child).ThenFetch(child => child.Parent).ThenFetch(parent => parent.Child);
-                var fetchThenFetchManyThenFetch = new Collection<SampleParentEntity>() { }.AsQueryable().Fetch(thing => thing.Child).ThenFetchMany(child => child.Parents).ThenFetch(parent => parent.Child);
-                var fetchManyThenFetchThenFetchMany = new Collection<SampleParentEntity>() { }.AsQueryable().FetchMany(thing => thing.Children).ThenFetch(child => child.Parent).ThenFetchMany(parent => parent.Children);
-                var fetchManyThenFetchManyThenFetchMany = new Collection<SampleParentEntity>() { }.AsQueryable().FetchMany(thing => thing.Children).ThenFetchMany(child => child.Parents).ThenFetchMany(parent => parent.Children);
+                var fetchThenFetchThenFetch = new Collection<SampleParentEntity>() {}
+                                              .AsQueryable()
+                                              .Fetch(thing => thing.Child)
+                                              .ThenFetch(child => child.Parent)
+                                              .ThenFetch(parent => parent.Child);
+                var fetchThenFetchManyThenFetch = new Collection<SampleParentEntity>() {}
+                                                  .AsQueryable()
+                                                  .Fetch(thing => thing.Child)
+                                                  .ThenFetchMany(child => child.Parents)
+                                                  .ThenFetch(parent => parent.Child);
+                var fetchManyThenFetchThenFetchMany = new Collection<SampleParentEntity>() {}
+                                                      .AsQueryable()
+                                                      .FetchMany(thing => thing.Children)
+                                                      .ThenFetch(child => child.Parent)
+                                                      .ThenFetchMany(parent => parent.Children);
+                var fetchManyThenFetchManyThenFetchMany = new Collection<SampleParentEntity>() {}
+                                                          .AsQueryable()
+                                                          .FetchMany(thing => thing.Children)
+                                                          .ThenFetchMany(child => child.Parents)
+                                                          .ThenFetchMany(parent => parent.Children);
             }
         }
 

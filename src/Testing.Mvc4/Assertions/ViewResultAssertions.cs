@@ -39,21 +39,21 @@ namespace Cobweb.Testing.Mvc.Assertions {
             if (ReferenceEquals(Subject, null)) {
                 Execute.Assertion
                        .BecauseOf(because, reasonArgs)
-                       .FailWith("Expected {context:viewresult} to have model of type {0}{reason}, but {context:viewresult} was <null>.",
-                                 typeof (TViewModel).Name, Subject);
+                       .FailWith(
+                           "Expected {context:viewresult} to have model of type {0}{reason}, but {context:viewresult} was <null>.",
+                           typeof(TViewModel).Name,
+                           Subject);
             }
 
             var actualViewModel = Subject.ViewData.Model;
 
             Execute.Assertion
                    .ForCondition(actualViewModel.GetType().IsAssignableTo<TViewModel>())
-                   .FailWith("Expected {context:viewresult} to have Model of type '{0}', but was '{1}'", typeof(TViewModel).Name,
+                   .FailWith("Expected {context:viewresult} to have Model of type '{0}', but was '{1}'",
+                             typeof(TViewModel).Name,
                              actualViewModel.GetType().Name);
 
             return new AndWhichConstraint<ViewResultAssertions, TViewModel>(this, (TViewModel) actualViewModel);
         }
-
-
-
     }
 }

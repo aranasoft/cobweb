@@ -59,19 +59,33 @@ namespace Cobweb.Web.Mvc.Security {
             if (provider == null) {
                 throw new Exception("Unable to resolve MembershipProvider");
             }
+
             return provider;
         }
 
-        public override MembershipUser CreateUser(string username, string password, string email,
-                                                  string passwordQuestion, string passwordAnswer, bool isApproved,
-                                                  object providerUserKey, out MembershipCreateStatus status) {
+        public override MembershipUser CreateUser(string username,
+                                                  string password,
+                                                  string email,
+                                                  string passwordQuestion,
+                                                  string passwordAnswer,
+                                                  bool isApproved,
+                                                  object providerUserKey,
+                                                  out MembershipCreateStatus status) {
             return GetProvider()
-                .CreateUser(username, password, email, passwordQuestion, passwordAnswer, isApproved, providerUserKey,
+                .CreateUser(username,
+                            password,
+                            email,
+                            passwordQuestion,
+                            passwordAnswer,
+                            isApproved,
+                            providerUserKey,
                             out status);
         }
 
-        public override bool ChangePasswordQuestionAndAnswer(string username, string password,
-                                                             string newPasswordQuestion, string newPasswordAnswer) {
+        public override bool ChangePasswordQuestionAndAnswer(string username,
+                                                             string password,
+                                                             string newPasswordQuestion,
+                                                             string newPasswordAnswer) {
             return GetProvider()
                 .ChangePasswordQuestionAndAnswer(username, password, newPasswordQuestion, newPasswordQuestion);
         }
@@ -124,12 +138,16 @@ namespace Cobweb.Web.Mvc.Security {
             return GetProvider().GetNumberOfUsersOnline();
         }
 
-        public override MembershipUserCollection FindUsersByName(string usernameToMatch, int pageIndex, int pageSize,
+        public override MembershipUserCollection FindUsersByName(string usernameToMatch,
+                                                                 int pageIndex,
+                                                                 int pageSize,
                                                                  out int totalRecords) {
             return GetProvider().FindUsersByName(usernameToMatch, pageIndex, pageIndex, out totalRecords);
         }
 
-        public override MembershipUserCollection FindUsersByEmail(string emailToMatch, int pageIndex, int pageSize,
+        public override MembershipUserCollection FindUsersByEmail(string emailToMatch,
+                                                                  int pageIndex,
+                                                                  int pageSize,
                                                                   out int totalRecords) {
             return GetProvider().FindUsersByEmail(emailToMatch, pageIndex, pageSize, out totalRecords);
         }

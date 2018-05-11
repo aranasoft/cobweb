@@ -91,7 +91,7 @@ namespace Cobweb.Testing.Mvc.Fakes {
 
         public new virtual string HttpMethod {
             get { return HttpVerb.ToString("g"); }
-            set { HttpVerb = (HttpVerbs) Enum.Parse(typeof (HttpVerbs), value); }
+            set { HttpVerb = (HttpVerbs) Enum.Parse(typeof(HttpVerbs), value); }
         }
 
         protected internal override sealed string InternalHttpMethod {

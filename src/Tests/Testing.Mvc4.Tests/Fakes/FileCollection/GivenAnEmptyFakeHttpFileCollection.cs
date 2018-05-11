@@ -7,8 +7,8 @@ using NUnit.Framework;
 namespace Cobweb.Testing.Mvc.Tests.Fakes.FileCollection {
     [TestFixture]
     public class GivenAnEmptyFakeHttpFileCollection {
-         const string ExpectedFileKey = "SomeFileKey";
-         FakeHttpFileCollection _collection;
+        const string ExpectedFileKey = "SomeFileKey";
+        FakeHttpFileCollection _collection;
 
         [SetUp]
         public void SetUp() {
@@ -16,14 +16,12 @@ namespace Cobweb.Testing.Mvc.Tests.Fakes.FileCollection {
         }
 
         [Test]
-        public void ItShouldContainTheExpectedNumberOfFiles()
-        {
+        public void ItShouldContainTheExpectedNumberOfFiles() {
             _collection.Count.Should().Be(0);
         }
 
         [Test]
-        public void ItShouldContainTheExpectedNumberOfKeys()
-        {
+        public void ItShouldContainTheExpectedNumberOfKeys() {
             _collection.Keys.Count.Should().Be(0);
         }
 

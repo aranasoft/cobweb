@@ -11,15 +11,15 @@ using Cobweb.Testing.Mvc.Fakes;
 namespace Cobweb.Testing.Mvc.Extensions {
     public static class RouteDataFactory {
         public static string ControllerName<TController>() where TController : IController {
-            return ControllerName(typeof (TController));
+            return ControllerName(typeof(TController));
         }
 
         public static string ControllerName(Type type) {
             var typeName = type.Name;
             const string suffix = "Controller";
             return typeName.EndsWith(suffix, StringComparison.OrdinalIgnoreCase)
-                       ? typeName.Substring(0, typeName.Length - suffix.Length)
-                       : typeName;
+                ? typeName.Substring(0, typeName.Length - suffix.Length)
+                : typeName;
         }
 
         public static string ControllerName<TController>(this Expression<Func<TController, ActionResult>> action)
@@ -42,7 +42,7 @@ namespace Cobweb.Testing.Mvc.Extensions {
         /// <param name="httpMethod">The HTTP method</param>
         /// <returns>RouteData for the named route; null if no matching route was found.</returns>
         public static RouteData AsNamedRoute(this string name, string httpMethod) {
-            var verb = (HttpVerbs) Enum.Parse(typeof (HttpVerbs), httpMethod);
+            var verb = (HttpVerbs) Enum.Parse(typeof(HttpVerbs), httpMethod);
             return AsNamedRoute(name, verb);
         }
 
@@ -65,7 +65,7 @@ namespace Cobweb.Testing.Mvc.Extensions {
         /// <param name="httpMethod"></param>
         /// <returns></returns>
         public static RouteData AsRoute(this string url, string httpMethod) {
-            var verb = (HttpVerbs) Enum.Parse(typeof (HttpVerbs), httpMethod);
+            var verb = (HttpVerbs) Enum.Parse(typeof(HttpVerbs), httpMethod);
             return AsRoute(url, verb);
         }
 
@@ -120,7 +120,8 @@ namespace Cobweb.Testing.Mvc.Extensions {
             return url.AsRoute(httpMethod, formMethod);
         }
 
-        private static HttpContextBase GetHttpContext(string url, HttpVerbs httpMethod = HttpVerbs.Get,
+        private static HttpContextBase GetHttpContext(string url,
+                                                      HttpVerbs httpMethod = HttpVerbs.Get,
                                                       HttpVerbs? formMethod = null) {
             var uri = new Uri("http://localhost/" + url.Substring(2));
 

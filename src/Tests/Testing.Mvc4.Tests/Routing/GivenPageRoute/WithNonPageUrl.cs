@@ -13,7 +13,7 @@ namespace Cobweb.Testing.Mvc.Tests.Routing.GivenPageRoute {
             Action act = () => CurrentUrl.Should().MapToPage("~/Account/Info.aspx");
             act.ShouldThrow<AssertionException>()
                .WithMessage(
-                            "Expected routedata to be handled by \"PageRouteHandler\", but found System.Web.Mvc.MvcRouteHandler");
+                   "Expected routedata to be handled by \"PageRouteHandler\", but found System.Web.Mvc.MvcRouteHandler");
         }
     }
 }

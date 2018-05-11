@@ -11,7 +11,7 @@ namespace Cobweb.Testing.Mvc.Tests.TestableTypes {
         }
 
         public ActionResult RedirectWithObject() {
-            return RedirectToAction("ThirdAction", "ThirdController", new { Id = 1 });
+            return RedirectToAction("ThirdAction", "ThirdController", new {Id = 1});
         }
     }
 }

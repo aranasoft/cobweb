@@ -88,8 +88,7 @@ namespace Cobweb.Testing.WebApi.Tests.Extensions {
         // Only other Complex Types
         [TestCase(typeof(MyClass), true)]
         [TestCase(typeof(MyStruct), true)]
-        public void ItShouldIdentifyTypesBoundFromBodyByDefault(Type type, bool expected)
-        {
+        public void ItShouldIdentifyTypesBoundFromBodyByDefault(Type type, bool expected) {
             type.DefaultsToBoundFromBody().Should().Be(expected);
         }
     }

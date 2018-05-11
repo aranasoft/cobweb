@@ -11,9 +11,9 @@ namespace Cobweb.Testing.Mvc.Tests.Routing.GivenPageRoute {
             RouteTable.Routes.Clear();
             RouteTable.Routes.MapPageRoute("webforms", "Forms/Account/Info", "~/Account/Info.aspx");
             RouteTable.Routes.MapRoute(
-                                       "default",
-                                       "{controller}/{action}/{id}",
-                                       new {controller = "Home", Action = "Index", id = ""});
+                "default",
+                "{controller}/{action}/{id}",
+                new {controller = "Home", Action = "Index", id = ""});
         }
 
         [TearDown]

@@ -8,14 +8,20 @@ namespace Cobweb.Data.FluentMigrator.Tests {
         internal class SampleMigration : Migration {
             private void AlterTableUsingOldAddAndNewAdd() {
                 Alter.Table("Sample")
-                     .AddColumn("OldAddSyntax").AsInt32().NotNullable().WithDefaultValue(7)
+                     .AddColumn("OldAddSyntax")
+                     .AsInt32()
+                     .NotNullable()
+                     .WithDefaultValue(7)
                      .AddColumn("NewAddSyntax", col => col.AsInt32());
             }
 
             private void AlterTableUsingNewAddAndOldAdd() {
                 Alter.Table("Sample")
                      .AddColumn("NewAddSyntax", col => col.AsInt32())
-                     .AddColumn("OldAddSyntax").AsInt32().NotNullable().WithDefaultValue(7);
+                     .AddColumn("OldAddSyntax")
+                     .AsInt32()
+                     .NotNullable()
+                     .WithDefaultValue(7);
             }
 
             private void AlterTableUsingNewAddAndNewAdd() {
@@ -26,7 +32,10 @@ namespace Cobweb.Data.FluentMigrator.Tests {
 
             private void AlterTableUsingOldAlterAndNewAlter() {
                 Alter.Table("Sample")
-                     .AlterColumn("OldAlterSyntax").AsInt32().NotNullable().WithDefaultValue(7)
+                     .AlterColumn("OldAlterSyntax")
+                     .AsInt32()
+                     .NotNullable()
+                     .WithDefaultValue(7)
                      .AlterColumn("NewAlterSyntax", col => col.AsInt32());
             }
 
@@ -34,7 +43,10 @@ namespace Cobweb.Data.FluentMigrator.Tests {
             private void AlterTableUsingNewAlterAndOldAlter() {
                 Alter.Table("Sample")
                      .AlterColumn("NewAlterSyntax", col => col.AsInt32())
-                     .AlterColumn("OldAlterSyntax").AsInt32().NotNullable().WithDefaultValue(7);
+                     .AlterColumn("OldAlterSyntax")
+                     .AsInt32()
+                     .NotNullable()
+                     .WithDefaultValue(7);
             }
 
             private void AlterTableUsingNewAlterAndNewAlter() {
@@ -45,14 +57,20 @@ namespace Cobweb.Data.FluentMigrator.Tests {
 
             private void AlterTableUsingOldAddAndNewAlter() {
                 Alter.Table("Sample")
-                     .AddColumn("OldAddSyntax").AsInt32().NotNullable().WithDefaultValue(7)
+                     .AddColumn("OldAddSyntax")
+                     .AsInt32()
+                     .NotNullable()
+                     .WithDefaultValue(7)
                      .AlterColumn("NewAlterSyntax", col => col.AsInt32());
             }
 
             private void AlterTableUsingNewAddAndOldAlter() {
                 Alter.Table("Sample")
                      .AddColumn("NewAddSyntax", col => col.AsInt32())
-                     .AlterColumn("OldAlterSyntax").AsInt32().NotNullable().WithDefaultValue(7);
+                     .AlterColumn("OldAlterSyntax")
+                     .AsInt32()
+                     .NotNullable()
+                     .WithDefaultValue(7);
             }
 
             private void AlterTableUsingNewAddAndNewAlter() {
@@ -63,14 +81,20 @@ namespace Cobweb.Data.FluentMigrator.Tests {
 
             private void AlterTableUsingOldAlterAndNewAdd() {
                 Alter.Table("Sample")
-                     .AlterColumn("OldAlterSyntax").AsInt32().NotNullable().WithDefaultValue(7)
+                     .AlterColumn("OldAlterSyntax")
+                     .AsInt32()
+                     .NotNullable()
+                     .WithDefaultValue(7)
                      .AddColumn("NewAddSyntax", col => col.AsInt32());
             }
 
             private void AlterTableUsingNewAlterAndOldAdd() {
                 Alter.Table("Sample")
                      .AlterColumn("NewAlterSyntax", col => col.AsInt32())
-                     .AddColumn("OldAddSyntax").AsInt32().NotNullable().WithDefaultValue(7);
+                     .AddColumn("OldAddSyntax")
+                     .AsInt32()
+                     .NotNullable()
+                     .WithDefaultValue(7);
             }
 
             private void AlterTableUsingNewAlterAndNewAdd() {
@@ -81,14 +105,16 @@ namespace Cobweb.Data.FluentMigrator.Tests {
 
             private void CreateTableUsingOldWithAndNewWith() {
                 Create.Table("Sample")
-                      .WithColumn("OldSyntax").AsBoolean()
+                      .WithColumn("OldSyntax")
+                      .AsBoolean()
                       .WithColumn("NewSyntax", col => col.AsInt32().NotNullable().WithDefaultValue(7));
             }
 
             private void CreateTableUsingNewWithAndOldWith() {
                 Create.Table("Sample")
                       .WithColumn("NewSyntax", col => col.AsInt32().NotNullable().WithDefaultValue(7))
-                      .WithColumn("OldSyntax").AsBoolean();
+                      .WithColumn("OldSyntax")
+                      .AsBoolean();
             }
 
             private void CreateTableUsingNewWithAndNewWith() {

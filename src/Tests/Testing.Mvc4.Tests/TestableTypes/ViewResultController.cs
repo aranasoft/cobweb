@@ -2,7 +2,6 @@
 
 namespace Cobweb.Testing.Mvc.Tests.TestableTypes {
     public class ViewResultController : Controller {
-      
         public ActionResult RenderViewWithViewName() {
             return View("FirstView");
         }
@@ -21,6 +20,5 @@ namespace Cobweb.Testing.Mvc.Tests.TestableTypes {
         public ActionResult RenderViewWithViewNameAndMasterAndData() {
             return View("FourthView", "FourthMaster", new {Prop1 = 3, Prop2 = 4});
         }
-
     }
 }

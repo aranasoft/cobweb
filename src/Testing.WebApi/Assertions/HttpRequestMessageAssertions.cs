@@ -88,10 +88,10 @@ namespace Cobweb.Testing.WebApi.Assertions {
                    .BecauseOf(because, reasonArgs)
                    .ForCondition(expectedController != null && expectedController.Equals(actualController))
                    .FailWith(
-                             "Expected {context:requestmessage} to resolve to controller {0}{reason}, but controller was {1}.",
-                             expectedController,
-                             actualController
-                            );
+                       "Expected {context:requestmessage} to resolve to controller {0}{reason}, but controller was {1}.",
+                       expectedController,
+                       actualController
+                   );
 
             return new AndConstraint<HttpRequestMessageAssertions>(this);
         }
@@ -109,7 +109,8 @@ namespace Cobweb.Testing.WebApi.Assertions {
         /// <param name="reasonArgs">
         ///     Zero or more objects to format using the placeholders in <see cref="because" />.
         /// </param>
-        public AndConstraint<HttpRequestMessageAssertions> MapToAction(string expectedAction, string because = "",
+        public AndConstraint<HttpRequestMessageAssertions> MapToAction(string expectedAction,
+                                                                       string because = "",
                                                                        params object[] reasonArgs) {
             if (ReferenceEquals(Subject, null)) {
                 Execute.Assertion
@@ -124,10 +125,10 @@ namespace Cobweb.Testing.WebApi.Assertions {
                    .BecauseOf(because, reasonArgs)
                    .ForCondition(expectedAction != null && expectedAction.Equals(actualAction))
                    .FailWith(
-                             "Expected {context:requestmessage} to resolve to action {0}{reason}, but action was {1}.",
-                             expectedAction,
-                             actualAction
-                            );
+                       "Expected {context:requestmessage} to resolve to action {0}{reason}, but action was {1}.",
+                       expectedAction,
+                       actualAction
+                   );
 
             return new AndConstraint<HttpRequestMessageAssertions>(this);
         }

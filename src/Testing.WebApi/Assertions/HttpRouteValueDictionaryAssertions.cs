@@ -39,7 +39,9 @@ namespace Cobweb.Testing.WebApi.Assertions {
         /// <param name="reasonArgs">
         /// Zero or more objects to format using the placeholders in <see cref="because" />.
         /// </param>
-        public AndConstraint<HttpRouteValueDictionaryAssertions> BeEmpty(string because = "", params object[] reasonArgs) {
+        public AndConstraint<HttpRouteValueDictionaryAssertions> BeEmpty(
+            string because = "",
+            params object[] reasonArgs) {
             if (ReferenceEquals(Subject, null)) {
                 Execute.Assertion
                        .BecauseOf(because, reasonArgs)
@@ -102,34 +104,36 @@ namespace Cobweb.Testing.WebApi.Assertions {
                 Execute.Assertion
                        .BecauseOf(because, reasonArgs)
                        .FailWith(
-                                 "Expected {context:routevalues} to to have parameter {0}{reason}, but {context:routevalues} was <null>.",
-                                 key);
+                           "Expected {context:routevalues} to to have parameter {0}{reason}, but {context:routevalues} was <null>.",
+                           key);
             }
 
             Execute.Assertion
                    .BecauseOf(because, reasonArgs)
                    .ForCondition(Subject.ContainsKey(key))
                    .FailWith(
-                             "Expected {context:routevalues} to to have parameter {0}{reason}, but parameter {0} was not found in {context:routevalues}.",
-                             key
-                            );
+                       "Expected {context:routevalues} to to have parameter {0}{reason}, but parameter {0} was not found in {context:routevalues}.",
+                       key
+                   );
 
             var actualValue = Subject.ContainsKey(key) &&
                               !string.IsNullOrEmpty(Subject[key].IfExists(val => val.ToString()))
-                                  ? Subject[key].IfExists(val => val.ToString())
-                                  : null;
+                ? Subject[key].IfExists(val => val.ToString())
+                : null;
 
             Execute.Assertion
                    .BecauseOf(because, reasonArgs)
                    .ForCondition(
-                                 string.Compare(expectedValue, actualValue,
-                                                StringComparison.InvariantCultureIgnoreCase) == 0)
+                       string.Compare(expectedValue,
+                                      actualValue,
+                                      StringComparison.InvariantCultureIgnoreCase) ==
+                       0)
                    .FailWith(
-                             "Expected {context:routevalues} to to have parameter {0} with value {1}{reason}, but value was {2}.",
-                             key,
-                             expectedValue,
-                             actualValue
-                            );
+                       "Expected {context:routevalues} to to have parameter {0} with value {1}{reason}, but value was {2}.",
+                       key,
+                       expectedValue,
+                       actualValue
+                   );
 
             return new AndConstraint<HttpRouteValueDictionaryAssertions>(this);
         }
@@ -155,7 +159,6 @@ namespace Cobweb.Testing.WebApi.Assertions {
             return HaveParameter(key, expectedValue, typeof(TValue), because, reasonArgs);
         }
 
-  
 
         /// <summary>
         ///     Asserts that a <see cref="HttpRouteValueDictionary">routeValueDictionary</see> has a specified route parameter.
@@ -175,22 +178,21 @@ namespace Cobweb.Testing.WebApi.Assertions {
                                                                                Type expectedValueType,
                                                                                string because = "",
                                                                                params object[] reasonArgs) {
-
             if (ReferenceEquals(Subject, null)) {
                 Execute.Assertion
                        .BecauseOf(because, reasonArgs)
                        .FailWith(
-                                 "Expected {context:routevalues} to to have parameter {0}{reason}, but {context:routevalues} was <null>.",
-                                 key);
+                           "Expected {context:routevalues} to to have parameter {0}{reason}, but {context:routevalues} was <null>.",
+                           key);
             }
 
             Execute.Assertion
                    .BecauseOf(because, reasonArgs)
                    .ForCondition(Subject.ContainsRouteValue(key))
                    .FailWith(
-                             "Expected {context:routevalues} to to have parameter {0}{reason}, but parameter {0} was not found in {context:routevalues}.",
-                             key
-                            );
+                       "Expected {context:routevalues} to to have parameter {0}{reason}, but parameter {0} was not found in {context:routevalues}.",
+                       key
+                   );
 
 
             object actualValue = null;
@@ -203,11 +205,11 @@ namespace Cobweb.Testing.WebApi.Assertions {
                    .BecauseOf(because, reasonArgs)
                    .ForCondition(CompareParameterValues(expectedValueType, expectedValue, actualValue))
                    .FailWith(
-                             "Expected {context:routevalues} to to have parameter {0} with value {1}{reason}, but value was {2}.",
-                             key,
-                             expectedValue,
-                             actualValue
-                            );
+                       "Expected {context:routevalues} to to have parameter {0} with value {1}{reason}, but value was {2}.",
+                       key,
+                       expectedValue,
+                       actualValue
+                   );
 
             return new AndConstraint<HttpRouteValueDictionaryAssertions>(this);
         }
@@ -258,8 +260,8 @@ namespace Cobweb.Testing.WebApi.Assertions {
                 Execute.Assertion
                        .BecauseOf(because, reasonArgs)
                        .FailWith(
-                                 "Expected {context:routevalues} to to have optional parameter {0}{reason}, but {context:routevalues} was <null>.",
-                                 key);
+                           "Expected {context:routevalues} to to have optional parameter {0}{reason}, but {context:routevalues} was <null>.",
+                           key);
             }
 
             if (!ReferenceEquals(expectedValue, null)) {
@@ -267,10 +269,10 @@ namespace Cobweb.Testing.WebApi.Assertions {
                        .BecauseOf(because, reasonArgs)
                        .ForCondition(Subject.ContainsRouteValue(key))
                        .FailWith(
-                                 "Expected {context:routevalues} to to have parameter {0} with value {1}{reason}, but parameter {0} was not found in {context:routevalues}.",
-                                 key,
-                                 expectedValue
-                                );
+                           "Expected {context:routevalues} to to have parameter {0} with value {1}{reason}, but parameter {0} was not found in {context:routevalues}.",
+                           key,
+                           expectedValue
+                       );
             }
 
             object actualValue = null;
@@ -283,11 +285,11 @@ namespace Cobweb.Testing.WebApi.Assertions {
                    .BecauseOf(because, reasonArgs)
                    .ForCondition(CompareParameterValues(expectedValueType, expectedValue, actualValue))
                    .FailWith(
-                             "Expected {context:routevalues} to to have parameter {0} with value {1}{reason}, but value was {2}.",
-                             key,
-                             expectedValue,
-                             actualValue
-                            );
+                       "Expected {context:routevalues} to to have parameter {0} with value {1}{reason}, but value was {2}.",
+                       key,
+                       expectedValue,
+                       actualValue
+                   );
 
 
             return new AndConstraint<HttpRouteValueDictionaryAssertions>(this);
@@ -313,6 +315,7 @@ namespace Cobweb.Testing.WebApi.Assertions {
                     Guid convertedValue;
                     return Guid.TryParse(value.ToString(), out convertedValue) ? convertedValue : value;
                 }
+
                 try {
                     return Convert.ChangeType(value, type);
                 }
@@ -320,6 +323,7 @@ namespace Cobweb.Testing.WebApi.Assertions {
                     // ignored
                 }
             }
+
             return value;
         }
 

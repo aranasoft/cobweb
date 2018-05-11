@@ -15,8 +15,8 @@ namespace Cobweb.Testing.WebApi.Extensions {
             var typeName = type.Name;
             const string suffix = "Controller";
             return typeName.EndsWith(suffix, StringComparison.OrdinalIgnoreCase)
-                       ? typeName.Substring(0, typeName.Length - suffix.Length)
-                       : typeName;
+                ? typeName.Substring(0, typeName.Length - suffix.Length)
+                : typeName;
         }
 
         public static string ControllerName<THttpController>(this Expression<Action<THttpController>> action)

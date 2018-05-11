@@ -7,12 +7,14 @@ using Cobweb.Data.NHibernate.Fetching;
 namespace Cobweb.Testing.NHibernate.Fetching {
     public class FakeFetchingProvider : IFetchingProvider {
         public IFetchRequest<TOriginatingEntity, TFetch> Fetch<TOriginatingEntity, TFetch>(
-            IQueryable<TOriginatingEntity> source, Expression<Func<TOriginatingEntity, TFetch>> path) {
+            IQueryable<TOriginatingEntity> source,
+            Expression<Func<TOriginatingEntity, TFetch>> path) {
             return new FetchRequest<IQueryable<TOriginatingEntity>, TOriginatingEntity, TFetch>(source);
         }
 
         public IFetchRequest<TOriginatingEntity, TFetch> FetchMany<TOriginatingEntity, TFetch>(
-            IQueryable<TOriginatingEntity> source, Expression<Func<TOriginatingEntity, IEnumerable<TFetch>>> path) {
+            IQueryable<TOriginatingEntity> source,
+            Expression<Func<TOriginatingEntity, IEnumerable<TFetch>>> path) {
             return new FetchRequest<IQueryable<TOriginatingEntity>, TOriginatingEntity, TFetch>(source);
         }
 
@@ -20,7 +22,8 @@ namespace Cobweb.Testing.NHibernate.Fetching {
             IFetchRequest<TOriginatingEntity, TFetchOn> source,
             Expression<Func<TFetchOn, TNestedFetch>> path) {
             var fetchRequest = (FetchRequest<IQueryable<TOriginatingEntity>, TOriginatingEntity, TNestedFetch>) source;
-            return new FetchRequest<IQueryable<TOriginatingEntity>, TOriginatingEntity, TNestedFetch>(fetchRequest.Queryable);
+            return new FetchRequest<IQueryable<TOriginatingEntity>, TOriginatingEntity, TNestedFetch>(fetchRequest
+                                                                                                          .Queryable);
         }
 
         public IFetchRequest<TOriginatingEntity, TNestedFetch>
@@ -28,7 +31,8 @@ namespace Cobweb.Testing.NHibernate.Fetching {
                 IFetchRequest<TOriginatingEntity, TFetchOn> source,
                 Expression<Func<TFetchOn, IEnumerable<TNestedFetch>>> path) {
             var fetchRequest = (FetchRequest<IQueryable<TOriginatingEntity>, TOriginatingEntity, TFetchOn>) source;
-            return new FetchRequest<IQueryable<TOriginatingEntity>, TOriginatingEntity, TNestedFetch>(fetchRequest.Queryable);
+            return new FetchRequest<IQueryable<TOriginatingEntity>, TOriginatingEntity, TNestedFetch>(fetchRequest
+                                                                                                          .Queryable);
         }
     }
 }

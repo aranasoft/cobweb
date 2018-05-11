@@ -7,16 +7,17 @@ namespace Cobweb.Tests.Reflection.Extensions {
     public class GivenAClassWithAttributes {
         [Test]
         public void ItShouldNotIdentifyNonExistantAttributes() {
-            (typeof (GivenAClassWithAttributes)).IsDefined<IgnoreAttribute>().Should().BeFalse();
+            (typeof(GivenAClassWithAttributes)).IsDefined<IgnoreAttribute>().Should().BeFalse();
         }
 
         [Test]
         public void ItShouldIdentifyExistingAttributes() {
-            (typeof (GivenAClassWithAttributes)).IsDefined<TestFixtureAttribute>().Should().BeTrue();
+            (typeof(GivenAClassWithAttributes)).IsDefined<TestFixtureAttribute>().Should().BeTrue();
         }
+
         [Test]
         public void ItShouldNotRetrieveNonExistantAttributes() {
-            (typeof (GivenAClassWithAttributes)).GetCustomAttributes<IgnoreAttribute>().Should().BeEmpty();
+            (typeof(GivenAClassWithAttributes)).GetCustomAttributes<IgnoreAttribute>().Should().BeEmpty();
         }
 
         [Test]

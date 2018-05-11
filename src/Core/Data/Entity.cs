@@ -17,7 +17,7 @@ namespace Cobweb.Data {
 
         public override int GetHashCode() {
             unchecked {
-                return GetType().GetHashCode()*29*Id.GetHashCode();
+                return GetType().GetHashCode() * 29 * Id.GetHashCode();
             }
         }
 
@@ -25,12 +25,15 @@ namespace Cobweb.Data {
             if (ReferenceEquals(null, other)) {
                 return false;
             }
+
             if (ReferenceEquals(this, other)) {
                 return true;
             }
+
             if (Id == null || Id.Equals(default(TIdentifier))) {
                 return false;
             }
+
             return Id.Equals(other.Id);
         }
 

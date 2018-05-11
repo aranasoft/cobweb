@@ -33,19 +33,21 @@ namespace Cobweb.Testing.Mvc.Assertions {
         /// <param name="reasonArgs">
         ///     Zero or more objects to format using the placeholders in <see cref="because" />.
         /// </param>
-        public AndConstraint<RedirectResultAssertions> RedirectToUrl(string expectedUrl, string because = "",
+        public AndConstraint<RedirectResultAssertions> RedirectToUrl(string expectedUrl,
+                                                                     string because = "",
                                                                      params object[] reasonArgs) {
             if (ReferenceEquals(Subject, null)) {
                 Execute.Assertion
                        .BecauseOf(because, reasonArgs)
                        .FailWith(
-                                 "Expected {context:redirectresult} to redirect to {0}, but {context:redirectresult} was <null>.",
-                                 expectedUrl);
+                           "Expected {context:redirectresult} to redirect to {0}, but {context:redirectresult} was <null>.",
+                           expectedUrl);
             }
 
             Execute.Assertion
                    .ForCondition(string.Compare(Subject.Url, expectedUrl, StringComparison.InvariantCulture) == 0)
-                   .FailWith("Expected {context:redirectresult} to redirect to {0}, but was {1}", expectedUrl,
+                   .FailWith("Expected {context:redirectresult} to redirect to {0}, but was {1}",
+                             expectedUrl,
                              Subject.Url);
 
             return new AndConstraint<RedirectResultAssertions>(this);

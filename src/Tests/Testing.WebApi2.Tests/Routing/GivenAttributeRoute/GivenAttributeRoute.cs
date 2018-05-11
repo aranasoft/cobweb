@@ -11,6 +11,6 @@ namespace Cobweb.Testing.WebApi.Tests.Routing.GivenAttributeRoute {
             Configuration = new HttpConfiguration();
             Configuration.MapHttpAttributeRoutes();
             Configuration.EnsureInitialized();
-       }
+        }
     }
 }

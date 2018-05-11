@@ -22,7 +22,7 @@ namespace Cobweb.Extentions {
                 return enumeration.ToString();
             }
 
-            object[] attributes = enumMemberInfo.First().GetCustomAttributes(typeof (DescriptionAttribute), false);
+            object[] attributes = enumMemberInfo.First().GetCustomAttributes(typeof(DescriptionAttribute), false);
             if (attributes.Any()) {
                 return ((DescriptionAttribute) attributes.First()).Description;
             }

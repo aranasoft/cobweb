@@ -52,6 +52,7 @@ namespace Cobweb.Testing.Mvc.Fakes {
             for (var entityIndex = 0; entityIndex < _objects.Count; entityIndex++) {
                 entities[entityIndex] = _objects[entityIndex];
             }
+
             entities.CopyTo(array, index);
         }
 

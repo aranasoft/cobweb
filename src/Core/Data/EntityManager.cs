@@ -19,7 +19,7 @@ namespace Cobweb.Data {
         }
 
         public bool IsEntity(Type type) {
-            return type.IsClass && !type.IsAbstract && type.IsAssignableToGeneric(typeof (IEntity<>));
+            return type.IsClass && !type.IsAbstract && type.IsAssignableToGeneric(typeof(IEntity<>));
         }
     }
 }

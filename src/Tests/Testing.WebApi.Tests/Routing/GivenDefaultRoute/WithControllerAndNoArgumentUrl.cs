@@ -24,7 +24,10 @@ namespace Cobweb.Testing.WebApi.Tests.Routing.GivenDefaultRoute {
         [TestCase(CurrentUrl)]
         [TestCase(CurrentUrlWithTrailingSlash)]
         public void ItShouldMapGetToControllerType(string url) {
-            url.WithHttpMethod(HttpMethod.Get).UsingConfiguration(HttpConfiguration).Should().MapTo<PrimaryController>();
+            url.WithHttpMethod(HttpMethod.Get)
+               .UsingConfiguration(HttpConfiguration)
+               .Should()
+               .MapTo<PrimaryController>();
         }
 
         [TestCase(CurrentUrl)]
@@ -57,7 +60,10 @@ namespace Cobweb.Testing.WebApi.Tests.Routing.GivenDefaultRoute {
         [TestCase(CurrentUrl)]
         [TestCase(CurrentUrlWithTrailingSlash)]
         public void ItShouldMapPutToControllerType(string url) {
-            url.WithHttpMethod(HttpMethod.Put).UsingConfiguration(HttpConfiguration).Should().MapTo<PrimaryController>();
+            url.WithHttpMethod(HttpMethod.Put)
+               .UsingConfiguration(HttpConfiguration)
+               .Should()
+               .MapTo<PrimaryController>();
         }
 
         [TestCase(CurrentUrl)]

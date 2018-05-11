@@ -11,9 +11,9 @@ namespace Cobweb.Testing.Mvc.Tests.Routing.GivenIgnoredRoute {
             RouteTable.Routes.Clear();
             RouteTable.Routes.IgnoreRoute("{resource}.jpg/{*pathInfo}");
             RouteTable.Routes.MapRoute(
-                                       "default",
-                                       "{controller}/{action}/{id}",
-                                       new {controller = "Home", Action = "Index", id = ""});
+                "default",
+                "{controller}/{action}/{id}",
+                new {controller = "Home", Action = "Index", id = ""});
         }
 
         [TearDown]

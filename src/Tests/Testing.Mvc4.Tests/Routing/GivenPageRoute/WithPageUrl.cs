@@ -18,7 +18,7 @@ namespace Cobweb.Testing.Mvc.Tests.Routing.GivenPageRoute {
             Action act = () => CurrentUrl.Should().MapToPage("~/Account/WrongInfo.aspx");
             act.ShouldThrow<AssertionException>()
                .WithMessage(
-                            "Expected routedata to resolve VirtualPath to \"~/Account/WrongInfo.aspx\", but found \"~/Account/Info.aspx\".");
+                   "Expected routedata to resolve VirtualPath to \"~/Account/WrongInfo.aspx\", but found \"~/Account/Info.aspx\".");
         }
     }
 }

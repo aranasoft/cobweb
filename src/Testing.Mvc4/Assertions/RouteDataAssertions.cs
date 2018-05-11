@@ -40,12 +40,12 @@ namespace Cobweb.Testing.Mvc.Assertions {
                 Execute.Assertion
                        .BecauseOf(because, reasonArgs)
                        .FailWith(
-                                 "Expected {context:routedata} to be ignored{reason}, but {context:routedata} was <null>.");
+                           "Expected {context:routedata} to be ignored{reason}, but {context:routedata} was <null>.");
             }
 
             Execute.Assertion
                    .BecauseOf(because, reasonArgs)
-                   .ForCondition(Subject.RouteHandler.GetType().IsAssignableTo(typeof (StopRoutingHandler)))
+                   .ForCondition(Subject.RouteHandler.GetType().IsAssignableTo(typeof(StopRoutingHandler)))
                    .FailWith("Expected {context:routedata} to be ignored{reason}");
 
             return new AndConstraint<RouteDataAssertions>(this);
@@ -88,7 +88,8 @@ namespace Cobweb.Testing.Mvc.Assertions {
         /// <param name="reasonArgs">
         ///     Zero or more objects to format using the placeholders in <see cref="because" />.
         /// </param>
-        public AndConstraint<RouteDataAssertions> MapToController(string expectedController, string because = "",
+        public AndConstraint<RouteDataAssertions> MapToController(string expectedController,
+                                                                  string because = "",
                                                                   params object[] reasonArgs) {
             if (ReferenceEquals(Subject, null)) {
                 Execute.Assertion
@@ -113,7 +114,8 @@ namespace Cobweb.Testing.Mvc.Assertions {
         /// <param name="reasonArgs">
         ///     Zero or more objects to format using the placeholders in <see cref="because" />.
         /// </param>
-        public AndConstraint<RouteDataAssertions> MapToAction(string expectedAction, string because = "",
+        public AndConstraint<RouteDataAssertions> MapToAction(string expectedAction,
+                                                              string because = "",
                                                               params object[] reasonArgs) {
             if (ReferenceEquals(Subject, null)) {
                 Execute.Assertion
@@ -165,32 +167,36 @@ namespace Cobweb.Testing.Mvc.Assertions {
         /// <param name="reasonArgs">
         ///     Zero or more objects to format using the placeholders in <see cref="because" />.
         /// </param>
-        public AndConstraint<RouteDataAssertions> MapToPage(string expectedVirtualPath, string because = "",
+        public AndConstraint<RouteDataAssertions> MapToPage(string expectedVirtualPath,
+                                                            string because = "",
                                                             params object[] reasonArgs) {
             if (ReferenceEquals(Subject, null)) {
                 Execute.Assertion
                        .BecauseOf(because, reasonArgs)
                        .FailWith(
-                                 "Expected {context:routedata} to resolve VirtualPath to {0}{reason}, but {context:routedata} was <null>.",
-                                 expectedVirtualPath);
+                           "Expected {context:routedata} to resolve VirtualPath to {0}{reason}, but {context:routedata} was <null>.",
+                           expectedVirtualPath);
             }
 
             Execute.Assertion
                    .BecauseOf(because, reasonArgs)
-                   .ForCondition(Subject.RouteHandler.GetType().IsAssignableTo(typeof (PageRouteHandler)))
+                   .ForCondition(Subject.RouteHandler.GetType().IsAssignableTo(typeof(PageRouteHandler)))
                    .FailWith("Expected {context:routedata} to be handled by {0}{reason}, but found {1}",
-                             typeof (PageRouteHandler).Name, Subject.RouteHandler.GetType());
+                             typeof(PageRouteHandler).Name,
+                             Subject.RouteHandler.GetType());
 
             var handler = Subject.RouteHandler as PageRouteHandler;
 
             Execute.Assertion
                    .BecauseOf(because, reasonArgs)
                    .ForCondition(
-                                 string.Compare(handler.VirtualPath,
-                                                expectedVirtualPath,
-                                                StringComparison.InvariantCulture) == 0)
+                       string.Compare(handler.VirtualPath,
+                                      expectedVirtualPath,
+                                      StringComparison.InvariantCulture) ==
+                       0)
                    .FailWith("Expected {context:routedata} to resolve VirtualPath to {0}{reason}, but found {1}.",
-                             expectedVirtualPath, handler.VirtualPath);
+                             expectedVirtualPath,
+                             handler.VirtualPath);
 
             return new AndConstraint<RouteDataAssertions>(this);
         }

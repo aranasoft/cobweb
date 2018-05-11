@@ -23,6 +23,7 @@ namespace Cobweb.Data.NHibernate.Providers {
             if (fetchingProvider == null) {
                 throw new InvalidOperationException(message);
             }
+
             return fetchingProvider;
         }
 

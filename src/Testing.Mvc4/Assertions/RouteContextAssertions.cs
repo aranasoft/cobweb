@@ -11,8 +11,7 @@ namespace Cobweb.Testing.Mvc.Assertions {
     [DebuggerNonUserCode]
     public class RouteContextAssertions :
         ReferenceTypeAssertions<IRouteContext, RouteContextAssertions> {
-        public RouteContextAssertions(IRouteContext value)
-        {
+        public RouteContextAssertions(IRouteContext value) {
             Subject = value;
         }
 
@@ -35,8 +34,8 @@ namespace Cobweb.Testing.Mvc.Assertions {
         ///     Zero or more objects to format using the placeholders in <see cref="because" />.
         /// </param>
         public AndConstraint<RouteContextAssertions> MapToUrl(string expectedUrl,
-                                                             string because = "",
-                                                             params object[] reasonArgs) {
+                                                              string because = "",
+                                                              params object[] reasonArgs) {
             var generatedUrl = Subject.GetUrl(HelperFactory.UrlHelper());
 
             var isMatchingUrl =
@@ -46,7 +45,8 @@ namespace Cobweb.Testing.Mvc.Assertions {
                    .BecauseOf(because, reasonArgs)
                    .ForCondition(isMatchingUrl)
                    .FailWith("Expected {context:outboundurl} to resolve Url to {0}{reason}, but found {1}.",
-                             expectedUrl, generatedUrl);
+                             expectedUrl,
+                             generatedUrl);
 
             return new AndConstraint<RouteContextAssertions>(this);
         }

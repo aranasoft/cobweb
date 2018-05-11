@@ -25,7 +25,8 @@ namespace Cobweb.Testing.Mvc.Assertions {
         ///     Zero or more objects to format using the placeholders in <see cref="because" />.
         /// </param>
         public static AndConstraint<StringAssertions> BeIgnoredRoute(this StringAssertions assertions,
-                                                                     string because = "", params object[] reasonArgs) {
+                                                                     string because = "",
+                                                                     params object[] reasonArgs) {
             assertions.Subject.AsRoute().Should().BeIgnored(because, reasonArgs);
 
             return new AndConstraint<StringAssertions>(assertions);
@@ -44,7 +45,8 @@ namespace Cobweb.Testing.Mvc.Assertions {
         ///     Zero or more objects to format using the placeholders in <see cref="because" />.
         /// </param>
         public static AndConstraint<StringAssertions> MapToPage(this StringAssertions assertions,
-                                                                string expectedVirtualPath, string because = "",
+                                                                string expectedVirtualPath,
+                                                                string because = "",
                                                                 params object[] reasonArgs) {
             assertions.Subject.AsRoute().Should().MapToPage(expectedVirtualPath, because, reasonArgs);
 

@@ -1,8 +1,7 @@
 using System;
 using System.ComponentModel;
 
-namespace Cobweb.Testing.WebApi.Extensions
-{
+namespace Cobweb.Testing.WebApi.Extensions {
     public static class WithType {
         public static bool DefaultsToBoundFromUri(this Type type) {
             return type.HasSimpleType() || type.HasStringConverter();

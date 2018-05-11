@@ -35,7 +35,8 @@ namespace Cobweb.Testing.WebApi.Tests.Routing.GivenActionRoute {
         [TestCase(CurrentUrl)]
         [TestCase(CurrentUrlWithTrailingSlash)]
         public void ItShouldMapGetToRenamedActionExpression(string url) {
-            url.WithHttpMethod(HttpMethod.Get).UsingConfiguration(HttpConfiguration)
+            url.WithHttpMethod(HttpMethod.Get)
+               .UsingConfiguration(HttpConfiguration)
                .Should()
                .MapTo<ActionNameAttributeController>(controller => controller.GetWithAlternateActionName());
         }

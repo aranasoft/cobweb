@@ -79,6 +79,4 @@ namespace Cobweb.Azure.ServiceBus {
             }
         }
     }
-
-
 }

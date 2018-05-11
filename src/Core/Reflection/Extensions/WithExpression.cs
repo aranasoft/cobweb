@@ -16,10 +16,12 @@ namespace Cobweb.Reflection.Extensions {
             var methodCall = ((MethodCallExpression) expression.Body);
 
             return methodCall.Arguments.Select((arg, argIndex) => {
-                return new KeyValuePair<ParameterInfo, Expression>(
-                    methodCall.Method.GetParameters()[argIndex],
-                    arg);
-            }).ToDictionary(pair => pair.Key, pair => pair.Value);
+                                 return new KeyValuePair<ParameterInfo, Expression>(
+                                     methodCall.Method.GetParameters()
+                                         [argIndex],
+                                     arg);
+                             })
+                             .ToDictionary(pair => pair.Key, pair => pair.Value);
         }
 
         /// <summary>
@@ -33,11 +35,12 @@ namespace Cobweb.Reflection.Extensions {
             var args = GetMethodArguments(expression);
 
             return args.Select(arg => {
-                var argInfo = arg.Key;
-                var argInput = arg.Value;
+                           var argInfo = arg.Key;
+                           var argInput = arg.Value;
 
-                return new KeyValuePair<ParameterInfo, object>(argInfo, GetExpressionValue(argInput));
-            }).ToDictionary(pair => pair.Key, pair => pair.Value);
+                           return new KeyValuePair<ParameterInfo, object>(argInfo, GetExpressionValue(argInput));
+                       })
+                       .ToDictionary(pair => pair.Key, pair => pair.Value);
         }
 
         private static object GetExpressionValue(Expression argInput) {
@@ -51,6 +54,7 @@ namespace Cobweb.Reflection.Extensions {
                 default:
                     return Expression.Lambda(argInput).Compile().DynamicInvoke();
             }
+
             return null;
         }
     }

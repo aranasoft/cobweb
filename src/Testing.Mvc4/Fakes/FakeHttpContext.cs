@@ -20,7 +20,6 @@ namespace Cobweb.Testing.Mvc.Fakes {
             set { _items = value; }
         }
 
-        
 
         protected internal override sealed HttpRequestBase InternalRequest {
             get { return _request ?? (_request = new FakeHttpRequest()); }

@@ -13,9 +13,9 @@ namespace Cobweb.Testing.Mvc.Tests.Routing.GivenNamedRoute {
         public void ConfigureRoutes() {
             RouteTable.Routes.Clear();
             RouteTable.Routes.MapRoute(
-                                       ActualRouteName,
-                                       "Route/Name",
-                                       new {controller = "Home", Action = "Index", id = ""});
+                ActualRouteName,
+                "Route/Name",
+                new {controller = "Home", Action = "Index", id = ""});
         }
 
         [TearDown]

@@ -23,6 +23,7 @@ namespace Cobweb.Data.NHibernate.Providers {
             if (fetchingProvider == null) {
                 throw new InvalidOperationException(message);
             }
+
             return fetchingProvider;
         }
 
@@ -38,13 +39,15 @@ namespace Cobweb.Data.NHibernate.Providers {
             return GetCurrentProvider().FetchMany(source, path);
         }
 
-        public static IFetchRequest<TOriginatingEntity, TNestedFetch> ThenFetch<TOriginatingEntity, TFetchOn, TNestedFetch>(
+        public static IFetchRequest<TOriginatingEntity, TNestedFetch> ThenFetch<
+            TOriginatingEntity, TFetchOn, TNestedFetch>(
             this IFetchRequest<TOriginatingEntity, TFetchOn> source,
             Expression<Func<TFetchOn, TNestedFetch>> path) {
             return GetCurrentProvider().ThenFetch(source, path);
         }
 
-        public static IFetchRequest<TOriginatingEntity, TNestedFetch> ThenFetchMany<TOriginatingEntity, TFetchOn, TNestedFetch>(
+        public static IFetchRequest<TOriginatingEntity, TNestedFetch> ThenFetchMany<
+            TOriginatingEntity, TFetchOn, TNestedFetch>(
             this IFetchRequest<TOriginatingEntity, TFetchOn> source,
             Expression<Func<TFetchOn, IEnumerable<TNestedFetch>>> path) {
             return GetCurrentProvider().ThenFetchMany(source, path);

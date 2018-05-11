@@ -9,7 +9,7 @@ namespace Cobweb.Tests.Extensions {
 
         [Test]
         public void ItShouldNotIdentifyANonDerivedTypeAsDerived() {
-            typeof (object).IsAssignableToGeneric(typeof (Animal<>)).Should().BeFalse();
+            typeof(object).IsAssignableToGeneric(typeof(Animal<>)).Should().BeFalse();
         }
 
         [TestFixture]
@@ -18,7 +18,7 @@ namespace Cobweb.Tests.Extensions {
 
             [Test]
             public void ItShouldIdentifyTheDerivedTypeAsDerived() {
-                typeof (Fish).IsAssignableToGeneric(typeof (Animal<>)).Should().BeTrue();
+                typeof(Fish).IsAssignableToGeneric(typeof(Animal<>)).Should().BeTrue();
             }
         }
 
@@ -28,7 +28,7 @@ namespace Cobweb.Tests.Extensions {
 
             [Test]
             public void ItShouldIdentifyTheDerivedTypeAsDerived() {
-                typeof (FlyingAnimal<>).IsAssignableToGeneric(typeof (Animal<>)).Should().BeTrue();
+                typeof(FlyingAnimal<>).IsAssignableToGeneric(typeof(Animal<>)).Should().BeTrue();
             }
         }
     }

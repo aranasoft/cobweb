@@ -22,12 +22,13 @@ namespace Cobweb.Testing.WebApi.Assertions {
         ///     Zero or more objects to format using the placeholders in <see cref="because" />.
         /// </param>
         public static AndConstraint<HttpRouteDataAssertions> BeIgnored(this HttpRouteDataAssertions assertion,
-                                                                       string because = "", params object[] reasonArgs) {
+                                                                       string because = "",
+                                                                       params object[] reasonArgs) {
             if (ReferenceEquals(assertion.Subject, null)) {
                 Execute.Assertion
                        .BecauseOf(because, reasonArgs)
                        .FailWith(
-                                 "Expected {context:routedata} to be ignored{reason}, but {context:routedata} was <null>.");
+                           "Expected {context:routedata} to be ignored{reason}, but {context:routedata} was <null>.");
             }
 
             Execute.Assertion

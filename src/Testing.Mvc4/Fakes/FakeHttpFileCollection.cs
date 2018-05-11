@@ -11,8 +11,7 @@ namespace Cobweb.Testing.Mvc.Fakes {
         }
 
 
-        public override string[] AllKeys
-        {
+        public override string[] AllKeys {
             get { return _files.AllKeys; }
         }
 
@@ -34,23 +33,19 @@ namespace Cobweb.Testing.Mvc.Fakes {
             get { return _files.Keys; }
         }
 
-        public override void CopyTo(Array array, int index)
-        {
+        public override void CopyTo(Array array, int index) {
             _files.CopyTo(array, index);
         }
 
-        public override HttpPostedFileBase Get(int index)
-        {
+        public override HttpPostedFileBase Get(int index) {
             return _files.Get(index);
         }
 
-        public override HttpPostedFileBase Get(string name)
-        {
+        public override HttpPostedFileBase Get(string name) {
             return _files.Get(name);
         }
 
-        public override string GetKey(int index)
-        {
+        public override string GetKey(int index) {
             return _files.GetKey(index);
         }
 

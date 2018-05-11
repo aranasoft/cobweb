@@ -18,13 +18,18 @@ namespace Cobweb.Testing.WebApi.Tests.Routing.GivenAttributeRoute {
         [TestCase(CurrentUrl)]
         [TestCase(CurrentUrlWithTrailingSlash)]
         public void ItShouldMapToActionExpression(string url) {
-            url.UsingConfiguration(Configuration).Should().MapTo<RouteAttributeController>(controller => controller.Get(5));
+            url.UsingConfiguration(Configuration)
+               .Should()
+               .MapTo<RouteAttributeController>(controller => controller.Get(5));
         }
 
         [TestCase(CurrentUrl)]
         [TestCase(CurrentUrlWithTrailingSlash)]
         public void ItShouldMapGetToControllerType(string url) {
-            url.WithHttpMethod(HttpMethod.Get).UsingConfiguration(Configuration).Should().MapTo<RouteAttributeController>();
+            url.WithHttpMethod(HttpMethod.Get)
+               .UsingConfiguration(Configuration)
+               .Should()
+               .MapTo<RouteAttributeController>();
         }
 
         [TestCase(CurrentUrl)]
@@ -57,7 +62,10 @@ namespace Cobweb.Testing.WebApi.Tests.Routing.GivenAttributeRoute {
         [TestCase(CurrentUrl)]
         [TestCase(CurrentUrlWithTrailingSlash)]
         public void ItShouldMapPutToControllerType(string url) {
-            url.WithHttpMethod(HttpMethod.Put).UsingConfiguration(Configuration).Should().MapTo<RouteAttributeController>();
+            url.WithHttpMethod(HttpMethod.Put)
+               .UsingConfiguration(Configuration)
+               .Should()
+               .MapTo<RouteAttributeController>();
         }
 
         [TestCase(CurrentUrl)]

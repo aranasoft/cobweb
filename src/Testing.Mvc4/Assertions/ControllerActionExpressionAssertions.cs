@@ -12,10 +12,9 @@ namespace Cobweb.Testing.Mvc.Assertions {
     /// </summary>
     [DebuggerNonUserCode]
     public class ControllerActionExpressionAssertions<TController> :
-        ReferenceTypeAssertions<Expression<Func<TController, ActionResult>>, ControllerActionExpressionAssertions<TController>> where TController: Controller
-    {
-        public ControllerActionExpressionAssertions(Expression<Func<TController, ActionResult>> value)
-        {
+        ReferenceTypeAssertions<Expression<Func<TController, ActionResult>>,
+            ControllerActionExpressionAssertions<TController>> where TController : Controller {
+        public ControllerActionExpressionAssertions(Expression<Func<TController, ActionResult>> value) {
             Subject = value;
         }
 
@@ -38,8 +37,8 @@ namespace Cobweb.Testing.Mvc.Assertions {
         ///     Zero or more objects to format using the placeholders in <see cref="because" />.
         /// </param>
         public AndConstraint<ControllerActionExpressionAssertions<TController>> MapToUrl(string expectedUrl,
-                                                             string because = "",
-                                                             params object[] reasonArgs) {
+                                                                                         string because = "",
+                                                                                         params object[] reasonArgs) {
             var generatedUrl = Subject.RouteContext().GetUrl(HelperFactory.UrlHelper());
 
             var isMatchingUrl =
@@ -49,7 +48,8 @@ namespace Cobweb.Testing.Mvc.Assertions {
                    .BecauseOf(because, reasonArgs)
                    .ForCondition(isMatchingUrl)
                    .FailWith("Expected {context:outboundurl} to resolve Url to {0}{reason}, but found {1}.",
-                             expectedUrl, generatedUrl);
+                             expectedUrl,
+                             generatedUrl);
 
             return new AndConstraint<ControllerActionExpressionAssertions<TController>>(this);
         }

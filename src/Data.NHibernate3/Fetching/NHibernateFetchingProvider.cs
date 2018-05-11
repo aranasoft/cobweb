@@ -21,14 +21,16 @@ namespace Cobweb.Data.NHibernate.Fetching {
         }
 
         public IFetchRequest<T> ThenFetch<T, TFetchedProperty, TChildProperty>(
-            IFetchRequest<T> query, Expression<Func<TFetchedProperty, TChildProperty>> relatedObjectSelector) {
+            IFetchRequest<T> query,
+            Expression<Func<TFetchedProperty, TChildProperty>> relatedObjectSelector) {
             var fetchRequest = (NHibernateFetchRequest<T, TFetchedProperty>) query;
             var fetchQuery = fetchRequest.Queryable.ThenFetch(relatedObjectSelector);
             return new NHibernateFetchRequest<T, TChildProperty>(fetchQuery);
         }
 
         public IFetchRequest<T> ThenFetchMany<T, TFetchedProperty, TChildProperty>(
-            IFetchRequest<T> source, Expression<Func<TFetchedProperty, IEnumerable<TChildProperty>>> path) {
+            IFetchRequest<T> source,
+            Expression<Func<TFetchedProperty, IEnumerable<TChildProperty>>> path) {
             var fetchRequest = (NHibernateFetchRequest<T, TFetchedProperty>) source;
             var fetchQuery = fetchRequest.Queryable.ThenFetchMany(path);
             return new NHibernateFetchRequest<T, TChildProperty>(fetchQuery);

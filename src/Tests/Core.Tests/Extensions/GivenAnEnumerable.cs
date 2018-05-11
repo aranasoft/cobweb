@@ -19,7 +19,7 @@ namespace Cobweb.Tests.Extensions {
             var executions = 0;
             var expectedExecutions = _collection.Count();
 
-            _collection.ForEach(str => executions ++);
+            _collection.ForEach(str => executions++);
 
             executions.Should().Be(expectedExecutions);
         }

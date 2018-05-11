@@ -38,19 +38,18 @@ namespace Cobweb.Testing.Mvc.Assertions {
         /// <param name="reasonArgs">
         /// Zero or more objects to format using the placeholders in <see cref="because" />.
         /// </param>
-        public AndConstraint<RouteValueDictionaryAssertions> BeEmpty(string because = "", params object[] reasonArgs)
-        {
-            if (ReferenceEquals(Subject, null))
-            {
+        public AndConstraint<RouteValueDictionaryAssertions> BeEmpty(string because = "", params object[] reasonArgs) {
+            if (ReferenceEquals(Subject, null)) {
                 Execute.Assertion
-                    .BecauseOf(because, reasonArgs)
-                    .FailWith("Expected {context:routevalues} to be empty{reason}, but found {0}.", Subject);
+                       .BecauseOf(because, reasonArgs)
+                       .FailWith("Expected {context:routevalues} to be empty{reason}, but found {0}.", Subject);
             }
 
             Execute.Assertion
-                .ForCondition(!Subject.Any())
-                .BecauseOf(because, reasonArgs)
-                .FailWith("Expected {context:routevalues} to not have any items{reason}, but found {0}.", Subject.Count);
+                   .ForCondition(!Subject.Any())
+                   .BecauseOf(because, reasonArgs)
+                   .FailWith("Expected {context:routevalues} to not have any items{reason}, but found {0}.",
+                             Subject.Count);
 
             return new AndConstraint<RouteValueDictionaryAssertions>(this);
         }
@@ -66,23 +65,20 @@ namespace Cobweb.Testing.Mvc.Assertions {
         /// Zero or more objects to format using the placeholders in <see cref="because" />.
         /// </param>
         public AndConstraint<RouteValueDictionaryAssertions> NotBeEmpty(string because = "",
-            params object[] reasonArgs)
-        {
-            if (ReferenceEquals(Subject, null))
-            {
+                                                                        params object[] reasonArgs) {
+            if (ReferenceEquals(Subject, null)) {
                 Execute.Assertion
-                    .BecauseOf(because, reasonArgs)
-                    .FailWith("Expected {context:routevalues} not to be empty{reason}, but found {0}.", Subject);
+                       .BecauseOf(because, reasonArgs)
+                       .FailWith("Expected {context:routevalues} not to be empty{reason}, but found {0}.", Subject);
             }
 
             Execute.Assertion
-                .ForCondition(Subject.Any())
-                .BecauseOf(because, reasonArgs)
-                .FailWith("Expected {context:routevalues} to have one or more items{reason}, but found none.");
+                   .ForCondition(Subject.Any())
+                   .BecauseOf(because, reasonArgs)
+                   .FailWith("Expected {context:routevalues} to have one or more items{reason}, but found none.");
 
             return new AndConstraint<RouteValueDictionaryAssertions>(this);
         }
-
 
 
         /// <summary>
@@ -105,34 +101,36 @@ namespace Cobweb.Testing.Mvc.Assertions {
                 Execute.Assertion
                        .BecauseOf(because, reasonArgs)
                        .FailWith(
-                                 "Expected {context:routevalues} to to have parameter {0}{reason}, but {context:routevalues} was <null>.",
-                                 key);
+                           "Expected {context:routevalues} to to have parameter {0}{reason}, but {context:routevalues} was <null>.",
+                           key);
             }
 
             Execute.Assertion
                    .BecauseOf(because, reasonArgs)
                    .ForCondition(Subject.ContainsKey(key))
                    .FailWith(
-                             "Expected {context:routevalues} to to have parameter {0}{reason}, but parameter {0} was not found in {context:routevalues}.",
-                             key
-                );
+                       "Expected {context:routevalues} to to have parameter {0}{reason}, but parameter {0} was not found in {context:routevalues}.",
+                       key
+                   );
 
             var actualValue = Subject.ContainsKey(key) &&
                               !string.IsNullOrEmpty(Subject[key].IfExists(val => val.ToString()))
-                                  ? Subject[key].IfExists(val => val.ToString())
-                                  : null;
+                ? Subject[key].IfExists(val => val.ToString())
+                : null;
 
             Execute.Assertion
                    .BecauseOf(because, reasonArgs)
                    .ForCondition(
-                                 string.Compare(expectedValue, actualValue,
-                                                StringComparison.InvariantCultureIgnoreCase) == 0)
+                       string.Compare(expectedValue,
+                                      actualValue,
+                                      StringComparison.InvariantCultureIgnoreCase) ==
+                       0)
                    .FailWith(
-                             "Expected {context:routevalues} to to have parameter {0} with value {1}{reason}, but value was {2}.",
-                             key,
-                             expectedValue,
-                             actualValue
-                );
+                       "Expected {context:routevalues} to to have parameter {0} with value {1}{reason}, but value was {2}.",
+                       key,
+                       expectedValue,
+                       actualValue
+                   );
 
             return new AndConstraint<RouteValueDictionaryAssertions>(this);
         }
@@ -155,7 +153,7 @@ namespace Cobweb.Testing.Mvc.Assertions {
                                                                                    string because = "",
                                                                                    params object[] reasonArgs)
             where TValue : class {
-            return HaveParameter(key, expectedValue, typeof (TValue), because, reasonArgs);
+            return HaveParameter(key, expectedValue, typeof(TValue), because, reasonArgs);
         }
 
         /// <summary>
@@ -180,32 +178,32 @@ namespace Cobweb.Testing.Mvc.Assertions {
                 Execute.Assertion
                        .BecauseOf(because, reasonArgs)
                        .FailWith(
-                                 "Expected {context:routevalues} to to have parameter {0}{reason}, but {context:routevalues} was <null>.",
-                                 key);
+                           "Expected {context:routevalues} to to have parameter {0}{reason}, but {context:routevalues} was <null>.",
+                           key);
             }
 
             Execute.Assertion
                    .BecauseOf(because, reasonArgs)
                    .ForCondition(Subject.ContainsKey(key))
                    .FailWith(
-                             "Expected {context:routevalues} to to have parameter {0}{reason}, but parameter {0} was not found in {context:routevalues}.",
-                             key
-                );
+                       "Expected {context:routevalues} to to have parameter {0}{reason}, but parameter {0} was not found in {context:routevalues}.",
+                       key
+                   );
 
             var actualValue = Subject.ContainsKey(key) &&
                               !string.IsNullOrEmpty(Subject[key].IfExists(val => val.ToString()))
-                                  ? Subject[key]
-                                  : null;
+                ? Subject[key]
+                : null;
 
             Execute.Assertion
                    .BecauseOf(because, reasonArgs)
                    .ForCondition(CompareParameterValues(expectedValueType, expectedValue, actualValue))
                    .FailWith(
-                             "Expected {context:routevalues} to to have parameter {0} with value {1}{reason}, but value was {2}.",
-                             key,
-                             expectedValue,
-                             actualValue
-                );
+                       "Expected {context:routevalues} to to have parameter {0} with value {1}{reason}, but value was {2}.",
+                       key,
+                       expectedValue,
+                       actualValue
+                   );
 
             return new AndConstraint<RouteValueDictionaryAssertions>(this);
         }
@@ -229,7 +227,7 @@ namespace Cobweb.Testing.Mvc.Assertions {
                                                                                            string because = "",
                                                                                            params object[] reasonArgs)
             where TValue : class {
-            return HaveOptionalParameter(key, expectedValue, typeof (TValue), because, reasonArgs);
+            return HaveOptionalParameter(key, expectedValue, typeof(TValue), because, reasonArgs);
         }
 
         /// <summary>
@@ -255,8 +253,8 @@ namespace Cobweb.Testing.Mvc.Assertions {
                 Execute.Assertion
                        .BecauseOf(because, reasonArgs)
                        .FailWith(
-                                 "Expected {context:routevalues} to to have optional parameter {0}{reason}, but {context:routevalues} was <null>.",
-                                 key);
+                           "Expected {context:routevalues} to to have optional parameter {0}{reason}, but {context:routevalues} was <null>.",
+                           key);
             }
 
             if (!ReferenceEquals(expectedValue, null)) {
@@ -264,27 +262,27 @@ namespace Cobweb.Testing.Mvc.Assertions {
                        .BecauseOf(because, reasonArgs)
                        .ForCondition(Subject.ContainsKey(key))
                        .FailWith(
-                                 "Expected {context:routevalues} to to have parameter {0} with value {1}{reason}, but parameter {0} was not found in {context:routevalues}.",
-                                 key,
-                                 expectedValue
-                    );
+                           "Expected {context:routevalues} to to have parameter {0} with value {1}{reason}, but parameter {0} was not found in {context:routevalues}.",
+                           key,
+                           expectedValue
+                       );
             }
 
             var actualValue = Subject.ContainsKey(key) &&
                               !string.IsNullOrEmpty(Subject[key].IfExists(val => val.ToString()))
-                                  ? Subject[key]
-                                  : null;
+                ? Subject[key]
+                : null;
 
 
             Execute.Assertion
                    .BecauseOf(because, reasonArgs)
                    .ForCondition(CompareParameterValues(expectedValueType, expectedValue, actualValue))
                    .FailWith(
-                             "Expected {context:routevalues} to to have parameter {0} with value {1}{reason}, but value was {2}.",
-                             key,
-                             expectedValue,
-                             actualValue
-                );
+                       "Expected {context:routevalues} to to have parameter {0} with value {1}{reason}, but value was {2}.",
+                       key,
+                       expectedValue,
+                       actualValue
+                   );
 
 
             return new AndConstraint<RouteValueDictionaryAssertions>(this);
@@ -306,16 +304,19 @@ namespace Cobweb.Testing.Mvc.Assertions {
                     return ConvertParameterValueToType(value, Nullable.GetUnderlyingType(type));
                 }
 
-                if (type == typeof (Guid)) {
+                if (type == typeof(Guid)) {
                     Guid convertedValue;
                     return Guid.TryParse(value.ToString(), out convertedValue) ? convertedValue : value;
                 }
+
                 try {
                     return Convert.ChangeType(value, type);
-                } catch (Exception) {
+                }
+                catch (Exception) {
                     // ignored
                 }
             }
+
             return value;
         }
 
@@ -434,7 +435,8 @@ namespace Cobweb.Testing.Mvc.Assertions {
 
                 if (param.ParameterType.CanBeNull()) {
                     Subject.Should().HaveOptionalParameter(paramName, expectedValue, param.ParameterType);
-                } else {
+                }
+                else {
                     Subject.Should().HaveParameter(paramName, expectedValue, param.ParameterType);
                 }
             }

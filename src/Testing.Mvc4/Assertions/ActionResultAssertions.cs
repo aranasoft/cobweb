@@ -56,10 +56,13 @@ namespace Cobweb.Testing.Mvc.Assertions {
             var viewResult = ReturnView(because, reasonArgs).Which;
             Execute.Assertion
                    .ForCondition(
-                                 string.Compare(expectedViewName, viewResult.ViewName, StringComparison.InvariantCulture) ==
-                                 0)
+                       string.Compare(expectedViewName,
+                                      viewResult.ViewName,
+                                      StringComparison.InvariantCulture) ==
+                       0)
                    .BecauseOf(because, reasonArgs)
-                   .FailWith("Expected ViewResult to have ViewName {0}{reason}, but was {1}.", expectedViewName,
+                   .FailWith("Expected ViewResult to have ViewName {0}{reason}, but was {1}.",
+                             expectedViewName,
                              viewResult.ViewName);
 
             return new AndWhichConstraint<ActionResultAssertions, ViewResultBase>(this, viewResult);
@@ -99,11 +102,11 @@ namespace Cobweb.Testing.Mvc.Assertions {
 
             Execute.Assertion
                    .BecauseOf(because, reasonArgs)
-                   .ForCondition(Subject.IsSameOrEqualTo(typeof (RedirectResult)) ||
-                                 Subject.IsSameOrEqualTo(typeof (RedirectToRouteResult)))
+                   .ForCondition(Subject.IsSameOrEqualTo(typeof(RedirectResult)) ||
+                                 Subject.IsSameOrEqualTo(typeof(RedirectToRouteResult)))
                    .FailWith(
-                             "Expected {context:object} to be RedirectResult or RedirectToRouteResult{reason}, but found {0}.",
-                             Subject);
+                       "Expected {context:object} to be RedirectResult or RedirectToRouteResult{reason}, but found {0}.",
+                       Subject);
 
             return new AndConstraint<ActionResultAssertions>(this);
         }
@@ -119,7 +122,8 @@ namespace Cobweb.Testing.Mvc.Assertions {
         ///     Zero or more objects to format using the placeholders in <see cref="because" />.
         /// </param>
         public AndWhichConstraint<ActionResultAssertions, RedirectResult> ReturnUrlRedirect(string because = "",
-                                                                                            params object[] reasonArgs) {
+                                                                                            params object[]
+                                                                                                reasonArgs) {
             return BeOfType<RedirectResult>(because, reasonArgs);
         }
 

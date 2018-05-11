@@ -19,7 +19,9 @@ namespace Cobweb.Extentions.ObjectExtentions {
         ///     The result of the <paramref name="delegate" /> or, if the <paramref name="object" /> is null,
         ///     <paramref name="default" />.
         /// </returns>
-        public static TResult IfExists<T, TResult>(this T @object, Func<T, TResult> @delegate, TResult @default = default(TResult))
+        public static TResult IfExists<T, TResult>(this T @object,
+                                                   Func<T, TResult> @delegate,
+                                                   TResult @default = default(TResult))
             where T : class {
             return @object != null ? @delegate(@object) : @default;
         }

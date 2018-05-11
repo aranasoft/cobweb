@@ -47,8 +47,8 @@ namespace Cobweb.Testing.Mvc.Assertions {
                 Execute.Assertion
                        .BecauseOf(because, reasonArgs)
                        .FailWith(
-                                 "Expected {context:redirecttorouteresult} to redirect to controller {0}{reason}, but {context:redirecttorouteresult} was <null>.",
-                                 expectedController);
+                           "Expected {context:redirecttorouteresult} to redirect to controller {0}{reason}, but {context:redirecttorouteresult} was <null>.",
+                           expectedController);
             }
 
 
@@ -56,25 +56,27 @@ namespace Cobweb.Testing.Mvc.Assertions {
                    .BecauseOf(because, reasonArgs)
                    .ForCondition(Subject.RouteValues.ContainsKey(key))
                    .FailWith(
-                             "Expected {context:redirecttorouteresult} to to have route parameter {0}{reason}, but parameter {0} was not found.",
-                             key
-                );
+                       "Expected {context:redirecttorouteresult} to to have route parameter {0}{reason}, but parameter {0} was not found.",
+                       key
+                   );
 
             var actualController = Subject.RouteValues.ContainsKey(key) &&
                                    !string.IsNullOrEmpty(Subject.RouteValues[key].IfExists(val => val.ToString()))
-                                       ? Subject.RouteValues[key].IfExists(val => val.ToString())
-                                       : null;
+                ? Subject.RouteValues[key].IfExists(val => val.ToString())
+                : null;
 
             Execute.Assertion
                    .BecauseOf(because, reasonArgs)
                    .ForCondition(
-                                 string.Compare(expectedController, actualController,
-                                                StringComparison.InvariantCultureIgnoreCase) == 0)
+                       string.Compare(expectedController,
+                                      actualController,
+                                      StringComparison.InvariantCultureIgnoreCase) ==
+                       0)
                    .FailWith(
-                             "Expected {context:redirecttorouteresult} to redirect to controller {0}{reason}, but was {1}.",
-                             expectedController,
-                             actualController
-                );
+                       "Expected {context:redirecttorouteresult} to redirect to controller {0}{reason}, but was {1}.",
+                       expectedController,
+                       actualController
+                   );
 
             return new AndConstraint<RedirectToRouteResultAssertions>(this);
         }

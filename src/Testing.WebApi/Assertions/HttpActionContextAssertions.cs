@@ -114,34 +114,36 @@ namespace Cobweb.Testing.WebApi.Assertions {
                 Execute.Assertion
                        .BecauseOf(because, reasonArgs)
                        .FailWith(
-                                 "Expected {context:actioncontext} to to have argument {0}{reason}, but {context:actioncontext} was <null>.",
-                                 key);
+                           "Expected {context:actioncontext} to to have argument {0}{reason}, but {context:actioncontext} was <null>.",
+                           key);
             }
 
             Execute.Assertion
                    .BecauseOf(because, reasonArgs)
                    .ForCondition(Subject.ActionArguments.ContainsKey(key))
                    .FailWith(
-                             "Expected {context:actioncontext} to to have argument {0}{reason}, but argument {0} was not found in {context:actioncontext}.",
-                             key
-                            );
+                       "Expected {context:actioncontext} to to have argument {0}{reason}, but argument {0} was not found in {context:actioncontext}.",
+                       key
+                   );
 
             var actualValue = Subject.ActionArguments.ContainsKey(key) &&
                               !string.IsNullOrEmpty(Subject.ActionArguments[key].IfExists(val => val.ToString()))
-                                  ? Subject.ActionArguments[key].IfExists(val => val.ToString())
-                                  : null;
+                ? Subject.ActionArguments[key].IfExists(val => val.ToString())
+                : null;
 
             Execute.Assertion
                    .BecauseOf(because, reasonArgs)
                    .ForCondition(
-                                 string.Compare(expectedValue, actualValue,
-                                                StringComparison.InvariantCultureIgnoreCase) == 0)
+                       string.Compare(expectedValue,
+                                      actualValue,
+                                      StringComparison.InvariantCultureIgnoreCase) ==
+                       0)
                    .FailWith(
-                             "Expected {context:actioncontext} to to have argument {0} with value {1}{reason}, but value was {2}.",
-                             key,
-                             expectedValue,
-                             actualValue
-                            );
+                       "Expected {context:actioncontext} to to have argument {0} with value {1}{reason}, but value was {2}.",
+                       key,
+                       expectedValue,
+                       actualValue
+                   );
 
             return new AndConstraint<HttpActionContextAssertions>(this);
         }
@@ -190,17 +192,17 @@ namespace Cobweb.Testing.WebApi.Assertions {
                 Execute.Assertion
                        .BecauseOf(because, reasonArgs)
                        .FailWith(
-                                 "Expected {context:actioncontext} to to have argument {0}{reason}, but {context:actioncontext} was <null>.",
-                                 key);
+                           "Expected {context:actioncontext} to to have argument {0}{reason}, but {context:actioncontext} was <null>.",
+                           key);
             }
 
             Execute.Assertion
                    .BecauseOf(because, reasonArgs)
                    .ForCondition(Subject.ActionArguments.ContainsKey(key))
                    .FailWith(
-                             "Expected {context:actioncontext} to to have argument {0}{reason}, but argument {0} was not found in {context:actioncontext}.",
-                             key
-                            );
+                       "Expected {context:actioncontext} to to have argument {0}{reason}, but argument {0} was not found in {context:actioncontext}.",
+                       key
+                   );
 
 
             object actualValue;
@@ -256,8 +258,8 @@ namespace Cobweb.Testing.WebApi.Assertions {
                 Execute.Assertion
                        .BecauseOf(because, reasonArgs)
                        .FailWith(
-                                 "Expected {context:actioncontext} to to have optional argument {0}{reason}, but {context:actioncontext} was <null>.",
-                                 key);
+                           "Expected {context:actioncontext} to to have optional argument {0}{reason}, but {context:actioncontext} was <null>.",
+                           key);
             }
 
             if (!ReferenceEquals(expectedValue, null)) {
@@ -265,10 +267,10 @@ namespace Cobweb.Testing.WebApi.Assertions {
                        .BecauseOf(because, reasonArgs)
                        .ForCondition(Subject.ActionArguments.ContainsKey(key))
                        .FailWith(
-                                 "Expected {context:actioncontext} to to have argument {0} with value {1}{reason}, but argument {0} was not found in {context:actioncontext}.",
-                                 key,
-                                 expectedValue
-                                );
+                           "Expected {context:actioncontext} to to have argument {0} with value {1}{reason}, but argument {0} was not found in {context:actioncontext}.",
+                           key,
+                           expectedValue
+                       );
             }
 
             object actualValue;
@@ -279,10 +281,10 @@ namespace Cobweb.Testing.WebApi.Assertions {
                        .BecauseOf(because, reasonArgs)
                        .ForCondition(actualValue == null)
                        .FailWith(
-                                 "Expected {context:actioncontext} to to have argument {0} with value <null>{reason}, but value was {1}.",
-                                 key,
-                                 actualValue
-                                );
+                           "Expected {context:actioncontext} to to have argument {0} with value <null>{reason}, but value was {1}.",
+                           key,
+                           actualValue
+                       );
             }
             else {
                 if (!ReferenceEquals(actualValue, null)) {

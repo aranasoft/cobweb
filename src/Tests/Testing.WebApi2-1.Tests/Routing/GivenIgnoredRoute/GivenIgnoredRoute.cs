@@ -10,7 +10,8 @@ namespace Cobweb.Testing.WebApi.Tests.Routing.GivenIgnoredRoute {
         public void ConfigureRoutes() {
             HttpConfiguration = new HttpConfiguration();
             HttpConfiguration.Routes.IgnoreRoute("Ignored", "{controller}/{resource}.jpg/{*pathInfo}");
-            HttpConfiguration.Routes.MapHttpRoute(name: "DefaultApi", routeTemplate: "{controller}/{id}",
+            HttpConfiguration.Routes.MapHttpRoute(name: "DefaultApi",
+                                                  routeTemplate: "{controller}/{id}",
                                                   defaults: new {id = RouteParameter.Optional});
         }
     }

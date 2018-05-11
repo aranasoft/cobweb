@@ -8,7 +8,7 @@ namespace Cobweb.Data.FluentMigrator {
             this ICreateTableWithColumnSyntax columnSyntax,
             string columnName,
             Func<ICreateTableColumnAsTypeSyntax, ICreateTableWithColumnSyntax> columnOptions
-            ) {
+        ) {
             var column = columnSyntax.WithColumn(columnName);
             return columnOptions.Invoke(column);
         }
@@ -17,7 +17,7 @@ namespace Cobweb.Data.FluentMigrator {
             this IAlterTableAddColumnOrAlterColumnSyntax columnSyntax,
             string columnName,
             Func<IAlterTableColumnAsTypeSyntax, IAlterTableAddColumnOrAlterColumnSyntax> columnOptions
-            ) {
+        ) {
             var column = columnSyntax.AddColumn(columnName);
             return columnOptions.Invoke(column);
         }
@@ -26,18 +26,19 @@ namespace Cobweb.Data.FluentMigrator {
             this IAlterTableAddColumnOrAlterColumnSyntax columnSyntax,
             string columnName,
             Func<IAlterTableColumnAsTypeSyntax, IAlterTableAddColumnOrAlterColumnSyntax> columnOptions
-            ) {
+        ) {
             var column = columnSyntax.AlterColumn(columnName);
             return columnOptions.Invoke(column);
         }
 
-        public static ICreateTableColumnOptionOrWithColumnSyntax AsStringMax(this ICreateTableColumnAsTypeSyntax column) {
+        public static ICreateTableColumnOptionOrWithColumnSyntax
+            AsStringMax(this ICreateTableColumnAsTypeSyntax column) {
             return column.AsString(10000);
         }
 
         public static IAlterTableColumnOptionOrAddColumnOrAlterColumnSyntax AsStringMax(
             this IAlterTableColumnAsTypeSyntax column
-            ) {
+        ) {
             return column.AsString(10000);
         }
     }

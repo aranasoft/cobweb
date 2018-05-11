@@ -6,7 +6,8 @@ namespace Cobweb.Tests.Extensions {
     [TestFixture]
     public class GivenAnEnum {
         private enum Fruits {
-            [System.ComponentModel.Description("Granny Smith Apples")] Apples,
+            [System.ComponentModel.Description("Granny Smith Apples")]
+            Apples,
             Oranges,
             Grapes
         }

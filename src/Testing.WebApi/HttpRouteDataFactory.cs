@@ -19,8 +19,8 @@ namespace Cobweb.Testing.WebApi {
             var typeName = type.Name;
             const string suffix = "Controller";
             return typeName.EndsWith(suffix, StringComparison.OrdinalIgnoreCase)
-                       ? typeName.Substring(0, typeName.Length - suffix.Length)
-                       : typeName;
+                ? typeName.Substring(0, typeName.Length - suffix.Length)
+                : typeName;
         }
 
         public static string HttpControllerName<THttpController>(this Expression<Func<THttpController, object>> action)
@@ -98,8 +98,7 @@ namespace Cobweb.Testing.WebApi {
             return requestMessage;
         }
 
-        public static HttpRequestMessage WithJsonContent(this HttpRequestMessage requestMessage, string jsonContent)
-        {
+        public static HttpRequestMessage WithJsonContent(this HttpRequestMessage requestMessage, string jsonContent) {
             var payload = new StringContent(jsonContent, Encoding.UTF8, "application/json");
             requestMessage.Content = payload;
             return requestMessage;
@@ -123,6 +122,7 @@ namespace Cobweb.Testing.WebApi {
             if (routeData != null) {
                 requestMessage.Properties[HttpPropertyKeys.HttpRouteDataKey] = routeData;
             }
+
             return requestMessage;
         }
 

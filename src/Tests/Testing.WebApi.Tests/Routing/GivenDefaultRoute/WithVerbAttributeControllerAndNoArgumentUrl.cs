@@ -62,8 +62,10 @@ namespace Cobweb.Testing.WebApi.Tests.Routing.GivenDefaultRoute {
         [TestCase(CurrentUrl)]
         [TestCase(CurrentUrlWithTrailingSlash)]
         public void ItShouldMapPutToControllerType(string url) {
-            url.WithHttpMethod(HttpMethod.Put).UsingConfiguration(HttpConfiguration)
-               .Should().MapTo<HttpMethodAttributeController>();
+            url.WithHttpMethod(HttpMethod.Put)
+               .UsingConfiguration(HttpConfiguration)
+               .Should()
+               .MapTo<HttpMethodAttributeController>();
         }
 
         [TestCase(CurrentUrl)]

@@ -35,7 +35,8 @@ namespace Cobweb.Testing.WebApi.Tests.Routing.GivenDefaultRoute {
         [TestCase(CurrentUrl)]
         [TestCase(CurrentUrlWithTrailingSlash)]
         public void ItShouldMapGetToActionExpression(string url) {
-            url.WithHttpMethod(HttpMethod.Get).UsingConfiguration(HttpConfiguration)
+            url.WithHttpMethod(HttpMethod.Get)
+               .UsingConfiguration(HttpConfiguration)
                .Should()
                .MapTo<HasControllerInNameController>(controller => controller.Get());
         }
@@ -52,7 +53,8 @@ namespace Cobweb.Testing.WebApi.Tests.Routing.GivenDefaultRoute {
         [TestCase(CurrentUrl)]
         [TestCase(CurrentUrlWithTrailingSlash)]
         public void ItShouldMapPostToActionExpression(string url) {
-            url.WithHttpMethod(HttpMethod.Post).UsingConfiguration(HttpConfiguration)
+            url.WithHttpMethod(HttpMethod.Post)
+               .UsingConfiguration(HttpConfiguration)
                .Should()
                .MapTo<HasControllerInNameController>(controller => controller.Post());
         }
@@ -69,7 +71,8 @@ namespace Cobweb.Testing.WebApi.Tests.Routing.GivenDefaultRoute {
         [TestCase(CurrentUrl)]
         [TestCase(CurrentUrlWithTrailingSlash)]
         public void ItShouldMapPutToActionExpression(string url) {
-            url.WithHttpMethod(HttpMethod.Put).UsingConfiguration(HttpConfiguration)
+            url.WithHttpMethod(HttpMethod.Put)
+               .UsingConfiguration(HttpConfiguration)
                .Should()
                .MapTo<HasControllerInNameController>(controller => controller.Put());
         }
@@ -86,7 +89,8 @@ namespace Cobweb.Testing.WebApi.Tests.Routing.GivenDefaultRoute {
         [TestCase(CurrentUrl)]
         [TestCase(CurrentUrlWithTrailingSlash)]
         public void ItShouldMapDeleteToActionExpression(string url) {
-            url.WithHttpMethod(HttpMethod.Delete).UsingConfiguration(HttpConfiguration)
+            url.WithHttpMethod(HttpMethod.Delete)
+               .UsingConfiguration(HttpConfiguration)
                .Should()
                .MapTo<HasControllerInNameController>(controller => controller.Delete());
         }

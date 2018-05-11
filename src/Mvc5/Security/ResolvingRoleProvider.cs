@@ -19,6 +19,7 @@ namespace Cobweb.Web.Mvc.Security {
             if (provider == null) {
                 throw new Exception("Unable to resolve RoleProvider");
             }
+
             return provider;
         }
 

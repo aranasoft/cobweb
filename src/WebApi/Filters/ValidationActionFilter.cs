@@ -18,6 +18,7 @@ namespace Cobweb.Web.Http.Filters {
                         clientModelState.AddModelError(revisedKey, error.ErrorMessage);
                     }
                 }
+
                 actionContext.Response = actionContext.Request.CreateErrorResponse(HttpStatusCode.BadRequest,
                                                                                    clientModelState);
             }

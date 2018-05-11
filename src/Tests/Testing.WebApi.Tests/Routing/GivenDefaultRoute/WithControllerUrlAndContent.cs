@@ -111,7 +111,8 @@ namespace Cobweb.Testing.WebApi.Tests.Routing.GivenDefaultRoute {
                                   .WithJsonContent("{name: \"bar\"}")
                                   .UsingConfiguration(HttpConfiguration)
                                   .Should()
-                                  .MapTo<ResultController>(controller => controller.Put(5, new AnObject {Name = "foo"}));
+                                  .MapTo<ResultController>(controller =>
+                                                               controller.Put(5, new AnObject {Name = "foo"}));
 
             act.ShouldThrow<AssertionException>()
                .And.Message.Should()

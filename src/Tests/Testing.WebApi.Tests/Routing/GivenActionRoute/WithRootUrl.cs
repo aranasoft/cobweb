@@ -30,7 +30,9 @@ namespace Cobweb.Testing.WebApi.Tests.Routing.GivenActionRoute {
         [Test]
         public void ItShould404OnGet() {
             Action act =
-                () => CurrentUrl.WithHttpMethod(HttpMethod.Get).UsingConfiguration(HttpConfiguration).SelectController();
+                () => CurrentUrl.WithHttpMethod(HttpMethod.Get)
+                                .UsingConfiguration(HttpConfiguration)
+                                .SelectController();
             act.ShouldThrow<HttpResponseException>().And.Response.StatusCode.Should().Be(HttpStatusCode.NotFound);
         }
 
@@ -47,7 +49,9 @@ namespace Cobweb.Testing.WebApi.Tests.Routing.GivenActionRoute {
         [Test]
         public void ItShould404OnPut() {
             Action act =
-                () => CurrentUrl.WithHttpMethod(HttpMethod.Put).UsingConfiguration(HttpConfiguration).SelectController();
+                () => CurrentUrl.WithHttpMethod(HttpMethod.Put)
+                                .UsingConfiguration(HttpConfiguration)
+                                .SelectController();
             act.ShouldThrow<HttpResponseException>().And.Response.StatusCode.Should().Be(HttpStatusCode.NotFound);
         }
     }

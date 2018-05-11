@@ -21,6 +21,7 @@ namespace Cobweb.Data.NHibernate.Providers {
             if (cachingProvider == null) {
                 throw new InvalidOperationException(message);
             }
+
             return cachingProvider;
         }
 

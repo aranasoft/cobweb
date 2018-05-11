@@ -16,7 +16,7 @@ namespace Cobweb.Reflection.Extensions {
         /// <returns>true if the attributeType is defined on this member; false otherwise.</returns>
         public static bool IsDefined<TAttribute>(this ICustomAttributeProvider member, bool inherit = true)
             where TAttribute : Attribute {
-            return member.IsDefined(typeof (TAttribute), inherit);
+            return member.IsDefined(typeof(TAttribute), inherit);
         }
 
         /// <summary>
@@ -30,7 +30,7 @@ namespace Cobweb.Reflection.Extensions {
         public static IEnumerable<TAttribute> GetCustomAttributes<TAttribute>(this ICustomAttributeProvider member,
                                                                               bool inherit = true)
             where TAttribute : Attribute {
-            return member.GetCustomAttributes(typeof (TAttribute), inherit).Cast<TAttribute>();
+            return member.GetCustomAttributes(typeof(TAttribute), inherit).Cast<TAttribute>();
         }
 
         /// <summary>

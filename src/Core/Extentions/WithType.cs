@@ -13,6 +13,7 @@ namespace Cobweb.Extentions {
             if (genericBaseType == null) {
                 throw new ArgumentNullException(nameof(genericBaseType));
             }
+
             if (!genericBaseType.IsGenericType) {
                 throw new ArgumentException("Type must be generic", nameof(genericBaseType));
             }
@@ -25,7 +26,8 @@ namespace Cobweb.Extentions {
                 return currentType.BaseType != null && IsAssignableToGeneric(currentType.BaseType, genericBaseType);
             }
 
-            return currentType.GetInterfaces().Any(interfaceType => IsAssignableToGeneric(interfaceType, genericBaseType));
+            return currentType.GetInterfaces()
+                              .Any(interfaceType => IsAssignableToGeneric(interfaceType, genericBaseType));
         }
 
         /// <summary>
@@ -49,7 +51,7 @@ namespace Cobweb.Extentions {
         /// <typeparam name="TBase">The type to compare with the current type.</typeparam>
         /// <returns>true if <paramref name="currentType" /> derives from <typeparamref name="TBase" />, otherwise false.</returns>
         public static bool IsAssignableTo<TBase>(this Type currentType) {
-            return IsAssignableTo(currentType, typeof (TBase));
+            return IsAssignableTo(currentType, typeof(TBase));
         }
 
         /// <summary>
@@ -59,7 +61,7 @@ namespace Cobweb.Extentions {
         /// <typeparam name="TDerived">The type to compare with the current type.</typeparam>
         /// <returns>true if <typeparamref name="TDerived" /> derives from <paramref name="baseType" />, otherwise false.</returns>
         public static bool IsAssignableFrom<TDerived>(this Type baseType) {
-            return IsAssignableTo(typeof (TDerived), baseType);
+            return IsAssignableTo(typeof(TDerived), baseType);
         }
 
         /// <summary>

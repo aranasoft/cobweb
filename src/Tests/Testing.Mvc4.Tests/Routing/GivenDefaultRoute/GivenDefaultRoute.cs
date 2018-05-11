@@ -10,9 +10,9 @@ namespace Cobweb.Testing.Mvc.Tests.Routing.GivenDefaultRoute {
         public void ConfigureRoutes() {
             RouteTable.Routes.Clear();
             RouteTable.Routes.MapRoute(
-                                       "default",
-                                       "{controller}/{action}/{id}",
-                                       new {controller = "Home", Action = "Index", id = ""});
+                "default",
+                "{controller}/{action}/{id}",
+                new {controller = "Home", Action = "Index", id = ""});
         }
 
         [TearDown]

@@ -3,8 +3,7 @@ using System.Net.Http;
 using System.Web.Http.Routing;
 using FluentAssertions;
 
-namespace Cobweb.Testing.WebApi.Assertions
-{
+namespace Cobweb.Testing.WebApi.Assertions {
     /// <summary>
     ///     Contains a number of methods to assert that an <see cref="string" /> is in the expected state.
     /// </summary>
@@ -23,7 +22,8 @@ namespace Cobweb.Testing.WebApi.Assertions
         /// </param>
         public static AndConstraint<HttpRequestMessageAssertions> BeIgnoredRoute(
             this HttpRequestMessageAssertions assertions,
-            string because = "", params object[] reasonArgs) {
+            string because = "",
+            params object[] reasonArgs) {
             assertions.Subject.AsHttpRoute().Should().BeIgnored(because, reasonArgs);
 
             return new AndConstraint<HttpRequestMessageAssertions>(assertions);

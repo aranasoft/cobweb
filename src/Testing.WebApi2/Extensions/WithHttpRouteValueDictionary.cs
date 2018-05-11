@@ -11,6 +11,7 @@ namespace Cobweb.Testing.WebApi.Extensions {
             if (routeValues.TryGetValue(SubRouteDataKey, out subRoutes)) {
                 return subRoutes as IHttpRouteData[];
             }
+
             return null;
         }
 

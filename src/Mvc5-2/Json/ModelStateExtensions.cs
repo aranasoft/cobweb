@@ -14,7 +14,8 @@ namespace Cobweb.Web.Mvc.Json {
                     Name = error.Key,
                     Errors =
                         error.Value.Errors.Select(x => x.ErrorMessage)
-                             .Concat(error.Value.Errors.Where(x => x.Exception != null).Select(x => x.Exception.Message))
+                             .Concat(error.Value.Errors.Where(x => x.Exception != null)
+                                          .Select(x => x.Exception.Message))
                              .ToArray()
                 };
         }

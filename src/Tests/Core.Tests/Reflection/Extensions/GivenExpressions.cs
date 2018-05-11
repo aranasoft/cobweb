@@ -111,8 +111,7 @@ namespace Cobweb.Tests.Reflection.Extensions {
         }
 
         [Test]
-        public void ItShouldIdentifyArgumentValueByCall()
-        {
+        public void ItShouldIdentifyArgumentValueByCall() {
             Func<ParamObject> input = () => new ParamObject();
             Expression<Action<ContainerObject>> expression = container => container.Run(input.Invoke());
 
@@ -123,8 +122,7 @@ namespace Cobweb.Tests.Reflection.Extensions {
         }
 
         [Test]
-        public void ItShouldIdentifyArgumentValueByMemberAccess()
-        {
+        public void ItShouldIdentifyArgumentValueByMemberAccess() {
             var input = new ParamObject();
             Expression<Action<ContainerObject>> expression = container => container.Run(input);
 
@@ -136,26 +134,25 @@ namespace Cobweb.Tests.Reflection.Extensions {
 
 
         [Test]
-        public void ItShouldIdentifyArgumentValueByMemberInit()
-        {
-            Expression<Action<ContainerObject>> expression = container => container.Run(new ParamObject { Prop = "Foo" });
+        public void ItShouldIdentifyArgumentValueByMemberInit() {
+            Expression<Action<ContainerObject>> expression = container => container.Run(new ParamObject {Prop = "Foo"});
 
             expression.GetMethodArguments().First().Value.NodeType.Should().Be(ExpressionType.MemberInit);
             var arguments = expression.GetMethodArgumentValues();
-            var expectation = new ParamObject { Prop = "Foo" };
+            var expectation = new ParamObject {Prop = "Foo"};
             arguments.Single().Value.ShouldBeEquivalentTo(expectation, options => options.RespectingRuntimeTypes());
-    }
+        }
 
 
         [Test]
-        public void ItShouldIdentifyArgumentValueByConditional()
-        {
+        public void ItShouldIdentifyArgumentValueByConditional() {
             ParamObject nullObject = null;
-            Expression<Action<ContainerObject>> expression = container => container.Run( nullObject == null ? new ParamObject { Prop = "Foo" } : new ParamObject { Prop = "Bar" });
+            Expression<Action<ContainerObject>> expression = container =>
+                container.Run(nullObject == null ? new ParamObject {Prop = "Foo"} : new ParamObject {Prop = "Bar"});
 
             expression.GetMethodArguments().First().Value.NodeType.Should().Be(ExpressionType.Conditional);
             var arguments = expression.GetMethodArgumentValues();
-            var expectation = new ParamObject { Prop = "Foo" };
+            var expectation = new ParamObject {Prop = "Foo"};
             arguments.Single().Value.ShouldBeEquivalentTo(expectation, options => options.RespectingRuntimeTypes());
         }
 
@@ -163,11 +160,12 @@ namespace Cobweb.Tests.Reflection.Extensions {
         [Test]
         public void ItShouldIdentifyArgumentValueByCoalesce() {
             ParamObject nullObject = null;
-            Expression<Action<ContainerObject>> expression = container => container.Run( nullObject ?? new ParamObject { Prop = "Bar" });
+            Expression<Action<ContainerObject>> expression = container =>
+                container.Run(nullObject ?? new ParamObject {Prop = "Bar"});
 
             expression.GetMethodArguments().First().Value.NodeType.Should().Be(ExpressionType.Coalesce);
             var arguments = expression.GetMethodArgumentValues();
-            var expectation = new ParamObject { Prop = "Bar" };
+            var expectation = new ParamObject {Prop = "Bar"};
             arguments.Single().Value.ShouldBeEquivalentTo(expectation, options => options.RespectingRuntimeTypes());
         }
     }

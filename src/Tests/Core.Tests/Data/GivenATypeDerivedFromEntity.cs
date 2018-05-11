@@ -10,7 +10,7 @@ namespace Cobweb.Tests.Data {
 
         [Test]
         public void ItShouldIdentifyAsDerivedFromEntity() {
-            EntityManager.Current.IsEntity(typeof (SampleEntity)).Should().BeTrue();
+            EntityManager.Current.IsEntity(typeof(SampleEntity)).Should().BeTrue();
         }
     }
 }
