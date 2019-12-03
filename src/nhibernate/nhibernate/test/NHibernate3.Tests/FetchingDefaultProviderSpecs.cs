@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Linq;
-using Cobweb.Data.NHibernate.Fetching;
-using Cobweb.Data.NHibernate.Providers;
-using Cobweb.Data.NHibernate.Tests.Entities;
+using Aranasoft.Cobweb.NHibernate.Fetching;
+using Aranasoft.Cobweb.NHibernate.Providers;
+using Aranasoft.Cobweb.NHibernate.Tests.Entities;
 using FluentAssertions;
 using Xunit;
 
-namespace Cobweb.Data.NHibernate.Tests {
+namespace Aranasoft.Cobweb.NHibernate.Tests {
     [Collection("FetchingProvider")]
     public class FetchingDefaultProviderSpecs {
         [Fact]

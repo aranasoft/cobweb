@@ -6,9 +6,9 @@ using FluentNHibernate.Cfg.Db;
 using FluentNHibernate.Conventions;
 using FluentNHibernate.Conventions.Helpers;
 using NHibernate.Cfg;
-using Cobweb.Data.NHibernate.Tests.Entities;
+using Aranasoft.Cobweb.NHibernate.Tests.Entities;
 
-namespace Cobweb.Data.NHibernate.Tests.Util {
+namespace Aranasoft.Cobweb.NHibernate.Tests.Util {
     public class SqLiteNHibernateFixture {
         public Configuration SessionConfiguration { get; private set; }
 

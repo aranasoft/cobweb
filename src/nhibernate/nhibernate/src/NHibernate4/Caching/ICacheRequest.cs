@@ -1,5 +1,5 @@
 ﻿using System.Linq;
 
-namespace Cobweb.Data.NHibernate.Caching {
+namespace Aranasoft.Cobweb.NHibernate.Caching {
     public interface ICacheRequest<out T> : IQueryable<T> {}
 }

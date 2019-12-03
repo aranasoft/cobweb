@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace Cobweb.Data.NHibernate.Fetching {
+namespace Aranasoft.Cobweb.NHibernate.Fetching {
     public interface IFetchingProvider {
         IFetchRequest<TOriginatingEntity, TFetch> Fetch<TOriginatingEntity, TFetch>(
             IQueryable<TOriginatingEntity> source,

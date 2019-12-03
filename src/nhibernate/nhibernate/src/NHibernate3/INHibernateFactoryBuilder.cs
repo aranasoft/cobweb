@@ -2,7 +2,7 @@
 using NHibernate;
 using NHibernate.Cfg;
 
-namespace Cobweb.Data.NHibernate {
+namespace Aranasoft.Cobweb.NHibernate {
     public interface INHibernateFactoryBuilder : ISingletonDependency {
         Configuration Configuration { get; }
         ISessionFactory GetCurrentFactory();

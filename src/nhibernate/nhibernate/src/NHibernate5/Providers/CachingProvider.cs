@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq;
-using Cobweb.Data.NHibernate.QueryableOptions;
+using Aranasoft.Cobweb.NHibernate.QueryableOptions;
 
-namespace Cobweb.Data.NHibernate.Providers {
+namespace Aranasoft.Cobweb.NHibernate.Providers {
     [Obsolete("Please use QueryableOptionsProvider instead.")]
     public static class CachingProvider {
         [Obsolete("Please use QueryableOptionsProvider.Current instead.")]

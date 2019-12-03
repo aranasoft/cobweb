@@ -1,5 +1,5 @@
 ﻿using System.Linq;
 
-namespace Cobweb.Data.NHibernate.Fetching {
+namespace Aranasoft.Cobweb.NHibernate.Fetching {
     public interface IFetchRequest<out TOriginatingEntity, TFetch> : IOrderedQueryable<TOriginatingEntity> {}
 }

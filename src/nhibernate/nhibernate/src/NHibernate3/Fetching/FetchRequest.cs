@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace Cobweb.Data.NHibernate.Fetching {
+namespace Aranasoft.Cobweb.NHibernate.Fetching {
     public class FetchRequest<TCollection, TOriginatingEntity, TFetch> : IFetchRequest<TOriginatingEntity, TFetch>
         where TCollection : IQueryable<TOriginatingEntity> {
         public FetchRequest(TCollection source) {

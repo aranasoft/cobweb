@@ -1,6 +1,7 @@
-﻿using NHibernate;
+﻿using Cobweb.Data;
+using NHibernate;
 
-namespace Cobweb.Data.NHibernate {
+namespace Aranasoft.Cobweb.NHibernate {
     public interface INHibernateSessionBuilder : IDataTransactionManager {
         ISession GetCurrentSession();
     }

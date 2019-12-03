@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace Cobweb.Data.NHibernate.Caching {
+namespace Aranasoft.Cobweb.NHibernate.Caching {
     public class CacheRequest<T> : ICacheRequest<T> {
         public CacheRequest(IQueryable<T> source) {
             Queryable = source;

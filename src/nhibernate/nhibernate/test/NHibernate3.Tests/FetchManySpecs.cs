@@ -1,13 +1,13 @@
 ﻿using System.Linq;
-using Cobweb.Data.NHibernate.Providers;
-using Cobweb.Data.NHibernate.Tests.Entities;
-using Cobweb.Data.NHibernate.Tests.Util;
+using Aranasoft.Cobweb.NHibernate.Providers;
+using Aranasoft.Cobweb.NHibernate.Tests.Entities;
+using Aranasoft.Cobweb.NHibernate.Tests.Util;
 using FluentAssertions;
 using NHibernate;
 using NHibernate.Linq;
 using Xunit;
 
-namespace Cobweb.Data.NHibernate.Tests {
+namespace Aranasoft.Cobweb.NHibernate.Tests {
     [Collection("FetchingProvider")]
     public class FetchManySpecs : SqLiteNHibernateTest {
         public FetchManySpecs(SqLiteNHibernateFixture fixture) : base(fixture) {

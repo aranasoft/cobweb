@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Linq;
-using Cobweb.Data.NHibernate.QueryableOptions;
+using Aranasoft.Cobweb.NHibernate.QueryableOptions;
 using NHibernate;
 using NHibernate.Linq;
 
-namespace Cobweb.Data.NHibernate.Providers {
+namespace Aranasoft.Cobweb.NHibernate.Providers {
     public static class QueryableOptionsProvider {
         private static Func<IQueryableOptionsProvider> _currentProvider = () => new NHibernateQueryableOptionsProvider();
 

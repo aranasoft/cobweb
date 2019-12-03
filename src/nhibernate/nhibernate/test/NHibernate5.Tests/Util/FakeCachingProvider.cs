@@ -1,7 +1,7 @@
 ﻿using System.Linq;
-using Cobweb.Data.NHibernate.Caching;
+using Aranasoft.Cobweb.NHibernate.Caching;
 
-namespace Cobweb.Data.NHibernate.Tests.Util
+namespace Aranasoft.Cobweb.NHibernate.Tests.Util
 {
 #pragma warning disable 618
     public class FakeCachingProvider : FakeQueryableOptionsProvider, ICachingProvider {

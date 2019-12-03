@@ -2,11 +2,12 @@
 using System.Collections.ObjectModel;
 using System.Data;
 using System.Linq;
-using Cobweb.Data.NHibernate.Providers;
-using Cobweb.Data.NHibernate.Tests.Entities;
+using Aranasoft.Cobweb.NHibernate.Providers;
+using Aranasoft.Cobweb.NHibernate.Tests.Entities;
+using Cobweb.Data;
 using NHibernate;
 
-namespace Cobweb.Data.NHibernate.Tests {
+namespace Aranasoft.Cobweb.NHibernate.Tests {
     /// <summary>
     ///     These tests are not executed by NUnit. They are here for compile-time checking. 'If it builds, ship it.'
     /// </summary>

@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Linq;
-using Cobweb.Data.NHibernate.Providers;
-using Cobweb.Data.NHibernate.QueryableOptions;
-using Cobweb.Data.NHibernate.Tests.Entities;
-using Cobweb.Data.NHibernate.Tests.Util;
+using Aranasoft.Cobweb.NHibernate.Providers;
+using Aranasoft.Cobweb.NHibernate.QueryableOptions;
+using Aranasoft.Cobweb.NHibernate.Tests.Entities;
+using Aranasoft.Cobweb.NHibernate.Tests.Util;
 using FluentAssertions;
 using NHibernate;
 using Xunit;
 
-namespace Cobweb.Data.NHibernate.Tests {
+namespace Aranasoft.Cobweb.NHibernate.Tests {
     [Collection("QueryableOptionsProvider")]
     public class QueryableOptionsFakeProviderSpecs : IDisposable {
         private readonly Func<IQueryableOptionsProvider> _currentQueryableOptionsProvider;

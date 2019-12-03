@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq;
-using Cobweb.Data.NHibernate.Caching;
+using Aranasoft.Cobweb.NHibernate.Caching;
 
-namespace Cobweb.Data.NHibernate.Providers {
+namespace Aranasoft.Cobweb.NHibernate.Providers {
     public static class CachingProvider {
         private static Func<ICachingProvider> _currentProvider = () => new NHibernateCachingProvider();
 

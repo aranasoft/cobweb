@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using NHibernate.Linq;
 
-namespace Cobweb.Data.NHibernate.Caching {
+namespace Aranasoft.Cobweb.NHibernate.Caching {
     public class NHibernateCachingProvider : ICachingProvider {
         public ICacheRequest<T> Cacheable<T>(
             IQueryable<T> source) {

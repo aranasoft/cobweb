@@ -4,7 +4,7 @@ using NHibernate.Cfg;
 using NHibernate.Tool.hbm2ddl;
 using Xunit;
 
-namespace Cobweb.Data.NHibernate.Tests.Util {
+namespace Aranasoft.Cobweb.NHibernate.Tests.Util {
     public abstract class SqLiteNHibernateTest : IClassFixture<SqLiteNHibernateFixture>, IDisposable {
         protected Configuration SessionConfiguration { get; }
         protected ISessionFactory SessionFactory;

@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Cobweb.Data.NHibernate.Tests.Entities;
+using Aranasoft.Cobweb.NHibernate.Tests.Entities;
 using FluentAssertions;
 using Xunit;
 
-namespace Cobweb.Data.NHibernate.Tests {
+namespace Aranasoft.Cobweb.NHibernate.Tests {
     public class EntityTypeSourceSpecs {
         private readonly EntityTypeSource _entityTypeSource;
 

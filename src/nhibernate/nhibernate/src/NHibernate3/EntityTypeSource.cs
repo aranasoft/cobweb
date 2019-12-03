@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Cobweb.Data;
 using FluentNHibernate;
 using FluentNHibernate.Diagnostics;
 
-namespace Cobweb.Data.NHibernate {
+namespace Aranasoft.Cobweb.NHibernate {
     public class EntityTypeSource : ITypeSource {
         private readonly IEnumerable<Type> _sources;
 
