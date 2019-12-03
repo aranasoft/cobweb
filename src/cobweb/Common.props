@@ -1,0 +1,27 @@
+<Project>
+    <PropertyGroup>
+        <Authors>Arana Software</Authors>
+        <Company>Arana Software</Company>
+        <Title>Cobweb</Title>
+        <Product>Aranasoft's Cobweb</Product>
+        <Description>Cobweb is a base-class utility library for .NET</Description>
+        <Copyright>Copyright 2013-2018 Arana Software</Copyright>
+        <PackageTags>Cobweb;Arana</PackageTags>
+        <PackageLicenseUrl>https://github.com/aranasoft/cobweb-core/blob/master/LICENSE</PackageLicenseUrl>
+        <PackageProjectUrl>https://github.com/aranasoft/cobweb-core/</PackageProjectUrl>
+        <PackageIconUrl>https://raw.githubusercontent.com/aranasoft/cobweb/master/docs/logo-128px.png</PackageIconUrl>
+        <RepositoryUrl>https://github.com/aranasoft/cobweb-core.git</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <MinClientVersion>3.5</MinClientVersion>
+        <PackageOutputPath>..\..\artifacts</PackageOutputPath>
+        <NoWarn>NU1701</NoWarn>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="..\..\LICENSE">
+            <Pack>true</Pack>
+            <PackagePath>.\</PackagePath>
+        </None>
+    </ItemGroup>
+
+</Project>

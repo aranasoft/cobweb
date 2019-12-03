@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <Import Project="../../Common.props" />
+
+    <PropertyGroup>
+        <TargetFramework>net452</TargetFramework>
+        <AssemblyName>Cobweb.Testing.NHibernate.Tests</AssemblyName>
+        <RootNamespace>Cobweb.Testing.NHibernate.Tests</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Compile Include="..\Testing.NHibernate3.Tests\FetchingDefaultProviderSpecs.cs" Link="FetchingDefaultProviderSpecs.cs" />
+      <Compile Include="..\Testing.NHibernate3.Tests\FetchingFakeProviderSpecs.cs" Link="FetchingFakeProviderSpecs.cs" />
+      <Compile Include="..\Testing.NHibernate3.Tests\FetchingNativeExtensionSpecs.cs" Link="FetchingNativeExtensionSpecs.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Cobweb" Version="[1.1.1,2)" />
+        <PackageReference Include="Cobweb.Data.NHibernate" Version="[1.40.2,1.50)" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.7.2" />
+        <PackageReference Include="FluentAssertions" Version="[5.4.0, 6)" />
+        <PackageReference Include="xunit" Version="2.3.1" />
+        <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
+        <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\src\Testing.NHibernate4\Testing.NHibernate4.csproj" />
+    </ItemGroup>
+
+</Project>

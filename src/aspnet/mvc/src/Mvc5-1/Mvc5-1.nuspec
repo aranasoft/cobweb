@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+
+<package>
+    <metadata>
+        <id>Cobweb.Web.Mvc</id>
+        <version>$version$</version>
+        <title>Cobweb Extensions for MVC5.1</title>
+        <authors>$author$</authors>
+        <owners>$author$</owners>
+        <licenseUrl>https://github.com/aranasoft/cobweb-web-mvc/blob/master/LICENSE</licenseUrl>
+        <projectUrl>https://github.com/aranasoft/cobweb-web-mvc/</projectUrl>
+        <iconUrl>https://raw.githubusercontent.com/aranasoft/cobweb/master/docs/logo-128px.png</iconUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>$description$</description>
+        <copyright>Copyright (c) 2013-2018, Arana Software</copyright>
+        <tags>AspNet Mvc AspNetMvc Cobweb Arana</tags>
+    </metadata>
+    <files>
+        <file src="..\..\LICENSE" target="license" />
+    </files>
+</package>

@@ -1,0 +1,27 @@
+<Project>
+    <PropertyGroup>
+        <Authors>Arana Software</Authors>
+        <Company>Arana Software</Company>
+        <Title>Cobweb Extensions for NHibernate</Title>
+        <Product>Aranasoft's Cobweb</Product>
+        <Description>NHibernate utilities and classes for Cobweb, a base-class utility library for .NET</Description>
+        <Copyright>Copyright 2013-2018 Arana Software</Copyright>
+        <PackageTags>nhibernate;FluentNHibernate;orm;Cobweb;Arana</PackageTags>
+        <PackageLicenseUrl>https://github.com/aranasoft/cobweb-data-nhibernate/blob/master/LICENSE</PackageLicenseUrl>
+        <PackageProjectUrl>https://github.com/aranasoft/cobweb-data-nhibernate/</PackageProjectUrl>
+        <PackageIconUrl>https://raw.githubusercontent.com/aranasoft/cobweb/master/docs/logo-128px.png</PackageIconUrl>
+        <RepositoryUrl>https://github.com/aranasoft/cobweb-data-nhibernate.git</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <MinClientVersion>3.5</MinClientVersion>
+        <PackageOutputPath>..\..\artifacts</PackageOutputPath>
+        <NoWarn>NU1701;NU1603</NoWarn>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="..\..\LICENSE">
+            <Pack>true</Pack>
+            <PackagePath>.\</PackagePath>
+        </None>
+    </ItemGroup>
+
+</Project>

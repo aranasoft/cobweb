@@ -1,0 +1,27 @@
+<Project>
+    <PropertyGroup>
+        <Authors>Arana Software</Authors>
+        <Company>Arana Software</Company>
+        <Title>Cobweb Extensions for FluentMigrator</Title>
+        <Product>Aranasoft's Cobweb</Product>
+        <Description>FluentMigrator utilities and classes for Cobweb, a base-class utility library for .NET</Description>
+        <Copyright>Copyright 2013-2018 Arana Software</Copyright>
+        <PackageTags>FluentMigrator;migrations;Cobweb;Arana</PackageTags>
+        <PackageLicenseUrl>https://github.com/aranasoft/cobweb-data-fluentmigrator/blob/master/LICENSE</PackageLicenseUrl>
+        <PackageProjectUrl>https://github.com/aranasoft/cobweb-data-fluentmigrator/</PackageProjectUrl>
+        <PackageIconUrl>https://raw.githubusercontent.com/aranasoft/cobweb/master/docs/logo-128px.png</PackageIconUrl>
+        <RepositoryUrl>https://github.com/aranasoft/cobweb-data-fluentmigrator.git</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <MinClientVersion>3.5</MinClientVersion>
+        <PackageOutputPath>..\..\artifacts</PackageOutputPath>
+        <NoWarn>NU1701</NoWarn>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="..\..\LICENSE">
+            <Pack>true</Pack>
+            <PackagePath>.\</PackagePath>
+        </None>
+    </ItemGroup>
+
+</Project>

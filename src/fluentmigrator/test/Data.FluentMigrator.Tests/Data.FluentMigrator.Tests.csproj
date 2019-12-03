@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <Import Project="../../Common.props" />
+
+    <PropertyGroup>
+        <TargetFramework>net40</TargetFramework>
+        <AssemblyName>Cobweb.Data.FluentMigrator.Tests</AssemblyName>
+        <RootNamespace>Cobweb.Data.FluentMigrator.Tests</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="FluentMigrator" Version="[1.0.1,2)" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\src\Data.FluentMigrator\Data.FluentMigrator.csproj" />
+    </ItemGroup>
+
+</Project>

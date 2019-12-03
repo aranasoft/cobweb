@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <Import Project="../../Common.props" />
+
+    <PropertyGroup>
+        <TargetFramework>net40</TargetFramework>
+        <AssemblyName>Cobweb.Testing.NHibernate</AssemblyName>
+        <RootNamespace>Cobweb.Testing.NHibernate</RootNamespace>
+        <Version>1.33.4</Version>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Cobweb" Version="[1.1.1,2)" />
+        <PackageReference Include="Cobweb.Data.NHibernate" Version="[1.33.5,1.40)" />
+    </ItemGroup>
+
+</Project>
