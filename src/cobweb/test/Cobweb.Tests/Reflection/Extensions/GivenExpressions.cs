@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Linq;
 using System.Linq.Expressions;
-using Cobweb.Reflection.Extensions;
+using Aranasoft.Cobweb.Reflection.Extensions;
 using FluentAssertions;
 using Xunit;
 
-namespace Cobweb.Tests.Reflection.Extensions {
+namespace Aranasoft.Cobweb.Tests.Reflection.Extensions {
     public class GivenExpressions {
         public class ParamObject {
             public string Prop { get; set; }

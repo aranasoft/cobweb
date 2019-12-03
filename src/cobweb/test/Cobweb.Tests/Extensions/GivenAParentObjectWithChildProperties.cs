@@ -1,8 +1,8 @@
-﻿using Cobweb.Extentions.ObjectExtentions;
+﻿using Aranasoft.Cobweb.Extentions.ObjectExtentions;
 using FluentAssertions;
 using Xunit;
 
-namespace Cobweb.Tests.Extensions {
+namespace Aranasoft.Cobweb.Tests.Extensions {
     public class GivenAParentObjectWithChildProperties {
         public class ParentThing {
             public int ChildThing {

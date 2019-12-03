@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using FluentAssertions;
 using Xunit;
 
-namespace Cobweb.Tests {
+namespace Aranasoft.Cobweb.Tests {
     public class GivenSequentialGuid {
         [Fact]
         public void ItShouldGenerateUniqueGuids() {

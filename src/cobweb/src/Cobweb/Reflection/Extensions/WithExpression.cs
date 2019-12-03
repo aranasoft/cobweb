@@ -3,7 +3,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 
-namespace Cobweb.Reflection.Extensions {
+namespace Aranasoft.Cobweb.Reflection.Extensions {
     public static class WithExpression {
         /// <summary>
         ///     Gather KeyValuePairs of a method's arguments and the agument value expressions used when executing the method.

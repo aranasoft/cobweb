@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Cobweb.Data {
+namespace Aranasoft.Cobweb.Data {
     /// <summary>
     ///     Base class for objects to be persisted in a relational database. Equates on reference or non-default identifier
     ///     value

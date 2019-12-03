@@ -1,10 +1,10 @@
 using System;
-using Cobweb.Extentions.ObjectExtentions;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Aranasoft.Cobweb.Extentions.ObjectExtentions;
 
-namespace Cobweb.Reflection.Extensions {
+namespace Aranasoft.Cobweb.Reflection.Extensions {
     public static class WithMember {
         /// <summary>
         ///     Indicates whether one or more instance of <typeparamref name="TAttribute" /> is defined on the
@@ -43,7 +43,7 @@ namespace Cobweb.Reflection.Extensions {
         public static TAttribute GetCustomAttribute<TAttribute>(this ICustomAttributeProvider member,
                                                                 bool inherit = true)
             where TAttribute : Attribute {
-            return GetCustomAttributes<TAttribute>(member, inherit).IfExists(collection => collection.FirstOrDefault());
+            return GetCustomAttributes<TAttribute>(member, inherit).IfExists(collection => Enumerable.FirstOrDefault<TAttribute>(collection));
         }
     }
 }

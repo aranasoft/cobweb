@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Cobweb.Data {
+namespace Aranasoft.Cobweb.Data {
     public interface IDataTransaction : IDisposable {
         bool IsActive { get; }
         void Commit();

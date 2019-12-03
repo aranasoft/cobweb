@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Cobweb.Extentions {
+namespace Aranasoft.Cobweb.Extentions {
     public static class WithEnumerableOfT {
         /// <summary>
         ///     Execute a delegate on each item within an IEnumerble.

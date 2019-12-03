@@ -1,10 +1,10 @@
-﻿using Cobweb.Extentions;
-using FluentAssertions;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using Aranasoft.Cobweb.Extentions;
+using FluentAssertions;
 using Xunit;
 
-namespace Cobweb.Tests.Extensions {
+namespace Aranasoft.Cobweb.Tests.Extensions {
     public class GivenAnEnumerable {
         private IEnumerable<int> _collection;
 

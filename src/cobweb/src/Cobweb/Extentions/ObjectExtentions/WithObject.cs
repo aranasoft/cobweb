@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Cobweb.Extentions.ObjectExtentions {
+namespace Aranasoft.Cobweb.Extentions.ObjectExtentions {
     public static class WithObject {
         /// <summary>
         ///     Returns the result of <paramref name="delegate" /> if <paramref name="object" /> is not null.

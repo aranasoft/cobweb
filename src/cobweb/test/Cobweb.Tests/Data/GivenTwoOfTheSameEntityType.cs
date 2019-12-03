@@ -1,9 +1,9 @@
 using System;
-using Cobweb.Data;
+using Aranasoft.Cobweb.Data;
 using FluentAssertions;
 using Xunit;
 
-namespace Cobweb.Tests.Data {
+namespace Aranasoft.Cobweb.Tests.Data {
     public class GivenTwoOfTheSameEntityType {
         private class SampleEntity : Entity<SampleEntity, Guid>, IEquatable<SampleEntity> {}
 

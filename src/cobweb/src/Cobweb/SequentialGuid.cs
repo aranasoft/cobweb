@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace Cobweb
+namespace Aranasoft.Cobweb
 {
     /// <summary>
     /// Methods to build a sequential <see cref="Guid"/> compatible with SQL Server sorting algorithms.

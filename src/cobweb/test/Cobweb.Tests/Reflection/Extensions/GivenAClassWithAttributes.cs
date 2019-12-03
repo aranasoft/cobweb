@@ -1,9 +1,9 @@
 ﻿using System;
-using Cobweb.Reflection.Extensions;
+using Aranasoft.Cobweb.Reflection.Extensions;
 using FluentAssertions;
 using Xunit;
 
-namespace Cobweb.Tests.Reflection.Extensions {
+namespace Aranasoft.Cobweb.Tests.Reflection.Extensions {
     public class GivenAClassWithAttributes {
         [Fact]
         public void ItShouldNotIdentifyNonExistantAttributes() {

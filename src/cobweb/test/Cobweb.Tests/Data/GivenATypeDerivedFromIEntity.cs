@@ -1,9 +1,9 @@
 using System;
-using Cobweb.Data;
+using Aranasoft.Cobweb.Data;
 using FluentAssertions;
 using Xunit;
 
-namespace Cobweb.Tests.Data {
+namespace Aranasoft.Cobweb.Tests.Data {
     public class GivenATypeDerivedFromIEntity {
         private class SampleInterfaceEntity : IEntity<SampleInterfaceEntity>, IEquatable<SampleInterfaceEntity> {
             public bool Equals(SampleInterfaceEntity other) {

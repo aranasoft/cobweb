@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 
-namespace Cobweb.Extentions {
+namespace Aranasoft.Cobweb.Extentions {
     public static class WithEnum {
         /// <summary>
         ///     Returns the value of an enum element's DescriptionAttribute or the name of the element.

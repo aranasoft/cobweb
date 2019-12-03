@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
 using System.Reflection;
-using Cobweb.Extentions;
+using Aranasoft.Cobweb.Extentions;
 
-namespace Cobweb.Data {
+namespace Aranasoft.Cobweb.Data {
     /// <summary>
     ///     Static methods to gather types that implement Entity.
     /// </summary>

@@ -1,9 +1,9 @@
 ﻿using System;
-using Cobweb.Extentions;
+using Aranasoft.Cobweb.Extentions;
 using FluentAssertions;
 using Xunit;
 
-namespace Cobweb.Tests.Extensions {
+namespace Aranasoft.Cobweb.Tests.Extensions {
     public class GivenABaseTypeThatIsNotGeneric {
         [Fact]
         public void ItShouldThrowWhenCheckingGenericAssignment() {

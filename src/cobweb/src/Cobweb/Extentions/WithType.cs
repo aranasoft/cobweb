@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace Cobweb.Extentions {
+namespace Aranasoft.Cobweb.Extentions {
     public static class WithType {
         /// <summary>
         ///     Identify if a class derives from a specified generic base class.

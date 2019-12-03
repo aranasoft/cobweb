@@ -1,4 +1,4 @@
-﻿namespace Cobweb.DependencyInjection {
+﻿namespace Aranasoft.Cobweb.DependencyInjection {
     /// <summary>
     ///     Dependency to be handled by dependency-injection framework. Traditionally per-request.
     /// </summary>

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Data;
 
-namespace Cobweb.Data {
+namespace Aranasoft.Cobweb.Data {
     public abstract class DataTransactionManager : IDataTransactionManager {
         public abstract IDataTransaction BeginTransaction();
         public abstract IDataTransaction BeginTransaction(IsolationLevel isolationLevel);
