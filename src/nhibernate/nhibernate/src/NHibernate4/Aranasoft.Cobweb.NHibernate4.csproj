@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <Import Project="../../Common.props" />
+
+    <PropertyGroup>
+        <TargetFramework>net45</TargetFramework>
+        <AssemblyName>Aranasoft.Cobweb.NHibernate</AssemblyName>
+        <RootNamespace>Aranasoft.Cobweb.NHibernate</RootNamespace>
+        <Version>1.40.3</Version>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Compile Include="..\NHibernate3\EntityTypeSource.cs" Link="EntityTypeSource.cs" />
+      <Compile Include="..\NHibernate3\Fetching\FetchRequest.cs" Link="Fetching\FetchRequest.cs" />
+      <Compile Include="..\NHibernate3\Fetching\IFetchingProvider.cs" Link="Fetching\IFetchingProvider.cs" />
+      <Compile Include="..\NHibernate3\Fetching\IFetchRequest.cs" Link="Fetching\IFetchRequest.cs" />
+      <Compile Include="..\NHibernate3\Fetching\NHibernateFetchingProvider.cs" Link="Fetching\NHibernateFetchingProvider.cs" />
+      <Compile Include="..\NHibernate3\Fetching\NHibernateFetchRequest.cs" Link="Fetching\NHibernateFetchRequest.cs" />
+      <Compile Include="..\NHibernate3\INHibernateConnectionConfiguration.cs" Link="INHibernateConnectionConfiguration.cs" />
+      <Compile Include="..\NHibernate3\INHibernateFactoryBuilder.cs" Link="INHibernateFactoryBuilder.cs" />
+      <Compile Include="..\NHibernate3\INHibernateSessionBuilder.cs" Link="INHibernateSessionBuilder.cs" />
+      <Compile Include="..\NHibernate3\NHibernateTransactionHandler.cs" Link="NHibernateTransactionHandler.cs" />
+      <Compile Include="..\NHibernate3\Providers\EagerFetch.cs" Link="Providers\EagerFetch.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Cobweb" Version="[1.1.1,2)" />
+        <PackageReference Include="FluentNHibernate" Version="[2,2.1)" />
+    </ItemGroup>
+
+</Project>

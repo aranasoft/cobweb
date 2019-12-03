@@ -3,8 +3,8 @@
 
     <PropertyGroup>
         <TargetFramework>net40</TargetFramework>
-        <AssemblyName>Cobweb.Data.NHibernate</AssemblyName>
-        <RootNamespace>Cobweb.Data.NHibernate</RootNamespace>
+        <AssemblyName>Aranasoft.Cobweb.NHibernate</AssemblyName>
+        <RootNamespace>Aranasoft.Cobweb.NHibernate</RootNamespace>
         <Version>1.33.5</Version>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>

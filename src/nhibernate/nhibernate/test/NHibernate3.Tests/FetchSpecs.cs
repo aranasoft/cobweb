@@ -4,6 +4,7 @@ using Cobweb.Data.NHibernate.Tests.Entities;
 using Cobweb.Data.NHibernate.Tests.Util;
 using FluentAssertions;
 using NHibernate;
+using NHibernate.Linq;
 using Xunit;
 
 namespace Cobweb.Data.NHibernate.Tests {

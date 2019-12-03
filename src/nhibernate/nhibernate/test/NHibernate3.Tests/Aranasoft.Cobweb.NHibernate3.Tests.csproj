@@ -3,8 +3,8 @@
 
     <PropertyGroup>
         <TargetFramework>net452</TargetFramework>
-        <AssemblyName>Cobweb.Data.NHibernate.Tests</AssemblyName>
-        <RootNamespace>Cobweb.Data.NHibernate.Tests</RootNamespace>
+        <AssemblyName>Aranasoft.Cobweb.NHibernate.Tests</AssemblyName>
+        <RootNamespace>Aranasoft.Cobweb.NHibernate.Tests</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
@@ -20,7 +20,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\src\Data.NHibernate3\Data.NHibernate3.csproj" />
+        <ProjectReference Include="..\..\src\NHibernate3\Aranasoft.Cobweb.NHibernate3.csproj" />
     </ItemGroup>
 
 </Project>

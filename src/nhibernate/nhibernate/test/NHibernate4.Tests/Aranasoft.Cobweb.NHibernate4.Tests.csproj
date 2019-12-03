@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <Import Project="../../Common.props" />
+
+    <PropertyGroup>
+        <TargetFramework>net452</TargetFramework>
+        <AssemblyName>Aranasoft.Cobweb.NHibernate.Tests</AssemblyName>
+        <RootNamespace>Aranasoft.Cobweb.NHibernate.Tests</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Compile Include="..\NHibernate3.Tests\CompileTests.cs" Link="CompileTests.cs" />
+      <Compile Include="..\NHibernate3.Tests\EntityTypeSourceSpecs.cs" Link="EntityTypeSourceSpecs.cs" />
+      <Compile Include="..\NHibernate3.Tests\FetchingDefaultProviderSpecs.cs" Link="FetchingDefaultProviderSpecs.cs" />
+      <Compile Include="..\NHibernate3.Tests\FetchingFakeProviderSpecs.cs" Link="FetchingFakeProviderSpecs.cs" />
+      <Compile Include="..\NHibernate3.Tests\FetchingNativeExtensionSpecs.cs" Link="FetchingNativeExtensionSpecs.cs" />
+      <Compile Include="..\NHibernate3.Tests\FetchManySpecs.cs" Link="FetchManySpecs.cs" />
+      <Compile Include="..\NHibernate3.Tests\FetchSpecs.cs" Link="FetchSpecs.cs" />
+      <Compile Include="..\NHibernate3.Tests\Util\FakeFetchingProvider.cs" Link="Util\FakeFetchingProvider.cs" />
+      <Compile Include="..\NHibernate3.Tests\Util\SqLiteNHibernateFixture.cs" Link="Util\SqLiteNHibernateFixture.cs" />
+      <Compile Include="..\NHibernate3.Tests\Util\SqLiteNHibernateTest.cs" Link="Util\SqLiteNHibernateTest.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Cobweb" Version="[1.1.1,2)" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.7.2" />
+        <PackageReference Include="FluentNHibernate" Version="[2,2.1)" />
+        <PackageReference Include="FluentAssertions" Version="[5.4.0,6)" />
+        <PackageReference Include="System.Data.SQLite" version="1.0.108" />
+        <PackageReference Include="xunit" Version="2.3.1" />
+        <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
+        <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\src\NHibernate4\Aranasoft.Cobweb.NHibernate4.csproj" />
+    </ItemGroup>
+
+</Project>

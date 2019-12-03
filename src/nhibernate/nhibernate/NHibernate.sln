@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2011
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data.NHibernate3", "src\Data.NHibernate3\Data.NHibernate3.csproj", "{4CB65D8A-99BA-4274-B323-9ACCF19606EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NHibernate3", "src\NHibernate3\Aranasoft.Cobweb.NHibernate3.csproj", "{4CB65D8A-99BA-4274-B323-9ACCF19606EB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data.NHibernate4", "src\Data.NHibernate4\Data.NHibernate4.csproj", "{84085341-8720-44EE-BD78-B5F5C38BC330}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NHibernate4", "src\NHibernate4\Aranasoft.Cobweb.NHibernate4.csproj", "{84085341-8720-44EE-BD78-B5F5C38BC330}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data.NHibernate3.Tests", "test\Data.NHibernate3.Tests\Data.NHibernate3.Tests.csproj", "{05328E70-9ADD-4790-B61B-3902000301FA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NHibernate3.Tests", "test\NHibernate3.Tests\Aranasoft.Cobweb.NHibernate3.Tests.csproj", "{05328E70-9ADD-4790-B61B-3902000301FA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data.NHibernate4.Tests", "test\Data.NHibernate4.Tests\Data.NHibernate4.Tests.csproj", "{7FD6C25F-D2A1-492D-9067-CC8772E7E4D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NHibernate4.Tests", "test\NHibernate4.Tests\Aranasoft.Cobweb.NHibernate4.Tests.csproj", "{7FD6C25F-D2A1-492D-9067-CC8772E7E4D5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{89ACABCD-0E5D-4DDC-A4A2-5E7B19C4BF35}"
 	ProjectSection(SolutionItems) = preProject
@@ -19,9 +19,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data.NHibernate5", "src\Data.NHibernate5\Data.NHibernate5.csproj", "{8923CF0C-BE25-4339-9DE0-6EBFF1267A74}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NHibernate5", "src\NHibernate5\Aranasoft.Cobweb.NHibernate5.csproj", "{8923CF0C-BE25-4339-9DE0-6EBFF1267A74}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data.NHibernate5.Tests", "test\Data.NHibernate5.Tests\Data.NHibernate5.Tests.csproj", "{C47A463E-DC3D-40EF-A841-1B5EDC598E17}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NHibernate5.Tests", "test\NHibernate5.Tests\Aranasoft.Cobweb.NHibernate5.Tests.csproj", "{C47A463E-DC3D-40EF-A841-1B5EDC598E17}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
