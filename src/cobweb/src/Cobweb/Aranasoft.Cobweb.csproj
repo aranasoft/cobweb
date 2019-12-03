@@ -3,9 +3,9 @@
 
     <PropertyGroup>
         <TargetFrameworks>net45;netstandard2.0</TargetFrameworks>
-        <AssemblyName>Cobweb</AssemblyName>
-        <RootNamespace>Cobweb</RootNamespace>
-        <Version>1.4</Version>
+        <AssemblyName>Aranasoft.Cobweb</AssemblyName>
+        <RootNamespace>Aranasoft.Cobweb</RootNamespace>
+        <Version>4</Version>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
 
