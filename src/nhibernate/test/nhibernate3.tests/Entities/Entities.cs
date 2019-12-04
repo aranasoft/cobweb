@@ -1,5 +1,5 @@
 ﻿using System;
-using Cobweb.Data;
+using Aranasoft.Cobweb.Data;
 using Iesi.Collections.Generic;
 
 namespace Aranasoft.Cobweb.NHibernate.Tests.Entities {

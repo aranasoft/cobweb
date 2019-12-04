@@ -22,7 +22,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Cobweb" Version="[1.4,2)" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.7.2" />
         <PackageReference Include="FluentAssertions" Version="[5.4.0,6)" />
         <PackageReference Include="FluentNHibernate" Version="[2.1.2,2.2)" />

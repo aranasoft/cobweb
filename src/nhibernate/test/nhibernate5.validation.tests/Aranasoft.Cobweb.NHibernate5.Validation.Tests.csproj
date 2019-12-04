@@ -3,8 +3,8 @@
 
     <PropertyGroup>
         <TargetFrameworks>net461;netcoreapp2.0</TargetFrameworks>
-        <AssemblyName>Cobweb.Testing.NHibernate.Tests</AssemblyName>
-        <RootNamespace>Cobweb.Testing.NHibernate.Tests</RootNamespace>
+        <AssemblyName>Aranasoft.Cobweb.NHibernate.Validation.Tests</AssemblyName>
+        <RootNamespace>Aranasoft.Cobweb.NHibernate.Validation.Tests</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
@@ -15,8 +15,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Cobweb" Version="[1.4,2)" />
-        <PackageReference Include="Cobweb.Data.NHibernate" Version="[1.50.2,1.60)" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.7.2" />
         <PackageReference Include="FluentAssertions" Version="[5.4.0, 6)" />
         <PackageReference Include="xunit" Version="2.3.1" />

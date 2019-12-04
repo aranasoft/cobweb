@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
-using Cobweb.Data.NHibernate.QueryableOptions;
+using Aranasoft.Cobweb.NHibernate.QueryableOptions;
 using NHibernate.Linq;
 
-namespace Cobweb.Testing.NHibernate.QueryableOptions {
+namespace Aranasoft.Cobweb.NHibernate.Validation.QueryableOptions {
     public class FakeQueryableOptionsProvider : IQueryableOptionsProvider {
         public IQueryable<T> WithOptions<T>(IQueryable<T> source, Action<NhQueryableOptions> setOptions) {
             return source;

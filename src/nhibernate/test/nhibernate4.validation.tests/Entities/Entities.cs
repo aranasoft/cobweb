@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using Cobweb.Data;
+using Aranasoft.Cobweb.Data;
 
-namespace Cobweb.Testing.NHibernate.Tests.Entities {
+namespace Aranasoft.Cobweb.NHibernate.Validation.Tests.Entities {
     public class CarEntity : Entity<CarEntity, Guid>, IEquatable<CarEntity> {
         public virtual string Name { get; set; }
         public virtual PersonEntity Owner { get; set; }

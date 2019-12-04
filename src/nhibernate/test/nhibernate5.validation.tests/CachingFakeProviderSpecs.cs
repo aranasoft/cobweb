@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Linq;
-using Cobweb.Data.NHibernate.Providers;
-using Cobweb.Data.NHibernate.QueryableOptions;
-using Cobweb.Testing.NHibernate.Caching;
-using Cobweb.Testing.NHibernate.QueryableOptions;
-using Cobweb.Testing.NHibernate.Tests.Entities;
+using Aranasoft.Cobweb.NHibernate.Providers;
+using Aranasoft.Cobweb.NHibernate.QueryableOptions;
+using Aranasoft.Cobweb.NHibernate.Validation.Caching;
+using Aranasoft.Cobweb.NHibernate.Validation.QueryableOptions;
+using Aranasoft.Cobweb.NHibernate.Validation.Tests.Entities;
 using FluentAssertions;
 using Xunit;
 #pragma warning disable 618
 
-namespace Cobweb.Testing.NHibernate.Tests {
+namespace Aranasoft.Cobweb.NHibernate.Validation.Tests {
     [Collection("QueryableOptionsProvider")]
     public class CachingFakeProviderSpecs : IDisposable {
         private readonly Func<IQueryableOptionsProvider> _currentCacheProvider;

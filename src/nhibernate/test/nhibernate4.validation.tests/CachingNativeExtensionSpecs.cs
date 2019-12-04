@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Linq;
-using Cobweb.Testing.NHibernate.Tests.Entities;
+using Aranasoft.Cobweb.NHibernate.Validation.Tests.Entities;
 using FluentAssertions;
 using NHibernate.Linq;
 using Xunit;
 
-namespace Cobweb.Testing.NHibernate.Tests {
+namespace Aranasoft.Cobweb.NHibernate.Validation.Tests {
     [Collection("CachingProvider")]
     public class CachingNativeExtensionSpecs {
         [Fact]

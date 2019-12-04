@@ -2,16 +2,21 @@
     <Import Project="../../Common.Validation.props" />
 
     <PropertyGroup>
-        <TargetFramework>net40</TargetFramework>
-        <AssemblyName>Cobweb.Testing.NHibernate</AssemblyName>
-        <RootNamespace>Cobweb.Testing.NHibernate</RootNamespace>
-        <Version>1.33.4</Version>
+        <TargetFramework>net45</TargetFramework>
+        <AssemblyName>Aranasoft.Cobweb.NHibernate.Validation</AssemblyName>
+        <RootNamespace>Aranasoft.Cobweb.NHibernate.Validation</RootNamespace>
+        <Version>1.33.6</Version>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Cobweb" Version="[1.1.1,2)" />
-        <PackageReference Include="Cobweb.Data.NHibernate" Version="[1.33.5,1.40)" />
+        <PackageReference Include="Aranasoft.Cobweb" Version="[1.4,2)" />
+        <PackageReference Include="Aranasoft.Cobweb.NHibernate" Version="[1.33.6,1.40)" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\cobweb\src\Cobweb\Aranasoft.Cobweb.csproj" />
+      <ProjectReference Include="..\nhibernate3\Aranasoft.Cobweb.NHibernate3.csproj" />
     </ItemGroup>
 
 </Project>

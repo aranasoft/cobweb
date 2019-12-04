@@ -1,4 +1,4 @@
-﻿using Cobweb.DependencyInjection;
+﻿using Aranasoft.Cobweb.DependencyInjection;
 using NHibernate;
 using NHibernate.Cfg;
 

@@ -3,13 +3,11 @@
 
     <PropertyGroup>
         <TargetFramework>net452</TargetFramework>
-        <AssemblyName>Cobweb.Testing.NHibernate.Tests</AssemblyName>
-        <RootNamespace>Cobweb.Testing.NHibernate.Tests</RootNamespace>
+        <AssemblyName>Aranasoft.Cobweb.NHibernate.Validation.Tests</AssemblyName>
+        <RootNamespace>Aranasoft.Cobweb.NHibernate.Validation.Tests</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Cobweb" Version="[1.1.1,2)" />
-        <PackageReference Include="Cobweb.Data.NHibernate" Version="[1.33.5,1.40)" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.7.2" />
         <PackageReference Include="NHibernate" Version="3.3.5.4000" />
         <PackageReference Include="FluentAssertions" Version="[5.4.0, 6)" />

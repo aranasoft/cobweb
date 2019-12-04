@@ -39,6 +39,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aranasoft.Cobweb.NHibernate
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aranasoft.Cobweb.NHibernate5.Validation.Tests", "test\nhibernate5.validation.tests\Aranasoft.Cobweb.NHibernate5.Validation.Tests.csproj", "{136B2A71-300F-481B-AB04-E369E1289282}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_deps", "_deps", "{724618DC-773B-4E69-94D1-9283A6501DD0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aranasoft.Cobweb", "..\cobweb\src\Cobweb\Aranasoft.Cobweb.csproj", "{C54D1C0F-75B6-424F-BFAE-583B0E18FCA4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +97,10 @@ Global
 		{136B2A71-300F-481B-AB04-E369E1289282}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{136B2A71-300F-481B-AB04-E369E1289282}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{136B2A71-300F-481B-AB04-E369E1289282}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C54D1C0F-75B6-424F-BFAE-583B0E18FCA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C54D1C0F-75B6-424F-BFAE-583B0E18FCA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C54D1C0F-75B6-424F-BFAE-583B0E18FCA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C54D1C0F-75B6-424F-BFAE-583B0E18FCA4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -110,6 +118,7 @@ Global
 		{20C6DCEC-A441-46B7-8D6F-F41CC870670D} = {792B2CB1-7C34-4DFD-89A3-1E89B994267A}
 		{8EAB6D65-797B-4B7C-9752-620D589821DB} = {792B2CB1-7C34-4DFD-89A3-1E89B994267A}
 		{136B2A71-300F-481B-AB04-E369E1289282} = {792B2CB1-7C34-4DFD-89A3-1E89B994267A}
+		{C54D1C0F-75B6-424F-BFAE-583B0E18FCA4} = {724618DC-773B-4E69-94D1-9283A6501DD0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A39DEB0D-5F8B-4923-91DA-F84A1EAFEB84}

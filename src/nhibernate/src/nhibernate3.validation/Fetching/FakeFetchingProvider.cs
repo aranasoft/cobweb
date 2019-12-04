@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using Cobweb.Data.NHibernate.Fetching;
+using Aranasoft.Cobweb.NHibernate.Fetching;
 
-namespace Cobweb.Testing.NHibernate.Fetching {
+namespace Aranasoft.Cobweb.NHibernate.Validation.Fetching {
     public class FakeFetchingProvider : IFetchingProvider {
         public IFetchRequest<TOriginatingEntity, TFetch> Fetch<TOriginatingEntity, TFetch>(
             IQueryable<TOriginatingEntity> source,

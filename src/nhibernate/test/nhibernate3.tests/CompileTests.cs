@@ -4,7 +4,7 @@ using System.Data;
 using System.Linq;
 using Aranasoft.Cobweb.NHibernate.Providers;
 using Aranasoft.Cobweb.NHibernate.Tests.Entities;
-using Cobweb.Data;
+using Aranasoft.Cobweb.Data;
 using NHibernate;
 
 namespace Aranasoft.Cobweb.NHibernate.Tests {

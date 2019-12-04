@@ -1,8 +1,8 @@
-﻿using Cobweb.Data.NHibernate;
+﻿using Aranasoft.Cobweb.NHibernate;
 using FluentNHibernate.Cfg.Db;
 using NHibernate.Dialect;
 
-namespace Cobweb.Testing.NHibernate {
+namespace Aranasoft.Cobweb.NHibernate.Validation {
     public class SQLiteInMemoryConnectionConfiguration : INHibernateConnectionConfiguration {
         public IPersistenceConfigurer Configuration() {
             return Configuration<SQLiteDialect>();

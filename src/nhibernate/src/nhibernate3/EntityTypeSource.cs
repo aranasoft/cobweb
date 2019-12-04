@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Cobweb.Data;
+using Aranasoft.Cobweb.Data;
 using FluentNHibernate;
 using FluentNHibernate.Diagnostics;
 

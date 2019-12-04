@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Linq;
-using Cobweb.Data.NHibernate.Fetching;
-using Cobweb.Data.NHibernate.Providers;
-using Cobweb.Testing.NHibernate.Fetching;
-using Cobweb.Testing.NHibernate.Tests.Entities;
+using Aranasoft.Cobweb.NHibernate.Fetching;
+using Aranasoft.Cobweb.NHibernate.Providers;
+using Aranasoft.Cobweb.NHibernate.Validation.Fetching;
+using Aranasoft.Cobweb.NHibernate.Validation.Tests.Entities;
 using FluentAssertions;
 using Xunit;
 
-namespace Cobweb.Testing.NHibernate.Tests
+namespace Aranasoft.Cobweb.NHibernate.Validation.Tests
 {
     [Collection("FetchingProvider")]
     public class FetchingFakeProviderSpecs : IDisposable {

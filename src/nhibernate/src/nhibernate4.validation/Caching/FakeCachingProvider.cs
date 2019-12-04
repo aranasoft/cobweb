@@ -1,7 +1,7 @@
 ﻿using System.Linq;
-using Cobweb.Data.NHibernate.Caching;
+using Aranasoft.Cobweb.NHibernate.Caching;
 
-namespace Cobweb.Testing.NHibernate.Caching {
+namespace Aranasoft.Cobweb.NHibernate.Validation.Caching {
     public class FakeCachingProvider : ICachingProvider {
         public ICacheRequest<T> Cacheable<T>(
             IQueryable<T> query) {

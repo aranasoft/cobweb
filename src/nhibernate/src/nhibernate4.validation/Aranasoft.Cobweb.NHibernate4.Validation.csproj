@@ -3,9 +3,9 @@
 
     <PropertyGroup>
         <TargetFramework>net45</TargetFramework>
-        <AssemblyName>Cobweb.Testing.NHibernate</AssemblyName>
-        <RootNamespace>Cobweb.Testing.NHibernate</RootNamespace>
-        <Version>1.40.2</Version>
+        <AssemblyName>Aranasoft.Cobweb.NHibernate.Validation</AssemblyName>
+        <RootNamespace>Aranasoft.Cobweb.NHibernate.Validation</RootNamespace>
+        <Version>1.40.3</Version>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
 
@@ -17,8 +17,13 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Cobweb" Version="[1.1.1,2)" />
-        <PackageReference Include="Cobweb.Data.NHibernate" Version="[1.40.2,1.50)" />
+        <PackageReference Include="Aranasoft.Cobweb" Version="[1.4,2)" />
+        <PackageReference Include="Aranasoft.Cobweb.NHibernate" Version="[1.40.3,1.50)" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\cobweb\src\Cobweb\Aranasoft.Cobweb.csproj" />
+      <ProjectReference Include="..\nhibernate4\Aranasoft.Cobweb.NHibernate4.csproj" />
     </ItemGroup>
 
 </Project>

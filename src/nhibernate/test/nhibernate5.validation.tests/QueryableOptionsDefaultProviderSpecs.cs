@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Linq;
-using Cobweb.Data.NHibernate.Providers;
-using Cobweb.Data.NHibernate.QueryableOptions;
-using Cobweb.Testing.NHibernate.Tests.Entities;
+using Aranasoft.Cobweb.NHibernate.Providers;
+using Aranasoft.Cobweb.NHibernate.QueryableOptions;
+using Aranasoft.Cobweb.NHibernate.Validation.Tests.Entities;
 using FluentAssertions;
 using NHibernate;
 using Xunit;
 
-namespace Cobweb.Testing.NHibernate.Tests {
+namespace Aranasoft.Cobweb.NHibernate.Validation.Tests {
     [Collection("QueryableOptionsProvider")]
     public class QueryableOptionsDefaultProviderSpecs {
         [Fact]

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Cobweb.Data;
+using Aranasoft.Cobweb.Data;
 
 namespace Aranasoft.Cobweb.NHibernate.Tests.Entities {
     public class CarEntity : Entity<CarEntity, Guid>, IEquatable<CarEntity> {
