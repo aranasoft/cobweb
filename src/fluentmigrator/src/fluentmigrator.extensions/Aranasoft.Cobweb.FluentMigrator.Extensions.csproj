@@ -3,16 +3,14 @@
 
     <PropertyGroup>
         <TargetFramework>net40</TargetFramework>
-        <AssemblyName>Cobweb.Data.FluentMigrator.Tests</AssemblyName>
-        <RootNamespace>Cobweb.Data.FluentMigrator.Tests</RootNamespace>
+        <AssemblyName>Aranasoft.Cobweb.FluentMigrator.Extensions</AssemblyName>
+        <RootNamespace>Aranasoft.Cobweb.FluentMigrator.Extensions</RootNamespace>
+        <Version>1.1.1</Version>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="FluentMigrator" Version="[1.0.1,2)" />
-    </ItemGroup>
-
-    <ItemGroup>
-        <ProjectReference Include="..\..\src\Data.FluentMigrator\Data.FluentMigrator.csproj" />
     </ItemGroup>
 
 </Project>

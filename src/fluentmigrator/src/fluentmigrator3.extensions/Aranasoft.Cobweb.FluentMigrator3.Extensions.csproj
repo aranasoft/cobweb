@@ -1,16 +1,16 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
     <Import Project="../../Common.props" />
 
     <PropertyGroup>
         <TargetFrameworks>net461;netstandard2.0</TargetFrameworks>
-        <AssemblyName>Cobweb.Data.FluentMigrator</AssemblyName>
-        <RootNamespace>Cobweb.Data.FluentMigrator</RootNamespace>
+        <AssemblyName>Aranasoft.Cobweb.FluentMigrator.Extensions</AssemblyName>
+        <RootNamespace>Aranasoft.Cobweb.FluentMigrator.Extensions</RootNamespace>
         <Version>3.0.0</Version>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Include="..\Data.FluentMigrator\MigrationExtensions.cs" />
+        <Compile Include="..\fluentmigrator.extensions\MigrationExtensions.cs" />
     </ItemGroup>
 
     <ItemGroup>

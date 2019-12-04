@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2011
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data.FluentMigrator", "src\Data.FluentMigrator\Data.FluentMigrator.csproj", "{A7396F85-22B8-42CE-BFB7-65300E028B8D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aranasoft.Cobweb.FluentMigrator.Extensions", "src\fluentmigrator.extensions\Aranasoft.Cobweb.FluentMigrator.Extensions.csproj", "{A7396F85-22B8-42CE-BFB7-65300E028B8D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.FluentMigrator.Tests", "test\Data.FluentMigrator.Tests\Data.FluentMigrator.Tests.csproj", "{37992F6F-C7E3-4743-B965-C176337142FF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aranasoft.Cobweb.FluentMigrator.Extensions.Tests", "test\fluentmigrator.extensions.tests\Aranasoft.Cobweb.FluentMigrator.Extensions.Tests.csproj", "{37992F6F-C7E3-4743-B965-C176337142FF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{52560949-42DD-46C0-B674-762F6FAF61BE}"
 	ProjectSection(SolutionItems) = preProject
@@ -15,13 +15,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data.FluentMigrator2", "src\Data.FluentMigrator2\Data.FluentMigrator2.csproj", "{16AC8D08-3AC5-4529-821B-312F96CA07D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aranasoft.Cobweb.FluentMigrator2.Extensions", "src\fluentmigrator2.extensions\Aranasoft.Cobweb.FluentMigrator2.Extensions.csproj", "{16AC8D08-3AC5-4529-821B-312F96CA07D2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data.FluentMigrator2.Tests", "test\Data.FluentMigrator2.Tests\Data.FluentMigrator2.Tests.csproj", "{F9F99EBB-CA88-4DAD-AC0B-E25CAA84436D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aranasoft.Cobweb.FluentMigrator2.Extensions.Tests", "test\fluentmigrator2.extensions.tests\Aranasoft.Cobweb.FluentMigrator2.Extensions.Tests.csproj", "{F9F99EBB-CA88-4DAD-AC0B-E25CAA84436D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.FluentMigrator3", "src\Data.FluentMigrator3\Data.FluentMigrator3.csproj", "{18329577-55CF-4307-B718-8AE7D5F8E5C0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aranasoft.Cobweb.FluentMigrator3.Extensions", "src\fluentmigrator3.extensions\Aranasoft.Cobweb.FluentMigrator3.Extensions.csproj", "{18329577-55CF-4307-B718-8AE7D5F8E5C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.FluentMigrator3.Tests", "test\Data.FluentMigrator3.Tests\Data.FluentMigrator3.Tests.csproj", "{08F9AE56-19F8-4725-ADCA-3EC326F933CB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aranasoft.Cobweb.FluentMigrator3.Extensions.Tests", "test\fluentmigrator3.extensions.tests\Aranasoft.Cobweb.FluentMigrator3.Extensions.Tests.csproj", "{08F9AE56-19F8-4725-ADCA-3EC326F933CB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
