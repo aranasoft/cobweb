@@ -1,0 +1,25 @@
+<Project>
+    <PropertyGroup>
+        <Authors>Arana Software</Authors>
+        <Company>Arana Software</Company>
+        <Title>Cobweb Extensions for Entity Framework Core</Title>
+        <Product>Aranasoft's Cobweb</Product>
+        <Description>Entity Framework Core utilities and classes for Cobweb, a base-class utility library for .NET</Description>
+        <Copyright>Copyright 2019 Arana Software</Copyright>
+        <PackageTags>entityframeworkcore;efcore;orm;Cobweb;Arana</PackageTags>
+        <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
+        <PackageProjectUrl>https://github.com/aranasoft/cobweb-data-entityframeworkcore/</PackageProjectUrl>
+        <PackageIconUrl>https://raw.githubusercontent.com/aranasoft/cobweb/master/docs/logo-128px.png</PackageIconUrl>
+        <PackageIcon>cobweb-logo.png</PackageIcon>
+        <RepositoryUrl>https://github.com/aranasoft/cobweb-data-entityframeworkcore.git</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <MinClientVersion>3.5</MinClientVersion>
+        <PackageOutputPath>..\..\artifacts</PackageOutputPath>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="..\..\LICENSE" Pack="true" PackagePath="\" />
+        <None Include="..\..\cobweb-logo.png" Pack="true" PackagePath="\" />
+    </ItemGroup>
+
+</Project>
