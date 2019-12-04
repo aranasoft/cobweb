@@ -19,11 +19,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\src\Testing.NHibernate3\Testing.NHibernate3.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Entities\" />
+        <ProjectReference Include="..\..\src\nhibernate3.validation\Aranasoft.Cobweb.NHibernate3.Validation.csproj" />
     </ItemGroup>
 
 </Project>

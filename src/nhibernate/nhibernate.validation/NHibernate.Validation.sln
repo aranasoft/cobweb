@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2011
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testing.NHibernate3", "src\Testing.NHibernate3\Testing.NHibernate3.csproj", "{25087342-CC11-451A-8BB0-765D1AB3FD52}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NHibernate3.Validation", "src\nhibernate3.validation\Aranasoft.Cobweb.NHibernate3.Validation.csproj", "{25087342-CC11-451A-8BB0-765D1AB3FD52}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testing.NHibernate4", "src\Testing.NHibernate4\Testing.NHibernate4.csproj", "{6ABE0B83-0312-4F30-8665-4BB4BA58BC33}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NHibernate4.Validation", "src\nhibernate4.validation\Aranasoft.Cobweb.NHibernate4.Validation.csproj", "{6ABE0B83-0312-4F30-8665-4BB4BA58BC33}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A189C19E-1735-4F56-A3C1-AFF800FA2AEA}"
 	ProjectSection(SolutionItems) = preProject
@@ -14,13 +14,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Testing.NHibernate3.Tests", "test\Testing.NHibernate3.Tests\Testing.NHibernate3.Tests.csproj", "{A7BDA6D5-B8B3-40EE-A817-236D2030E7E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NHibernate3.Validation.Tests", "test\nhibernate3.validation.tests\Aranasoft.Cobweb.NHibernate3.Validation.Tests.csproj", "{A7BDA6D5-B8B3-40EE-A817-236D2030E7E1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Testing.NHibernate4.Tests", "test\Testing.NHibernate4.Tests\Testing.NHibernate4.Tests.csproj", "{AA04660C-7440-40ED-82EE-996387842C31}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NHibernate4.Validation.Tests", "test\nhibernate4.validation.tests\Aranasoft.Cobweb.NHibernate4.Validation.Tests.csproj", "{AA04660C-7440-40ED-82EE-996387842C31}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Testing.NHibernate5", "src\Testing.NHibernate5\Testing.NHibernate5.csproj", "{61F3D8EC-9213-415D-955C-1E6B110F2FB4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NHibernate5.Validation", "src\nhibernate5.validation\Aranasoft.Cobweb.NHibernate5.Validation.csproj", "{61F3D8EC-9213-415D-955C-1E6B110F2FB4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Testing.NHibernate5.Tests", "test\Testing.NHibernate5.Tests\Testing.NHibernate5.Tests.csproj", "{1913CF90-2E85-4E75-9417-78119DDC396B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NHibernate5.Validation.Tests", "test\nhibernate5.validation.tests\Aranasoft.Cobweb.NHibernate5.Validation.Tests.csproj", "{1913CF90-2E85-4E75-9417-78119DDC396B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

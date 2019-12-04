@@ -8,9 +8,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Compile Include="..\Testing.NHibernate3.Tests\FetchingDefaultProviderSpecs.cs" Link="FetchingDefaultProviderSpecs.cs" />
-      <Compile Include="..\Testing.NHibernate3.Tests\FetchingFakeProviderSpecs.cs" Link="FetchingFakeProviderSpecs.cs" />
-      <Compile Include="..\Testing.NHibernate3.Tests\FetchingNativeExtensionSpecs.cs" Link="FetchingNativeExtensionSpecs.cs" />
+      <Compile Include="..\nhibernate3.validation.tests\FetchingDefaultProviderSpecs.cs" Link="FetchingDefaultProviderSpecs.cs" />
+      <Compile Include="..\nhibernate3.validation.tests\FetchingFakeProviderSpecs.cs" Link="FetchingFakeProviderSpecs.cs" />
+      <Compile Include="..\nhibernate3.validation.tests\FetchingNativeExtensionSpecs.cs" Link="FetchingNativeExtensionSpecs.cs" />
     </ItemGroup>
 
     <ItemGroup>
@@ -24,7 +24,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\src\Testing.NHibernate4\Testing.NHibernate4.csproj" />
+        <ProjectReference Include="..\..\src\nhibernate4.validation\Aranasoft.Cobweb.NHibernate4.Validation.csproj" />
     </ItemGroup>
 
 </Project>

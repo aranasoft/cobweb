@@ -8,10 +8,10 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Compile Include="..\Testing.NHibernate3.Tests\FetchingDefaultProviderSpecs.cs" Link="FetchingDefaultProviderSpecs.cs" />
-      <Compile Include="..\Testing.NHibernate3.Tests\FetchingFakeProviderSpecs.cs" Link="FetchingFakeProviderSpecs.cs" />
-      <Compile Include="..\Testing.NHibernate3.Tests\FetchingNativeExtensionSpecs.cs" Link="FetchingNativeExtensionSpecs.cs" />
-      <Compile Include="..\Testing.NHibernate4.Tests\Entities\Entities.cs" Link="Entities\Entities.cs" />
+      <Compile Include="..\nhibernate3.validation.tests\FetchingDefaultProviderSpecs.cs" Link="FetchingDefaultProviderSpecs.cs" />
+      <Compile Include="..\nhibernate3.validation.tests\FetchingFakeProviderSpecs.cs" Link="FetchingFakeProviderSpecs.cs" />
+      <Compile Include="..\nhibernate3.validation.tests\FetchingNativeExtensionSpecs.cs" Link="FetchingNativeExtensionSpecs.cs" />
+      <Compile Include="..\nhibernate4.validation.tests\Entities\Entities.cs" Link="Entities\Entities.cs" />
     </ItemGroup>
 
     <ItemGroup>
@@ -25,11 +25,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\src\Testing.NHibernate5\Testing.NHibernate5.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Entities\" />
+        <ProjectReference Include="..\..\src\nhibernate5.validation\Aranasoft.Cobweb.NHibernate5.Validation.csproj" />
     </ItemGroup>
 
 </Project>
