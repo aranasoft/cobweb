@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2011
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Azure", "src\Azure\Azure.csproj", "{F883911F-E2C9-49D2-9ED8-9FF3AF7C1734}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Azure", "src\azure\Aranasoft.Cobweb.Azure.csproj", "{F883911F-E2C9-49D2-9ED8-9FF3AF7C1734}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{85FF04C3-1050-4A35-8E79-7F8286B0021F}"
 	ProjectSection(SolutionItems) = preProject
