@@ -6,7 +6,6 @@
         <AssemblyName>Aranasoft.Cobweb.FluentMigrator.Extensions</AssemblyName>
         <RootNamespace>Aranasoft.Cobweb.FluentMigrator.Extensions</RootNamespace>
         <Version>1.1.1</Version>
-        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
 
     <ItemGroup>
