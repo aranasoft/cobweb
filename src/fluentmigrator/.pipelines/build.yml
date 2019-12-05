@@ -1,7 +1,10 @@
+variables:
+  solutionFolder: 'src/fluentmigrator'
+
 trigger:
   paths:
     include:
-      - "src/fluentmigrator"
+      - $(solutionFolder)
   branches:
    include:
       - "*"
@@ -28,26 +31,26 @@ steps:
   displayName: 'dotnet restore'
   inputs:
     command: 'restore'
-    projects: 'src/fluentmigrator'
+    projects: $(solutionFolder)
     feedsToUse: 'select'
 - task: DotNetCoreCLI@2
   displayName: 'dotnet build'
   inputs:
     command: 'build'
-    projects: 'src/fluentmigrator'
+    projects: $(solutionFolder)
     arguments: '--no-restore --configuration $(Build.Configuration)'
 - task: DotNetCoreCLI@2
   enabled: false
   displayName: 'dotnet test'
   inputs:
     command: 'test'
-    projects: 'src/fluentmigrator'
+    projects: $(solutionFolder)
     arguments: '--no-restore --no-build --configuration $(Build.Configuration)'
 - task: DotNetCoreCLI@2
   displayName: 'dotnet pack'
   inputs:
     command: 'pack'
-    packagesToPack: 'src/fluentmigrator'
+    packagesToPack: $(solutionFolder)
     arguments: '--no-restore --no-build --configuration $(Build.Configuration) --output $(Build.ArtifactStagingDirectory)'
     versioningScheme: 'off'
 - task: PublishBuildArtifacts@1
