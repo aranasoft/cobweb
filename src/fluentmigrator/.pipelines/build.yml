@@ -1,3 +1,5 @@
+name: 'Aranasoft.Cobweb.FluentMigrator'
+
 trigger:
   paths:
     include:
@@ -7,9 +9,7 @@ trigger:
       - "*"
 
 pool:
-  name: Azure Pipelines
-  demands:
-  - DotNetFramework
+  vmImage: 'windows-latest'
 
 steps:
 - task: PowerShell@1
@@ -39,6 +39,7 @@ steps:
     arguments: '--no-restore --configuration $(Build.Configuration)'
     workingDirectory: 'src/fluentmigrator'
 - task: DotNetCoreCLI@2
+  enabled: false
   displayName: 'dotnet test'
   inputs:
     command: 'test'
