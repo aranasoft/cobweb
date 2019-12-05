@@ -8,8 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Cobweb" Version="[1.4,2)" />
-    <PackageReference Include="Cobweb.Data.FluentMigrator" Version="3.0.0" />
     <PackageReference Include="FluentAssertions" Version="5.9.0" />
     <PackageReference Include="FluentMigrator" version="3.2.1" />
     <PackageReference Include="FluentMigrator.Runner" version="3.2.1" />
@@ -22,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\fluentmigrator\src\fluentmigrator3.extensions\Aranasoft.Cobweb.FluentMigrator3.Extensions.csproj" />
     <ProjectReference Include="..\..\src\entityframeworkcore.validation\Aranasoft.Cobweb.EntityFrameworkCore.Validation.csproj" />
   </ItemGroup>
 

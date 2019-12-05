@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Data;
-using Cobweb.Data.FluentMigrator;
+using Aranasoft.Cobweb.FluentMigrator.Extensions;
 using FluentMigrator;
 
 namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.Migrations

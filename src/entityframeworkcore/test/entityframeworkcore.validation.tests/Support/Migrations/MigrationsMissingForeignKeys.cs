@@ -1,5 +1,5 @@
 ﻿using System;
-using Cobweb.Data.FluentMigrator;
+using Aranasoft.Cobweb.FluentMigrator.Extensions;
 using FluentMigrator;
 using FluentMigrator.SqlServer;
 
