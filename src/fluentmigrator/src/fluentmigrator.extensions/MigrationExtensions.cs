@@ -3,7 +3,7 @@ using FluentMigrator.Builders.Alter.Table;
 using FluentMigrator.Builders.Create.Index;
 using FluentMigrator.Builders.Create.Table;
 
-namespace Cobweb.Data.FluentMigrator {
+namespace Aranasoft.Cobweb.FluentMigrator.Extensions {
     public static class MigrationExtensions {
         public static ICreateTableWithColumnSyntax WithColumn(
             this ICreateTableWithColumnSyntax columnSyntax,

@@ -1,6 +1,6 @@
 ﻿using FluentMigrator;
 
-namespace Cobweb.Data.FluentMigrator.Tests {
+namespace Aranasoft.Cobweb.FluentMigrator.Extensions.Tests {
     /// <summary>
     ///     These tests are not executed by NUnit. They are here for compile-time checking. 'If it builds, ship it.'
     /// </summary>
