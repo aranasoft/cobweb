@@ -1,5 +1,3 @@
-name: 'Aranasoft.Cobweb.FluentMigrator'
-
 trigger:
   paths:
     include:
@@ -26,31 +24,32 @@ steps:
           Write-Output ("##vso[build.updatebuildnumber]" + $env:BUILD_BUILDNUMBER+"-alpha")
         }
       }
+
 - task: DotNetCoreCLI@2
   displayName: 'dotnet restore'
   inputs:
     command: 'restore'
     feedsToUse: 'select'
-    workingDirectory: 'src/fluentmigrator'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/src/fluentmigrator'
 - task: DotNetCoreCLI@2
   displayName: 'dotnet build'
   inputs:
     command: 'build'
     arguments: '--no-restore --configuration $(Build.Configuration)'
-    workingDirectory: 'src/fluentmigrator'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/src/fluentmigrator'
 - task: DotNetCoreCLI@2
   enabled: false
   displayName: 'dotnet test'
   inputs:
     command: 'test'
     arguments: '--no-restore --no-build --configuration $(Build.Configuration)'
-    workingDirectory: 'src/fluentmigrator'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/src/fluentmigrator'
 - task: DotNetCoreCLI@2
   displayName: 'dotnet pack'
   inputs:
     command: 'pack'
     arguments: '--no-restore --no-build --configuration $(Build.Configuration) --output $(Build.ArtifactStagingDirectory)'
-    workingDirectory: 'src/fluentmigrator'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/src/fluentmigrator'
 - task: PublishBuildArtifacts@1
   displayName: 'publish packages'
   inputs:
