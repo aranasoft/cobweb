@@ -1,27 +1,44 @@
 <Project>
     <PropertyGroup>
+        <RepositoryRootDir>$(MSBuildThisFileDirectory)</RepositoryRootDir>
+        <RepositoryUrl>https://github.com/aranasoft/cobweb.git</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <IsTestProject>false</IsTestProject>
+        <IsTestProject Condition="$(MSBuildProjectName.EndsWith('Tests'))">true</IsTestProject>
+    </PropertyGroup>
+
+    <PropertyGroup>
         <Authors>Arana Software</Authors>
         <Company>Arana Software</Company>
-        <Title>Cobweb</Title>
-        <Product>Aranasoft's Cobweb</Product>
-        <Description>Cobweb is a base-class utility library for .NET</Description>
-        <Copyright>Copyright 2013-2018 Arana Software</Copyright>
-        <PackageTags>Cobweb;Arana</PackageTags>
-        <PackageLicenseUrl>https://github.com/aranasoft/cobweb-core/blob/master/LICENSE</PackageLicenseUrl>
-        <PackageProjectUrl>https://github.com/aranasoft/cobweb-core/</PackageProjectUrl>
-        <PackageIconUrl>https://raw.githubusercontent.com/aranasoft/cobweb/master/docs/logo-128px.png</PackageIconUrl>
-        <RepositoryUrl>https://github.com/aranasoft/cobweb-core.git</RepositoryUrl>
-        <RepositoryType>git</RepositoryType>
-        <MinClientVersion>3.5</MinClientVersion>
-        <PackageOutputPath>..\..\artifacts</PackageOutputPath>
-        <NoWarn>NU1701</NoWarn>
+        <Product>Aranasoft Cobweb</Product>
+        <PackageTags>cobweb;arana</PackageTags>
+
+        <Copyright>© Arana Software. All rights reserved.</Copyright>
+
+        <PackageProjectUrl>https://github.com/aranasoft/cobweb/</PackageProjectUrl>
+
+        <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
+        <PackageLicenseFullPath>$(MSBuildThisFileDirectory)LICENSE-BSD</PackageLicenseFullPath>
+        <PackageProjectUrl>https://github.com/aranasoft/cobweb/</PackageProjectUrl>
+        <PackageIcon>package-icon.png</PackageIcon>
+        <PackageIconFullPath>$(MSBuildThisFileDirectory)package-icon.png</PackageIconFullPath>
+
     </PropertyGroup>
 
     <ItemGroup>
-        <None Include="..\..\LICENSE">
-            <Pack>true</Pack>
-            <PackagePath>.\</PackagePath>
-        </None>
+        <None Include="$(PackageIconFullPath)" Pack="true" PackagePath="\"/>
+        <None Include="$(PackageLicenseFullPath)" Pack="true" PackagePath="\"/>
     </ItemGroup>
 
+    <PropertyGroup>
+        <PackageOutputFullPath>$(MSBuildThisFileDirectory)artifacts</PackageOutputFullPath>
+        <PackageOutputPath>$(PackageOutputFullPath)</PackageOutputPath>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(IsTestProject)' == 'true' ">
+        <IsPackable>false</IsPackable>
+    </PropertyGroup>
 </Project>

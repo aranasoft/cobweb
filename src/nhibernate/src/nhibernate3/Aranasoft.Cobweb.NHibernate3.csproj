@@ -1,12 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-    <Import Project="../../Common.props" />
 
     <PropertyGroup>
         <TargetFramework>net45</TargetFramework>
         <AssemblyName>Aranasoft.Cobweb.NHibernate</AssemblyName>
         <RootNamespace>Aranasoft.Cobweb.NHibernate</RootNamespace>
         <Version>1.33.6</Version>
-        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <Description>Boilerplate components for testable and convenient NHibernate development.</Description>
+        <PackageTags>nhibernate;fluentnhibernate;$(PackageTags)</PackageTags>
     </PropertyGroup>
 
     <ItemGroup>

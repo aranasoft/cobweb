@@ -1,11 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-    <Import Project="../../Common.props" />
 
     <PropertyGroup>
         <TargetFramework>net40</TargetFramework>
         <AssemblyName>Aranasoft.Cobweb.FluentMigrator.Extensions</AssemblyName>
         <RootNamespace>Aranasoft.Cobweb.FluentMigrator.Extensions</RootNamespace>
-        <Version>1.1.1</Version>
+        <Version>1.2</Version>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <Description>An alternative fluent interface for FluentMigrator.</Description>
+        <PackageTags>fluentmigrator;migrations;$(PackageTags)</PackageTags>
     </PropertyGroup>
 
     <ItemGroup>

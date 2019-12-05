@@ -1,12 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-    <Import Project="../../Common.props" />
 
     <PropertyGroup>
         <TargetFrameworks>net461;netstandard2.0</TargetFrameworks>
         <AssemblyName>Aranasoft.Cobweb.NHibernate</AssemblyName>
         <RootNamespace>Aranasoft.Cobweb.NHibernate</RootNamespace>
         <Version>1.50.3</Version>
-        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <Description>Boilerplate components for testable and convenient NHibernate development.</Description>
+        <PackageTags>nhibernate;fluentnhibernate;$(PackageTags)</PackageTags>
     </PropertyGroup>
 
     <ItemGroup>
@@ -29,7 +32,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\..\cobweb\src\Cobweb\Aranasoft.Cobweb.csproj" />
+        <ProjectReference Include="..\..\..\cobweb\src\Cobweb\Aranasoft.Cobweb.csproj" />
     </ItemGroup>
 
 </Project>

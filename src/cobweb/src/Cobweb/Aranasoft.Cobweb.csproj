@@ -1,12 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-    <Import Project="../../Common.props" />
 
     <PropertyGroup>
+        <Description>A base-class utility library for .NET and .NET Core.</Description>
         <TargetFrameworks>net45;netstandard2.0</TargetFrameworks>
         <AssemblyName>Aranasoft.Cobweb</AssemblyName>
         <RootNamespace>Aranasoft.Cobweb</RootNamespace>
         <Version>1.4.1</Version>
-        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
 
 </Project>

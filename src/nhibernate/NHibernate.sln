@@ -14,8 +14,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{89ACABCD-0E5D-4DDC-A4A2-5E7B19C4BF35}"
 	ProjectSection(SolutionItems) = preProject
 		CHANGELOG.md = CHANGELOG.md
-		Common.props = Common.props
-		LICENSE = LICENSE
 		README.md = README.md
 	EndProjectSection
 EndProject

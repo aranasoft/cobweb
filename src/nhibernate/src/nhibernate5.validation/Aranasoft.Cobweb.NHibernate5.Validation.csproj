@@ -1,12 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-    <Import Project="../../Common.Validation.props" />
 
     <PropertyGroup>
         <TargetFrameworks>net461;netstandard2.0</TargetFrameworks>
         <AssemblyName>Aranasoft.Cobweb.NHibernate.Validation</AssemblyName>
         <RootNamespace>Aranasoft.Cobweb.NHibernate.Validation</RootNamespace>
         <Version>1.50.3</Version>
-        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <Description>Validation and testing components for NHibernate.</Description>
+        <PackageTags>nhibernate;fluentnhibernate;validation;testing;$(PackageTags)</PackageTags>
     </PropertyGroup>
 
     <ItemGroup>
@@ -22,8 +25,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\..\cobweb\src\Cobweb\Aranasoft.Cobweb.csproj" />
-      <ProjectReference Include="..\nhibernate5\Aranasoft.Cobweb.NHibernate5.csproj" />
+        <ProjectReference Include="..\..\..\cobweb\src\Cobweb\Aranasoft.Cobweb.csproj" />
+        <ProjectReference Include="..\nhibernate5\Aranasoft.Cobweb.NHibernate5.csproj" />
     </ItemGroup>
 
 </Project>

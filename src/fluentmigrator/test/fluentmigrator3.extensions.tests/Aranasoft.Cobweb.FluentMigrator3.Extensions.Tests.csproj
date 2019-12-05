@@ -1,11 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-    <Import Project="../../Common.props" />
 
     <PropertyGroup>
         <TargetFrameworks>net461;netstandard2.0</TargetFrameworks>
         <AssemblyName>Aranasoft.Cobweb.FluentMigrator.Extensions.Tests</AssemblyName>
         <RootNamespace>Aranasoft.Cobweb.FluentMigrator.Extensions.Tests</RootNamespace>
-        <IsPackable>false</IsPackable>
     </PropertyGroup>
 
     <ItemGroup>

@@ -1,5 +1,4 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-    <Import Project="../../Common.props" />
 
     <PropertyGroup>
         <TargetFramework>net452</TargetFramework>
@@ -22,7 +21,6 @@
 
     <ItemGroup>
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.7.2" />
-        <PackageReference Include="FluentNHibernate" Version="[2,2.1)" />
         <PackageReference Include="FluentAssertions" Version="[5.4.0,6)" />
         <PackageReference Include="System.Data.SQLite" version="1.0.108" />
         <PackageReference Include="xunit" Version="2.3.1" />
