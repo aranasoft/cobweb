@@ -47,8 +47,9 @@ steps:
   displayName: 'dotnet pack'
   inputs:
     command: 'pack'
-    projects: 'src/fluentmigrator'
+    packagesToPack: 'src/fluentmigrator'
     arguments: '--no-restore --no-build --configuration $(Build.Configuration) --output $(Build.ArtifactStagingDirectory)'
+    versioningScheme: 'off'
 - task: PublishBuildArtifacts@1
   displayName: 'publish packages'
   inputs:
