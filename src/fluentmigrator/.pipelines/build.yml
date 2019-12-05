@@ -38,20 +38,20 @@ steps:
   inputs:
     command: 'build'
     projects: $(solutionFolder)
-    arguments: '--no-restore --configuration $(Build.Configuration)'
+    arguments: '--no-restore --configuration $(Build.Configuration) /p:ContinuousIntegrationBuild=true /p:BuildNumber=$(Build.BuildNumber)'
 - task: DotNetCoreCLI@2
   enabled: false
   displayName: 'dotnet test'
   inputs:
     command: 'test'
     projects: $(solutionFolder)
-    arguments: '--no-restore --no-build --configuration $(Build.Configuration)'
+    arguments: '--no-restore --no-build --configuration $(Build.Configuration) /p:ContinuousIntegrationBuild=true /p:BuildNumber=$(Build.BuildNumber)'
 - task: DotNetCoreCLI@2
   displayName: 'dotnet pack'
   inputs:
     command: 'pack'
     packagesToPack: $(solutionFolder)
-    arguments: '--no-restore --no-build --configuration $(Build.Configuration) --output $(Build.ArtifactStagingDirectory)'
+    arguments: '--no-restore --no-build --configuration $(Build.Configuration) --output $(Build.ArtifactStagingDirectory) /p:ContinuousIntegrationBuild=true /p:BuildNumber=$(Build.BuildNumber)'
     versioningScheme: 'off'
 - task: PublishBuildArtifacts@1
   displayName: 'publish packages'
