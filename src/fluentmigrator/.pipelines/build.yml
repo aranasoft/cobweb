@@ -24,32 +24,31 @@ steps:
           Write-Output ("##vso[build.updatebuildnumber]" + $env:BUILD_BUILDNUMBER+"-alpha")
         }
       }
-
 - task: DotNetCoreCLI@2
   displayName: 'dotnet restore'
   inputs:
     command: 'restore'
+    projects: 'src/fluentmigrator'
     feedsToUse: 'select'
-    workingDirectory: '$(System.DefaultWorkingDirectory)/src/fluentmigrator'
 - task: DotNetCoreCLI@2
   displayName: 'dotnet build'
   inputs:
     command: 'build'
+    projects: 'src/fluentmigrator'
     arguments: '--no-restore --configuration $(Build.Configuration)'
-    workingDirectory: '$(System.DefaultWorkingDirectory)/src/fluentmigrator'
 - task: DotNetCoreCLI@2
   enabled: false
   displayName: 'dotnet test'
   inputs:
     command: 'test'
+    projects: 'src/fluentmigrator'
     arguments: '--no-restore --no-build --configuration $(Build.Configuration)'
-    workingDirectory: '$(System.DefaultWorkingDirectory)/src/fluentmigrator'
 - task: DotNetCoreCLI@2
   displayName: 'dotnet pack'
   inputs:
     command: 'pack'
+    projects: 'src/fluentmigrator'
     arguments: '--no-restore --no-build --configuration $(Build.Configuration) --output $(Build.ArtifactStagingDirectory)'
-    workingDirectory: '$(System.DefaultWorkingDirectory)/src/fluentmigrator'
 - task: PublishBuildArtifacts@1
   displayName: 'publish packages'
   inputs:
