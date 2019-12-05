@@ -49,7 +49,7 @@ steps:
   displayName: 'dotnet pack'
   inputs:
     command: 'pack'
-    packagesToPack: $(solutionFolder)
+    packagesToPack: $(solutionFolder)/**/*.csproj
     arguments: '--no-restore --no-build --configuration $(Build.Configuration) --output $(Build.ArtifactStagingDirectory) /p:ContinuousIntegrationBuild=true /p:BuildNumber=$(Build.BuildNumber)'
     versioningScheme: 'off'
 - task: PublishBuildArtifacts@1
