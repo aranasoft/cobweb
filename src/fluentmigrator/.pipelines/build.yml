@@ -4,7 +4,7 @@ variables:
 trigger:
   paths:
     include:
-      - $(solutionFolder)
+      - 'src/fluentmigrator'
   branches:
    include:
       - "*"
