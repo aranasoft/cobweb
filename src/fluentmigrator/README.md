@@ -1,12 +1,13 @@
-# Cobweb.Data.FluentMigrator ![Visual Studio Team Services](https://aranasoft.visualstudio.com/_apis/public/build/definitions/e012ec23-f4c2-4d38-a0e0-133f48eb2542/19/badge?branchName=master&api-version=5.0-preview.2)
+# Aranasoft.Cobweb.FluentMigrator.Extensions
+![Azure DevOps](https://dev.azure.com/aranasoft/Cobweb/_apis/build/status/Aranasoft.Cobweb.FluentMigrator?branchName=master)
 
-FluentMigrator utilities and classes for Cobweb, a utility library for .NET.
+An alternative fluent interface for FluentMigrator.
 
 Cobweb was created by [Arana Software](https://www.aranasoft.com), a software agency in Las Vegas, Nevada.
 
 ## Alternate Syntax for FluentMigrator
 
-`Cobweb.Data.FluentMigrator` provides an alternate syntax style for [FluentMigrator](https://fluentmigrator.github.io/), a database migration framework for .NET, using lambda expression syntax instead of method chains.
+`Aranasoft.Cobweb.FluentMigrator.Extensions` provides an alternate syntax style for [FluentMigrator](https://fluentmigrator.github.io/), a database migration framework for .NET, using lambda expression syntax instead of method chains.
 
 ### FluentMigrator's Method Chain Syntax
 
@@ -37,13 +38,13 @@ Under the covers, Cobweb passes these lambda expressions to FluentMigrator's met
 From Package Manager Console:
 
 ```bash
-PM> install-package cobweb.data.fluentmigrator
+PM> install-package Aranasoft.Cobweb.FluentMigrator.Extensions
 ```
 
 From .NET CLI:
 
 ```bash
-> dotnet add package Cobweb.Data.FluentMigrator
+> dotnet add package Aranasoft.Cobweb.FluentMigrator.Extensions
 ```
 
 ## Usage
