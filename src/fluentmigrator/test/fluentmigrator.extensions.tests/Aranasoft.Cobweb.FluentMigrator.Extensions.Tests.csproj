@@ -1,7 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+    <Import Project="..\..\..\..\netfx.props" />
 
     <PropertyGroup>
-        <TargetFramework>net40</TargetFramework>
+        <TargetFrameworks>net40</TargetFrameworks>
         <AssemblyName>Aranasoft.Cobweb.FluentMigrator.Extensions.Tests</AssemblyName>
         <RootNamespace>Aranasoft.Cobweb.FluentMigrator.Extensions.Tests</RootNamespace>
     </PropertyGroup>

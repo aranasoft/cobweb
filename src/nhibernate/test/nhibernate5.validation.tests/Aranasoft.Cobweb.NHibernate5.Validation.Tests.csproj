@@ -1,4 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+    <Import Project="..\..\..\..\netfx.props" />
 
     <PropertyGroup>
         <TargetFrameworks>net461;netcoreapp2.0</TargetFrameworks>
@@ -13,6 +14,10 @@
       <Compile Include="..\nhibernate4.validation.tests\Entities\Entities.cs" Link="Entities\Entities.cs" />
     </ItemGroup>
 
+    <ItemGroup Condition=" '$(TargetFramework)' == 'net461' ">
+        <Reference Include="System.Runtime" />
+    </ItemGroup>
+
     <ItemGroup>
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.7.2" />
         <PackageReference Include="FluentAssertions" Version="[5.4.0, 6)" />
@@ -23,6 +28,12 @@
 
     <ItemGroup>
         <ProjectReference Include="..\..\src\nhibernate5.validation\Aranasoft.Cobweb.NHibernate5.Validation.csproj" />
+      </ItemGroup>
+
+    <ItemGroup>
+        <Content Include="xunit.runner.json">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
     </ItemGroup>
 
 </Project>

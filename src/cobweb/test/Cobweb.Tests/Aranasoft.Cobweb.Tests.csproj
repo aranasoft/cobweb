@@ -1,9 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+    <Import Project="..\..\..\..\netfx.props" />
+
     <PropertyGroup>
         <TargetFrameworks>net452;netcoreapp2.1</TargetFrameworks>
         <AssemblyName>Aranasoft.Cobweb.Tests</AssemblyName>
         <RootNamespace>Aranasoft.Cobweb.Tests</RootNamespace>
     </PropertyGroup>
+
+    <ItemGroup Condition=" '$(TargetFramework)' == 'net452' ">
+        <Reference Include="System.Runtime" />
+    </ItemGroup>
 
     <ItemGroup>
       <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.4.0" />
@@ -17,6 +23,12 @@
 
     <ItemGroup>
         <ProjectReference Include="..\..\src\Cobweb\Aranasoft.Cobweb.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Content Include="xunit.runner.json">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
     </ItemGroup>
 
 </Project>

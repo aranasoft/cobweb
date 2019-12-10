@@ -1,7 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+    <Import Project="..\..\..\..\netfx.props" />
 
     <PropertyGroup>
-        <TargetFramework>net452</TargetFramework>
+        <TargetFrameworks>net452</TargetFrameworks>
         <AssemblyName>Aranasoft.Cobweb.NHibernate.Tests</AssemblyName>
         <RootNamespace>Aranasoft.Cobweb.NHibernate.Tests</RootNamespace>
     </PropertyGroup>
@@ -19,6 +20,10 @@
       <Compile Include="..\NHibernate3.Tests\Util\SqLiteNHibernateTest.cs" Link="Util\SqLiteNHibernateTest.cs" />
     </ItemGroup>
 
+    <ItemGroup Condition=" '$(TargetFramework)' == 'net452' ">
+        <Reference Include="System.Runtime" />
+    </ItemGroup>
+
     <ItemGroup>
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.7.2" />
         <PackageReference Include="FluentAssertions" Version="[5.4.0,6)" />
@@ -30,6 +35,12 @@
 
     <ItemGroup>
         <ProjectReference Include="..\..\src\NHibernate4\Aranasoft.Cobweb.NHibernate4.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Content Include="xunit.runner.json">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
     </ItemGroup>
 
 </Project>

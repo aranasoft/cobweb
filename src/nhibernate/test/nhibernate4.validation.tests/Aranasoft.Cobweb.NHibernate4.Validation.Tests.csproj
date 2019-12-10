@@ -1,7 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+    <Import Project="..\..\..\..\netfx.props" />
 
     <PropertyGroup>
-        <TargetFramework>net452</TargetFramework>
+        <TargetFrameworks>net452</TargetFrameworks>
         <AssemblyName>Aranasoft.Cobweb.NHibernate.Validation.Tests</AssemblyName>
         <RootNamespace>Aranasoft.Cobweb.NHibernate.Validation.Tests</RootNamespace>
     </PropertyGroup>
@@ -10,6 +11,10 @@
       <Compile Include="..\nhibernate3.validation.tests\FetchingDefaultProviderSpecs.cs" Link="FetchingDefaultProviderSpecs.cs" />
       <Compile Include="..\nhibernate3.validation.tests\FetchingFakeProviderSpecs.cs" Link="FetchingFakeProviderSpecs.cs" />
       <Compile Include="..\nhibernate3.validation.tests\FetchingNativeExtensionSpecs.cs" Link="FetchingNativeExtensionSpecs.cs" />
+    </ItemGroup>
+
+    <ItemGroup Condition=" '$(TargetFramework)' == 'net452' ">
+        <Reference Include="System.Runtime" />
     </ItemGroup>
 
     <ItemGroup>
@@ -22,6 +27,12 @@
 
     <ItemGroup>
         <ProjectReference Include="..\..\src\nhibernate4.validation\Aranasoft.Cobweb.NHibernate4.Validation.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Content Include="xunit.runner.json">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
     </ItemGroup>
 
 </Project>

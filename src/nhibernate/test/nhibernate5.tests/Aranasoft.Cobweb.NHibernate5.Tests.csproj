@@ -1,4 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+    <Import Project="..\..\..\..\netfx.props" />
 
     <PropertyGroup>
         <TargetFrameworks>net461;netcoreapp2.1</TargetFrameworks>
@@ -20,6 +21,10 @@
       <Compile Include="..\NHibernate3.Tests\Util\SqLiteNHibernateTest.cs" Link="Util\SqLiteNHibernateTest.cs" />
     </ItemGroup>
 
+    <ItemGroup Condition=" '$(TargetFramework)' == 'net461' ">
+        <Reference Include="System.Runtime" />
+    </ItemGroup>
+
     <ItemGroup>
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.7.2" />
         <PackageReference Include="FluentAssertions" Version="[5.4.0,6)" />
@@ -32,6 +37,12 @@
 
     <ItemGroup>
         <ProjectReference Include="..\..\src\NHibernate5\Aranasoft.Cobweb.NHibernate5.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Content Include="xunit.runner.json">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
     </ItemGroup>
 
 </Project>

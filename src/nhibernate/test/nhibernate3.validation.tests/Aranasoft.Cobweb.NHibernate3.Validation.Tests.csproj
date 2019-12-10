@@ -1,7 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+    <Import Project="..\..\..\..\netfx.props" />
 
     <PropertyGroup>
-        <TargetFramework>net452</TargetFramework>
+        <TargetFrameworks>net452</TargetFrameworks>
         <AssemblyName>Aranasoft.Cobweb.NHibernate.Validation.Tests</AssemblyName>
         <RootNamespace>Aranasoft.Cobweb.NHibernate.Validation.Tests</RootNamespace>
     </PropertyGroup>
@@ -14,8 +15,18 @@
         <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.1" />
     </ItemGroup>
 
+    <ItemGroup Condition=" '$(TargetFramework)' == 'net452' ">
+        <Reference Include="System.Runtime" />
+    </ItemGroup>
+
     <ItemGroup>
         <ProjectReference Include="..\..\src\nhibernate3.validation\Aranasoft.Cobweb.NHibernate3.Validation.csproj" />
+      </ItemGroup>
+
+    <ItemGroup>
+        <Content Include="xunit.runner.json">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
     </ItemGroup>
 
 </Project>
