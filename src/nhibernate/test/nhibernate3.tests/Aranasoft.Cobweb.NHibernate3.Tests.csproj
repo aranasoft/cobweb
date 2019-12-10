@@ -1,33 +1,33 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-    <Import Project="..\..\..\..\netfx.props" />
+  <Import Project="..\..\..\..\netfx.props" />
 
-    <PropertyGroup>
-        <TargetFrameworks>net452</TargetFrameworks>
-        <AssemblyName>Aranasoft.Cobweb.NHibernate.Tests</AssemblyName>
-        <RootNamespace>Aranasoft.Cobweb.NHibernate.Tests</RootNamespace>
-    </PropertyGroup>
+  <PropertyGroup>
+    <TargetFrameworks>net452</TargetFrameworks>
+    <AssemblyName>Aranasoft.Cobweb.NHibernate.Tests</AssemblyName>
+    <RootNamespace>Aranasoft.Cobweb.NHibernate.Tests</RootNamespace>
+  </PropertyGroup>
 
-    <ItemGroup>
-        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.7.2" />
-        <PackageReference Include="FluentAssertions" Version="[5.4.0, 6)" />
-        <PackageReference Include="System.Data.SQLite" version="1.0.108" />
-        <PackageReference Include="xunit" Version="2.3.1" />
-        <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
-        <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.1" />
-    </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.7.2" />
+    <PackageReference Include="FluentAssertions" Version="[5.4.0, 6)" />
+    <PackageReference Include="System.Data.SQLite" version="1.0.108" />
+    <PackageReference Include="xunit" Version="2.3.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
+    <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.1" />
+  </ItemGroup>
 
-    <ItemGroup Condition=" '$(TargetFramework)' == 'net452' ">
-        <Reference Include="System.Runtime" />
-    </ItemGroup>
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net452' ">
+    <Reference Include="System.Runtime" />
+  </ItemGroup>
 
-    <ItemGroup>
-        <ProjectReference Include="..\..\src\NHibernate3\Aranasoft.Cobweb.NHibernate3.csproj" />
-    </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\NHibernate3\Aranasoft.Cobweb.NHibernate3.csproj" />
+  </ItemGroup>
 
-    <ItemGroup>
-        <Content Include="xunit.runner.json">
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </Content>
-    </ItemGroup>
+  <ItemGroup>
+    <Content Include="xunit.runner.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
 
 </Project>

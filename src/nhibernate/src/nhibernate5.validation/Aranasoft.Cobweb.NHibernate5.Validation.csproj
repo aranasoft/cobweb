@@ -1,33 +1,33 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-    <Import Project="..\..\..\..\netfx.props" />
+  <Import Project="..\..\..\..\netfx.props" />
 
-    <PropertyGroup>
-        <TargetFrameworks>net461;netstandard2.0</TargetFrameworks>
-        <AssemblyName>Aranasoft.Cobweb.NHibernate.Validation</AssemblyName>
-        <RootNamespace>Aranasoft.Cobweb.NHibernate.Validation</RootNamespace>
-        <Version>1.50.3</Version>
-    </PropertyGroup>
+  <PropertyGroup>
+    <TargetFrameworks>net461;netstandard2.0</TargetFrameworks>
+    <AssemblyName>Aranasoft.Cobweb.NHibernate.Validation</AssemblyName>
+    <RootNamespace>Aranasoft.Cobweb.NHibernate.Validation</RootNamespace>
+    <Version>1.50.3</Version>
+  </PropertyGroup>
 
-    <PropertyGroup>
-        <Description>Validation and testing components for NHibernate.</Description>
-        <PackageTags>nhibernate;fluentnhibernate;validation;testing;$(PackageTags)</PackageTags>
-    </PropertyGroup>
+  <PropertyGroup>
+    <Description>Validation and testing components for NHibernate.</Description>
+    <PackageTags>nhibernate;fluentnhibernate;validation;testing;$(PackageTags)</PackageTags>
+  </PropertyGroup>
 
-    <ItemGroup>
-      <Compile Include="..\nhibernate3.validation\Dialect\FluentMigratorSQLiteDialect.cs" Link="Dialect\FluentMigratorSQLiteDialect.cs" />
-      <Compile Include="..\nhibernate3.validation\Fetching\FakeFetchingProvider.cs" Link="Fetching\FakeFetchingProvider.cs" />
-      <Compile Include="..\nhibernate3.validation\FluentMigratorSQLiteConnectionConfiguration.cs" Link="FluentMigratorSQLiteConnectionConfiguration.cs" />
-      <Compile Include="..\nhibernate3.validation\SQLiteConnectionConfiguration.cs" Link="SQLiteConnectionConfiguration.cs" />
-    </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\nhibernate3.validation\Dialect\FluentMigratorSQLiteDialect.cs" Link="Dialect\FluentMigratorSQLiteDialect.cs" />
+    <Compile Include="..\nhibernate3.validation\Fetching\FakeFetchingProvider.cs" Link="Fetching\FakeFetchingProvider.cs" />
+    <Compile Include="..\nhibernate3.validation\FluentMigratorSQLiteConnectionConfiguration.cs" Link="FluentMigratorSQLiteConnectionConfiguration.cs" />
+    <Compile Include="..\nhibernate3.validation\SQLiteConnectionConfiguration.cs" Link="SQLiteConnectionConfiguration.cs" />
+  </ItemGroup>
 
-    <ItemGroup>
-        <PackageReference Include="Aranasoft.Cobweb" Version="[1.4,2)" />
-        <PackageReference Include="Aranasoft.Cobweb.NHibernate" Version="[1.50.3,1.60)" />
-    </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Aranasoft.Cobweb" Version="[1.4,2)" />
+    <PackageReference Include="Aranasoft.Cobweb.NHibernate" Version="[1.50.3,1.60)" />
+  </ItemGroup>
 
-    <ItemGroup>
-        <ProjectReference Include="..\..\..\cobweb\src\Cobweb\Aranasoft.Cobweb.csproj" />
-        <ProjectReference Include="..\nhibernate5\Aranasoft.Cobweb.NHibernate5.csproj" />
-    </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\cobweb\src\Cobweb\Aranasoft.Cobweb.csproj" />
+    <ProjectReference Include="..\nhibernate5\Aranasoft.Cobweb.NHibernate5.csproj" />
+  </ItemGroup>
 
 </Project>

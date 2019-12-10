@@ -1,24 +1,24 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-    <Import Project="..\..\..\..\netfx.props" />
+  <Import Project="..\..\..\..\netfx.props" />
 
-    <PropertyGroup>
-        <TargetFrameworks>net40;net45;netstandard2.0</TargetFrameworks>
-        <AssemblyName>Aranasoft.Cobweb.FluentMigrator.Extensions</AssemblyName>
-        <RootNamespace>Aranasoft.Cobweb.FluentMigrator.Extensions</RootNamespace>
-        <Version>2.1</Version>
-    </PropertyGroup>
+  <PropertyGroup>
+    <TargetFrameworks>net40;net45;netstandard2.0</TargetFrameworks>
+    <AssemblyName>Aranasoft.Cobweb.FluentMigrator.Extensions</AssemblyName>
+    <RootNamespace>Aranasoft.Cobweb.FluentMigrator.Extensions</RootNamespace>
+    <Version>2.1</Version>
+  </PropertyGroup>
 
-    <PropertyGroup>
-        <Description>An alternative fluent interface for FluentMigrator.</Description>
-        <PackageTags>fluentmigrator;migrations;$(PackageTags)</PackageTags>
-    </PropertyGroup>
+  <PropertyGroup>
+    <Description>An alternative fluent interface for FluentMigrator.</Description>
+    <PackageTags>fluentmigrator;migrations;$(PackageTags)</PackageTags>
+  </PropertyGroup>
 
-    <ItemGroup>
-        <Compile Include="..\fluentmigrator.extensions\MigrationExtensions.cs" />
-    </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\fluentmigrator.extensions\MigrationExtensions.cs" />
+  </ItemGroup>
 
-    <ItemGroup>
-        <PackageReference Include="FluentMigrator" Version="[2,3)" />
-    </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="FluentMigrator" Version="[2,3)" />
+  </ItemGroup>
 
 </Project>

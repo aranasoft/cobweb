@@ -1,22 +1,22 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-    <Import Project="..\..\..\..\netfx.props" />
+  <Import Project="..\..\..\..\netfx.props" />
 
-    <PropertyGroup>
-        <TargetFrameworks>net461;netstandard2.0</TargetFrameworks>
-        <AssemblyName>Aranasoft.Cobweb.FluentMigrator.Extensions.Tests</AssemblyName>
-        <RootNamespace>Aranasoft.Cobweb.FluentMigrator.Extensions.Tests</RootNamespace>
-    </PropertyGroup>
+  <PropertyGroup>
+    <TargetFrameworks>net461;netstandard2.0</TargetFrameworks>
+    <AssemblyName>Aranasoft.Cobweb.FluentMigrator.Extensions.Tests</AssemblyName>
+    <RootNamespace>Aranasoft.Cobweb.FluentMigrator.Extensions.Tests</RootNamespace>
+  </PropertyGroup>
 
-    <ItemGroup>
-        <Compile Include="..\fluentmigrator.extensions.tests\CompileTests.cs" />
-    </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\fluentmigrator.extensions.tests\CompileTests.cs" />
+  </ItemGroup>
 
-    <ItemGroup>
-        <PackageReference Include="FluentMigrator" Version="[3,4)" />
-    </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="FluentMigrator" Version="[3,4)" />
+  </ItemGroup>
 
-    <ItemGroup>
-        <ProjectReference Include="..\..\src\fluentmigrator3.extensions\Aranasoft.Cobweb.FluentMigrator3.Extensions.csproj" />
-    </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\fluentmigrator3.extensions\Aranasoft.Cobweb.FluentMigrator3.Extensions.csproj" />
+  </ItemGroup>
 
 </Project>

@@ -1,25 +1,25 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-    <Import Project="..\..\..\..\netfx.props" />
+  <Import Project="..\..\..\..\netfx.props" />
 
-    <PropertyGroup>
-        <TargetFrameworks>net45</TargetFrameworks>
-        <AssemblyName>Aranasoft.Cobweb.NHibernate</AssemblyName>
-        <RootNamespace>Aranasoft.Cobweb.NHibernate</RootNamespace>
-        <Version>1.33.6</Version>
-    </PropertyGroup>
+  <PropertyGroup>
+    <TargetFrameworks>net45</TargetFrameworks>
+    <AssemblyName>Aranasoft.Cobweb.NHibernate</AssemblyName>
+    <RootNamespace>Aranasoft.Cobweb.NHibernate</RootNamespace>
+    <Version>1.33.6</Version>
+  </PropertyGroup>
 
-    <PropertyGroup>
-        <Description>Boilerplate components for testable and convenient NHibernate development.</Description>
-        <PackageTags>nhibernate;fluentnhibernate;$(PackageTags)</PackageTags>
-    </PropertyGroup>
+  <PropertyGroup>
+    <Description>Boilerplate components for testable and convenient NHibernate development.</Description>
+    <PackageTags>nhibernate;fluentnhibernate;$(PackageTags)</PackageTags>
+  </PropertyGroup>
 
-    <ItemGroup>
-        <PackageReference Include="Aranasoft.Cobweb" Version="[1.4,2)" />
-        <PackageReference Include="FluentNHibernate" Version="[1.3.0.733,2)" />
-    </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Aranasoft.Cobweb" Version="[1.4,2)" />
+    <PackageReference Include="FluentNHibernate" Version="[1.3.0.733,2)" />
+  </ItemGroup>
 
-    <ItemGroup>
-      <ProjectReference Include="..\..\..\cobweb\src\Cobweb\Aranasoft.Cobweb.csproj" />
-    </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\cobweb\src\Cobweb\Aranasoft.Cobweb.csproj" />
+  </ItemGroup>
 
 </Project>

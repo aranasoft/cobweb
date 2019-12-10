@@ -1,76 +1,76 @@
 <Project>
-    <PropertyGroup>
-        <RepositoryRootDir>$(MSBuildThisFileDirectory)</RepositoryRootDir>
-        <RepositoryUrl>https://github.com/aranasoft/cobweb.git</RepositoryUrl>
-        <RepositoryType>git</RepositoryType>
-    </PropertyGroup>
+  <PropertyGroup>
+    <RepositoryRootDir>$(MSBuildThisFileDirectory)</RepositoryRootDir>
+    <RepositoryUrl>https://github.com/aranasoft/cobweb.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+  </PropertyGroup>
 
-    <ItemGroup>
-        <SourceRoot Include="$(MSBuildThisFileDirectory)/"/>
-    </ItemGroup>
+  <ItemGroup>
+    <SourceRoot Include="$(MSBuildThisFileDirectory)/"/>
+  </ItemGroup>
 
-    <PropertyGroup>
-        <IsTestProject>false</IsTestProject>
-        <IsTestProject Condition="$(MSBuildProjectName.EndsWith('Tests'))">true</IsTestProject>
-    </PropertyGroup>
+  <PropertyGroup>
+    <IsTestProject>false</IsTestProject>
+    <IsTestProject Condition="$(MSBuildProjectName.EndsWith('Tests'))">true</IsTestProject>
+  </PropertyGroup>
 
-    <PropertyGroup>
-        <Authors>Arana Software</Authors>
-        <Company>Arana Software</Company>
-        <Product>Aranasoft Cobweb</Product>
-        <PackageTags>cobweb;arana</PackageTags>
+  <PropertyGroup>
+    <Authors>Arana Software</Authors>
+    <Company>Arana Software</Company>
+    <Product>Aranasoft Cobweb</Product>
+    <PackageTags>cobweb;arana</PackageTags>
 
-        <Copyright>© Arana Software. All rights reserved.</Copyright>
+    <Copyright>© Arana Software. All rights reserved.</Copyright>
 
-        <PackageProjectUrl>https://github.com/aranasoft/cobweb/</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/aranasoft/cobweb/</PackageProjectUrl>
 
-        <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
-        <PackageLicenseFullPath>$(MSBuildThisFileDirectory)LICENSE-BSD</PackageLicenseFullPath>
-        <PackageProjectUrl>https://github.com/aranasoft/cobweb/</PackageProjectUrl>
-        <PackageIcon>package-icon.png</PackageIcon>
-        <PackageIconFullPath>$(MSBuildThisFileDirectory)package-icon.png</PackageIconFullPath>
+    <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
+    <PackageLicenseFullPath>$(MSBuildThisFileDirectory)LICENSE-BSD</PackageLicenseFullPath>
+    <PackageProjectUrl>https://github.com/aranasoft/cobweb/</PackageProjectUrl>
+    <PackageIcon>package-icon.png</PackageIcon>
+    <PackageIconFullPath>$(MSBuildThisFileDirectory)package-icon.png</PackageIconFullPath>
 
-    </PropertyGroup>
+  </PropertyGroup>
 
-    <ItemGroup>
-        <None Include="$(PackageIconFullPath)" Pack="true" PackagePath="\"/>
-        <None Include="$(PackageLicenseFullPath)" Pack="true" PackagePath="\"/>
-    </ItemGroup>
+  <ItemGroup>
+    <None Include="$(PackageIconFullPath)" Pack="true" PackagePath="\"/>
+    <None Include="$(PackageLicenseFullPath)" Pack="true" PackagePath="\"/>
+  </ItemGroup>
 
-    <PropertyGroup>
-        <PackageOutputFullPath>$(MSBuildThisFileDirectory)artifacts</PackageOutputFullPath>
-        <PackageOutputPath>$(PackageOutputFullPath)</PackageOutputPath>
-    </PropertyGroup>
+  <PropertyGroup>
+    <PackageOutputFullPath>$(MSBuildThisFileDirectory)artifacts</PackageOutputFullPath>
+    <PackageOutputPath>$(PackageOutputFullPath)</PackageOutputPath>
+  </PropertyGroup>
 
-    <PropertyGroup Condition=" '$(IsTestProject)' == 'true' ">
-        <IsPackable>false</IsPackable>
-    </PropertyGroup>
+  <PropertyGroup Condition=" '$(IsTestProject)' == 'true' ">
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
 
-    <PropertyGroup>
-      <!--
+  <PropertyGroup>
+    <!--
       Building MSIs from dev build requires file versions to be increasing.
       Use the current date in non-official builds. Note that this reduces the deterministic properties of the build
       and should only be enabled when it's necessary to test-install the MSIs produced by the build.
     -->
-      <_BuildNumber>$(BuildNumber)</_BuildNumber>
-      <_BuildNumber Condition="'$(BuildNumber)' == ''">$([System.DateTime]::Now.ToString(yyyyMMdd)).1</_BuildNumber>
+    <_BuildNumber>$(BuildNumber)</_BuildNumber>
+    <_BuildNumber Condition="'$(BuildNumber)' == ''">$([System.DateTime]::Now.ToString(yyyyMMdd)).1</_BuildNumber>
 
-      <!--
+    <!--
       OfficialBuildId is assumed to have format "20yymmdd.r" (the assumption is checked later in a target).
     -->
-      <_BuildNumberYY>$(_BuildNumber.Substring(2, 2))</_BuildNumberYY>
-      <_BuildNumberMM>$(_BuildNumber.Substring(4, 2))</_BuildNumberMM>
-      <_BuildNumberDD>$(_BuildNumber.Substring(6, 2))</_BuildNumberDD>
-      <_BuildNumberR>$(_BuildNumber.Substring(9))</_BuildNumberR>
+    <_BuildNumberYY>$(_BuildNumber.Substring(2, 2))</_BuildNumberYY>
+    <_BuildNumberMM>$(_BuildNumber.Substring(4, 2))</_BuildNumberMM>
+    <_BuildNumberDD>$(_BuildNumber.Substring(6, 2))</_BuildNumberDD>
+    <_BuildNumberR>$(_BuildNumber.Substring(9))</_BuildNumberR>
 
-      <!-- SHORT_DATE := yy * 1000 + mm * 50 + dd -->
-      <VersionSuffixDateStamp>$([MSBuild]::Add($([MSBuild]::Add($([MSBuild]::Multiply($(_BuildNumberYY), 1000)), $([MSBuild]::Multiply($(_BuildNumberMM), 50)))), $(_BuildNumberDD)))</VersionSuffixDateStamp>
+    <!-- SHORT_DATE := yy * 1000 + mm * 50 + dd -->
+    <VersionSuffixDateStamp>$([MSBuild]::Add($([MSBuild]::Add($([MSBuild]::Multiply($(_BuildNumberYY), 1000)), $([MSBuild]::Multiply($(_BuildNumberMM), 50)))), $(_BuildNumberDD)))</VersionSuffixDateStamp>
 
-      <!-- REVISION := r -->
-      <VersionSuffixBuildOfTheDay>$(_BuildNumberR)</VersionSuffixBuildOfTheDay>
-      <VersionSuffixBuildOfTheDayPadded>$(VersionSuffixBuildOfTheDay.PadLeft(2, $([System.Convert]::ToChar(`0`))))</VersionSuffixBuildOfTheDayPadded>
+    <!-- REVISION := r -->
+    <VersionSuffixBuildOfTheDay>$(_BuildNumberR)</VersionSuffixBuildOfTheDay>
+    <VersionSuffixBuildOfTheDayPadded>$(VersionSuffixBuildOfTheDay.PadLeft(2, $([System.Convert]::ToChar(`0`))))</VersionSuffixBuildOfTheDayPadded>
 
-      <!-- PATCH_NUMBER := (SHORT_DATE - VersionBaseShortDate) * 100 + r -->
-      <_PatchNumber>$([MSBuild]::Add($([MSBuild]::Multiply($([MSBuild]::Subtract($(VersionSuffixDateStamp), $([MSBuild]::ValueOrDefault($(VersionBaseShortDate), 19500)))), 100)), $(_BuildNumberR)))</_PatchNumber>
-    </PropertyGroup>
+    <!-- PATCH_NUMBER := (SHORT_DATE - VersionBaseShortDate) * 100 + r -->
+    <_PatchNumber>$([MSBuild]::Add($([MSBuild]::Multiply($([MSBuild]::Subtract($(VersionSuffixDateStamp), $([MSBuild]::ValueOrDefault($(VersionBaseShortDate), 19500)))), 100)), $(_BuildNumberR)))</_PatchNumber>
+  </PropertyGroup>
 </Project>

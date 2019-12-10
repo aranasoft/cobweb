@@ -1,39 +1,39 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-    <Import Project="..\..\..\..\netfx.props" />
+  <Import Project="..\..\..\..\netfx.props" />
 
-    <PropertyGroup>
-        <TargetFrameworks>net461;netstandard2.0</TargetFrameworks>
-        <AssemblyName>Aranasoft.Cobweb.NHibernate</AssemblyName>
-        <RootNamespace>Aranasoft.Cobweb.NHibernate</RootNamespace>
-        <Version>1.50.3</Version>
-    </PropertyGroup>
+  <PropertyGroup>
+    <TargetFrameworks>net461;netstandard2.0</TargetFrameworks>
+    <AssemblyName>Aranasoft.Cobweb.NHibernate</AssemblyName>
+    <RootNamespace>Aranasoft.Cobweb.NHibernate</RootNamespace>
+    <Version>1.50.3</Version>
+  </PropertyGroup>
 
-    <PropertyGroup>
-        <Description>Boilerplate components for testable and convenient NHibernate development.</Description>
-        <PackageTags>nhibernate;fluentnhibernate;$(PackageTags)</PackageTags>
-    </PropertyGroup>
+  <PropertyGroup>
+    <Description>Boilerplate components for testable and convenient NHibernate development.</Description>
+    <PackageTags>nhibernate;fluentnhibernate;$(PackageTags)</PackageTags>
+  </PropertyGroup>
 
-    <ItemGroup>
-      <Compile Include="..\NHibernate3\EntityTypeSource.cs" Link="EntityTypeSource.cs" />
-      <Compile Include="..\NHibernate3\Fetching\FetchRequest.cs" Link="Fetching\FetchRequest.cs" />
-      <Compile Include="..\NHibernate3\Fetching\IFetchingProvider.cs" Link="Fetching\IFetchingProvider.cs" />
-      <Compile Include="..\NHibernate3\Fetching\IFetchRequest.cs" Link="Fetching\IFetchRequest.cs" />
-      <Compile Include="..\NHibernate3\Fetching\NHibernateFetchingProvider.cs" Link="Fetching\NHibernateFetchingProvider.cs" />
-      <Compile Include="..\NHibernate3\Fetching\NHibernateFetchRequest.cs" Link="Fetching\NHibernateFetchRequest.cs" />
-      <Compile Include="..\NHibernate3\INHibernateConnectionConfiguration.cs" Link="INHibernateConnectionConfiguration.cs" />
-      <Compile Include="..\NHibernate3\INHibernateFactoryBuilder.cs" Link="INHibernateFactoryBuilder.cs" />
-      <Compile Include="..\NHibernate3\INHibernateSessionBuilder.cs" Link="INHibernateSessionBuilder.cs" />
-      <Compile Include="..\NHibernate3\NHibernateTransactionHandler.cs" Link="NHibernateTransactionHandler.cs" />
-      <Compile Include="..\NHibernate3\Providers\EagerFetch.cs" Link="Providers\EagerFetch.cs" />
-    </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\NHibernate3\EntityTypeSource.cs" Link="EntityTypeSource.cs" />
+    <Compile Include="..\NHibernate3\Fetching\FetchRequest.cs" Link="Fetching\FetchRequest.cs" />
+    <Compile Include="..\NHibernate3\Fetching\IFetchingProvider.cs" Link="Fetching\IFetchingProvider.cs" />
+    <Compile Include="..\NHibernate3\Fetching\IFetchRequest.cs" Link="Fetching\IFetchRequest.cs" />
+    <Compile Include="..\NHibernate3\Fetching\NHibernateFetchingProvider.cs" Link="Fetching\NHibernateFetchingProvider.cs" />
+    <Compile Include="..\NHibernate3\Fetching\NHibernateFetchRequest.cs" Link="Fetching\NHibernateFetchRequest.cs" />
+    <Compile Include="..\NHibernate3\INHibernateConnectionConfiguration.cs" Link="INHibernateConnectionConfiguration.cs" />
+    <Compile Include="..\NHibernate3\INHibernateFactoryBuilder.cs" Link="INHibernateFactoryBuilder.cs" />
+    <Compile Include="..\NHibernate3\INHibernateSessionBuilder.cs" Link="INHibernateSessionBuilder.cs" />
+    <Compile Include="..\NHibernate3\NHibernateTransactionHandler.cs" Link="NHibernateTransactionHandler.cs" />
+    <Compile Include="..\NHibernate3\Providers\EagerFetch.cs" Link="Providers\EagerFetch.cs" />
+  </ItemGroup>
 
-    <ItemGroup>
-        <PackageReference Include="Aranasoft.Cobweb" Version="[1.4,2)" />
-        <PackageReference Include="FluentNHibernate" Version="[2.1.2,2.2)" />
-    </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Aranasoft.Cobweb" Version="[1.4,2)" />
+    <PackageReference Include="FluentNHibernate" Version="[2.1.2,2.2)" />
+  </ItemGroup>
 
-    <ItemGroup>
-        <ProjectReference Include="..\..\..\cobweb\src\Cobweb\Aranasoft.Cobweb.csproj" />
-    </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\cobweb\src\Cobweb\Aranasoft.Cobweb.csproj" />
+  </ItemGroup>
 
 </Project>
