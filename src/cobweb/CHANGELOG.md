@@ -1,3 +1,15 @@
+<a name="1.4.1"></a>
+# 1.4.1 (2019-12-10)
+
+### Code Refactoring
+
+* **namespaces:** move Core src from Cobweb to Aranasoft.Cobweb ([9464ccf](https://github.com/aranasoft/cobweb/commit/9464ccf))
+
+### BREAKING CHANGES
+
+* **namespaces:** the root namespace has been changed from `Cobweb` to `Aranasoft.Cobweb`. For example, the `IDependency` interface is now located at `Aranasoft.Cobweb.DependencyInjection.IDependency`. ([9464ccf](https://github.com/aranasoft/cobweb/commit/9464ccf))
+
+
 <a name="1.4.0"></a>
 # 1.4.0 (2018-05-22)
 

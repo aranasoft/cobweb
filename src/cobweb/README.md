@@ -1,6 +1,7 @@
-# Cobweb (Core) ![Visual Studio Team Services](https://aranasoft.visualstudio.com/_apis/public/build/definitions/e012ec23-f4c2-4d38-a0e0-133f48eb2542/2/badge?branchName=master&api-version=5.0-preview.2)
+# Cobweb
+![Azure DevOps](https://dev.azure.com/aranasoft/Cobweb/_apis/build/status/Aranasoft.Cobweb?branchName=master)
 
-Cobweb is a base-class utility library for .NET
+Cobweb is a base-class utility library for .NET and .NET Core
 
 Cobweb was created by [Arana Software](https://www.aranasoft.com), a software agency in Las Vegas, Nevada.
 
@@ -9,13 +10,13 @@ Cobweb was created by [Arana Software](https://www.aranasoft.com), a software ag
 From Package Manager Console:
 
 ```bash
-PM> install-package cobweb
+PM> install-package aranasoft.cobweb
 ```
 
 From .NET CLI:
 
 ```bash
-> dotnet add package Cobweb
+> dotnet add package aranasoft.cobweb
 ```
 
 ## License
