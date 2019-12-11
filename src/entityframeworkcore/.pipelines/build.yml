@@ -39,6 +39,11 @@ steps:
     command: 'build'
     projects: $(solutionFolder)
     arguments: '--no-restore --configuration $(Build.Configuration) /p:ContinuousIntegrationBuild=true /p:BuildNumber=$(Build.BuildNumber)'
+- task: PowerShell@2
+  displayName: 'sqllocaldb start'
+  inputs:
+    targetType: 'inline'
+    script: 'sqllocaldb start mssqllocaldb'
 - task: DotNetCoreCLI@2
   displayName: 'dotnet test'
   inputs:
