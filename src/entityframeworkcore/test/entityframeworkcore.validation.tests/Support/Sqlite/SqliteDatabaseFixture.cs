@@ -1,23 +1,21 @@
-﻿using System.Data;
+using System;
+using System.Data;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.EntityFrameworkCore.Sqlite.Design.Internal;
 using Microsoft.Extensions.DependencyInjection;
-using NUnit.Framework;
 
 namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.Sqlite {
-    [Parallelizable(ParallelScope.All)]
-    public class SqliteDatabaseFixture {
+    public class SqliteDatabaseFixture : IDisposable {
         public ApplicationDbContext GetContext() {
             return new ApplicationDbContext(_builder.Options);
         }
 
         private DbContextOptionsBuilder<ApplicationDbContext> _builder;
-        private SqliteConnection _dbConnection;
+        private readonly SqliteConnection _dbConnection;
 
-        [OneTimeSetUp]
-        public void EstablishTestDatabase() {
+        public SqliteDatabaseFixture() {
             var serviceCollection = new ServiceCollection().AddEntityFrameworkDesignTimeServices();
             new SqliteDesignTimeServices().ConfigureDesignTimeServices(serviceCollection);
             var serviceProvider = serviceCollection.BuildServiceProvider();
@@ -32,8 +30,7 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.Sqlite {
             _builder.UseApplicationServiceProvider(serviceProvider);
         }
 
-        [OneTimeTearDown]
-        public void DestroyTestDatabase() {
+        public virtual void Dispose() {
             if (_dbConnection.State == ConnectionState.Open) _dbConnection.Close();
             _dbConnection.Dispose();
         }

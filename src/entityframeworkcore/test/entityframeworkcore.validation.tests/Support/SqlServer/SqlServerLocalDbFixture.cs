@@ -1,14 +1,13 @@
-﻿using System.Data;
+using System;
+using System.Data;
 using System.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.EntityFrameworkCore.SqlServer.Design.Internal;
 using Microsoft.Extensions.DependencyInjection;
-using NUnit.Framework;
 
 namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.SqlServer {
-    [Parallelizable(ParallelScope.All)]
-    public class SqlServerLocalDbFixture {
+    public class SqlServerLocalDbFixture : IDisposable {
         public ApplicationDbContext GetContext() {
             return new ApplicationDbContext(_builder.Options);
         }
@@ -17,14 +16,13 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.SqlServe
         private DbContextOptionsBuilder<ApplicationDbContext> _builder;
         private SqlConnection _dbConnection;
 
-        [OneTimeSetUp]
-        public void EstablishTestDatabase() {
+        public SqlServerLocalDbFixture() {
             var serviceCollection = new ServiceCollection().AddEntityFrameworkDesignTimeServices();
             new SqlServerDesignTimeServices().ConfigureDesignTimeServices(serviceCollection);
             var serviceProvider = serviceCollection.BuildServiceProvider();
 
             _testingDatabase = new LocalDbTestingDatabase();
-            _testingDatabase.EnsureDatabaseAsync().Wait();
+            _testingDatabase.EnsureDatabase();
 
             var connectionString = _testingDatabase.ConnectionString;
             _dbConnection = new SqlConnection(connectionString);
@@ -35,8 +33,7 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.SqlServe
             _builder.UseApplicationServiceProvider(serviceProvider);
         }
 
-        [OneTimeTearDown]
-        public void DestroyTestDatabase() {
+        public virtual void Dispose() {
             if (_dbConnection.State == ConnectionState.Open) _dbConnection.Close();
             _dbConnection.Dispose();
 

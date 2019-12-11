@@ -1,23 +1,23 @@
-﻿using System;
+using System;
 using Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.Migrations;
 using Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.Sqlite;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
+using Xunit.Abstractions;
 
 namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Sqlite {
-    [TestFixture]
-    public class WhenValidatingSchemaIgnoringIndexesGivenMissingIndexes : SqliteMigrationsFixture<MigrationsMissingIndexes> {
-        protected Action ValidatingSchema { get; set; }
+    public class WhenValidatingSchemaIgnoringIndexesGivenMissingIndexes : IClassFixture<SqliteMigrationsFixture<MigrationsMissingIndexes>> {
+        private readonly SqliteMigrationsFixture<MigrationsMissingIndexes> _fixture;
 
-        [OneTimeSetUp]
-        public void ConfigureContext() {
-            ValidatingSchema = () =>
-                GetContext().ValidateSchema(new SchemaValidationOptions{ValidateForeignKeys = false, ValidateIndexes = false});
+        public WhenValidatingSchemaIgnoringIndexesGivenMissingIndexes(SqliteMigrationsFixture<MigrationsMissingIndexes> fixture) {
+            _fixture = fixture;
         }
 
-        [Test]
+        [Fact]
         public void ItShouldNotThrowValidationException() {
-            ValidatingSchema.Should().NotThrow();
+            var context = _fixture.GetContext();
+            Action validatingSchema = () => context.ValidateSchema(new SchemaValidationOptions {ValidateForeignKeys = false, ValidateIndexes = false});
+            validatingSchema.Should().NotThrow();
         }
     }
 }

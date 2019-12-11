@@ -1,23 +1,22 @@
-﻿using System;
+using System;
 using Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.Migrations;
 using Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.Sqlite;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Sqlite {
-    [TestFixture]
-    public class WhenValidatingSchemaGivenMissingForeignKeys : SqliteMigrationsFixture<MigrationsMissingForeignKeys> {
-        protected Action ValidatingSchema { get; set; }
+    public class WhenValidatingSchemaGivenMissingForeignKeys : IClassFixture<SqliteMigrationsFixture<MigrationsMissingForeignKeys>> {
+        private readonly SqliteMigrationsFixture<MigrationsMissingForeignKeys> _fixture;
 
-        [OneTimeSetUp]
-        public void ConfigureContext() {
-            ValidatingSchema = () =>
-                GetContext().ValidateSchema(new SchemaValidationOptions {ValidateForeignKeys = false});
+        public WhenValidatingSchemaGivenMissingForeignKeys(SqliteMigrationsFixture<MigrationsMissingForeignKeys> fixture) {
+            _fixture = fixture;
         }
 
-        [Test]
+        [Fact]
         public void ItShouldNotThrowValidationException() {
-            ValidatingSchema.Should().NotThrow("SQLite does not migrate foreign keys");
+            var context = _fixture.GetContext();
+            Action validatingSchema = () => context.ValidateSchema(new SchemaValidationOptions {ValidateForeignKeys = false});
+            validatingSchema.Should().NotThrow("SQLite does not migrate foreign keys");
         }
     }
 }

@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Data.SqlClient;
 using System.IO;
 using System.Reflection;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.SqlServer {
     class LocalDbTestingDatabase : IDisposable {
         public string LocalDbConnectionString { get; set; }
-
         public string DatabaseName { get; }
 
         public LocalDbTestingDatabase() : this($"Test{new Random().Next()}") {}
@@ -19,12 +19,16 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.SqlServe
         }
 
         public async Task EnsureDatabaseAsync() {
+            await EnsureDatabaseAsync(new CancellationToken());
+        }
+
+        public async Task EnsureDatabaseAsync(CancellationToken cancellationToken) {
             using (var connection = new SqlConnection(LocalDbConnectionString)) {
-                await connection.OpenAsync();
+                await connection.OpenAsync(cancellationToken);
                 var cmd = connection.CreateCommand();
                 cmd.CommandText =
                     $"CREATE DATABASE {DatabaseName} ON PRIMARY ( NAME={DatabaseName}_Data, FILENAME = '{GetDataFilePath()}' ) LOG ON ( NAME={DatabaseName}_Log, FILENAME = '{GetLogFilePath()}' )";
-                await cmd.ExecuteNonQueryAsync();
+                await cmd.ExecuteNonQueryAsync(cancellationToken);
                 connection.Close();
             }
 
@@ -32,6 +36,19 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.SqlServe
                 throw new Exception($"Failed to create database file: {GetDataFilePath()}");
         }
 
+        public void EnsureDatabase() {
+            using (var connection = new SqlConnection(LocalDbConnectionString)) {
+                connection.Open();
+                var cmd = connection.CreateCommand();
+                cmd.CommandText =
+                    $"CREATE DATABASE {DatabaseName} ON PRIMARY ( NAME={DatabaseName}_Data, FILENAME = '{GetDataFilePath()}' ) LOG ON ( NAME={DatabaseName}_Log, FILENAME = '{GetLogFilePath()}' )";
+                cmd.ExecuteNonQuery();
+                connection.Close();
+            }
+
+            if (!File.Exists(GetDataFilePath()))
+                throw new Exception($"Failed to create database file: {GetDataFilePath()}");
+        }
         public string ConnectionString {
             get {
                 return
@@ -58,6 +75,15 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.SqlServe
             }
         }
 
+        public void DetachDatabase() {
+            using (var connection = new SqlConnection(LocalDbConnectionString)) {
+                connection.Open();
+                var cmd = connection.CreateCommand();
+                cmd.CommandText = $"ALTER DATABASE [{DatabaseName}] SET SINGLE_USER WITH ROLLBACK IMMEDIATE; exec sp_detach_db N'{DatabaseName}'";
+                cmd.ExecuteNonQuery();
+                connection.Close();
+            }
+        }
         private string GetDataFilePath() {
             return Path.Combine(
                 Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
@@ -71,7 +97,7 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.SqlServe
         }
 
         public void Dispose() {
-            DetachDatabaseAsync().Wait();
+            DetachDatabase();
             DeleteDatabase();
         }
     }

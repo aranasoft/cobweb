@@ -1,54 +1,64 @@
-﻿using System;
+using System;
 using Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.SqlServer;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.SqlServer {
-    [TestFixture]
-    public class WhenValidatingSchemaGivenEmptyDatabase : SqlServerLocalDbFixture {
-        protected Action ValidatingSchema { get; set; }
+    public class WhenValidatingSchemaGivenEmptyDatabase : IClassFixture<SqlServerLocalDbFixture> {
+        private readonly SqlServerLocalDbFixture _fixture;
 
-        [OneTimeSetUp]
-        public void ConfigureContext() {
-            ValidatingSchema = () => GetContext().ValidateSchema();
+        public WhenValidatingSchemaGivenEmptyDatabase(SqlServerLocalDbFixture fixture) {
+            _fixture = fixture;
         }
 
-        [Test]
+        [Fact]
         public void ItShouldThrowValidationException() {
-            ValidatingSchema.Should().ThrowExactly<SchemaValidationException>();
+            var applicationDbContext = _fixture.GetContext();
+            Action validatingSchema = () => applicationDbContext.ValidateSchema();
+            validatingSchema.Should().ThrowExactly<SchemaValidationException>();
         }
 
-        [Test]
+        [Fact]
         public void ItShouldHaveValidationErrors() {
-            ValidatingSchema.Should().Throw<SchemaValidationException>()
+            var applicationDbContext = _fixture.GetContext();
+            Action validatingSchema = () => applicationDbContext.ValidateSchema();
+            validatingSchema.Should().Throw<SchemaValidationException>()
                             .Which.ValidationErrors
                             .Should().NotBeEmpty();
         }
 
-        [Test]
+        [Fact]
         public void ItShouldOnlyHaveMissingTableErrors() {
-            ValidatingSchema.Should().Throw<SchemaValidationException>()
+            var applicationDbContext = _fixture.GetContext();
+            Action validatingSchema = () => applicationDbContext.ValidateSchema();
+            validatingSchema.Should().Throw<SchemaValidationException>()
                             .Which.ValidationErrors
                             .Should().OnlyContain(error => error.StartsWith("Missing table: ", StringComparison.InvariantCultureIgnoreCase));
         }
 
-        [Test]
+        [Fact]
         public void ItShouldNotHaveMissingColumnErrors() {
-            ValidatingSchema.Should().Throw<SchemaValidationException>()
+            var applicationDbContext = _fixture.GetContext();
+            Action validatingSchema = () => applicationDbContext.ValidateSchema();
+            validatingSchema.Should().Throw<SchemaValidationException>()
                             .Which.ValidationErrors
                             .Should().NotContain(error => error.StartsWith("Missing Column", StringComparison.InvariantCultureIgnoreCase));
         }
 
-        [Test]
+        [Fact]
         public void ItShouldNotHaveMissingIndexErrors() {
-            ValidatingSchema.Should().Throw<SchemaValidationException>()
+            var applicationDbContext = _fixture.GetContext();
+            Action validatingSchema = () => applicationDbContext.ValidateSchema();
+            validatingSchema.Should().Throw<SchemaValidationException>()
                             .Which.ValidationErrors
                             .Should().NotContain(error => error.StartsWith("Missing Index", StringComparison.InvariantCultureIgnoreCase));
         }
 
-        [Test]
+        [Fact]
         public void ItShouldNotHaveMissingForeignKeyErrors() {
-            ValidatingSchema.Should().Throw<SchemaValidationException>()
+            var applicationDbContext = _fixture.GetContext();
+            Action validatingSchema = () => applicationDbContext.ValidateSchema();
+            validatingSchema.Should().Throw<SchemaValidationException>()
                             .Which.ValidationErrors
                             .Should().NotContain(error => error.StartsWith("Missing Foreign Key", StringComparison.InvariantCultureIgnoreCase));
         }

@@ -1,19 +1,17 @@
-﻿using System;
+using System;
 using System.Data;
 using FluentMigrator;
 using FluentMigrator.Runner;
 using FluentMigrator.Runner.Processors;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using NUnit.Framework;
 
 namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.SqlServer {
-    public abstract class SqlServerMigrationsFixture<TMigration> : SqlServerLocalDbFixture where TMigration : IMigration {
-        ServiceProvider _serviceProvider;
-        IServiceScope _scope;
+    public class SqlServerMigrationsFixture<TMigration> : SqlServerLocalDbFixture where TMigration : IMigration {
+        private readonly ServiceProvider _serviceProvider;
+        private readonly IServiceScope _scope;
 
-        [OneTimeSetUp]
-        public void ExecuteMigrations() {
+        public SqlServerMigrationsFixture(): base() {
             var services = new ServiceCollection()
                            .AddFluentMigratorCore()
                            .ConfigureRunner(run => run.AddSqlServer2016()
@@ -36,10 +34,10 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.SqlServe
             runner.Up(Activator.CreateInstance<TMigration>());
         }
 
-        [OneTimeTearDown]
-        public void DisposeMigrationScope() {
+        public override void Dispose() {
             _scope.Dispose();
             _serviceProvider.Dispose();
+            base.Dispose();
         }
     }
 }

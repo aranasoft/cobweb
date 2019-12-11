@@ -1,23 +1,22 @@
-﻿using System;
+using System;
 using Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.Migrations;
 using Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.SqlServer;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.SqlServer {
-    [TestFixture]
-    public class WhenValidatingSchemaIgnoringForeignKeysGivenMissingForeignKeys : SqlServerMigrationsFixture<MigrationsMissingForeignKeys> {
-        protected Action ValidatingSchema { get; set; }
+    public class WhenValidatingSchemaIgnoringForeignKeysGivenMissingForeignKeys : IClassFixture<SqlServerMigrationsFixture<MigrationsMissingForeignKeys>> {
+        private readonly SqlServerMigrationsFixture<MigrationsMissingForeignKeys> _fixture;
 
-        [OneTimeSetUp]
-        public void ConfigureContext() {
-            ValidatingSchema = () =>
-                GetContext().ValidateSchema(new SchemaValidationOptions{ValidateForeignKeys = false});
+        public WhenValidatingSchemaIgnoringForeignKeysGivenMissingForeignKeys(SqlServerMigrationsFixture<MigrationsMissingForeignKeys> fixture) {
+            _fixture = fixture;
         }
 
-        [Test]
+        [Fact]
         public void ItShouldNotThrowValidationException() {
-            ValidatingSchema.Should().NotThrow();
+            var applicationDbContext = _fixture.GetContext();
+            Action validatingSchema = () => applicationDbContext.ValidateSchema(new SchemaValidationOptions{ValidateForeignKeys = false});
+            validatingSchema.Should().NotThrow();
         }
     }
 }

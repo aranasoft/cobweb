@@ -1,22 +1,22 @@
-﻿using System;
+using System;
 using Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.Migrations;
 using Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.SqlServer;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.SqlServer {
-    [TestFixture]
-    public class WhenValidatingSchemaGivenValidDatatabase : SqlServerMigrationsFixture<ValidIdentityMigrations> {
-        protected Action ValidatingSchema { get; set; }
+    public class WhenValidatingSchemaGivenValidDatatabase : IClassFixture<SqlServerMigrationsFixture<ValidIdentityMigrations>> {
+        private readonly SqlServerMigrationsFixture<ValidIdentityMigrations> _fixture;
 
-        [OneTimeSetUp]
-        public void ConfigureContext() {
-            ValidatingSchema = () => GetContext().ValidateSchema();
+        public WhenValidatingSchemaGivenValidDatatabase(SqlServerMigrationsFixture<ValidIdentityMigrations> fixture) {
+            _fixture = fixture;
         }
 
-        [Test]
+        [Fact]
         public void ItShouldValidateAgainstExpectedSchema() {
-            ValidatingSchema.Should().NotThrow();
+            var applicationDbContext = _fixture.GetContext();
+            Action validatingSchema = () => applicationDbContext.ValidateSchema();
+            validatingSchema.Should().NotThrow();
         }
     }
 }

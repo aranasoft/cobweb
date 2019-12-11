@@ -1,19 +1,17 @@
-﻿using System;
+using System;
 using System.Data;
 using FluentMigrator;
 using FluentMigrator.Runner;
 using FluentMigrator.Runner.Processors;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using NUnit.Framework;
 
 namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.Sqlite {
     public class SqliteMigrationsFixture<TMigration> : SqliteDatabaseFixture where TMigration : IMigration {
-        ServiceProvider _serviceProvider;
-        IServiceScope _scope;
+        private readonly ServiceProvider _serviceProvider;
+        private readonly IServiceScope _scope;
 
-        [OneTimeSetUp]
-        public void ExecuteMigrations() {
+        public SqliteMigrationsFixture() : base() {
             var services = new ServiceCollection()
                            .AddFluentMigratorCore()
                            .ConfigureRunner(run => run.AddSQLite()
@@ -34,10 +32,10 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.Sqlite {
             runner.Up(Activator.CreateInstance<TMigration>());
         }
 
-        [OneTimeTearDown]
-        public void DisposeMigrationScope() {
+        public override void Dispose() {
             _scope.Dispose();
             _serviceProvider.Dispose();
+            base.Dispose();
         }
     }
 }
