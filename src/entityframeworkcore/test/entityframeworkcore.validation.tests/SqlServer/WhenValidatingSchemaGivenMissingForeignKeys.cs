@@ -1,10 +1,12 @@
 using System;
 using Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.Migrations;
 using Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.SqlServer;
+using Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.XUnit;
 using FluentAssertions;
 using Xunit;
 
 namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.SqlServer {
+    [OperatingSystemRequirement(OperatingSystems.Windows)]
     public class WhenValidatingSchemaGivenMissingForeignKeys : IClassFixture<SqlServerMigrationsFixture<MigrationsMissingForeignKeys>> {
         private readonly SqlServerMigrationsFixture<MigrationsMissingForeignKeys> _fixture;
 
@@ -12,14 +14,14 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.SqlServer {
             _fixture = fixture;
         }
 
-        [Fact]
+        [ConditionalFact]
         public void ItShouldThrowValidationException() {
             var applicationDbContext = _fixture.GetContext();
             Action validatingSchema = () => applicationDbContext.ValidateSchema();
             validatingSchema.Should().ThrowExactly<SchemaValidationException>();
         }
 
-        [Fact]
+        [ConditionalFact]
         public void ItShouldHaveValidationErrors() {
             var applicationDbContext = _fixture.GetContext();
             Action validatingSchema = () => applicationDbContext.ValidateSchema();
@@ -28,7 +30,7 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.SqlServer {
                             .Should().NotBeEmpty();
         }
 
-        [Fact]
+        [ConditionalFact]
         public void ItShouldNotHaveMissingTableErrors() {
             var applicationDbContext = _fixture.GetContext();
             Action validatingSchema = () => applicationDbContext.ValidateSchema();
@@ -37,7 +39,7 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.SqlServer {
                             .Should().NotContain(error => error.StartsWith("Missing Table", StringComparison.InvariantCultureIgnoreCase));
         }
 
-        [Fact]
+        [ConditionalFact]
         public void ItShouldNotHaveMissingColumnErrors() {
             var applicationDbContext = _fixture.GetContext();
             Action validatingSchema = () => applicationDbContext.ValidateSchema();
@@ -46,7 +48,7 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.SqlServer {
                             .Should().NotContain(error => error.StartsWith("Missing Column", StringComparison.InvariantCultureIgnoreCase));
         }
 
-        [Fact]
+        [ConditionalFact]
         public void ItShouldNotHaveMissingIndexErrors() {
             var applicationDbContext = _fixture.GetContext();
             Action validatingSchema = () => applicationDbContext.ValidateSchema();
@@ -55,7 +57,7 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.SqlServer {
                             .Should().NotContain(error => error.StartsWith("Missing Index", StringComparison.InvariantCultureIgnoreCase));
         }
 
-        [Fact]
+        [ConditionalFact]
         public void ItShouldOnlyHaveMissingForeignKeyErrors() {
             var applicationDbContext = _fixture.GetContext();
             Action validatingSchema = () => applicationDbContext.ValidateSchema();
