@@ -13,7 +13,7 @@ namespace Aranasoft.Cobweb.NHibernate.Tests.Util {
         public Configuration SessionConfiguration { get; private set; }
 
         public SqLiteNHibernateFixture() {
-            var connectionConfig = SQLiteConfiguration.Standard.InMemory().QuerySubstitutions("true=1;false=0");
+            var connectionConfig = MsSqliteConfiguration.Standard.InMemory().QuerySubstitutions("true=1;false=0");
             FluentNHibernate.Cfg.Fluently.Configure()
                             .Mappings(
                                 m =>
