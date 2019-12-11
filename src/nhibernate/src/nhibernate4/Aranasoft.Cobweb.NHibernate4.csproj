@@ -5,7 +5,7 @@
     <TargetFrameworks>net45</TargetFrameworks>
     <AssemblyName>Aranasoft.Cobweb.NHibernate</AssemblyName>
     <RootNamespace>Aranasoft.Cobweb.NHibernate</RootNamespace>
-    <Version>1.40.3</Version>
+    <Version>1.40.4</Version>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -28,7 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Aranasoft.Cobweb" Version="[1.4,2)" />
+    <PackageReference Include="Aranasoft.Cobweb" Version="[1.4.1,2)" />
     <PackageReference Include="FluentNHibernate" Version="[2.0.1,2.1)" />
   </ItemGroup>
 
