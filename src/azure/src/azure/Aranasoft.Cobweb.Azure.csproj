@@ -6,7 +6,7 @@
     <TargetFrameworks>net461;netstandard2.0</TargetFrameworks>
     <AssemblyName>Aranasoft.Cobweb.Azure</AssemblyName>
     <RootNamespace>Aranasoft.Cobweb.Azure</RootNamespace>
-    <Version>2.0</Version>
+    <VersionPrefix>2.0</VersionPrefix>
   </PropertyGroup>
 
   <PropertyGroup>

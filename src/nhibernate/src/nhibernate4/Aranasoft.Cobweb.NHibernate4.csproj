@@ -5,7 +5,7 @@
     <TargetFrameworks>net45</TargetFrameworks>
     <AssemblyName>Aranasoft.Cobweb.NHibernate</AssemblyName>
     <RootNamespace>Aranasoft.Cobweb.NHibernate</RootNamespace>
-    <Version>1.40.4</Version>
+    <VersionPrefix>1.40.4</VersionPrefix>
   </PropertyGroup>
 
   <PropertyGroup>

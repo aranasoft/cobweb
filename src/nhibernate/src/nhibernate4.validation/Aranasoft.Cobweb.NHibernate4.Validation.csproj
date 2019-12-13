@@ -5,7 +5,7 @@
     <TargetFrameworks>net45</TargetFrameworks>
     <AssemblyName>Aranasoft.Cobweb.NHibernate.Validation</AssemblyName>
     <RootNamespace>Aranasoft.Cobweb.NHibernate.Validation</RootNamespace>
-    <Version>1.40.4</Version>
+    <VersionPrefix>1.40.4</VersionPrefix>
   </PropertyGroup>
 
   <PropertyGroup>
