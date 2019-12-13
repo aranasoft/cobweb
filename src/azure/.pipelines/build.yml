@@ -1,0 +1,61 @@
+variables:
+  solutionFolder: 'src/azure'
+
+trigger:
+  paths:
+    include:
+      - 'src/azure'
+  branches:
+   include:
+      - "*"
+
+pool:
+  vmImage: 'windows-latest'
+
+steps:
+- task: PowerShell@1
+  displayName: 'Set Branch Quality'
+  inputs:
+    scriptType: inlineScript
+    inlineScript: |
+      if ($env:BUILD_SOURCEBRANCHNAME -eq "Develop"){
+        Write-Output ("##vso[build.updatebuildnumber]" + $env:BUILD_BUILDNUMBER+"-beta")
+      }
+      else 
+      {
+        if ($env:BUILD_SOURCEBRANCHNAME -ne "master"){
+          Write-Output ("##vso[build.updatebuildnumber]" + $env:BUILD_BUILDNUMBER+"-alpha")
+        }
+      }
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet restore'
+  inputs:
+    command: 'restore'
+    projects: $(solutionFolder)
+    feedsToUse: 'select'
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet build'
+  inputs:
+    command: 'build'
+    projects: $(solutionFolder)
+    arguments: '--no-restore --configuration $(Build.Configuration) /p:ContinuousIntegrationBuild=true /p:BuildNumber=$(Build.BuildNumber)'
+- task: DotNetCoreCLI@2
+  enabled: false
+  displayName: 'dotnet test'
+  inputs:
+    command: 'test'
+    projects: $(solutionFolder)
+    arguments: '--no-restore --no-build --configuration $(Build.Configuration) /p:ContinuousIntegrationBuild=true /p:BuildNumber=$(Build.BuildNumber)'
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet pack'
+  inputs:
+    command: 'pack'
+    packagesToPack: $(solutionFolder)/**/*.csproj
+    arguments: '--no-restore --no-build --configuration $(Build.Configuration) --output $(Build.ArtifactStagingDirectory) /p:ContinuousIntegrationBuild=true /p:BuildNumber=$(Build.BuildNumber)'
+    versioningScheme: 'off'
+- task: PublishBuildArtifacts@1
+  displayName: 'publish packages'
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'nuget'
+    publishLocation: 'Container'
