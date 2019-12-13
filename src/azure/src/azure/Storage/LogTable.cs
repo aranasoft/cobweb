@@ -1,4 +1,4 @@
-namespace Cobweb.Azure.Storage {
+namespace Aranasoft.Cobweb.Azure.Storage {
     public abstract class LogTable : Table {
         protected abstract string Category { get; }
         protected abstract string SubCategory { get; }

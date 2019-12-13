@@ -1,4 +1,4 @@
-namespace Cobweb.TaskQueue {
+namespace Aranasoft.Cobweb.Azure.ServiceBus.TaskQueue {
     public abstract class TaskHandler : ITaskHandler {
         public TaskRequest Request { get; set; }
 

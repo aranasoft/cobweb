@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Cobweb.Azure.Configuration {
+namespace Aranasoft.Cobweb.Azure.Configuration {
     public interface IAzureConfiguration {
         string ServiceBusConnectionString { get; }
         string StorageConnectionString { get; }

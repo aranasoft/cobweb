@@ -1,7 +1,6 @@
-﻿using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Table;
+using Microsoft.Azure.Cosmos.Table;
 
-namespace Cobweb.Azure.Storage {
+namespace Aranasoft.Cobweb.Azure.Storage {
     public abstract class Table {
         private CloudStorageAccount _account;
 

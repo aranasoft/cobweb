@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Cobweb.TaskQueue {
+namespace Aranasoft.Cobweb.Azure.ServiceBus.TaskQueue {
     public class TaskRequest {
         public string Name { get; set; }
         public Dictionary<string, string> Parameters { get; set; }

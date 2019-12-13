@@ -1,79 +1,90 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
-using Cobweb.Azure.ServiceBus.Extensions;
-using Microsoft.ServiceBus;
-using Microsoft.ServiceBus.Messaging;
+using Aranasoft.Cobweb.Azure.Configuration;
+using Aranasoft.Cobweb.Azure.ServiceBus.Extensions;
+using Microsoft.Azure.ServiceBus;
+using Microsoft.Azure.ServiceBus.Management;
 
-namespace Cobweb.Azure.ServiceBus {
+namespace Aranasoft.Cobweb.Azure.ServiceBus {
     public abstract class Queue {
-        private NamespaceManager _namespaceManager;
-
+        private ManagementClient _managementClient;
         private QueueClient _queueClient;
+        private bool _queueValidated;
 
-        private bool queueValidated;
-        protected abstract string Name { get; }
-        protected abstract string ConnectionString { get; set; }
+        protected string Name { get; }
+        protected string ConnectionString { get; }
 
-        protected NamespaceManager NamespaceManager {
+        protected Queue(string connectionString, string name) {
+            ConnectionString = connectionString ?? throw new ArgumentNullException(nameof(connectionString));
+            Name = name ?? throw new ArgumentNullException(nameof(name));
+        }
+
+        protected Queue(IAzureConfiguration azureConfiguration) {
+            if (azureConfiguration == null) {
+                throw new ArgumentNullException(nameof(azureConfiguration));
+            }
+
+            ConnectionString = azureConfiguration.ServiceBusConnectionString;
+            Name = azureConfiguration.QueueName;
+        }
+
+        protected ManagementClient ManagementClient {
             get {
-                _namespaceManager = _namespaceManager ??
-                                    (_namespaceManager = NamespaceManager.CreateFromConnectionString(ConnectionString));
-                return _namespaceManager;
+                _managementClient = _managementClient ??
+                                    (_managementClient = new ManagementClient(ConnectionString));
+                return _managementClient;
             }
         }
 
-        protected QueueClient QueueClient {
-            get {
-                EnsureQueue();
-                _queueClient = _queueClient ??
-                               (_queueClient = QueueClient.CreateFromConnectionString(ConnectionString, Name));
-                return _queueClient;
+        protected async Task<QueueClient> GetQueueClient() {
+            await EnsureQueueAsync();
+            _queueClient = _queueClient ??
+                           (_queueClient = new QueueClient(ConnectionString, Name));
+            return _queueClient;
+        }
+
+        protected async Task EnsureQueueAsync() {
+            if (!_queueValidated && !await ManagementClient.QueueExistsAsync(Name)) {
+                await ManagementClient.CreateQueueAsync(Name);
+                _queueValidated = true;
             }
         }
 
-        protected void EnsureQueue() {
-            if (!NamespaceManager.QueueExists(Name)) {
-                NamespaceManager.CreateQueue(Name);
-                queueValidated = true;
-            }
+        /// <summary>
+        /// Sends a IsNullOrWhiteSpacemessages to Service Bus.
+        /// </summary>
+        public async Task SendMessageAsync(Message message) {
+            var queueClient = await GetQueueClient();
+            await queueClient.SendAsync(message);
         }
 
-        public void SendMessage(BrokeredMessage message) {
-            QueueClient.Send(message);
+        /// <summary>
+        /// Sends a list of messages to Service Bus.
+        /// </summary>
+        public async Task SendMessagesAsync(IList<Message> messages) {
+            var queueClient = await GetQueueClient();
+            await queueClient.SendAsync(messages);
         }
 
-        public Task SendMessageAsync(BrokeredMessage message) {
-            return QueueClient.SendAsync(message);
+        public async Task RegisterMessageHandlerAsync(Func<Message, CancellationToken, Task> callback,
+                                                      Func<ExceptionReceivedEventArgs, Task> exceptionCallback) {
+            var queueClient = await GetQueueClient();
+            queueClient.RegisterMessageHandler(callback, exceptionCallback);
         }
 
-        public void SendMessages(IEnumerable<BrokeredMessage> messages) {
-            QueueClient.SendBatch(messages);
+        public async Task RegisterMessageHandlerAsync(Func<Message, CancellationToken, Task> callback,
+                                                      MessageHandlerOptions options) {
+            var queueClient = await GetQueueClient();
+            queueClient.RegisterMessageHandler(callback, options);
         }
 
-        public Task SendMessagesAsync(IEnumerable<BrokeredMessage> messages) {
-            return QueueClient.SendBatchAsync(messages);
+        private void SetEnqueueTime(Message message, int delaySeconds) {
+            message.Delay(TimeSpan.FromSeconds(delaySeconds));
         }
 
-        public void OnMessage(Action<BrokeredMessage> callback) {
-            QueueClient.OnMessage(callback);
-        }
-
-        public void OnMessage(Action<BrokeredMessage> callback, OnMessageOptions options) {
-            QueueClient.OnMessage(callback, options);
-        }
-
-        private void SetEnqueueTime(BrokeredMessage message, int delaySeconds) {
-            if (delaySeconds == 0) return;
-
-            var now = DateTime.UtcNow;
-            var then = now + TimeSpan.FromSeconds(delaySeconds);
-
-            message.ScheduledEnqueueTimeUtc = then;
-        }
-
-        private void SetEnqueueTime(IList<BrokeredMessage> messages, int delaySeconds) {
+        private void SetEnqueueTime(IList<Message> messages, int delaySeconds) {
             foreach (var message in messages) {
                 message.Delay(TimeSpan.FromSeconds(delaySeconds));
             }
