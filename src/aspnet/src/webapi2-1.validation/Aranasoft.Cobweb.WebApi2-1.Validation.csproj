@@ -5,7 +5,7 @@
     <TargetFrameworks>net45</TargetFrameworks>
     <AssemblyName>Aranasoft.Cobweb.Http.Validation</AssemblyName>
     <RootNamespace>Aranasoft.Cobweb.Http.Validation</RootNamespace>
-    <VersionPrefix>1.51.2</VersionPrefix>
+    <VersionPrefix>1.51.5</VersionPrefix>
   </PropertyGroup>
 
   <PropertyGroup>

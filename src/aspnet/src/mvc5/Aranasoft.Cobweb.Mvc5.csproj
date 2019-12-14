@@ -5,7 +5,7 @@
     <TargetFrameworks>net45</TargetFrameworks>
     <AssemblyName>Aranasoft.Cobweb.Mvc</AssemblyName>
     <RootNamespace>Aranasoft.Cobweb.Mvc</RootNamespace>
-    <VersionPrefix>1.50.2</VersionPrefix>
+    <VersionPrefix>1.50.5</VersionPrefix>
   </PropertyGroup>
 
   <PropertyGroup>

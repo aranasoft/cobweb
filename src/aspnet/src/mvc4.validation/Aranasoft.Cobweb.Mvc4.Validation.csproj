@@ -5,7 +5,7 @@
     <TargetFrameworks>net40</TargetFrameworks>
     <AssemblyName>Aranasoft.Cobweb.Mvc.Validation</AssemblyName>
     <RootNamespace>Aranasoft.Cobweb.Mvc.Validation</RootNamespace>
-    <VersionPrefix>1.40.1</VersionPrefix>
+    <VersionPrefix>1.40.5</VersionPrefix>
   </PropertyGroup>
 
   <PropertyGroup>

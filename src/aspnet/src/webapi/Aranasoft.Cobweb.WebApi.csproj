@@ -5,7 +5,7 @@
     <TargetFrameworks>net40</TargetFrameworks>
     <AssemblyName>Aranasoft.Cobweb.Http</AssemblyName>
     <RootNamespace>Aranasoft.Cobweb.Http</RootNamespace>
-    <VersionPrefix>1.40.1</VersionPrefix>
+    <VersionPrefix>1.40.5</VersionPrefix>
   </PropertyGroup>
 
   <PropertyGroup>
