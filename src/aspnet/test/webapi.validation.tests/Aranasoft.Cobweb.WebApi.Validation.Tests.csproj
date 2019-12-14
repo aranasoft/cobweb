@@ -1,112 +1,24 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\..\..\netfx.props" />
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A9915D3D-A7B8-42EC-A573-7F9F6938EF92}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Aranasoft.Cobweb.Http.Validation.Tests</RootNamespace>
+    <TargetFrameworks>net40</TargetFrameworks>
     <AssemblyName>Aranasoft.Cobweb.WebApi.Validation.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
+    <RootNamespace>Aranasoft.Cobweb.Http.Validation.Tests</RootNamespace>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Xml.Linq" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.4.0" />
+    <PackageReference Include="Aranasoft.Cobweb" Version="1.4.2" />
+    <PackageReference Include="FluentAssertions" Version="4.0.0" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.Core" Version="4.0.20710" />
+    <PackageReference Include="Moq" Version="4.2.1502.911" />
+    <PackageReference Include="NUnit" Version="3.12.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.15.1" />
   </ItemGroup>
+
   <ItemGroup>
-    <Compile Include="Extensions\WithParameterInfo.cs" />
-    <Compile Include="Extensions\WithType.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Routing\GivenActionRoute\GivenActionRoute.cs" />
-    <Compile Include="Routing\GivenActionRoute\WithActionAndArgumentUrl.cs" />
-    <Compile Include="Routing\GivenActionRoute\WithActionAndNoArgumentUrl.cs" />
-    <Compile Include="Routing\GivenActionRoute\WithActionNameAttributeControllerAndArgumentUrl.cs" />
-    <Compile Include="Routing\GivenActionRoute\WithActionNameAttributeControllerAndNoArgumentUrl.cs" />
-    <Compile Include="Routing\GivenActionRoute\WithControllerInNameAndActionAndArgumentUrl.cs" />
-    <Compile Include="Routing\GivenActionRoute\WithControllerInNameAndActionAndNoArgumentUrl.cs" />
-    <Compile Include="Routing\GivenActionRoute\WithDataTypeControllerUrl.cs" />
-    <Compile Include="Routing\GivenActionRoute\WithControllerRootUrl.cs" />
-    <Compile Include="Routing\GivenActionRoute\WithRootUrl.cs" />
-    <Compile Include="Routing\GivenDefaultRoute\GivenDefaultRoute.cs" />
-    <Compile Include="Routing\GivenDefaultRoute\WithControllerUrlAndContent.cs" />
-    <Compile Include="Routing\GivenDefaultRoute\WithEmptyControllerUrl.cs" />
-    <Compile Include="Routing\GivenDefaultRoute\WithVerbAttributeControllerAndArgumentUrl.cs" />
-    <Compile Include="Routing\GivenDefaultRoute\WithVerbAttributeControllerAndNoArgumentUrl.cs" />
-    <Compile Include="Routing\GivenDefaultRoute\WithControllerInNameAndArgumentUrl.cs" />
-    <Compile Include="Routing\GivenDefaultRoute\WithControllerAndArgumentUrl.cs" />
-    <Compile Include="Routing\GivenDefaultRoute\WithControllerInNameAndNoArgumentUrl.cs" />
-    <Compile Include="Routing\GivenDefaultRoute\WithControllerAndNoArgumentUrl.cs" />
-    <Compile Include="Routing\GivenDefaultRoute\WithMissingControllerUrl.cs" />
-    <Compile Include="Routing\GivenDefaultRoute\WithRootUrl.cs" />
-    <Compile Include="TestableTypes\ActionNameAttributeController.cs" />
-    <Compile Include="TestableTypes\AnObject.cs" />
-    <Compile Include="TestableTypes\ActionDataTypeInputController.cs" />
-    <Compile Include="TestableTypes\EmptyController.cs" />
-    <Compile Include="TestableTypes\HasControllerInNameActionController.cs" />
-    <Compile Include="TestableTypes\HasControllerInNameController.cs" />
-    <Compile Include="TestableTypes\ActionController.cs" />
-    <Compile Include="TestableTypes\HttpMethodAttributeController.cs" />
-    <Compile Include="TestableTypes\PrimaryController.cs" />
-    <Compile Include="TestableTypes\ResultController.cs" />
+    <ProjectReference Include="..\..\src\webapi.validation\Aranasoft.Cobweb.WebApi.Validation.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\src\webapi.validation\Aranasoft.Cobweb.WebApi.Validation.csproj">
-      <Project>{a2abd674-0a22-4073-9365-ca5e54ea09b9}</Project>
-      <Name>Aranasoft.Cobweb.WebApi.Validation</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Aranasoft.Cobweb">
-      <Version>1.4.2</Version>
-    </PackageReference>
-    <PackageReference Include="FluentAssertions">
-      <Version>4.0.0</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.AspNet.WebApi.Core">
-      <Version>4.0.20710</Version>
-    </PackageReference>
-    <PackageReference Include="Moq">
-      <Version>4.2.1502.911</Version>
-    </PackageReference>
-    <PackageReference Include="NUnit">
-      <Version>3.12.0</Version>
-    </PackageReference>
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
 </Project>

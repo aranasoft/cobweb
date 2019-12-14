@@ -1,154 +1,55 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\..\..\netfx.props" />
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7EF3F4BE-80C6-4E81-8571-E7435BCC3233}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Aranasoft.Cobweb.Mvc.Validation</RootNamespace>
+    <TargetFrameworks>net45</TargetFrameworks>
     <AssemblyName>Aranasoft.Cobweb.Mvc.Validation</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
+    <RootNamespace>Aranasoft.Cobweb.Mvc.Validation</RootNamespace>
+    <VersionPrefix>1.52.1</VersionPrefix>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+
+  <PropertyGroup>
+    <Description>Validation and testing components for ASP.NET MVC.</Description>
+    <PackageTags>aspnet;mvc;testing;validation;$(PackageTags)</PackageTags>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
+    <PackageReference Include="Aranasoft.Cobweb" Version="[1.4.1,)" />
+    <PackageReference Include="FluentAssertions" Version="[4.0.0,5)" />
+    <PackageReference Include="Microsoft.AspNet.Mvc" Version="[5.2.3,6)" />
+    <PackageReference Include="Moq" Version="[4.2.1502.911,5)" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
+
   <ItemGroup>
-    <Compile Include="..\mvc4.validation\Assertions\ActionResultAssertions.cs">
-      <Link>Assertions\ActionResultAssertions.cs</Link>
-    </Compile>
-    <Compile Include="..\mvc4.validation\Assertions\AssertionExtensions.cs">
-      <Link>Assertions\AssertionExtensions.cs</Link>
-    </Compile>
-    <Compile Include="..\mvc4.validation\Assertions\ControllerActionExpressionAssertions.cs">
-      <Link>Assertions\ControllerActionExpressionAssertions.cs</Link>
-    </Compile>
-    <Compile Include="..\mvc4.validation\Assertions\RedirectResultAssertions.cs">
-      <Link>Assertions\RedirectResultAssertions.cs</Link>
-    </Compile>
-    <Compile Include="..\mvc4.validation\Assertions\RedirectToRouteResultAssertions.cs">
-      <Link>Assertions\RedirectToRouteResultAssertions.cs</Link>
-    </Compile>
-    <Compile Include="..\mvc4.validation\Assertions\RouteContextAssertions.cs">
-      <Link>Assertions\RouteContextAssertions.cs</Link>
-    </Compile>
-    <Compile Include="..\mvc4.validation\Assertions\RouteDataAssertions.cs">
-      <Link>Assertions\RouteDataAssertions.cs</Link>
-    </Compile>
-    <Compile Include="..\mvc4.validation\Assertions\RouteValueDictionaryAssertions.cs">
-      <Link>Assertions\RouteValueDictionaryAssertions.cs</Link>
-    </Compile>
-    <Compile Include="..\mvc4.validation\Assertions\StringAssertionExtentions.cs">
-      <Link>Assertions\StringAssertionExtentions.cs</Link>
-    </Compile>
-    <Compile Include="..\mvc4.validation\Assertions\ViewResultAssertions.cs">
-      <Link>Assertions\ViewResultAssertions.cs</Link>
-    </Compile>
-    <Compile Include="..\mvc4.validation\ControllerFactory.cs">
-      <Link>ControllerFactory.cs</Link>
-    </Compile>
-    <Compile Include="..\mvc4.validation\Extensions\WithKeyValuePair.cs">
-      <Link>Extensions\WithKeyValuePair.cs</Link>
-    </Compile>
-    <Compile Include="..\mvc4.validation\Fakes\FakeHttpContext.cs">
-      <Link>Fakes\FakeHttpContext.cs</Link>
-    </Compile>
-    <Compile Include="..\mvc4.validation\Fakes\FakeHttpContextBase.cs">
-      <Link>Fakes\FakeHttpContextBase.cs</Link>
-    </Compile>
-    <Compile Include="..\mvc4.validation\Fakes\FakeHttpFileCollection.cs">
-      <Link>Fakes\FakeHttpFileCollection.cs</Link>
-    </Compile>
-    <Compile Include="..\mvc4.validation\Fakes\FakeHttpFileCollectionBase.cs">
-      <Link>Fakes\FakeHttpFileCollectionBase.cs</Link>
-    </Compile>
-    <Compile Include="..\mvc4.validation\Fakes\FakeHttpRequest.cs">
-      <Link>Fakes\FakeHttpRequest.cs</Link>
-    </Compile>
-    <Compile Include="..\mvc4.validation\Fakes\FakeHttpRequestBase.cs">
-      <Link>Fakes\FakeHttpRequestBase.cs</Link>
-    </Compile>
-    <Compile Include="..\mvc4.validation\Fakes\FakeHttpResponse.cs">
-      <Link>Fakes\FakeHttpResponse.cs</Link>
-    </Compile>
-    <Compile Include="..\mvc4.validation\Fakes\FakeHttpResponseBase.cs">
-      <Link>Fakes\FakeHttpResponseBase.cs</Link>
-    </Compile>
-    <Compile Include="..\mvc4.validation\Fakes\FakeHttpSessionState.cs">
-      <Link>Fakes\FakeHttpSessionState.cs</Link>
-    </Compile>
-    <Compile Include="..\mvc4.validation\Fakes\FakeIdentity.cs">
-      <Link>Fakes\FakeIdentity.cs</Link>
-    </Compile>
-    <Compile Include="..\mvc4.validation\Fakes\FakePrincipal.cs">
-      <Link>Fakes\FakePrincipal.cs</Link>
-    </Compile>
-    <Compile Include="..\mvc4.validation\Fakes\FakeViewDataContainer.cs">
-      <Link>Fakes\FakeViewDataContainer.cs</Link>
-    </Compile>
-    <Compile Include="..\mvc4.validation\NameObjectCollection.cs">
-      <Link>NameObjectCollection.cs</Link>
-    </Compile>
-    <Compile Include="..\mvc4.validation\HelperFactory.cs">
-      <Link>HelperFactory.cs</Link>
-    </Compile>
-    <Compile Include="..\mvc4.validation\OutboundUrl.cs">
-      <Link>OutboundUrl.cs</Link>
-    </Compile>
-    <Compile Include="..\mvc4.validation\RouteDataFactory.cs">
-      <Link>RouteDataFactory.cs</Link>
-    </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="..\mvc4.validation\Assertions\ActionResultAssertions.cs" Link="Assertions\ActionResultAssertions.cs" />
+    <Compile Include="..\mvc4.validation\Assertions\AssertionExtensions.cs" Link="Assertions\AssertionExtensions.cs" />
+    <Compile Include="..\mvc4.validation\Assertions\ControllerActionExpressionAssertions.cs" Link="Assertions\ControllerActionExpressionAssertions.cs" />
+    <Compile Include="..\mvc4.validation\Assertions\RedirectResultAssertions.cs" Link="Assertions\RedirectResultAssertions.cs" />
+    <Compile Include="..\mvc4.validation\Assertions\RedirectToRouteResultAssertions.cs" Link="Assertions\RedirectToRouteResultAssertions.cs" />
+    <Compile Include="..\mvc4.validation\Assertions\RouteContextAssertions.cs" Link="Assertions\RouteContextAssertions.cs" />
+    <Compile Include="..\mvc4.validation\Assertions\RouteDataAssertions.cs" Link="Assertions\RouteDataAssertions.cs" />
+    <Compile Include="..\mvc4.validation\Assertions\RouteValueDictionaryAssertions.cs" Link="Assertions\RouteValueDictionaryAssertions.cs" />
+    <Compile Include="..\mvc4.validation\Assertions\StringAssertionExtentions.cs" Link="Assertions\StringAssertionExtentions.cs" />
+    <Compile Include="..\mvc4.validation\Assertions\ViewResultAssertions.cs" Link="Assertions\ViewResultAssertions.cs" />
+    <Compile Include="..\mvc4.validation\ControllerFactory.cs" Link="ControllerFactory.cs" />
+    <Compile Include="..\mvc4.validation\Extensions\WithKeyValuePair.cs" Link="Extensions\WithKeyValuePair.cs" />
+    <Compile Include="..\mvc4.validation\Fakes\FakeHttpContext.cs" Link="Fakes\FakeHttpContext.cs" />
+    <Compile Include="..\mvc4.validation\Fakes\FakeHttpContextBase.cs" Link="Fakes\FakeHttpContextBase.cs" />
+    <Compile Include="..\mvc4.validation\Fakes\FakeHttpFileCollection.cs" Link="Fakes\FakeHttpFileCollection.cs" />
+    <Compile Include="..\mvc4.validation\Fakes\FakeHttpFileCollectionBase.cs" Link="Fakes\FakeHttpFileCollectionBase.cs" />
+    <Compile Include="..\mvc4.validation\Fakes\FakeHttpRequest.cs" Link="Fakes\FakeHttpRequest.cs" />
+    <Compile Include="..\mvc4.validation\Fakes\FakeHttpRequestBase.cs" Link="Fakes\FakeHttpRequestBase.cs" />
+    <Compile Include="..\mvc4.validation\Fakes\FakeHttpResponse.cs" Link="Fakes\FakeHttpResponse.cs" />
+    <Compile Include="..\mvc4.validation\Fakes\FakeHttpResponseBase.cs" Link="Fakes\FakeHttpResponseBase.cs" />
+    <Compile Include="..\mvc4.validation\Fakes\FakeHttpSessionState.cs" Link="Fakes\FakeHttpSessionState.cs" />
+    <Compile Include="..\mvc4.validation\Fakes\FakeIdentity.cs" Link="Fakes\FakeIdentity.cs" />
+    <Compile Include="..\mvc4.validation\Fakes\FakePrincipal.cs" Link="Fakes\FakePrincipal.cs" />
+    <Compile Include="..\mvc4.validation\Fakes\FakeViewDataContainer.cs" Link="Fakes\FakeViewDataContainer.cs" />
+    <Compile Include="..\mvc4.validation\NameObjectCollection.cs" Link="NameObjectCollection.cs" />
+    <Compile Include="..\mvc4.validation\HelperFactory.cs" Link="HelperFactory.cs" />
+    <Compile Include="..\mvc4.validation\OutboundUrl.cs" Link="OutboundUrl.cs" />
+    <Compile Include="..\mvc4.validation\RouteDataFactory.cs" Link="RouteDataFactory.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Aranasoft.Cobweb.Mvc5-2.Validation.nuspec" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Aranasoft.Cobweb">
-      <Version>1.4.1</Version>
-    </PackageReference>
-    <PackageReference Include="FluentAssertions">
-      <Version>4.0.0</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.AspNet.Mvc">
-      <Version>5.2.3</Version>
-    </PackageReference>
-    <PackageReference Include="Moq">
-      <Version>4.2.1502.911</Version>
-    </PackageReference>
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
 </Project>

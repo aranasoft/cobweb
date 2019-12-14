@@ -1,205 +1,68 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\..\..\netfx.props" />
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A7C1F23A-31A1-42F0-B595-E049BB1DFF5B}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Aranasoft.Cobweb.Http.Validation.Tests</RootNamespace>
+    <TargetFrameworks>net45</TargetFrameworks>
     <AssemblyName>Aranasoft.Cobweb.WebApi2-2.Validation.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
+    <RootNamespace>Aranasoft.Cobweb.Http.Validation.Tests</RootNamespace>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.4.0" />
+    <PackageReference Include="Aranasoft.Cobweb" Version="1.4.1" />
+    <PackageReference Include="FluentAssertions" Version="4.0.0" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.Core" Version="5.2.3" />
+    <PackageReference Include="Moq" Version="4.2.1502.911" />
+    <PackageReference Include="NUnit" Version="3.12.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.15.1" />
   </ItemGroup>
+
   <ItemGroup>
-    <Compile Include="..\webapi.validation.tests\extensions\WithParameterInfo.cs">
-      <Link>Extensions\WithParameterInfo.cs</Link>
-    </Compile>
-    <Compile Include="..\webapi.validation.tests\extensions\WithType.cs">
-      <Link>Extensions\WithType.cs</Link>
-    </Compile>
-    <Compile Include="..\webapi.validation.tests\Routing\GivenActionRoute\GivenActionRoute.cs">
-      <Link>Routing\GivenActionRoute\GivenActionRoute.cs</Link>
-    </Compile>
-    <Compile Include="..\webapi.validation.tests\Routing\GivenActionRoute\WithActionAndArgumentUrl.cs">
-      <Link>Routing\GivenActionRoute\WithActionAndArgumentUrl.cs</Link>
-    </Compile>
-    <Compile Include="..\webapi.validation.tests\Routing\GivenActionRoute\WithActionAndNoArgumentUrl.cs">
-      <Link>Routing\GivenActionRoute\WithActionAndNoArgumentUrl.cs</Link>
-    </Compile>
-    <Compile Include="..\webapi.validation.tests\Routing\GivenActionRoute\WithActionNameAttributeControllerAndArgumentUrl.cs">
-      <Link>Routing\GivenActionRoute\WithActionNameAttributeControllerAndArgumentUrl.cs</Link>
-    </Compile>
-    <Compile Include="..\webapi.validation.tests\Routing\GivenActionRoute\WithActionNameAttributeControllerAndNoArgumentUrl.cs">
-      <Link>Routing\GivenActionRoute\WithActionNameAttributeControllerAndNoArgumentUrl.cs</Link>
-    </Compile>
-    <Compile Include="..\webapi.validation.tests\Routing\GivenActionRoute\WithControllerInNameAndActionAndArgumentUrl.cs">
-      <Link>Routing\GivenActionRoute\WithControllerInNameAndActionAndArgumentUrl.cs</Link>
-    </Compile>
-    <Compile Include="..\webapi.validation.tests\Routing\GivenActionRoute\WithControllerInNameAndActionAndNoArgumentUrl.cs">
-      <Link>Routing\GivenActionRoute\WithControllerInNameAndActionAndNoArgumentUrl.cs</Link>
-    </Compile>
-    <Compile Include="..\webapi.validation.tests\Routing\GivenActionRoute\WithControllerRootUrl.cs">
-      <Link>Routing\GivenActionRoute\WithControllerRootUrl.cs</Link>
-    </Compile>
-    <Compile Include="..\webapi.validation.tests\Routing\GivenActionRoute\WithDataTypeControllerUrl.cs">
-      <Link>Routing\GivenActionRoute\WithDataTypeControllerUrl.cs</Link>
-    </Compile>
-    <Compile Include="..\webapi.validation.tests\Routing\GivenActionRoute\WithRootUrl.cs">
-      <Link>Routing\GivenActionRoute\WithRootUrl.cs</Link>
-    </Compile>
-    <Compile Include="..\webapi.validation.tests\Routing\GivenDefaultRoute\GivenDefaultRoute.cs">
-      <Link>Routing\GivenDefaultRoute\GivenDefaultRoute.cs</Link>
-    </Compile>
-    <Compile Include="..\webapi.validation.tests\Routing\GivenDefaultRoute\WithControllerAndArgumentUrl.cs">
-      <Link>Routing\GivenDefaultRoute\WithControllerAndArgumentUrl.cs</Link>
-    </Compile>
-    <Compile Include="..\webapi.validation.tests\Routing\GivenDefaultRoute\WithControllerAndNoArgumentUrl.cs">
-      <Link>Routing\GivenDefaultRoute\WithControllerAndNoArgumentUrl.cs</Link>
-    </Compile>
-    <Compile Include="..\webapi.validation.tests\Routing\GivenDefaultRoute\WithControllerInNameAndArgumentUrl.cs">
-      <Link>Routing\GivenDefaultRoute\WithControllerInNameAndArgumentUrl.cs</Link>
-    </Compile>
-    <Compile Include="..\webapi.validation.tests\Routing\GivenDefaultRoute\WithControllerInNameAndNoArgumentUrl.cs">
-      <Link>Routing\GivenDefaultRoute\WithControllerInNameAndNoArgumentUrl.cs</Link>
-    </Compile>
-    <Compile Include="..\webapi.validation.tests\Routing\GivenDefaultRoute\WithControllerUrlAndContent.cs">
-      <Link>Routing\GivenDefaultRoute\WithControllerUrlAndContent.cs</Link>
-    </Compile>
-    <Compile Include="..\webapi.validation.tests\Routing\GivenDefaultRoute\WithMissingControllerUrl.cs">
-      <Link>Routing\GivenDefaultRoute\WithMissingControllerUrl.cs</Link>
-    </Compile>
-    <Compile Include="..\webapi.validation.tests\Routing\GivenDefaultRoute\WithRootUrl.cs">
-      <Link>Routing\GivenDefaultRoute\WithRootUrl.cs</Link>
-    </Compile>
-    <Compile Include="..\webapi.validation.tests\Routing\GivenDefaultRoute\WithVerbAttributeControllerAndArgumentUrl.cs">
-      <Link>Routing\GivenDefaultRoute\WithVerbAttributeControllerAndArgumentUrl.cs</Link>
-    </Compile>
-    <Compile Include="..\webapi.validation.tests\Routing\GivenDefaultRoute\WithVerbAttributeControllerAndNoArgumentUrl.cs">
-      <Link>Routing\GivenDefaultRoute\WithVerbAttributeControllerAndNoArgumentUrl.cs</Link>
-    </Compile>
-    <Compile Include="..\webapi.validation.tests\TestableTypes\ActionController.cs">
-      <Link>TestableTypes\ActionController.cs</Link>
-    </Compile>
-    <Compile Include="..\webapi.validation.tests\TestableTypes\ActionDataTypeInputController.cs">
-      <Link>TestableTypes\ActionDataTypeInputController.cs</Link>
-    </Compile>
-    <Compile Include="..\webapi.validation.tests\TestableTypes\ActionNameAttributeController.cs">
-      <Link>TestableTypes\ActionNameAttributeController.cs</Link>
-    </Compile>
-    <Compile Include="..\webapi.validation.tests\TestableTypes\AnObject.cs">
-      <Link>TestableTypes\AnObject.cs</Link>
-    </Compile>
-    <Compile Include="..\webapi.validation.tests\TestableTypes\EmptyController.cs">
-      <Link>TestableTypes\EmptyController.cs</Link>
-    </Compile>
-    <Compile Include="..\webapi.validation.tests\TestableTypes\HasControllerInNameActionController.cs">
-      <Link>TestableTypes\HasControllerInNameActionController.cs</Link>
-    </Compile>
-    <Compile Include="..\webapi.validation.tests\TestableTypes\HasControllerInNameController.cs">
-      <Link>TestableTypes\HasControllerInNameController.cs</Link>
-    </Compile>
-    <Compile Include="..\webapi.validation.tests\TestableTypes\HttpMethodAttributeController.cs">
-      <Link>TestableTypes\HttpMethodAttributeController.cs</Link>
-    </Compile>
-    <Compile Include="..\webapi.validation.tests\TestableTypes\PrimaryController.cs">
-      <Link>TestableTypes\PrimaryController.cs</Link>
-    </Compile>
-    <Compile Include="..\webapi.validation.tests\TestableTypes\ResultController.cs">
-      <Link>TestableTypes\ResultController.cs</Link>
-    </Compile>
-    <Compile Include="..\webapi2-1.validation.tests\Routing\GivenIgnoredRoute\GivenIgnoredRoute.cs">
-      <Link>Routing\GivenIgnoredRoute\GivenIgnoredRoute.cs</Link>
-    </Compile>
-    <Compile Include="..\webapi2-1.validation.tests\Routing\GivenIgnoredRoute\WithControllerUrl.cs">
-      <Link>Routing\GivenIgnoredRoute\WithControllerUrl.cs</Link>
-    </Compile>
-    <Compile Include="..\webapi2-1.validation.tests\Routing\GivenIgnoredRoute\WithIgnoredUrl.cs">
-      <Link>Routing\GivenIgnoredRoute\WithIgnoredUrl.cs</Link>
-    </Compile>
-    <Compile Include="..\webapi2-1.validation.tests\Routing\GivenIgnoredRoute\WithIgnoredUrlWithPathInfo.cs">
-      <Link>Routing\GivenIgnoredRoute\WithIgnoredUrlWithPathInfo.cs</Link>
-    </Compile>
-    <Compile Include="..\webapi2.validation.tests\routing\givenattributeroute\GivenAttributeRoute.cs">
-      <Link>Routing\GivenAttributeRoute\GivenAttributeRoute.cs</Link>
-    </Compile>
-    <Compile Include="..\webapi2.validation.tests\routing\givenattributeroute\WithControllerAndArgumentUrl.cs">
-      <Link>Routing\GivenAttributeRoute\WithControllerAndArgumentUrl.cs</Link>
-    </Compile>
-    <Compile Include="..\webapi2.validation.tests\routing\givenattributeroute\WithControllerAndNoArgumentUrl.cs">
-      <Link>Routing\GivenAttributeRoute\WithControllerAndNoArgumentUrl.cs</Link>
-    </Compile>
-    <Compile Include="..\webapi2.validation.tests\Routing\GivenDefaultRoute\WithEmptyControllerUrl.cs">
-      <Link>Routing\GivenDefaultRoute\WithEmptyControllerUrl.cs</Link>
-    </Compile>
-    <Compile Include="..\webapi2.validation.tests\TestableTypes\RouteAttributeController.cs">
-      <Link>TestableTypes\RouteAttributeController.cs</Link>
-    </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <ProjectReference Include="..\..\src\webapi2-2.validation\Aranasoft.Cobweb.WebApi2-2.Validation.csproj" />
   </ItemGroup>
+
   <ItemGroup>
-    <ProjectReference Include="..\..\src\webapi2-2.validation\Aranasoft.Cobweb.WebApi2-2.Validation.csproj">
-      <Project>{476e6ef2-db17-4c0d-a8df-0de018ed5f03}</Project>
-      <Name>Aranasoft.Cobweb.WebApi2-2.Validation</Name>
-    </ProjectReference>
+    <Compile Include="..\webapi.validation.tests\extensions\WithParameterInfo.cs" Link="Extensions\WithParameterInfo.cs" />
+    <Compile Include="..\webapi.validation.tests\extensions\WithType.cs" Link="Extensions\WithType.cs" />
+    <Compile Include="..\webapi.validation.tests\Routing\GivenActionRoute\GivenActionRoute.cs" Link="Routing\GivenActionRoute\GivenActionRoute.cs" />
+    <Compile Include="..\webapi.validation.tests\Routing\GivenActionRoute\WithActionAndArgumentUrl.cs" Link="Routing\GivenActionRoute\WithActionAndArgumentUrl.cs" />
+    <Compile Include="..\webapi.validation.tests\Routing\GivenActionRoute\WithActionAndNoArgumentUrl.cs" Link="Routing\GivenActionRoute\WithActionAndNoArgumentUrl.cs" />
+    <Compile Include="..\webapi.validation.tests\Routing\GivenActionRoute\WithActionNameAttributeControllerAndArgumentUrl.cs" Link="Routing\GivenActionRoute\WithActionNameAttributeControllerAndArgumentUrl.cs" />
+    <Compile Include="..\webapi.validation.tests\Routing\GivenActionRoute\WithActionNameAttributeControllerAndNoArgumentUrl.cs" Link="Routing\GivenActionRoute\WithActionNameAttributeControllerAndNoArgumentUrl.cs" />
+    <Compile Include="..\webapi.validation.tests\Routing\GivenActionRoute\WithControllerInNameAndActionAndArgumentUrl.cs" Link="Routing\GivenActionRoute\WithControllerInNameAndActionAndArgumentUrl.cs" />
+    <Compile Include="..\webapi.validation.tests\Routing\GivenActionRoute\WithControllerInNameAndActionAndNoArgumentUrl.cs" Link="Routing\GivenActionRoute\WithControllerInNameAndActionAndNoArgumentUrl.cs" />
+    <Compile Include="..\webapi.validation.tests\Routing\GivenActionRoute\WithControllerRootUrl.cs" Link="Routing\GivenActionRoute\WithControllerRootUrl.cs" />
+    <Compile Include="..\webapi.validation.tests\Routing\GivenActionRoute\WithDataTypeControllerUrl.cs" Link="Routing\GivenActionRoute\WithDataTypeControllerUrl.cs" />
+    <Compile Include="..\webapi.validation.tests\Routing\GivenActionRoute\WithRootUrl.cs" Link="Routing\GivenActionRoute\WithRootUrl.cs" />
+    <Compile Include="..\webapi.validation.tests\Routing\GivenDefaultRoute\GivenDefaultRoute.cs" Link="Routing\GivenDefaultRoute\GivenDefaultRoute.cs" />
+    <Compile Include="..\webapi.validation.tests\Routing\GivenDefaultRoute\WithControllerAndArgumentUrl.cs" Link="Routing\GivenDefaultRoute\WithControllerAndArgumentUrl.cs" />
+    <Compile Include="..\webapi.validation.tests\Routing\GivenDefaultRoute\WithControllerAndNoArgumentUrl.cs" Link="Routing\GivenDefaultRoute\WithControllerAndNoArgumentUrl.cs" />
+    <Compile Include="..\webapi.validation.tests\Routing\GivenDefaultRoute\WithControllerInNameAndArgumentUrl.cs" Link="Routing\GivenDefaultRoute\WithControllerInNameAndArgumentUrl.cs" />
+    <Compile Include="..\webapi.validation.tests\Routing\GivenDefaultRoute\WithControllerInNameAndNoArgumentUrl.cs" Link="Routing\GivenDefaultRoute\WithControllerInNameAndNoArgumentUrl.cs" />
+    <Compile Include="..\webapi.validation.tests\Routing\GivenDefaultRoute\WithControllerUrlAndContent.cs" Link="Routing\GivenDefaultRoute\WithControllerUrlAndContent.cs" />
+    <Compile Include="..\webapi.validation.tests\Routing\GivenDefaultRoute\WithMissingControllerUrl.cs" Link="Routing\GivenDefaultRoute\WithMissingControllerUrl.cs" />
+    <Compile Include="..\webapi.validation.tests\Routing\GivenDefaultRoute\WithRootUrl.cs" Link="Routing\GivenDefaultRoute\WithRootUrl.cs" />
+    <Compile Include="..\webapi.validation.tests\Routing\GivenDefaultRoute\WithVerbAttributeControllerAndArgumentUrl.cs" Link="Routing\GivenDefaultRoute\WithVerbAttributeControllerAndArgumentUrl.cs" />
+    <Compile Include="..\webapi.validation.tests\Routing\GivenDefaultRoute\WithVerbAttributeControllerAndNoArgumentUrl.cs" Link="Routing\GivenDefaultRoute\WithVerbAttributeControllerAndNoArgumentUrl.cs" />
+    <Compile Include="..\webapi.validation.tests\TestableTypes\ActionController.cs" Link="TestableTypes\ActionController.cs" />
+    <Compile Include="..\webapi.validation.tests\TestableTypes\ActionDataTypeInputController.cs" Link="TestableTypes\ActionDataTypeInputController.cs" />
+    <Compile Include="..\webapi.validation.tests\TestableTypes\ActionNameAttributeController.cs" Link="TestableTypes\ActionNameAttributeController.cs" />
+    <Compile Include="..\webapi.validation.tests\TestableTypes\AnObject.cs" Link="TestableTypes\AnObject.cs" />
+    <Compile Include="..\webapi.validation.tests\TestableTypes\EmptyController.cs" Link="TestableTypes\EmptyController.cs" />
+    <Compile Include="..\webapi.validation.tests\TestableTypes\HasControllerInNameActionController.cs" Link="TestableTypes\HasControllerInNameActionController.cs" />
+    <Compile Include="..\webapi.validation.tests\TestableTypes\HasControllerInNameController.cs" Link="TestableTypes\HasControllerInNameController.cs" />
+    <Compile Include="..\webapi.validation.tests\TestableTypes\HttpMethodAttributeController.cs" Link="TestableTypes\HttpMethodAttributeController.cs" />
+    <Compile Include="..\webapi.validation.tests\TestableTypes\PrimaryController.cs" Link="TestableTypes\PrimaryController.cs" />
+    <Compile Include="..\webapi.validation.tests\TestableTypes\ResultController.cs" Link="TestableTypes\ResultController.cs" />
+    <Compile Include="..\webapi2-1.validation.tests\Routing\GivenIgnoredRoute\GivenIgnoredRoute.cs" Link="Routing\GivenIgnoredRoute\GivenIgnoredRoute.cs" />
+    <Compile Include="..\webapi2-1.validation.tests\Routing\GivenIgnoredRoute\WithControllerUrl.cs" Link="Routing\GivenIgnoredRoute\WithControllerUrl.cs" />
+    <Compile Include="..\webapi2-1.validation.tests\Routing\GivenIgnoredRoute\WithIgnoredUrl.cs" Link="Routing\GivenIgnoredRoute\WithIgnoredUrl.cs" />
+    <Compile Include="..\webapi2-1.validation.tests\Routing\GivenIgnoredRoute\WithIgnoredUrlWithPathInfo.cs" Link="Routing\GivenIgnoredRoute\WithIgnoredUrlWithPathInfo.cs" />
+    <Compile Include="..\webapi2.validation.tests\routing\givenattributeroute\GivenAttributeRoute.cs" Link="Routing\GivenAttributeRoute\GivenAttributeRoute.cs" />
+    <Compile Include="..\webapi2.validation.tests\routing\givenattributeroute\WithControllerAndArgumentUrl.cs" Link="Routing\GivenAttributeRoute\WithControllerAndArgumentUrl.cs" />
+    <Compile Include="..\webapi2.validation.tests\routing\givenattributeroute\WithControllerAndNoArgumentUrl.cs" Link="Routing\GivenAttributeRoute\WithControllerAndNoArgumentUrl.cs" />
+    <Compile Include="..\webapi2.validation.tests\Routing\GivenDefaultRoute\WithEmptyControllerUrl.cs" Link="Routing\GivenDefaultRoute\WithEmptyControllerUrl.cs" />
+    <Compile Include="..\webapi2.validation.tests\TestableTypes\RouteAttributeController.cs" Link="TestableTypes\RouteAttributeController.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Aranasoft.Cobweb">
-      <Version>1.4.1</Version>
-    </PackageReference>
-    <PackageReference Include="FluentAssertions">
-      <Version>4.0.0</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.AspNet.WebApi.Core">
-      <Version>5.2.3</Version>
-    </PackageReference>
-    <PackageReference Include="Moq">
-      <Version>4.2.1502.911</Version>
-    </PackageReference>
-    <PackageReference Include="NUnit">
-      <Version>3.12.0</Version>
-    </PackageReference>
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
 </Project>
