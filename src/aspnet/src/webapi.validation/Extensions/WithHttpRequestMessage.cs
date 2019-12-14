@@ -4,7 +4,7 @@ using System.Web.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.Dispatcher;
 
-namespace Cobweb.Testing.WebApi.Extensions {
+namespace Aranasoft.Cobweb.Http.Validation.Extensions {
     public static class WithHttpRequestMessage {
         public static HttpControllerDescriptor SelectController(this HttpRequestMessage subject) {
             var httpConfiguration = subject.GetConfiguration();

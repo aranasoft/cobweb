@@ -3,11 +3,11 @@ using System.Diagnostics;
 using System.Linq.Expressions;
 using System.Web.Mvc;
 using System.Web.Routing;
-using Cobweb.Testing.Mvc.Extensions;
+using Aranasoft.Cobweb.Mvc.Validation.Extensions;
 using FluentAssertions;
 using FluentAssertions.Primitives;
 
-namespace Cobweb.Testing.Mvc.Assertions {
+namespace Aranasoft.Cobweb.Mvc.Validation.Assertions {
     /// <summary>
     ///     Contains a number of methods to assert that an <see cref="string" /> is in the expected state.
     /// </summary>

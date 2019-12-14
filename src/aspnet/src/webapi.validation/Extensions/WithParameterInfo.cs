@@ -2,7 +2,7 @@ using System.Linq;
 using System.Reflection;
 using System.Web.Http;
 
-namespace Cobweb.Testing.WebApi.Extensions {
+namespace Aranasoft.Cobweb.Http.Validation.Extensions {
     public static class WithParameterInfo {
         public static bool IsBoundFromUri(this ParameterInfo param) {
             return param.GetCustomAttributes(typeof(FromUriAttribute), true).Any() ||

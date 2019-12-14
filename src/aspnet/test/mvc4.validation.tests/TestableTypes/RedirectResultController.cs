@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace Cobweb.Testing.Mvc.Tests.TestableTypes {
+namespace Aranasoft.Cobweb.Mvc.Validation.Tests.TestableTypes {
     public class RedirectResultController : Controller {
         public ActionResult RedirectWithAction() {
             return RedirectToAction("FirstAction");

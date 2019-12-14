@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -32,7 +32,7 @@
   <ItemGroup>
     <Reference Include="Aranasoft.Cobweb, Version=1.4.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Aranasoft.Cobweb.1.4.1.0\lib\net40\Aranasoft.Cobweb.dll</HintPath>
+      <HintPath>..\..\packages\Aranasoft.Cobweb.1.4.1\lib\net45\Aranasoft.Cobweb.dll</HintPath>
     </Reference>
     <Reference Include="FluentAssertions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
       <HintPath>..\..\packages\FluentAssertions.4.0.0\lib\net45\FluentAssertions.dll</HintPath>
@@ -155,8 +155,8 @@
     <Compile Include="..\mvc4.validation\Fakes\FakeViewDataContainer.cs">
       <Link>Fakes\FakeViewDataContainer.cs</Link>
     </Compile>
-    <Compile Include="..\mvc4.validation\Fakes\NameObjectCollection.cs">
-      <Link>Fakes\NameObjectCollection.cs</Link>
+    <Compile Include="..\mvc4.validation\NameObjectCollection.cs">
+      <Link>NameObjectCollection.cs</Link>
     </Compile>
     <Compile Include="..\mvc4.validation\HelperFactory.cs">
       <Link>HelperFactory.cs</Link>

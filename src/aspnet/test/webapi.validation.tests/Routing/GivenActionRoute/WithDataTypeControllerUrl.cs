@@ -2,13 +2,13 @@ using System;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using Cobweb.Testing.WebApi.Assertions;
-using Cobweb.Testing.WebApi.Extensions;
-using Cobweb.Testing.WebApi.Tests.TestableTypes;
+using Aranasoft.Cobweb.Http.Validation.Assertions;
+using Aranasoft.Cobweb.Http.Validation.Extensions;
+using Aranasoft.Cobweb.Http.Validation.Tests.TestableTypes;
 using FluentAssertions;
 using NUnit.Framework;
 
-namespace Cobweb.Testing.WebApi.Tests.Routing.GivenActionRoute {
+namespace Aranasoft.Cobweb.Http.Validation.Tests.Routing.GivenActionRoute {
     [TestFixture]
     public class WithActionDataTypeControllerUrl : GivenActionRoute {
         [TestCase("~/ActionDataTypeInput/WithNothing/27/1")]

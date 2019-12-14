@@ -1,8 +1,8 @@
-using Cobweb.Testing.WebApi.Assertions;
-using Cobweb.Testing.WebApi.Tests.TestableTypes;
+using Aranasoft.Cobweb.Http.Validation.Assertions;
+using Aranasoft.Cobweb.Http.Validation.Tests.TestableTypes;
 using NUnit.Framework;
 
-namespace Cobweb.Testing.WebApi.Tests.Routing.GivenIgnoredRoute {
+namespace Aranasoft.Cobweb.Http.Validation.Tests.Routing.GivenIgnoredRoute {
     [TestFixture]
     public class WithControllerUrl : GivenIgnoredRoute {
         private const string CurrentUrl = "~/primary";

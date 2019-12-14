@@ -3,7 +3,7 @@ using System.Net.Http;
 using System.Web.Http.Routing;
 using FluentAssertions;
 
-namespace Cobweb.Testing.WebApi.Assertions {
+namespace Aranasoft.Cobweb.Http.Validation.Assertions {
     /// <summary>
     ///     Contains a number of methods to assert that an <see cref="string" /> is in the expected state.
     /// </summary>

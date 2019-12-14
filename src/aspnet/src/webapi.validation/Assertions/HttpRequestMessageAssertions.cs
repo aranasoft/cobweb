@@ -8,16 +8,16 @@ using System.Web.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.ModelBinding;
 using System.Web.Http.Routing;
-using Cobweb.Extentions;
-using Cobweb.Extentions.ObjectExtentions;
-using Cobweb.Reflection.Extensions;
-using Cobweb.Testing.WebApi.Extensions;
+using Aranasoft.Cobweb.Extentions;
+using Aranasoft.Cobweb.Extentions.ObjectExtentions;
+using Aranasoft.Cobweb.Reflection.Extensions;
+using Aranasoft.Cobweb.Http.Validation.Extensions;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using FluentAssertions.Primitives;
 using Moq;
 
-namespace Cobweb.Testing.WebApi.Assertions {
+namespace Aranasoft.Cobweb.Http.Validation.Assertions {
     /// <summary>
     ///     Contains a number of methods to assert that a <see cref="HttpRouteData" /> is in the expected state.
     /// </summary>

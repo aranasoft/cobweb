@@ -5,7 +5,7 @@ using System.Web.Http.Controllers;
 using System.Web.Http.Filters;
 using System.Web.Http.ModelBinding;
 
-namespace Cobweb.Web.Http.Filters {
+namespace Aranasoft.Cobweb.Http.Filters {
     public class ValidationActionFilter : ActionFilterAttribute {
         public override void OnActionExecuting(HttpActionContext actionContext) {
             ModelStateDictionary modelState = actionContext.ModelState;

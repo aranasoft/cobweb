@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Web.Mvc;
-using Cobweb.Extentions;
+using Aranasoft.Cobweb.Extentions;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using FluentAssertions.Primitives;
 
-namespace Cobweb.Testing.Mvc.Assertions {
+namespace Aranasoft.Cobweb.Mvc.Validation.Assertions {
     /// <summary>
     ///     Contains a number of methods to assert that a <see cref="ViewResultBase" /> is in the expected state.
     /// </summary>

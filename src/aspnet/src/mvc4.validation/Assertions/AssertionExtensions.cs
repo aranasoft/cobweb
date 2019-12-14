@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace Cobweb.Testing.Mvc.Assertions {
+namespace Aranasoft.Cobweb.Mvc.Validation.Assertions {
     /// <summary>
     ///     Contains extension methods for custom assertions in unit tests.
     /// </summary>

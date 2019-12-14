@@ -1,6 +1,6 @@
 ﻿using System.Web.Http;
 
-namespace Cobweb.Testing.WebApi.Tests.TestableTypes {
+namespace Aranasoft.Cobweb.Http.Validation.Tests.TestableTypes {
     public class ResultController : ApiController {
         public AnObject[] Get() {
             return new[] {new AnObject {Name = "Foo"}};

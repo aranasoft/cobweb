@@ -2,7 +2,7 @@
 using System.Web.Mvc;
 using System.Web.Security;
 
-namespace Cobweb.Web.Mvc.Security {
+namespace Aranasoft.Cobweb.Mvc.Security {
     public class ResolvingMembershipProvider : MembershipProvider {
         public override bool EnablePasswordRetrieval {
             get { return GetProvider().EnablePasswordRetrieval; }

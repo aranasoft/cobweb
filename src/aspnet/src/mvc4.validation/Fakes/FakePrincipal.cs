@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Security.Principal;
 
-namespace Cobweb.Testing.Mvc.Fakes {
+namespace Aranasoft.Cobweb.Mvc.Validation.Fakes {
     public class FakePrincipal : IPrincipal {
         private readonly IIdentity _identity;
         private readonly string[] _roles;

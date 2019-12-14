@@ -1,10 +1,10 @@
 ﻿using System.Diagnostics;
 using System.Web.Http.Routing;
-using Cobweb.Extentions;
+using Aranasoft.Cobweb.Extentions;
 using FluentAssertions;
 using FluentAssertions.Execution;
 
-namespace Cobweb.Testing.WebApi.Assertions {
+namespace Aranasoft.Cobweb.Http.Validation.Assertions {
     /// <summary>
     ///     Contains a number of methods to assert that a <see cref="IHttpRouteData" /> is in the expected state.
     /// </summary>

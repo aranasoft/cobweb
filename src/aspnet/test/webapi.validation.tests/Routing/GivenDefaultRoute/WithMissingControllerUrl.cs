@@ -2,11 +2,11 @@ using System;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using Cobweb.Testing.WebApi.Extensions;
+using Aranasoft.Cobweb.Http.Validation.Extensions;
 using FluentAssertions;
 using NUnit.Framework;
 
-namespace Cobweb.Testing.WebApi.Tests.Routing.GivenDefaultRoute {
+namespace Aranasoft.Cobweb.Http.Validation.Tests.Routing.GivenDefaultRoute {
     [TestFixture]
     public class WithMissingControllerUrl : GivenDefaultRoute {
         private const string CurrentUrl = "~/Missing";

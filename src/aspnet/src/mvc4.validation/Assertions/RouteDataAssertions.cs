@@ -3,12 +3,12 @@ using System.Diagnostics;
 using System.Linq.Expressions;
 using System.Web.Mvc;
 using System.Web.Routing;
-using Cobweb.Extentions;
+using Aranasoft.Cobweb.Extentions;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using FluentAssertions.Primitives;
 
-namespace Cobweb.Testing.Mvc.Assertions {
+namespace Aranasoft.Cobweb.Mvc.Validation.Assertions {
     /// <summary>
     ///     Contains a number of methods to assert that a <see cref="RouteData" /> is in the expected state.
     /// </summary>

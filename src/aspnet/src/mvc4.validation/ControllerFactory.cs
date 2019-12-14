@@ -2,9 +2,9 @@
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
-using Cobweb.Testing.Mvc.Fakes;
+using Aranasoft.Cobweb.Mvc.Validation.Fakes;
 
-namespace Cobweb.Testing.Mvc {
+namespace Aranasoft.Cobweb.Mvc.Validation {
     public static class ControllerFactory {
         public static T InitializeController<T>(this T controller,
                                                 HttpContextBase httpContext,

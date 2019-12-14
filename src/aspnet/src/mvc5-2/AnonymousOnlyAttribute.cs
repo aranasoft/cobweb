@@ -3,7 +3,7 @@ using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Cobweb.Web.Mvc {
+namespace Aranasoft.Cobweb.Mvc {
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = false)]
     public class AnonymousOnlyAttribute : ActionMethodSelectorAttribute {
         public override bool IsValidForRequest(ControllerContext controllerContext, MethodInfo methodInfo) {

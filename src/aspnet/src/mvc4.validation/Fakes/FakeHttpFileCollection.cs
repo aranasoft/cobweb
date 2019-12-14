@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Web;
 
-namespace Cobweb.Testing.Mvc.Fakes {
+namespace Aranasoft.Cobweb.Mvc.Validation.Fakes {
     public class FakeHttpFileCollection : FakeHttpFileCollectionBase {
         private readonly NameObjectCollection<HttpPostedFileBase> _files;
 

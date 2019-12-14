@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Web.Http.Routing;
 
-namespace Cobweb.Testing.WebApi.Extensions {
+namespace Aranasoft.Cobweb.Http.Validation.Extensions {
     public static class WithKeyValuePair {
         /// <summary>
         ///     Convert a KeyValuePair into a NameObjectCollection object.

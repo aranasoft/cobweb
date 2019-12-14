@@ -32,7 +32,7 @@
   <ItemGroup>
     <Reference Include="Aranasoft.Cobweb, Version=1.4.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Aranasoft.Cobweb.1.4.1.0\lib\net45\Aranasoft.Cobweb.dll</HintPath>
+      <HintPath>..\..\packages\Aranasoft.Cobweb.1.4.1\lib\net45\Aranasoft.Cobweb.dll</HintPath>
     </Reference>
     <Reference Include="FluentAssertions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
       <HintPath>..\..\packages\FluentAssertions.4.0.0\lib\net45\FluentAssertions.dll</HintPath>

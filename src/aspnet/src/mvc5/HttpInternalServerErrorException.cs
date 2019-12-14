@@ -1,7 +1,7 @@
 ﻿using System.Net;
 using System.Web;
 
-namespace Cobweb.Web.Mvc {
+namespace Aranasoft.Cobweb.Mvc {
     public class HttpInternalServerErrorException : HttpException {
         public HttpInternalServerErrorException(string reason) :
             base((int) HttpStatusCode.InternalServerError, reason) {}

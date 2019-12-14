@@ -3,7 +3,7 @@ using System.Collections.Specialized;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Cobweb.Testing.Mvc.Fakes {
+namespace Aranasoft.Cobweb.Mvc.Validation.Fakes {
     public class FakeHttpRequest : FakeHttpRequestBase {
         private string[] _acceptTypes;
         private string _applicationPath;

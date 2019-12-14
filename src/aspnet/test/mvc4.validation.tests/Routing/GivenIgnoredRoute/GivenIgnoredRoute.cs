@@ -3,7 +3,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using NUnit.Framework;
 
-namespace Cobweb.Testing.Mvc.Tests.Routing.GivenIgnoredRoute {
+namespace Aranasoft.Cobweb.Mvc.Validation.Tests.Routing.GivenIgnoredRoute {
     [TestFixture]
     public abstract class GivenIgnoredRoute {
         [SetUp]

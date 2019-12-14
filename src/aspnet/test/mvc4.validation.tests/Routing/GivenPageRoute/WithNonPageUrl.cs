@@ -1,9 +1,9 @@
 using System;
-using Cobweb.Testing.Mvc.Assertions;
+using Aranasoft.Cobweb.Mvc.Validation.Assertions;
 using FluentAssertions;
 using NUnit.Framework;
 
-namespace Cobweb.Testing.Mvc.Tests.Routing.GivenPageRoute {
+namespace Aranasoft.Cobweb.Mvc.Validation.Tests.Routing.GivenPageRoute {
     [TestFixture]
     public class WithNonPageUrl : GivenPageRoute {
         private const string CurrentUrl = "~/Account/Info";

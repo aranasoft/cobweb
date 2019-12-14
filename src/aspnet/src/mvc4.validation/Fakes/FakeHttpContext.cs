@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Security.Principal;
 using System.Web;
 
-namespace Cobweb.Testing.Mvc.Fakes {
+namespace Aranasoft.Cobweb.Mvc.Validation.Fakes {
     public class FakeHttpContext : FakeHttpContextBase {
         private IDictionary _items;
         private HttpRequestBase _request;

@@ -1,7 +1,7 @@
 using System;
 using System.Web.Http;
 
-namespace Cobweb.Testing.WebApi.Tests.TestableTypes {
+namespace Aranasoft.Cobweb.Http.Validation.Tests.TestableTypes {
     public class ActionNameAttributeController : ApiController {
         public void Index() {}
 

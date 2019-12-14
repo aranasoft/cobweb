@@ -2,13 +2,13 @@ using System;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using Cobweb.Testing.WebApi.Assertions;
-using Cobweb.Testing.WebApi.Extensions;
-using Cobweb.Testing.WebApi.Tests.TestableTypes;
+using Aranasoft.Cobweb.Http.Validation.Assertions;
+using Aranasoft.Cobweb.Http.Validation.Extensions;
+using Aranasoft.Cobweb.Http.Validation.Tests.TestableTypes;
 using FluentAssertions;
 using NUnit.Framework;
 
-namespace Cobweb.Testing.WebApi.Tests.Routing.GivenDefaultRoute {
+namespace Aranasoft.Cobweb.Http.Validation.Tests.Routing.GivenDefaultRoute {
     [TestFixture]
     public class WithEmptyControllerUrl : GivenDefaultRoute {
         private const string CurrentUrl = "~/Empty";

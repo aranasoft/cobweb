@@ -1,7 +1,7 @@
 using System;
 using System.Web.Mvc;
 
-namespace Cobweb.Testing.Mvc.Tests.TestableTypes {
+namespace Aranasoft.Cobweb.Mvc.Validation.Tests.TestableTypes {
     public class AlternateNamingController : Controller {
         public ActionResult Index() {
             return null;

@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
-namespace Cobweb.Web.Mvc.Json {
+namespace Aranasoft.Cobweb.Mvc.Json {
     public class CamelJsonConvert {
         public static MvcHtmlString SerializeObject(object o) {
             var settings = new JsonSerializerSettings {ContractResolver = new CamelCasePropertyNamesContractResolver()};

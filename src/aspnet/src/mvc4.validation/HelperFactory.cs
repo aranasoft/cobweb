@@ -2,10 +2,10 @@ using System.IO;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
-using Cobweb.Testing.Mvc.Fakes;
+using Aranasoft.Cobweb.Mvc.Validation.Fakes;
 using Moq;
 
-namespace Cobweb.Testing.Mvc {
+namespace Aranasoft.Cobweb.Mvc.Validation {
     public static class HelperFactory {
         public static HtmlHelper HtmlHelper(ViewDataDictionary viewData = null, HttpRequestBase request = null) {
             viewData = viewData ?? new ViewDataDictionary();

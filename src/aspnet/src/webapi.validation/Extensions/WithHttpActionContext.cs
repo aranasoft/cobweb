@@ -2,7 +2,7 @@ using System.Threading;
 using System.Web.Http.Controllers;
 using System.Web.Http.ModelBinding;
 
-namespace Cobweb.Testing.WebApi.Extensions {
+namespace Aranasoft.Cobweb.Http.Validation.Extensions {
     public static class WithHttpActionContext {
         public static HttpActionContext WithBoundArguments(this HttpActionContext context) {
             var cancellationToken = new CancellationToken();

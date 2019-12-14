@@ -1,9 +1,9 @@
 using System;
-using Cobweb.Testing.Mvc.Fakes;
+using Aranasoft.Cobweb.Mvc.Validation.Fakes;
 using FluentAssertions;
 using NUnit.Framework;
 
-namespace Cobweb.Testing.Mvc.Tests.Fakes.SessionState {
+namespace Aranasoft.Cobweb.Mvc.Validation.Tests.Fakes.SessionState {
     [TestFixture]
     public class GivenAPopulatedHttpSessionState {
         private const string ExpectedSessionKey = "SomeSessionKey";

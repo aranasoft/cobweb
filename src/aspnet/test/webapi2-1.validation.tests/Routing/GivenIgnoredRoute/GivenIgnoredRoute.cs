@@ -1,7 +1,7 @@
 using System.Web.Http;
 using NUnit.Framework;
 
-namespace Cobweb.Testing.WebApi.Tests.Routing.GivenIgnoredRoute {
+namespace Aranasoft.Cobweb.Http.Validation.Tests.Routing.GivenIgnoredRoute {
     [TestFixture]
     public abstract class GivenIgnoredRoute {
         protected HttpConfiguration HttpConfiguration;

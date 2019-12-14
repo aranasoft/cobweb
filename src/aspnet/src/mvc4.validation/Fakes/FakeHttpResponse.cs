@@ -1,7 +1,7 @@
 ﻿using System.Collections.Specialized;
 using System.Web;
 
-namespace Cobweb.Testing.Mvc.Fakes {
+namespace Aranasoft.Cobweb.Mvc.Validation.Fakes {
     public class FakeHttpResponse : FakeHttpResponseBase {
         private HttpCookieCollection _cookies;
         private NameValueCollection _headers;

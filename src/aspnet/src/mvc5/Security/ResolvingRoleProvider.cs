@@ -2,7 +2,7 @@ using System;
 using System.Web.Mvc;
 using System.Web.Security;
 
-namespace Cobweb.Web.Mvc.Security {
+namespace Aranasoft.Cobweb.Mvc.Security {
     public class ResolvingRoleProvider : RoleProvider {
         public override string ApplicationName {
             get { return GetProvider().ApplicationName; }

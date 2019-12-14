@@ -1,9 +1,9 @@
 using System.Web;
-using Cobweb.Testing.Mvc.Fakes;
+using Aranasoft.Cobweb.Mvc.Validation.Fakes;
 using FluentAssertions;
 using NUnit.Framework;
 
-namespace Cobweb.Testing.Mvc.Tests.Fakes.FileCollection {
+namespace Aranasoft.Cobweb.Mvc.Validation.Tests.Fakes.FileCollection {
     [TestFixture]
     public class GivenAnEmptyHttpFileCollection {
         private const string ExpectedFileKey = "SomeFileKey";

@@ -7,7 +7,7 @@ using FluentAssertions;
 using FluentAssertions.Execution;
 using FluentAssertions.Primitives;
 
-namespace Cobweb.Testing.WebApi.Assertions {
+namespace Aranasoft.Cobweb.Http.Validation.Assertions {
     /// <summary>
     ///     Contains a number of methods to assert that a <see cref="IHttpRouteData" /> is in the expected state.
     /// </summary>

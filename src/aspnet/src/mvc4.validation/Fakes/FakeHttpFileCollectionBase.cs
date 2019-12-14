@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using System.Web;
 
-namespace Cobweb.Testing.Mvc.Fakes {
+namespace Aranasoft.Cobweb.Mvc.Validation.Fakes {
     public abstract class FakeHttpFileCollectionBase : HttpFileCollectionBase {
         public override sealed HttpPostedFileBase this[string name] {
             get { return Get(name); }

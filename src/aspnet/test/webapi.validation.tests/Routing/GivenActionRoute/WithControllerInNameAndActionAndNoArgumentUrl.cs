@@ -1,9 +1,9 @@
 using System.Net.Http;
-using Cobweb.Testing.WebApi.Assertions;
-using Cobweb.Testing.WebApi.Tests.TestableTypes;
+using Aranasoft.Cobweb.Http.Validation.Assertions;
+using Aranasoft.Cobweb.Http.Validation.Tests.TestableTypes;
 using NUnit.Framework;
 
-namespace Cobweb.Testing.WebApi.Tests.Routing.GivenActionRoute {
+namespace Aranasoft.Cobweb.Http.Validation.Tests.Routing.GivenActionRoute {
     [TestFixture]
     public class WithControllerInNameAndActionAndNoArgumentUrl : GivenActionRoute {
         private const string CurrentUrl = "~/HasControllerInNameAction/OtherGet";

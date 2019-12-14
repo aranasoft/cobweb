@@ -1,9 +1,9 @@
-using Cobweb.Testing.Mvc.Assertions;
-using Cobweb.Testing.Mvc.Tests.TestableTypes;
+using Aranasoft.Cobweb.Mvc.Validation.Assertions;
+using Aranasoft.Cobweb.Mvc.Validation.Tests.TestableTypes;
 using FluentAssertions;
 using NUnit.Framework;
 
-namespace Cobweb.Testing.Mvc.Tests.Routing.GivenDefaultRoute {
+namespace Aranasoft.Cobweb.Mvc.Validation.Tests.Routing.GivenDefaultRoute {
     [TestFixture]
     public class WithAlternateNamingControllerActionRootUrlAndTrailingSlash : GivenDefaultRoute {
         private const string CurrentUrl = "~/AlternateNaming/ActionName/";

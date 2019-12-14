@@ -1,9 +1,9 @@
 using System.Net.Http;
-using Cobweb.Testing.WebApi.Assertions;
-using Cobweb.Testing.WebApi.Tests.TestableTypes;
+using Aranasoft.Cobweb.Http.Validation.Assertions;
+using Aranasoft.Cobweb.Http.Validation.Tests.TestableTypes;
 using NUnit.Framework;
 
-namespace Cobweb.Testing.WebApi.Tests.Routing.GivenDefaultRoute {
+namespace Aranasoft.Cobweb.Http.Validation.Tests.Routing.GivenDefaultRoute {
     [TestFixture]
     public class WithVerbAttributeControllerAndArgumentUrl : GivenDefaultRoute {
         private const string CurrentUrl = "~/HttpMethodAttribute/5";

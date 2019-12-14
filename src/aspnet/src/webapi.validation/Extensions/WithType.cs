@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel;
 
-namespace Cobweb.Testing.WebApi.Extensions {
+namespace Aranasoft.Cobweb.Http.Validation.Extensions {
     public static class WithType {
         public static bool DefaultsToBoundFromUri(this Type type) {
             return type.HasSimpleType() || type.HasStringConverter();

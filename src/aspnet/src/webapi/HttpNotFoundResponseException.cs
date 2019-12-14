@@ -1,9 +1,9 @@
 ﻿using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using Cobweb.Web.Http.Formatting;
+using Aranasoft.Cobweb.Http.Formatting;
 
-namespace Cobweb.Web.Http {
+namespace Aranasoft.Cobweb.Http {
     public class HttpNotFoundResponseException : HttpResponseException {
         public HttpNotFoundResponseException(string reason, string errorMessage)
             : base(

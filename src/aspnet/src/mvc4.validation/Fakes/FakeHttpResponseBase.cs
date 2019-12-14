@@ -1,7 +1,7 @@
 ﻿using System.Collections.Specialized;
 using System.Web;
 
-namespace Cobweb.Testing.Mvc.Fakes {
+namespace Aranasoft.Cobweb.Mvc.Validation.Fakes {
     public abstract class FakeHttpResponseBase : HttpResponseBase {
         protected internal FakeHttpResponseBase() {}
 

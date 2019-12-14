@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -7,7 +7,7 @@
     <ProjectGuid>{170479CE-B218-4081-974B-FC8396699F84}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Aranasoft.Cobweb.Http.Validation.Tests</RootNamespace>
+    <RootNamespace>Aranasoft.Cobweb.Mvc.Validation.Tests</RootNamespace>
     <AssemblyName>Aranasoft.Cobweb.Mvc4.Validation.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -32,7 +32,7 @@
   <ItemGroup>
     <Reference Include="Cobweb, Version=1.2.3.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Aranasoft.Cobweb.1.4.2.0\lib\net40\Aranasoft.Cobweb.dll</HintPath>
+      <HintPath>..\..\packages\Aranasoft.Cobweb.1.4.2\lib\net40\Aranasoft.Cobweb.dll</HintPath>
     </Reference>
     <Reference Include="FluentAssertions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
       <HintPath>..\..\packages\FluentAssertions.4.0.0\lib\net40\FluentAssertions.dll</HintPath>

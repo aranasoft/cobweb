@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.SessionState;
 
-namespace Cobweb.Testing.Mvc.Fakes {
+namespace Aranasoft.Cobweb.Mvc.Validation.Fakes {
     public class FakeHttpSessionState : HttpSessionStateBase {
         private SessionStateItemCollection _objects;
 

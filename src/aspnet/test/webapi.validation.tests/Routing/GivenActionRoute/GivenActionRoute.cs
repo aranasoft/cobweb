@@ -1,7 +1,7 @@
 using System.Web.Http;
 using NUnit.Framework;
 
-namespace Cobweb.Testing.WebApi.Tests.Routing.GivenActionRoute {
+namespace Aranasoft.Cobweb.Http.Validation.Tests.Routing.GivenActionRoute {
     [TestFixture]
     public abstract class GivenActionRoute {
         protected HttpConfiguration HttpConfiguration;

@@ -3,7 +3,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using NUnit.Framework;
 
-namespace Cobweb.Testing.Mvc.Tests.Routing.GivenPageRoute {
+namespace Aranasoft.Cobweb.Mvc.Validation.Tests.Routing.GivenPageRoute {
     [TestFixture]
     public abstract class GivenPageRoute {
         [SetUp]

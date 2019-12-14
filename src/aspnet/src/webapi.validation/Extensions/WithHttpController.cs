@@ -3,9 +3,9 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Web.Http;
 using System.Web.Http.Controllers;
-using Cobweb.Reflection.Extensions;
+using Aranasoft.Cobweb.Reflection.Extensions;
 
-namespace Cobweb.Testing.WebApi.Extensions {
+namespace Aranasoft.Cobweb.Http.Validation.Extensions {
     public static class WithHttpController {
         public static string ControllerName<THttpController>() where THttpController : IHttpController {
             return ControllerName(typeof(THttpController));

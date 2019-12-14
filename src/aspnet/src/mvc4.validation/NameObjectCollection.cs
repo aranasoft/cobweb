@@ -1,9 +1,9 @@
 using System;
-using Cobweb.Extentions;
+using Aranasoft.Cobweb.Extentions;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 
-namespace Cobweb.Testing.Mvc {
+namespace Aranasoft.Cobweb.Mvc.Validation {
     public class NameObjectCollection<T> : NameObjectCollectionBase {
         public virtual T this[string name] {
             get { return Get(name); }

@@ -4,7 +4,7 @@ using FluentAssertions;
 using FluentAssertions.Execution;
 using FluentAssertions.Primitives;
 
-namespace Cobweb.Testing.Mvc.Assertions {
+namespace Aranasoft.Cobweb.Mvc.Validation.Assertions {
     /// <summary>
     ///     Contains a number of methods to assert that an <see cref="IRouteContext" /> is in the expected state.
     /// </summary>

@@ -3,7 +3,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using NUnit.Framework;
 
-namespace Cobweb.Testing.Mvc.Tests.Routing.GivenNamedRoute {
+namespace Aranasoft.Cobweb.Mvc.Validation.Tests.Routing.GivenNamedRoute {
     [TestFixture]
     public abstract class GivenNamedRoute {
         public const string ActualRouteName = "routeName";

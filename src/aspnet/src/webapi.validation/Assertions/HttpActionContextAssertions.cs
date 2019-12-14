@@ -1,16 +1,16 @@
-﻿using System;
+using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Web.Http.Controllers;
-using Cobweb.Extentions;
-using Cobweb.Extentions.ObjectExtentions;
-using Cobweb.Reflection.Extensions;
+using Aranasoft.Cobweb.Extentions;
+using Aranasoft.Cobweb.Extentions.ObjectExtentions;
+using Aranasoft.Cobweb.Reflection.Extensions;
 using FluentAssertions;
 using FluentAssertions.Execution;
 using FluentAssertions.Primitives;
 
-namespace Cobweb.Testing.WebApi.Assertions {
+namespace Aranasoft.Cobweb.Http.Validation.Assertions {
     /// <summary>
     ///     Contains a number of methods to assert that a <see cref="HttpActionContext" /> is in the expected state.
     /// </summary>

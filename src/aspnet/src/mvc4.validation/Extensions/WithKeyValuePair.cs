@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 
-namespace Cobweb.Testing.Mvc.Extensions {
+namespace Aranasoft.Cobweb.Mvc.Validation.Extensions {
     public static class WithKeyValuePair {
         /// <summary>
         ///     Convert a KeyValuePair into a NameObjectCollection object.

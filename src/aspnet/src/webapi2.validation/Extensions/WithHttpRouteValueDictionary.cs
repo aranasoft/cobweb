@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http.Routing;
 
-namespace Cobweb.Testing.WebApi.Extensions {
+namespace Aranasoft.Cobweb.Http.Validation.Extensions {
     public static class WithHttpRouteValueDictionary {
         private const string SubRouteDataKey = "MS_SubRoutes";
 

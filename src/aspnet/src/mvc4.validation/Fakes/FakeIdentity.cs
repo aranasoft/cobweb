@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Security.Principal;
 
-namespace Cobweb.Testing.Mvc.Fakes {
+namespace Aranasoft.Cobweb.Mvc.Validation.Fakes {
     public class FakeIdentity : IIdentity {
         private readonly string _name;
 

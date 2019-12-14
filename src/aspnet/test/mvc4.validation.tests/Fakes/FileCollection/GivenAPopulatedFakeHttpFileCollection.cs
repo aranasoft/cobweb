@@ -1,10 +1,10 @@
 using System.Web;
-using Cobweb.Testing.Mvc.Fakes;
+using Aranasoft.Cobweb.Mvc.Validation.Fakes;
 using FluentAssertions;
 using Moq;
 using NUnit.Framework;
 
-namespace Cobweb.Testing.Mvc.Tests.Fakes.FileCollection {
+namespace Aranasoft.Cobweb.Mvc.Validation.Tests.Fakes.FileCollection {
     [TestFixture]
     public class GivenAPopulatedFakeHttpFileCollection {
         HttpPostedFileBase _expectedFile;

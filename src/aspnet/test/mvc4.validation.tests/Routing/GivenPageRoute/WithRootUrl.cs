@@ -1,9 +1,9 @@
-using Cobweb.Testing.Mvc.Assertions;
-using Cobweb.Testing.Mvc.Tests.TestableTypes;
+using Aranasoft.Cobweb.Mvc.Validation.Assertions;
+using Aranasoft.Cobweb.Mvc.Validation.Tests.TestableTypes;
 using FluentAssertions;
 using NUnit.Framework;
 
-namespace Cobweb.Testing.Mvc.Tests.Routing.GivenPageRoute {
+namespace Aranasoft.Cobweb.Mvc.Validation.Tests.Routing.GivenPageRoute {
     [TestFixture]
     public class WithRootUrl : GivenPageRoute {
         private const string CurrentUrl = "~/";

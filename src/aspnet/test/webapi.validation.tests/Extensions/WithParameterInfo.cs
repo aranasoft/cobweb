@@ -2,11 +2,11 @@
 using System.ComponentModel;
 using System.Linq;
 using System.Web.Http;
-using Cobweb.Testing.WebApi.Extensions;
+using Aranasoft.Cobweb.Http.Validation.Extensions;
 using FluentAssertions;
 using NUnit.Framework;
 
-namespace Cobweb.Testing.WebApi.Tests.Extensions {
+namespace Aranasoft.Cobweb.Http.Validation.Tests.Extensions {
     [TestFixture]
     public class WithParameterInfo {
         public class MyClass {

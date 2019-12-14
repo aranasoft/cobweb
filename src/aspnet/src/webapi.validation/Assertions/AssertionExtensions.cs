@@ -3,7 +3,7 @@ using System.Net.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.Routing;
 
-namespace Cobweb.Testing.WebApi.Assertions {
+namespace Aranasoft.Cobweb.Http.Validation.Assertions {
     /// <summary>
     ///     Contains extension methods for custom assertions in unit tests.
     /// </summary>

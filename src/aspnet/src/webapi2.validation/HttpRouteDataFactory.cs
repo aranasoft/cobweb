@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Linq.Expressions;
 using System.Net.Http;
 using System.Text;
 using System.Web.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.Routing;
-using Cobweb.Reflection.Extensions;
+using Aranasoft.Cobweb.Reflection.Extensions;
 
-namespace Cobweb.Testing.WebApi {
+namespace Aranasoft.Cobweb.Http.Validation {
     public static class HttpRouteDataFactory {
         public static string HttpControllerName<THttpController>() where THttpController : IHttpController {
             return HttpControllerName(typeof(THttpController));

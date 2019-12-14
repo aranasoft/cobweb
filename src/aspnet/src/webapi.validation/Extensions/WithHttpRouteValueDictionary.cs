@@ -1,6 +1,6 @@
 using System.Web.Http.Routing;
 
-namespace Cobweb.Testing.WebApi.Extensions {
+namespace Aranasoft.Cobweb.Http.Validation.Extensions {
     public static class WithHttpRouteValueDictionary {
         public static bool ContainsRouteValue(this HttpRouteValueDictionary routeValues, string key) {
             return routeValues.ContainsKey(key);
