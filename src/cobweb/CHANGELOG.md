@@ -1,3 +1,12 @@
+# 1.4.2 (2019-12-14)
+
+
+### Features
+
+* **net40:** restore NET40 support to Cobweb (core) for MVC4 / WebApi1 projects ([810a2ca](https://github.com/aranasoft/cobweb/commit/810a2ca471c9a11f200b57d48cbe5b56c02b6d99))
+
+
+
 <a name="1.4.1"></a>
 # 1.4.1 (2019-12-10)
 
