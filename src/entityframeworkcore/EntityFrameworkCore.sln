@@ -5,11 +5,11 @@ VisualStudioVersion = 16.0.29519.87
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{091B6554-596C-4EEC-B37E-271DB9B5E10A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aranasoft.Cobweb.EntityFrameworkCore2.Validation", "src\entityframeworkcore2.validation\Aranasoft.Cobweb.EntityFrameworkCore.Validation.csproj", "{63AE368C-C059-4CF5-A75F-C96F53FE2030}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aranasoft.Cobweb.EntityFrameworkCore2.Validation", "src\entityframeworkcore2.validation\Aranasoft.Cobweb.EntityFrameworkCore2.Validation.csproj", "{63AE368C-C059-4CF5-A75F-C96F53FE2030}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{381B9DD8-06CA-42CA-9A5A-69577E25B584}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aranasoft.Cobweb.EntityFrameworkCore2.Validation.Tests", "test\entityframeworkcore.validation.tests\Aranasoft.Cobweb.EntityFrameworkCore2.Validation.Tests.csproj", "{826678B4-32FC-4DFF-A83D-8A89CC9F3AFA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aranasoft.Cobweb.EntityFrameworkCore2.Validation.Tests", "test\entityframeworkcore2.validation.tests\Aranasoft.Cobweb.EntityFrameworkCore2.Validation.Tests.csproj", "{826678B4-32FC-4DFF-A83D-8A89CC9F3AFA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FC4654E2-925D-495D-B36D-106EBEA154A2}"
 	ProjectSection(SolutionItems) = preProject
