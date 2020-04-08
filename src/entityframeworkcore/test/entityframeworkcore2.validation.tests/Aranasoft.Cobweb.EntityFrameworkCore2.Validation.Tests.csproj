@@ -24,7 +24,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\fluentmigrator\src\fluentmigrator3.extensions\Aranasoft.Cobweb.FluentMigrator3.Extensions.csproj" />
-    <ProjectReference Include="..\..\src\entityframeworkcore.validation\Aranasoft.Cobweb.EntityFrameworkCore.Validation.csproj" />
+    <ProjectReference Include="..\..\src\entityframeworkcore2.validation\Aranasoft.Cobweb.EntityFrameworkCore2.Validation.csproj" />
   </ItemGroup>
 
   <ItemGroup>
