@@ -1,4 +1,12 @@
-<a name="1.20.0"></a>
+# 1.30.0 (2020-04-08)
+
+
+### Features
+
+* **efcore3:** add support for efcore v3 ([5b9bdf0](https://github.com/aranasoft/cobweb/commit/5b9bdf0be1d059a2cf7a2408bc146cff5cb1bae1))
+
+
+
 # 1.20.0 (2019-12-10)
 
 
