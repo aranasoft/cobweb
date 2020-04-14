@@ -6,6 +6,7 @@
     <AssemblyName>Aranasoft.Cobweb.FluentMigrator.Extensions</AssemblyName>
     <RootNamespace>Aranasoft.Cobweb.FluentMigrator.Extensions</RootNamespace>
     <VersionPrefix>3.1</VersionPrefix>
+    <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
   <PropertyGroup>
