@@ -16,7 +16,6 @@
 
   <ItemGroup>
     <Compile Include="..\entityframeworkcore2.validation\SchemaValidationException.cs" Link="SchemaValidationException.cs" />
-    <Compile Include="..\entityframeworkcore2.validation\SchemaValidationOptions.cs" Link="SchemaValidationOptions.cs" />
     <Compile Include="..\entityframeworkcore2.validation\SchemaValidatorExtensions.cs" Link="SchemaValidatorExtensions.cs" />
   </ItemGroup>
 
