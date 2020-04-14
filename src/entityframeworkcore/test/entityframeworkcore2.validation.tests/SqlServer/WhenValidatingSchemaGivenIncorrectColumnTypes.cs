@@ -67,6 +67,15 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.SqlServer {
         }
 
         [ConditionalFact]
+        public void ItShouldNotHaveColumnNullabilityMismatchErrors() {
+            var context = _fixture.GetContext();
+            Action validatingSchema = () => context.ValidateSchema(new SchemaValidationOptions {ValidateForeignKeys = false});
+            validatingSchema.Should().Throw<SchemaValidationException>()
+                            .Which.ValidationErrors
+                            .Should().NotContain(error => error.StartsWith("Column nullability mismatch", StringComparison.InvariantCultureIgnoreCase));
+        }
+
+        [ConditionalFact]
         public void ItShouldNotHaveMissingIndexErrors() {
             var applicationDbContext = _fixture.GetContext();
             Action validatingSchema = () => applicationDbContext.ValidateSchema();

@@ -5,10 +5,10 @@ using FluentAssertions;
 using Xunit;
 
 namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Sqlite {
-    public class WhenValidatingSchemaGivenIncorrectColumnTypes : IClassFixture<SqliteMigrationsFixture<MigrationsWithIncorrectColumnTypes>> {
-        private readonly SqliteMigrationsFixture<MigrationsWithIncorrectColumnTypes> _fixture;
+    public class WhenValidatingSchemaGivenIncorrectColumnNullability : IClassFixture<SqliteMigrationsFixture<MigrationsWithIncorrectColumnNullability>> {
+        private readonly SqliteMigrationsFixture<MigrationsWithIncorrectColumnNullability> _fixture;
 
-        public WhenValidatingSchemaGivenIncorrectColumnTypes(SqliteMigrationsFixture<MigrationsWithIncorrectColumnTypes> fixture) {
+        public WhenValidatingSchemaGivenIncorrectColumnNullability(SqliteMigrationsFixture<MigrationsWithIncorrectColumnNullability> fixture) {
             _fixture = fixture;
         }
 
@@ -56,21 +56,21 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Sqlite {
         }
 
         [Fact]
-        public void ItShouldOnlyHaveColumnTypeMismatchErrors() {
+        public void ItShouldNotHaveColumnTypeMismatchErrors() {
             var context = _fixture.GetContext();
             Action validatingSchema = () => context.ValidateSchema(new SchemaValidationOptions {ValidateForeignKeys = false});
             validatingSchema.Should().Throw<SchemaValidationException>()
                             .Which.ValidationErrors
-                            .Should().OnlyContain(error => error.StartsWith("Column type mismatch", StringComparison.InvariantCultureIgnoreCase));
+                            .Should().NotContain(error => error.StartsWith("Column type mismatch", StringComparison.InvariantCultureIgnoreCase));
         }
 
         [Fact]
-        public void ItShouldNotHaveColumnNullabilityMismatchErrors() {
+        public void ItShouldOnlyHaveColumnNullabilityMismatchErrors() {
             var context = _fixture.GetContext();
             Action validatingSchema = () => context.ValidateSchema(new SchemaValidationOptions {ValidateForeignKeys = false});
             validatingSchema.Should().Throw<SchemaValidationException>()
                             .Which.ValidationErrors
-                            .Should().NotContain(error => error.StartsWith("Column nullability mismatch", StringComparison.InvariantCultureIgnoreCase));
+                            .Should().OnlyContain(error => error.StartsWith("Column nullability mismatch", StringComparison.InvariantCultureIgnoreCase));
         }
 
         [Fact]

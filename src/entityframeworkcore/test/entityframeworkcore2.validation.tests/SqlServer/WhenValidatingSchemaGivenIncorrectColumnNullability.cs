@@ -1,91 +1,93 @@
 using System;
 using Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.Migrations;
-using Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.Sqlite;
+using Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.SqlServer;
+using Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.XUnit;
 using FluentAssertions;
 using Xunit;
 
-namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Sqlite {
-    public class WhenValidatingSchemaGivenIncorrectColumnTypes : IClassFixture<SqliteMigrationsFixture<MigrationsWithIncorrectColumnTypes>> {
-        private readonly SqliteMigrationsFixture<MigrationsWithIncorrectColumnTypes> _fixture;
+namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.SqlServer {
+    [OperatingSystemRequirement(OperatingSystems.Windows)]
+    public class WhenValidatingSchemaGivenIncorrectColumnNullability : IClassFixture<SqlServerMigrationsFixture<MigrationsWithIncorrectColumnNullability>> {
+        private readonly SqlServerMigrationsFixture<MigrationsWithIncorrectColumnNullability> _fixture;
 
-        public WhenValidatingSchemaGivenIncorrectColumnTypes(SqliteMigrationsFixture<MigrationsWithIncorrectColumnTypes> fixture) {
+        public WhenValidatingSchemaGivenIncorrectColumnNullability( SqlServerMigrationsFixture<MigrationsWithIncorrectColumnNullability> fixture) {
             _fixture = fixture;
         }
 
-        [Fact]
+        [ConditionalFact]
         public void ItShouldThrowValidationException() {
-            var context = _fixture.GetContext();
-            Action validatingSchema = () => context.ValidateSchema(new SchemaValidationOptions {ValidateForeignKeys = false});
+            var applicationDbContext = _fixture.GetContext();
+            Action validatingSchema = () => applicationDbContext.ValidateSchema();
             validatingSchema.Should().ThrowExactly<SchemaValidationException>();
         }
 
-        [Fact]
+        [ConditionalFact]
         public void ItShouldHaveValidationErrors() {
-            var context = _fixture.GetContext();
-            Action validatingSchema = () => context.ValidateSchema(new SchemaValidationOptions {ValidateForeignKeys = false});
+            var applicationDbContext = _fixture.GetContext();
+            Action validatingSchema = () => applicationDbContext.ValidateSchema();
             validatingSchema.Should().Throw<SchemaValidationException>()
                             .Which.ValidationErrors
                             .Should().NotBeEmpty();
         }
 
-        [Fact]
+        [ConditionalFact]
         public void ItShouldNotHaveMissingTableErrors() {
-            var context = _fixture.GetContext();
-            Action validatingSchema = () => context.ValidateSchema(new SchemaValidationOptions {ValidateForeignKeys = false});
+            var applicationDbContext = _fixture.GetContext();
+            Action validatingSchema = () => applicationDbContext.ValidateSchema();
             validatingSchema.Should().Throw<SchemaValidationException>()
                             .Which.ValidationErrors
                             .Should().NotContain(error => error.StartsWith("Missing Table", StringComparison.InvariantCultureIgnoreCase));
         }
 
-        [Fact]
+        [ConditionalFact]
         public void ItShouldNotHaveMissingViewErrors() {
-            var context = _fixture.GetContext();
-            Action validatingSchema = () => context.ValidateSchema(new SchemaValidationOptions {ValidateForeignKeys = false});
+            var applicationDbContext = _fixture.GetContext();
+            Action validatingSchema = () => applicationDbContext.ValidateSchema();
             validatingSchema.Should().Throw<SchemaValidationException>()
                             .Which.ValidationErrors
                             .Should().NotContain(error => error.StartsWith("Missing View", StringComparison.InvariantCultureIgnoreCase));
         }
 
-        [Fact]
+        [ConditionalFact]
         public void ItShouldNotHaveMissingColumnErrors() {
-            var context = _fixture.GetContext();
-            Action validatingSchema = () => context.ValidateSchema(new SchemaValidationOptions {ValidateForeignKeys = false});
+            var applicationDbContext = _fixture.GetContext();
+            Action validatingSchema = () => applicationDbContext.ValidateSchema();
             validatingSchema.Should().Throw<SchemaValidationException>()
                             .Which.ValidationErrors
                             .Should().NotContain(error => error.StartsWith("Missing Column", StringComparison.InvariantCultureIgnoreCase));
         }
 
-        [Fact]
-        public void ItShouldOnlyHaveColumnTypeMismatchErrors() {
+        [ConditionalFact]
+        public void ItShouldNotHaveColumnTypeMismatchErrors() {
+            var applicationDbContext = _fixture.GetContext();
+            Action validatingSchema = () => applicationDbContext.ValidateSchema();
+            validatingSchema.Should().Throw<SchemaValidationException>()
+                            .Which.ValidationErrors
+                            .Should().NotContain(error => error.StartsWith("Column type mismatch", StringComparison.InvariantCultureIgnoreCase));
+        }
+
+        [ConditionalFact]
+        public void ItShouldOnlyHaveColumnNullabilityMismatchErrors() {
             var context = _fixture.GetContext();
             Action validatingSchema = () => context.ValidateSchema(new SchemaValidationOptions {ValidateForeignKeys = false});
             validatingSchema.Should().Throw<SchemaValidationException>()
                             .Which.ValidationErrors
-                            .Should().OnlyContain(error => error.StartsWith("Column type mismatch", StringComparison.InvariantCultureIgnoreCase));
+                            .Should().OnlyContain(error => error.StartsWith("Column nullability mismatch", StringComparison.InvariantCultureIgnoreCase));
         }
 
-        [Fact]
-        public void ItShouldNotHaveColumnNullabilityMismatchErrors() {
-            var context = _fixture.GetContext();
-            Action validatingSchema = () => context.ValidateSchema(new SchemaValidationOptions {ValidateForeignKeys = false});
-            validatingSchema.Should().Throw<SchemaValidationException>()
-                            .Which.ValidationErrors
-                            .Should().NotContain(error => error.StartsWith("Column nullability mismatch", StringComparison.InvariantCultureIgnoreCase));
-        }
-
-        [Fact]
+        [ConditionalFact]
         public void ItShouldNotHaveMissingIndexErrors() {
-            var context = _fixture.GetContext();
-            Action validatingSchema = () => context.ValidateSchema(new SchemaValidationOptions {ValidateForeignKeys = false});
+            var applicationDbContext = _fixture.GetContext();
+            Action validatingSchema = () => applicationDbContext.ValidateSchema();
             validatingSchema.Should().Throw<SchemaValidationException>()
                             .Which.ValidationErrors
                             .Should().NotContain(error => error.StartsWith("Missing Index", StringComparison.InvariantCultureIgnoreCase));
         }
 
-        [Fact]
+        [ConditionalFact]
         public void ItShouldNotHaveMissingForeignKeyErrors() {
-            var context = _fixture.GetContext();
-            Action validatingSchema = () => context.ValidateSchema(new SchemaValidationOptions {ValidateForeignKeys = false});
+            var applicationDbContext = _fixture.GetContext();
+            Action validatingSchema = () => applicationDbContext.ValidateSchema();
             validatingSchema.Should().Throw<SchemaValidationException>()
                             .Which.ValidationErrors
                             .Should().NotContain(error => error.StartsWith("Missing Foreign Key", StringComparison.InvariantCultureIgnoreCase));

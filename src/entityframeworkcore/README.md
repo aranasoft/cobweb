@@ -69,9 +69,23 @@ Default: `true`
 
 Set to `false` to skip validation of foreign keys. Useful for platforms that do no use foreign keys.
 
+### ValidateNullabilityForTables
+
+Type: `boolean`<br>
+Default: `true`
+
+Set to `false` to skip validation of nullability on table columns.
+
+### ValidateNullabilityForViews
+
+Type: `boolean`<br>
+Default: `false`
+
+Set to `false` to skip validation of nullability on view columns. By default, many database platforms enable nullability on view columns regardless of nullability on the underlying table column.
+
+*This option is not applicable to Entity Framework Core 2.x or Aranasoft.Cobweb.EntityFrameworkCore.Validation 1.2x.x.*
+
 
 ## License
 
 Cobweb is copyright of Arana Software, released under the [BSD License](http://opensource.org/licenses/BSD-3-Clause).
-
-

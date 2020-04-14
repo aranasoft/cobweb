@@ -14,9 +14,14 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation {
         public bool ValidateForeignKeys { get; set; } = true;
 
         /// <summary>
-        /// Ignore Nullability mismatches on view columns
+        /// Validate nullability on table columns
+        /// </summary>
+        public bool ValidateNullabilityForTables { get; set; } = true;
+
+        /// <summary>
+        /// Validate nullability on view columns
         /// </summary>
         /// <remarks>Some database systems enable nullability on view columns regardless of nullability on the underlying table column</remarks>
-        public bool IgnoreNullabilityForViews { get; set; } = true;
+        public bool ValidateNullabilityForViews { get; set; } = false;
     }
 }

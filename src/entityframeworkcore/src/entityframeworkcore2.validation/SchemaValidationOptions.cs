@@ -12,5 +12,10 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation {
         /// Validate foreign keys configured within the model against the connected database
         /// </summary>
         public bool ValidateForeignKeys { get; set; } = true;
+
+        /// <summary>
+        /// Validate nullability on table columns
+        /// </summary>
+        public bool ValidateNullabilityForTables { get; set; } = true;
     }
 }

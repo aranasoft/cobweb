@@ -67,7 +67,8 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation {
                         $"Column type mismatch in {persistedType.GetTableName()} for column {persistedColumn.GetColumnName()}. Found: {dbColumn.StoreType.ToLowerInvariant()}, Expected {persistedColumn.GetColumnType().ToLowerInvariant()}");
                 }
 
-                var shouldValidateColumnNullability = !validationOptions.IgnoreNullabilityForViews && persistedType.FindAnnotation(RelationalAnnotationNames.ViewDefinition) == null;
+                var isViewType = persistedType.FindAnnotation(RelationalAnnotationNames.ViewDefinition) != null;
+                var shouldValidateColumnNullability = (validationOptions.ValidateNullabilityForTables && !isViewType) || (validationOptions.ValidateNullabilityForViews && isViewType);
                 if (shouldValidateColumnNullability && persistedColumn.IsNullable != dbColumn.IsNullable) {
                     valErrors.Add(
                         $"Column nullability mismatch in {persistedType.GetTableName()} for column {persistedColumn.GetColumnName()}. Found: {(dbColumn.IsNullable ? "Nullable" : "NotNullable")}, Expected {(persistedColumn.IsNullable ? "Nullable" : "NotNullable")}");

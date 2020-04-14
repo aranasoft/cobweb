@@ -35,7 +35,7 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation {
                     continue;
                 }
 
-                validationErrors.AddRange(ValidateColumns(databaseModel, persistedType));
+                validationErrors.AddRange(ValidateColumns(databaseModel, persistedType, validationOptions));
 
                 if (validationOptions.ValidateIndexes) {
                     validationErrors.AddRange(ValidateIndexes(databaseModel, persistedType));
@@ -51,7 +51,7 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation {
             }
         }
 
-        private List<string> ValidateColumns(DatabaseModel databaseModel, IEntityType persistedType) {
+        private List<string> ValidateColumns(DatabaseModel databaseModel, IEntityType persistedType, SchemaValidationOptions validationOptions) {
             var entityTable = persistedType.Relational();
             var valErrors = new List<string>();
             foreach (var entityProperty in persistedType.GetProperties()) {
@@ -70,7 +70,8 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation {
                         $"Column type mismatch in {entityTable.TableName} for column {entityColumn.ColumnName}. Found: {dbColumn.StoreType.ToLowerInvariant()}, Expected {entityColumn.ColumnType.ToLowerInvariant()}");
                 }
 
-                if (entityProperty.IsNullable != dbColumn.IsNullable) {
+                var shouldValidateColumnNullability = validationOptions.ValidateNullabilityForTables;
+                if (shouldValidateColumnNullability && entityProperty.IsNullable != dbColumn.IsNullable) {
                     valErrors.Add(
                         $"Column nullability mismatch in {entityTable.TableName} for column {entityColumn.ColumnName}. Found: {(dbColumn.IsNullable ? "Nullable" : "NotNullable")}, Expected {(entityProperty.IsNullable ? "Nullable" : "NotNullable")}");
                 }
