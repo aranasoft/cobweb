@@ -6,6 +6,7 @@
     <AssemblyName>Aranasoft.Cobweb.NHibernate.Validation</AssemblyName>
     <RootNamespace>Aranasoft.Cobweb.NHibernate.Validation</RootNamespace>
     <VersionPrefix>1.40.4</VersionPrefix>
+    <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
   <PropertyGroup>

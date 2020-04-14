@@ -7,5 +7,6 @@
     <AssemblyName>Aranasoft.Cobweb</AssemblyName>
     <RootNamespace>Aranasoft.Cobweb</RootNamespace>
     <VersionPrefix>1.4.2</VersionPrefix>
+    <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 </Project>

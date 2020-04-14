@@ -6,6 +6,7 @@
     <AssemblyName>Aranasoft.Cobweb.NHibernate</AssemblyName>
     <RootNamespace>Aranasoft.Cobweb.NHibernate</RootNamespace>
     <VersionPrefix>1.40.4</VersionPrefix>
+    <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
   <PropertyGroup>
