@@ -1,3 +1,12 @@
+# 1.30.1 (2020-04-14)
+
+
+### Features
+
+* **view:** add View validation for efcore 3 ([f02c70c](https://github.com/aranasoft/cobweb/commit/f02c70cd734f47b6b0a3c23b126e86ebf9c1aa4e))
+
+
+
 # 1.30.0 (2020-04-08)
 
 
