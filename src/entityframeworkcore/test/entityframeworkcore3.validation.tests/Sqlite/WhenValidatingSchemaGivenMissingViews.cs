@@ -5,10 +5,10 @@ using FluentAssertions;
 using Xunit;
 
 namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Sqlite {
-    public class WhenValidatingSchemaGivenMissingIndexes : IClassFixture<SqliteMigrationsFixture<MigrationsMissingIndexes>> {
-        private readonly SqliteMigrationsFixture<MigrationsMissingIndexes> _fixture;
+    public class WhenValidatingSchemaGivenMissingViews : IClassFixture<SqliteMigrationsFixture<MigrationsMissingViews>> {
+        private readonly SqliteMigrationsFixture<MigrationsMissingViews> _fixture;
 
-        public WhenValidatingSchemaGivenMissingIndexes(SqliteMigrationsFixture<MigrationsMissingIndexes> fixture) {
+        public WhenValidatingSchemaGivenMissingViews(SqliteMigrationsFixture<MigrationsMissingViews> fixture) {
             _fixture = fixture;
         }
 
@@ -38,12 +38,12 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Sqlite {
         }
 
         [Fact]
-        public void ItShouldNotHaveMissingViewErrors() {
+        public void ItShouldOnlyHaveMissingViewErrors() {
             var context = _fixture.GetContext();
             Action validatingSchema = () => context.ValidateSchema(new SchemaValidationOptions {ValidateForeignKeys = false});
             validatingSchema.Should().Throw<SchemaValidationException>()
                             .Which.ValidationErrors
-                            .Should().NotContain(error => error.StartsWith("Missing View", StringComparison.InvariantCultureIgnoreCase));
+                            .Should().OnlyContain(error => error.StartsWith("Missing View", StringComparison.InvariantCultureIgnoreCase));
         }
 
         [Fact]
@@ -56,12 +56,12 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Sqlite {
         }
 
         [Fact]
-        public void ItShouldOnlyHaveMissingIndexErrors() {
+        public void ItShouldNotHaveMissingIndexErrors() {
             var context = _fixture.GetContext();
             Action validatingSchema = () => context.ValidateSchema(new SchemaValidationOptions {ValidateForeignKeys = false});
             validatingSchema.Should().Throw<SchemaValidationException>()
                             .Which.ValidationErrors
-                            .Should().OnlyContain(error => error.StartsWith("Missing Index", StringComparison.InvariantCultureIgnoreCase));
+                            .Should().NotContain(error => error.StartsWith("Missing Index", StringComparison.InvariantCultureIgnoreCase));
         }
 
         [Fact]

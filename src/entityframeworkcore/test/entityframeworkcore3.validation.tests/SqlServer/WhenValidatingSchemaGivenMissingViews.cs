@@ -7,10 +7,10 @@ using Xunit;
 
 namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.SqlServer {
     [OperatingSystemRequirement(OperatingSystems.Windows)]
-    public class WhenValidatingSchemaGivenIncorrectColumnTypes : IClassFixture<SqlServerMigrationsFixture<MigrationsWithIncorrectColumnTypes>> {
-        private readonly SqlServerMigrationsFixture<MigrationsWithIncorrectColumnTypes> _fixture;
+    public class WhenValidatingSchemaGivenMissingViews : IClassFixture<SqlServerMigrationsFixture<MigrationsMissingViews>> {
+        private readonly SqlServerMigrationsFixture<MigrationsMissingViews> _fixture;
 
-        public WhenValidatingSchemaGivenIncorrectColumnTypes( SqlServerMigrationsFixture<MigrationsWithIncorrectColumnTypes> fixture) {
+        public WhenValidatingSchemaGivenMissingViews(SqlServerMigrationsFixture<MigrationsMissingViews> fixture) {
             _fixture = fixture;
         }
 
@@ -40,12 +40,12 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.SqlServer {
         }
 
         [ConditionalFact]
-        public void ItShouldNotHaveMissingViewErrors() {
+        public void ItShouldOnlyHaveMissingViewErrors() {
             var applicationDbContext = _fixture.GetContext();
             Action validatingSchema = () => applicationDbContext.ValidateSchema();
             validatingSchema.Should().Throw<SchemaValidationException>()
                             .Which.ValidationErrors
-                            .Should().NotContain(error => error.StartsWith("Missing View", StringComparison.InvariantCultureIgnoreCase));
+                            .Should().OnlyContain(error => error.StartsWith("Missing View", StringComparison.InvariantCultureIgnoreCase));
         }
 
         [ConditionalFact]
@@ -55,15 +55,6 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.SqlServer {
             validatingSchema.Should().Throw<SchemaValidationException>()
                             .Which.ValidationErrors
                             .Should().NotContain(error => error.StartsWith("Missing Column", StringComparison.InvariantCultureIgnoreCase));
-        }
-
-        [ConditionalFact]
-        public void ItShouldOnlyHaveColumnTypeMismatchErrors() {
-            var applicationDbContext = _fixture.GetContext();
-            Action validatingSchema = () => applicationDbContext.ValidateSchema();
-            validatingSchema.Should().Throw<SchemaValidationException>()
-                            .Which.ValidationErrors
-                            .Should().OnlyContain(error => error.StartsWith("Column type mismatch", StringComparison.InvariantCultureIgnoreCase));
         }
 
         [ConditionalFact]

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Data;
 using Aranasoft.Cobweb.FluentMigrator.Extensions;
 using FluentMigrator;
@@ -115,10 +115,14 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.Migratio
                 .WithColumn("Name", col => col.AsString(450).NotNullable().PrimaryKey("PK_AspNetUserTokens"))
                 .WithColumn("Value", col => col.AsStringMax().Nullable())
                 ;
+
+            Execute.Sql(@"CREATE VIEW ViewBasedEntities AS SELECT Id, Email FROM AspNetUsers");
         }
 
         public override void Down()
         {
+            Execute.Sql(@"DROP VIEW ViewBasedEntities");
+
             if (Schema.Table("AspNetRoleClaims").Exists())
             {
                 Delete.Table("AspNetRoleClaims");

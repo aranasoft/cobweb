@@ -40,6 +40,15 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.SqlServer {
         }
 
         [ConditionalFact]
+        public void ItShouldNotHaveMissingViewErrors() {
+            var applicationDbContext = _fixture.GetContext();
+            Action validatingSchema = () => applicationDbContext.ValidateSchema();
+            validatingSchema.Should().Throw<SchemaValidationException>()
+                            .Which.ValidationErrors
+                            .Should().NotContain(error => error.StartsWith("Missing View", StringComparison.InvariantCultureIgnoreCase));
+        }
+
+        [ConditionalFact]
         public void ItShouldNotHaveMissingColumnErrors() {
             var applicationDbContext = _fixture.GetContext();
             Action validatingSchema = () => applicationDbContext.ValidateSchema();

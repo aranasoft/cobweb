@@ -24,17 +24,18 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation {
 
             var entityModel = Context.Model;
             var validationErrors = new List<string>();
-            var persistedTypes = entityModel.GetEntityTypes().Where(entityType => entityType.FindPrimaryKey() != null);
+            var persistedTypes = entityModel.GetEntityTypes();
 
             foreach (var persistedType in persistedTypes) {
-                var dbTable = databaseModel.GetTable(persistedType);
+                if (databaseModel.GetTable(persistedType) == null) {
+                    validationErrors.Add(persistedType.FindAnnotation(RelationalAnnotationNames.ViewDefinition) != null
+                                             ? $"Missing view: {persistedType.GetTableName()}"
+                                             : $"Missing table: {persistedType.GetTableName()}");
 
-                if (dbTable == null) {
-                    validationErrors.Add($"Missing table: {persistedType.GetTableName()}");
                     continue;
                 }
 
-                validationErrors.AddRange(ValidateColumns(databaseModel, persistedType));
+                validationErrors.AddRange(ValidateColumns(databaseModel, persistedType, validationOptions));
 
                 if (validationOptions.ValidateIndexes) {
                     validationErrors.AddRange(ValidateIndexes(databaseModel, persistedType));
@@ -50,7 +51,7 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation {
             }
         }
 
-        private List<string> ValidateColumns(DatabaseModel databaseModel, IEntityType persistedType) {
+        private List<string> ValidateColumns(DatabaseModel databaseModel, IEntityType persistedType, SchemaValidationOptions validationOptions) {
             var valErrors = new List<string>();
             foreach (var persistedColumn in persistedType.GetProperties()) {
                 var dbColumn = databaseModel.GetColumn(persistedColumn);
@@ -66,7 +67,8 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation {
                         $"Column type mismatch in {persistedType.GetTableName()} for column {persistedColumn.GetColumnName()}. Found: {dbColumn.StoreType.ToLowerInvariant()}, Expected {persistedColumn.GetColumnType().ToLowerInvariant()}");
                 }
 
-                if (persistedColumn.IsNullable != dbColumn.IsNullable) {
+                var shouldValidateColumnNullability = !validationOptions.IgnoreNullabilityForViews && persistedType.FindAnnotation(RelationalAnnotationNames.ViewDefinition) == null;
+                if (shouldValidateColumnNullability && persistedColumn.IsNullable != dbColumn.IsNullable) {
                     valErrors.Add(
                         $"Column nullability mismatch in {persistedType.GetTableName()} for column {persistedColumn.GetColumnName()}. Found: {(dbColumn.IsNullable ? "Nullable" : "NotNullable")}, Expected {(persistedColumn.IsNullable ? "Nullable" : "NotNullable")}");
                 }

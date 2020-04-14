@@ -38,6 +38,15 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Sqlite {
         }
 
         [Fact]
+        public void ItShouldNotHaveMissingViewErrors() {
+            var context = _fixture.GetContext();
+            Action validatingSchema = () => context.ValidateSchema(new SchemaValidationOptions {ValidateForeignKeys = false});
+            validatingSchema.Should().Throw<SchemaValidationException>()
+                            .Which.ValidationErrors
+                            .Should().NotContain(error => error.StartsWith("Missing View", StringComparison.InvariantCultureIgnoreCase));
+        }
+
+        [Fact]
         public void ItShouldNotHaveMissingColumnErrors() {
             var context = _fixture.GetContext();
             Action validatingSchema = () => context.ValidateSchema(new SchemaValidationOptions {ValidateForeignKeys = false});
