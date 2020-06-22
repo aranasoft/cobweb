@@ -1,25 +1,27 @@
+using System.Threading.Tasks;
+
 namespace Aranasoft.Cobweb.Azure.ServiceBus.TaskQueue {
     public abstract class TaskHandler : ITaskHandler {
         public TaskRequest Request { get; set; }
 
-        protected virtual bool BeforeExecute() {
-            return true;
+        protected virtual Task<bool> BeforeExecuteAsync() {
+            return Task.FromResult(true);
         }
 
-        protected abstract bool Execute();
+        protected abstract Task<bool> ExecuteAsync();
 
-        protected virtual bool AfterExecute() {
-            return true;
+        protected virtual Task<bool> AfterExecuteAsync() {
+            return Task.FromResult(true);
         }
 
-        public virtual bool HandleTask() {
-            var successful = BeforeExecute();
+        public virtual async Task<bool> HandleTaskAsync() {
+            var successful = await BeforeExecuteAsync();
             if (successful) {
-                successful = Execute();
+                successful = await ExecuteAsync();
             }
 
             if (successful) {
-                successful = AfterExecute();
+                successful = await AfterExecuteAsync();
             }
 
             return successful;

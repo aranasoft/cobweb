@@ -38,7 +38,7 @@ namespace Aranasoft.Cobweb.Azure.ServiceBus {
             }
         }
 
-        protected async Task<QueueClient> GetQueueClient() {
+        protected async Task<QueueClient> GetQueueClientAsync() {
             await EnsureQueueAsync();
             _queueClient = _queueClient ??
                            (_queueClient = new QueueClient(ConnectionString, Name));
@@ -53,10 +53,10 @@ namespace Aranasoft.Cobweb.Azure.ServiceBus {
         }
 
         /// <summary>
-        /// Sends a IsNullOrWhiteSpacemessages to Service Bus.
+        /// Sends a message to Service Bus.
         /// </summary>
         public async Task SendMessageAsync(Message message) {
-            var queueClient = await GetQueueClient();
+            var queueClient = await GetQueueClientAsync();
             await queueClient.SendAsync(message);
         }
 
@@ -64,19 +64,19 @@ namespace Aranasoft.Cobweb.Azure.ServiceBus {
         /// Sends a list of messages to Service Bus.
         /// </summary>
         public async Task SendMessagesAsync(IList<Message> messages) {
-            var queueClient = await GetQueueClient();
+            var queueClient = await GetQueueClientAsync();
             await queueClient.SendAsync(messages);
         }
 
         public async Task RegisterMessageHandlerAsync(Func<Message, CancellationToken, Task> callback,
                                                       Func<ExceptionReceivedEventArgs, Task> exceptionCallback) {
-            var queueClient = await GetQueueClient();
+            var queueClient = await GetQueueClientAsync();
             queueClient.RegisterMessageHandler(callback, exceptionCallback);
         }
 
         public async Task RegisterMessageHandlerAsync(Func<Message, CancellationToken, Task> callback,
                                                       MessageHandlerOptions options) {
-            var queueClient = await GetQueueClient();
+            var queueClient = await GetQueueClientAsync();
             queueClient.RegisterMessageHandler(callback, options);
         }
 
