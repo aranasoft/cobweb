@@ -7,9 +7,9 @@ using Microsoft.Azure.ServiceBus;
 using Newtonsoft.Json;
 
 namespace Aranasoft.Cobweb.Azure.ServiceBus.TaskQueue {
-    public class TaskRequestQueue : Queue, ITaskRequestQueue {
-        public TaskRequestQueue(string connectionString, string name) : base(connectionString, name) {}
-        public TaskRequestQueue(IAzureConfiguration azureConfiguration) : base(azureConfiguration) {}
+    public abstract class TaskRequestQueue : Queue, ITaskRequestQueue {
+        protected TaskRequestQueue(string connectionString, string taskQueueName) : base(connectionString, taskQueueName) {}
+        protected TaskRequestQueue(IAzureConfiguration azureConfiguration, string taskQueueName) : base(azureConfiguration, taskQueueName) {}
 
         public async Task AddTaskAsync(TaskRequest request, TimeSpan? delay = null) {
             var serializedRequest = JsonConvert.SerializeObject(request);

@@ -1,7 +1,8 @@
 namespace Aranasoft.Cobweb.Azure.Configuration {
     public interface IAzureConfiguration {
+        /// <summary>
+        /// Service Bus Connection String
+        /// </summary>
         string ServiceBusConnectionString { get; }
-        string StorageConnectionString { get; }
-        string QueueName { get; }
     }
 }

@@ -16,18 +16,18 @@ namespace Aranasoft.Cobweb.Azure.ServiceBus {
         protected string Name { get; }
         protected string ConnectionString { get; }
 
-        protected Queue(string connectionString, string name) {
+        protected Queue(string connectionString, string queueName) {
             ConnectionString = connectionString ?? throw new ArgumentNullException(nameof(connectionString));
-            Name = name ?? throw new ArgumentNullException(nameof(name));
+            Name = queueName ?? throw new ArgumentNullException(nameof(queueName));
         }
 
-        protected Queue(IAzureConfiguration azureConfiguration) {
+        protected Queue(IAzureConfiguration azureConfiguration, string queueName) {
             if (azureConfiguration == null) {
                 throw new ArgumentNullException(nameof(azureConfiguration));
             }
 
             ConnectionString = azureConfiguration.ServiceBusConnectionString;
-            Name = azureConfiguration.QueueName;
+            Name = queueName ?? throw new ArgumentNullException(nameof(queueName));
         }
 
         protected ManagementClient ManagementClient {
