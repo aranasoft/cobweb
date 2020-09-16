@@ -15,7 +15,7 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.Sqlite {
             var services = new ServiceCollection()
                            .AddFluentMigratorCore()
                            .ConfigureRunner(run => run.AddSQLite()
-                                                      .WithGlobalCommandTimeout(TimeSpan.FromMilliseconds(1500)))
+                                                      .WithGlobalCommandTimeout(TimeSpan.FromMilliseconds(10000)))
                            .AddScoped<IDbConnection>(sp => GetContext().Database.GetDbConnection())
                            .AddScoped<SqliteTestingProcessor>()
                            .AddScoped<IMigrationProcessor>(sp => sp.GetRequiredService<SqliteTestingProcessor>())

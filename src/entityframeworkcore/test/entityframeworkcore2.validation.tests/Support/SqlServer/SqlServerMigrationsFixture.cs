@@ -15,7 +15,7 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.SqlServe
             var services = new ServiceCollection()
                            .AddFluentMigratorCore()
                            .ConfigureRunner(run => run.AddSqlServer2016()
-                                                      .WithGlobalCommandTimeout(TimeSpan.FromMilliseconds(1500)))
+                                                      .WithGlobalCommandTimeout(TimeSpan.FromMilliseconds(10000)))
                            .AddScoped<IDbConnection>(sp => GetContext().Database.GetDbConnection())
                            .AddScoped<SqlServerTestingProcessor>()
                            .AddScoped<IMigrationProcessor>(sp => sp.GetRequiredService<SqlServerTestingProcessor>())
