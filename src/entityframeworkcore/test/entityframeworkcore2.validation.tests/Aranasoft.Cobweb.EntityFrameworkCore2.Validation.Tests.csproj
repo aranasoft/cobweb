@@ -6,6 +6,7 @@
     <AssemblyName>Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests</AssemblyName>
     <RootNamespace>Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests</RootNamespace>
     <Platforms>AnyCPU;x64</Platforms>
+    <NoWarn>EF1001</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
