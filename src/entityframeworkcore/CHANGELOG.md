@@ -1,10 +1,18 @@
+# 1.30.3 (2020-09-16)
+
+
+### Fixes
+
+* **views:** do not analyze Indexes or FKs on Views ([1495756](https://github.com/aranasoft/cobweb/commit/1495756e15a7f6ad392ae279be80e9157fa50fbd))
+
+
+
 # 1.30.2 (2020-04-14)
 
 
 ### Features
 
 * **options:** allow column nullability to be ignored ([f00a881](https://github.com/aranasoft/cobweb/commit/f00a8814294ecfbc4e8c00e0b8b05ac7f6f6003e))
-
 
 
 # 1.30.1 (2020-04-14)
