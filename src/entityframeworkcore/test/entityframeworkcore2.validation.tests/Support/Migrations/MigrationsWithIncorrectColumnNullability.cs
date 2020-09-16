@@ -116,7 +116,16 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.Migratio
                 .WithColumn("Value", col => col.AsStringMax().Nullable())
                 ;
 
-            Execute.Sql(@"CREATE VIEW ViewBasedEntities AS SELECT Id, Email FROM AspNetUsers");
+            Create.Table("TableBasedEntity")
+                  .WithColumn("Id", col => col.AsInt32().NotNullable().PrimaryKey("PK_TableBasedEntity"))
+                  .WithColumn("Field", col => col.AsString(256).Nullable())
+                  .WithColumn("RoleId", col => col.AsInt32().NotNullable()
+                                                  .Indexed("IX_TableBasedEntity_RoleId")
+                                                  .ForeignKey("FK_TableBasedEntity_AspNetRoles_RoleId", "AspNetRoles", "Id")
+                                                  .OnDelete(Rule.Cascade))
+                ;
+
+            Execute.Sql(@"CREATE VIEW ViewBasedEntities AS SELECT Id, Field, RoleId FROM TableBasedEntity");
         }
 
         public override void Down()

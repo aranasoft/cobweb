@@ -38,6 +38,7 @@
     <Compile Include="..\entityframeworkcore2.validation.tests\Support\SqlServer\SqlServerLocalDbFixture.cs" Link="Support\SqlServer\SqlServerLocalDbFixture.cs" />
     <Compile Include="..\entityframeworkcore2.validation.tests\Support\SqlServer\SqlServerMigrationsFixture.cs" Link="Support\SqlServer\SqlServerMigrationsFixture.cs" />
     <Compile Include="..\entityframeworkcore2.validation.tests\Support\SqlServer\SqlServerTestingProcessor.cs" Link="Support\SqlServer\SqlServerTestingProcessor.cs" />
+    <Compile Include="..\entityframeworkcore2.validation.tests\Support\TableBasedEntity.cs" Link="Support\TableBasedEntity.cs" />
     <Compile Include="..\entityframeworkcore2.validation.tests\Support\ViewBasedEntity.cs" Link="Support\ViewBasedEntity.cs" />
     <Compile Include="..\entityframeworkcore2.validation.tests\Support\XUnit\ConditionalFactAttribute.cs" Link="Support\XUnit\ConditionalFactAttribute.cs" />
     <Compile Include="..\entityframeworkcore2.validation.tests\Support\XUnit\ConditionalFactAttributeDiscoverer.cs" Link="Support\XUnit\ConditionalFactAttributeDiscoverer.cs" />

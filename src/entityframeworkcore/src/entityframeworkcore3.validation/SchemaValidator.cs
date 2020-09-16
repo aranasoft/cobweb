@@ -37,11 +37,11 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation {
 
                 validationErrors.AddRange(ValidateColumns(databaseModel, persistedType, validationOptions));
 
-                if (validationOptions.ValidateIndexes) {
+                if (validationOptions.ValidateIndexes && persistedType.FindAnnotation(RelationalAnnotationNames.ViewDefinition) == null) {
                     validationErrors.AddRange(ValidateIndexes(databaseModel, persistedType));
                 }
 
-                if (validationOptions.ValidateForeignKeys) {
+                if (validationOptions.ValidateForeignKeys && persistedType.FindAnnotation(RelationalAnnotationNames.ViewDefinition) == null) {
                     validationErrors.AddRange(ValidateForeignKeys(databaseModel, persistedType));
                 }
             }

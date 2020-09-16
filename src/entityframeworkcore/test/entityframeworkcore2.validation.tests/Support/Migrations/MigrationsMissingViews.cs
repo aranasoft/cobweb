@@ -107,13 +107,22 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.Migratio
                 ;
 
             Create.Table("AspNetUserTokens")
-                .WithColumn("UserId",
-                    col => col.AsInt32().NotNullable().PrimaryKey("PK_AspNetUserTokens")
-                        .ForeignKey("FK_AspNetUserTokens_AspNetUsers_UserId", "AspNetUsers", "Id")
-                        .OnDelete(Rule.Cascade))
-                .WithColumn("LoginProvider", col => col.AsString(450).NotNullable().PrimaryKey("PK_AspNetUserTokens"))
-                .WithColumn("Name", col => col.AsString(450).NotNullable().PrimaryKey("PK_AspNetUserTokens"))
-                .WithColumn("Value", col => col.AsStringMax().Nullable())
+                  .WithColumn("UserId",
+                              col => col.AsInt32().NotNullable().PrimaryKey("PK_AspNetUserTokens")
+                                        .ForeignKey("FK_AspNetUserTokens_AspNetUsers_UserId", "AspNetUsers", "Id")
+                                        .OnDelete(Rule.Cascade))
+                  .WithColumn("LoginProvider", col => col.AsString(450).NotNullable().PrimaryKey("PK_AspNetUserTokens"))
+                  .WithColumn("Name", col => col.AsString(450).NotNullable().PrimaryKey("PK_AspNetUserTokens"))
+                  .WithColumn("Value", col => col.AsStringMax().Nullable())
+                ;
+
+            Create.Table("TableBasedEntity")
+                  .WithColumn("Id", col => col.AsInt32().NotNullable().PrimaryKey("PK_TableBasedEntity"))
+                  .WithColumn("Field", col => col.AsString(256).Nullable())
+                  .WithColumn("RoleId", col => col.AsInt32().NotNullable()
+                                                  .Indexed("IX_TableBasedEntity_RoleId")
+                                                  .ForeignKey("FK_TableBasedEntity_AspNetRoles_RoleId", "AspNetRoles", "Id")
+                                                  .OnDelete(Rule.Cascade))
                 ;
         }
 

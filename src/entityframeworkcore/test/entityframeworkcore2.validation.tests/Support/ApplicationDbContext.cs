@@ -16,6 +16,7 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support
             base.OnModelCreating(builder);
 
             builder.ApplyConfiguration(new ViewBasedEntityMapping());
+            builder.ApplyConfiguration(new TableBasedEntityMapping());
         }
     }
 }
