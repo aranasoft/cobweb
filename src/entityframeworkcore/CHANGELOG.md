@@ -1,3 +1,12 @@
+# 1.30.4 (2020-10-29)
+
+
+### Fixes
+
+* **views:** ignore foreign references to a view ([1cc5335](https://github.com/aranasoft/cobweb/commit/1cc53353576014f996a3bc1327a58ed022e66cab))
+
+
+
 # 1.30.3 (2020-09-16)
 
 
@@ -30,6 +39,15 @@
 ### Features
 
 * **efcore3:** add support for efcore v3 ([5b9bdf0](https://github.com/aranasoft/cobweb/commit/5b9bdf0be1d059a2cf7a2408bc146cff5cb1bae1))
+
+
+
+# 1.20.4 (2020-10-29)
+
+
+### Fixes
+
+* **views:** ignore foreign references to a view ([1cc5335](https://github.com/aranasoft/cobweb/commit/1cc53353576014f996a3bc1327a58ed022e66cab))
 
 
 
