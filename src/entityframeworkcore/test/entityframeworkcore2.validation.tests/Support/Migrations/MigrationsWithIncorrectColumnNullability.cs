@@ -126,11 +126,28 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.Migratio
                 ;
 
             Execute.Sql(@"CREATE VIEW ViewBasedEntities AS SELECT Id, Field, RoleId FROM TableBasedEntity");
+
+            Create.Table("TableBasedChildEntity")
+                  .WithColumn("Id", col => col.AsInt32().NotNullable().PrimaryKey("PK_TableBasedChildEntity"))
+                  .WithColumn("Name", col => col.AsString(20000).Nullable())
+                  .WithColumn("ViewEntityId", col => col.AsInt32() .NotNullable()
+                                                        .Indexed("IX_TableBasedChildEntity_ViewEntityId"))
+                ;
         }
 
         public override void Down()
         {
+            if (Schema.Table("TableBasedChildEntity").Exists())
+            {
+                Delete.Table("TableBasedChildEntity");
+            }
+
             Execute.Sql(@"DROP VIEW ViewBasedEntities");
+
+            if (Schema.Table("TableBasedEntity").Exists())
+            {
+                Delete.Table("TableBasedEntity");
+            }
 
             if (Schema.Table("AspNetRoleClaims").Exists())
             {

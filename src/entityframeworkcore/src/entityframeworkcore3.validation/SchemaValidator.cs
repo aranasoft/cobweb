@@ -95,7 +95,7 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation {
         private IEnumerable<string> ValidateForeignKeys(DatabaseModel databaseModel, IEntityType persistedType) {
             var validationErrors = new List<string>();
 
-            foreach (var foreignKey in persistedType.GetForeignKeys()) {
+            foreach (var foreignKey in persistedType.GetForeignKeys().Where(key => key.PrincipalEntityType.FindAnnotation(RelationalAnnotationNames.ViewDefinition) == null)) {
                 var databaseForeignKey = databaseModel.GetForeignKey(foreignKey);
                 if (databaseForeignKey == null) {
                     validationErrors.Add(
