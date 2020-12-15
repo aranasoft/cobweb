@@ -2,10 +2,10 @@
   <Import Project="..\..\..\..\netfx.props" />
 
   <PropertyGroup>
-    <TargetFrameworks>net461;netstandard2.0</TargetFrameworks>
+    <TargetFrameworks>net461;netstandard2.0;netcoreapp2.0</TargetFrameworks>
     <AssemblyName>Aranasoft.Cobweb.NHibernate.Validation</AssemblyName>
     <RootNamespace>Aranasoft.Cobweb.NHibernate.Validation</RootNamespace>
-    <VersionPrefix>1.50.3</VersionPrefix>
+    <VersionPrefix>1.50.4</VersionPrefix>
     <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
@@ -23,7 +23,7 @@
 
   <ItemGroup>
     <PackageReference Include="Aranasoft.Cobweb" Version="[1.4.1,2)" />
-    <PackageReference Include="Aranasoft.Cobweb.NHibernate" Version="[1.50.3,1.60)" />
+    <PackageReference Include="Aranasoft.Cobweb.NHibernate" Version="[1.50.4,1.60)" />
   </ItemGroup>
 
   <ItemGroup>

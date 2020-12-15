@@ -1,8 +1,8 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <Import Project="..\..\..\..\netfx.props" />
 
   <PropertyGroup>
-    <TargetFrameworks>net461;netcoreapp2.1</TargetFrameworks>
+    <TargetFrameworks>net461;netcoreapp2.1;netcoreapp3.1</TargetFrameworks>
     <AssemblyName>Aranasoft.Cobweb.NHibernate.Validation.Tests</AssemblyName>
     <RootNamespace>Aranasoft.Cobweb.NHibernate.Validation.Tests</RootNamespace>
     <Platforms>AnyCPU;x64</Platforms>

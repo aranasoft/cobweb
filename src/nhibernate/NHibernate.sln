@@ -13,6 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aranasoft.Cobweb.NHibernate
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{89ACABCD-0E5D-4DDC-A4A2-5E7B19C4BF35}"
 	ProjectSection(SolutionItems) = preProject
+		.pipelines\build.yml = .pipelines\build.yml
 		CHANGELOG.md = CHANGELOG.md
 		README.md = README.md
 	EndProjectSection
