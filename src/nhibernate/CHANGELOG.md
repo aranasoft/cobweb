@@ -1,3 +1,13 @@
+<a name="1.50.4"></a>
+## 1.50.4 (2020-12-14)
+
+
+### Features
+
+* **nhibernate:** update to FluentNHibernate 3.1
+
+
+
 <a name="1.50.3"></a>
 # 1.50.3 (2019-12-11)
 
