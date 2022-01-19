@@ -4,13 +4,14 @@ using System.Threading;
 using System.Threading.Tasks;
 using Aranasoft.Cobweb.Azure.Configuration;
 using Aranasoft.Cobweb.Azure.ServiceBus.Extensions;
-using Microsoft.Azure.ServiceBus;
-using Microsoft.Azure.ServiceBus.Management;
+using Azure.Messaging.ServiceBus;
+using Azure.Messaging.ServiceBus.Administration;
 
 namespace Aranasoft.Cobweb.Azure.ServiceBus {
     public abstract class Queue {
-        private ManagementClient _managementClient;
-        private QueueClient _queueClient;
+        private ServiceBusAdministrationClient _managementClient;
+        private ServiceBusSender _queueClient;
+        private ServiceBusProcessor _queueProcessor;
         private bool _queueValidated;
 
         protected string Name { get; }
@@ -30,20 +31,28 @@ namespace Aranasoft.Cobweb.Azure.ServiceBus {
             Name = queueName ?? throw new ArgumentNullException(nameof(queueName));
         }
 
-        protected ManagementClient ManagementClient {
+        protected ServiceBusAdministrationClient ManagementClient {
             get {
                 _managementClient = _managementClient ??
-                                    (_managementClient = new ManagementClient(ConnectionString));
+                                    (_managementClient = new ServiceBusAdministrationClient(ConnectionString));
                 return _managementClient;
             }
         }
 
-        protected async Task<QueueClient> GetQueueClientAsync() {
+        protected async Task<ServiceBusSender> GetQueueClientAsync() {
             await EnsureQueueAsync();
             _queueClient = _queueClient ??
-                           (_queueClient = new QueueClient(ConnectionString, Name));
+                           (_queueClient = new ServiceBusClient(ConnectionString).CreateSender(Name));
             return _queueClient;
         }
+
+        protected async Task<ServiceBusProcessor> GetQueueProcessorAsync() {
+            await EnsureQueueAsync();
+            _queueProcessor = _queueProcessor ??
+                              (_queueProcessor = new ServiceBusClient(ConnectionString).CreateProcessor(Name));
+            return _queueProcessor;
+        }
+
 
         protected async Task EnsureQueueAsync() {
             if (!_queueValidated && !await ManagementClient.QueueExistsAsync(Name)) {
@@ -55,36 +64,34 @@ namespace Aranasoft.Cobweb.Azure.ServiceBus {
         /// <summary>
         /// Sends a message to Service Bus.
         /// </summary>
-        public async Task SendMessageAsync(Message message) {
+        public async Task SendMessageAsync(ServiceBusMessage message) {
             var queueClient = await GetQueueClientAsync();
-            await queueClient.SendAsync(message);
+            await queueClient.SendMessageAsync(message);
         }
 
         /// <summary>
         /// Sends a list of messages to Service Bus.
         /// </summary>
-        public async Task SendMessagesAsync(IList<Message> messages) {
+        public async Task SendMessagesAsync(IList<ServiceBusMessage> messages) {
             var queueClient = await GetQueueClientAsync();
-            await queueClient.SendAsync(messages);
+            await queueClient.SendMessagesAsync(messages);
         }
 
-        public async Task RegisterMessageHandlerAsync(Func<Message, CancellationToken, Task> callback,
-                                                      Func<ExceptionReceivedEventArgs, Task> exceptionCallback) {
-            var queueClient = await GetQueueClientAsync();
-            queueClient.RegisterMessageHandler(callback, exceptionCallback);
+        public async Task RegisterErrorHandlerAsync(Func<ProcessErrorEventArgs, Task> exceptionCallback) {
+            var queueClient = await GetQueueProcessorAsync();
+            queueClient.ProcessErrorAsync += exceptionCallback;
         }
 
-        public async Task RegisterMessageHandlerAsync(Func<Message, CancellationToken, Task> callback,
-                                                      MessageHandlerOptions options) {
-            var queueClient = await GetQueueClientAsync();
-            queueClient.RegisterMessageHandler(callback, options);
+        public async Task RegisterMessageHandlerAsync(Func<ProcessMessageEventArgs, Task> callback) {
+            var queueClient = await GetQueueProcessorAsync();
+            queueClient.ProcessMessageAsync += callback;
         }
 
-        private void SetEnqueueTime(Message message, int delaySeconds) {
+        private void SetEnqueueTime(ServiceBusMessage message, int delaySeconds) {
             message.Delay(TimeSpan.FromSeconds(delaySeconds));
         }
 
-        private void SetEnqueueTime(IList<Message> messages, int delaySeconds) {
+        private void SetEnqueueTime(IList<ServiceBusMessage> messages, int delaySeconds) {
             foreach (var message in messages) {
                 message.Delay(TimeSpan.FromSeconds(delaySeconds));
             }

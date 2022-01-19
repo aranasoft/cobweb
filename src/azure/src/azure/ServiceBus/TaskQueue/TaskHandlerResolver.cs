@@ -8,8 +8,7 @@ namespace Aranasoft.Cobweb.Azure.ServiceBus.TaskQueue {
         private readonly Dictionary<Type, Lazy<ITaskHandler>> _handlerContainers;
         private readonly ILogger<TaskHandlerResolver> _log;
 
-        public TaskHandlerResolver
-        (Dictionary<Type, Lazy<ITaskHandler>> handlerContainers, ILogger<TaskHandlerResolver> log) {
+        public TaskHandlerResolver(Dictionary<Type, Lazy<ITaskHandler>> handlerContainers, ILogger<TaskHandlerResolver> log) {
             _handlerContainers = handlerContainers;
             _log = log;
         }

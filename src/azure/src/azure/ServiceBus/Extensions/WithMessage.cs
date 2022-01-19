@@ -1,14 +1,14 @@
 using System;
-using Microsoft.Azure.ServiceBus;
+using Azure.Messaging.ServiceBus;
 
 namespace Aranasoft.Cobweb.Azure.ServiceBus.Extensions {
     public static class WithMessage {
-        public static Message Delay(this Message message, TimeSpan delay) {
+        public static ServiceBusMessage Delay(this ServiceBusMessage message, TimeSpan delay) {
             if (delay <= TimeSpan.Zero) return message;
 
             var now = DateTime.UtcNow;
             var enqueueTime = now + delay;
-            message.ScheduledEnqueueTimeUtc = enqueueTime;
+            message.ScheduledEnqueueTime = enqueueTime;
 
             return message;
         }
