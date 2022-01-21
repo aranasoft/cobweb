@@ -1,3 +1,12 @@
+# 1.50.1 (2021-01-20)
+
+
+### Features
+
+* **efcore5:** add support for efcore v5 ([4b4a2dd](https://github.com/aranasoft/cobweb/commit/4b4a2dd9d3df7251afec48afc026315ac437defa)
+
+
+
 # 1.30.4 (2020-10-29)
 
 
