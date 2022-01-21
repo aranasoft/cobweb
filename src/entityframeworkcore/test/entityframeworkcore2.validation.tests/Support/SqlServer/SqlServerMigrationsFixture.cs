@@ -11,7 +11,7 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.SqlServe
         private readonly ServiceProvider _serviceProvider;
         private readonly IServiceScope _scope;
 
-        public SqlServerMigrationsFixture(): base() {
+        public SqlServerMigrationsFixture() {
             var services = new ServiceCollection()
                            .AddFluentMigratorCore()
                            .ConfigureRunner(run => run.AddSqlServer2016()

@@ -12,9 +12,9 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.SqlServe
             return new ApplicationDbContext(_builder.Options);
         }
 
-        private LocalDbTestingDatabase _testingDatabase;
-        private DbContextOptionsBuilder<ApplicationDbContext> _builder;
-        private SqlConnection _dbConnection;
+        private readonly LocalDbTestingDatabase _testingDatabase;
+        private readonly DbContextOptionsBuilder<ApplicationDbContext> _builder;
+        private readonly SqlConnection _dbConnection;
 
         public SqlServerLocalDbFixture() {
             var serviceCollection = new ServiceCollection().AddEntityFrameworkDesignTimeServices();

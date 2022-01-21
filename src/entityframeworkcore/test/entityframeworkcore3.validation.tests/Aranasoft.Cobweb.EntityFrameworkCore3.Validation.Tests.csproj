@@ -21,7 +21,6 @@
     <Compile Include="..\entityframeworkcore2.validation.tests\SqlServer\WhenValidatingSchemaGivenIncorrectColumnTypes.cs" Link="SqlServer\WhenValidatingSchemaGivenIncorrectColumnTypes.cs" />
     <Compile Include="..\entityframeworkcore2.validation.tests\SqlServer\WhenValidatingSchemaGivenMissingForeignKeys.cs" Link="SqlServer\WhenValidatingSchemaGivenMissingForeignKeys.cs" />
     <Compile Include="..\entityframeworkcore2.validation.tests\SqlServer\WhenValidatingSchemaGivenMissingIndexes.cs" Link="SqlServer\WhenValidatingSchemaGivenMissingIndexes.cs" />
-    <Compile Include="..\entityframeworkcore2.validation.tests\SqlServer\WhenValidatingSchemaGivenValidDatatabase.cs" Link="SqlServer\WhenValidatingSchemaGivenValidDatatabase.cs" />
     <Compile Include="..\entityframeworkcore2.validation.tests\SqlServer\WhenValidatingSchemaIgnoringForeignKeysGivenMissingForeignKeys.cs" Link="SqlServer\WhenValidatingSchemaIgnoringForeignKeysGivenMissingForeignKeys.cs" />
     <Compile Include="..\entityframeworkcore2.validation.tests\SqlServer\WhenValidatingSchemaIgnoringIndexesGivenIncorrectColumnNullability.cs" Link="SqlServer\WhenValidatingSchemaIgnoringIndexesGivenIncorrectColumnNullability.cs" />
     <Compile Include="..\entityframeworkcore2.validation.tests\SqlServer\WhenValidatingSchemaIgnoringIndexesGivenMissingIndexes.cs" Link="SqlServer\WhenValidatingSchemaIgnoringIndexesGivenMissingIndexes.cs" />
@@ -44,7 +43,6 @@
     <Compile Include="..\entityframeworkcore2.validation.tests\Support\TableBasedEntity.cs" Link="Support\TableBasedEntity.cs" />
     <Compile Include="..\entityframeworkcore2.validation.tests\Support\TableBasedEntityMapping.cs" Link="Support\TableBasedEntityMapping.cs" />
     <Compile Include="..\entityframeworkcore2.validation.tests\Support\ViewBasedEntity.cs" Link="Support\ViewBasedEntity.cs" />
-    <Compile Include="..\entityframeworkcore2.validation.tests\Support\ViewBasedEntityMapping.cs" Link="Support\ViewBasedEntityMapping.cs" />
     <Compile Include="..\entityframeworkcore2.validation.tests\Support\XUnit\ConditionalFactAttribute.cs" Link="Support\XUnit\ConditionalFactAttribute.cs" />
     <Compile Include="..\entityframeworkcore2.validation.tests\Support\XUnit\ConditionalFactAttributeDiscoverer.cs" Link="Support\XUnit\ConditionalFactAttributeDiscoverer.cs" />
     <Compile Include="..\entityframeworkcore2.validation.tests\Support\XUnit\ConditionalFactTestCase.cs" Link="Support\XUnit\ConditionalFactTestCase.cs" />

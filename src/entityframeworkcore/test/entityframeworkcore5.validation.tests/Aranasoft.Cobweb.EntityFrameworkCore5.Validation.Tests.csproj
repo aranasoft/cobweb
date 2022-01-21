@@ -25,7 +25,6 @@
     <Compile Include="..\entityframeworkcore2.validation.tests\SqlServer\WhenValidatingSchemaGivenMissingForeignKeys.cs" Link="SqlServer\WhenValidatingSchemaGivenMissingForeignKeys.cs" />
     <Compile Include="..\entityframeworkcore2.validation.tests\SqlServer\WhenValidatingSchemaGivenMissingIndexes.cs" Link="SqlServer\WhenValidatingSchemaGivenMissingIndexes.cs" />
     <Compile Include="..\entityframeworkcore3.validation.tests\SqlServer\WhenValidatingSchemaGivenMissingViews.cs" Link="SqlServer\WhenValidatingSchemaGivenMissingViews.cs" />
-    <Compile Include="..\entityframeworkcore2.validation.tests\SqlServer\WhenValidatingSchemaGivenValidDatatabase.cs" Link="SqlServer\WhenValidatingSchemaGivenValidDatatabase.cs" />
     <Compile Include="..\entityframeworkcore2.validation.tests\SqlServer\WhenValidatingSchemaIgnoringForeignKeysGivenMissingForeignKeys.cs" Link="SqlServer\WhenValidatingSchemaIgnoringForeignKeysGivenMissingForeignKeys.cs" />
     <Compile Include="..\entityframeworkcore2.validation.tests\SqlServer\WhenValidatingSchemaIgnoringIndexesGivenIncorrectColumnNullability.cs" Link="SqlServer\WhenValidatingSchemaIgnoringIndexesGivenIncorrectColumnNullability.cs" />
     <Compile Include="..\entityframeworkcore2.validation.tests\SqlServer\WhenValidatingSchemaIgnoringIndexesGivenMissingIndexes.cs" Link="SqlServer\WhenValidatingSchemaIgnoringIndexesGivenMissingIndexes.cs" />

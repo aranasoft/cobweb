@@ -14,74 +14,103 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Sqlite {
         [Fact]
         public void ItShouldThrowValidationException() {
             var context = _fixture.GetContext();
-            Action validatingSchema = () => context.ValidateSchema(new SchemaValidationOptions {ValidateForeignKeys = false});
+            Action validatingSchema = () =>
+                context.ValidateSchema(new SchemaValidationOptions { ValidateForeignKeys = false });
             validatingSchema.Should().ThrowExactly<SchemaValidationException>();
         }
 
         [Fact]
         public void ItShouldHaveValidationErrors() {
             var context = _fixture.GetContext();
-            Action validatingSchema = () => context.ValidateSchema(new SchemaValidationOptions {ValidateForeignKeys = false});
-            validatingSchema.Should().Throw<SchemaValidationException>()
+            Action validatingSchema = () =>
+                context.ValidateSchema(new SchemaValidationOptions { ValidateForeignKeys = false });
+            validatingSchema.Should()
+                            .Throw<SchemaValidationException>()
                             .Which.ValidationErrors
-                            .Should().NotBeEmpty();
+                            .Should()
+                            .NotBeEmpty();
         }
 
         [Fact]
         public void ItShouldOnlyHaveMissingTableErrorsAndMissingViewErrors() {
             var context = _fixture.GetContext();
-            Action validatingSchema = () => context.ValidateSchema(new SchemaValidationOptions {ValidateForeignKeys = false});
-            validatingSchema.Should().Throw<SchemaValidationException>()
+            Action validatingSchema = () =>
+                context.ValidateSchema(new SchemaValidationOptions { ValidateForeignKeys = false });
+            validatingSchema.Should()
+                            .Throw<SchemaValidationException>()
                             .Which.ValidationErrors
-                            .Should().OnlyContain(error => error.StartsWith("Missing table:", StringComparison.InvariantCultureIgnoreCase) || error.StartsWith("Missing view:", StringComparison.InvariantCultureIgnoreCase));
-
+                            .Should()
+                            .OnlyContain(
+                                error =>
+                                    error.StartsWith("Missing table:", StringComparison.InvariantCultureIgnoreCase) ||
+                                    error.StartsWith("Missing view:", StringComparison.InvariantCultureIgnoreCase));
         }
 
         [Fact]
         public void ItShouldHaveMissingTableErrors() {
             var context = _fixture.GetContext();
-            Action validatingSchema = () => context.ValidateSchema(new SchemaValidationOptions {ValidateForeignKeys = false});
-            validatingSchema.Should().Throw<SchemaValidationException>()
+            Action validatingSchema = () =>
+                context.ValidateSchema(new SchemaValidationOptions { ValidateForeignKeys = false });
+            validatingSchema.Should()
+                            .Throw<SchemaValidationException>()
                             .Which.ValidationErrors
-                            .Should().Contain(error => error.StartsWith("Missing table:", StringComparison.InvariantCultureIgnoreCase));
-
+                            .Should()
+                            .Contain(error => error.StartsWith("Missing table:",
+                                                               StringComparison.InvariantCultureIgnoreCase));
         }
 
         [Fact]
         public void ItShouldHaveMissingViewErrors() {
             var context = _fixture.GetContext();
-            Action validatingSchema = () => context.ValidateSchema(new SchemaValidationOptions {ValidateForeignKeys = false});
-            validatingSchema.Should().Throw<SchemaValidationException>()
+            Action validatingSchema = () =>
+                context.ValidateSchema(new SchemaValidationOptions { ValidateForeignKeys = false });
+            validatingSchema.Should()
+                            .Throw<SchemaValidationException>()
                             .Which.ValidationErrors
-                            .Should().Contain(error => error.StartsWith("Missing view:", StringComparison.InvariantCultureIgnoreCase));
-
+                            .Should()
+                            .Contain(error => error.StartsWith("Missing view:",
+                                                               StringComparison.InvariantCultureIgnoreCase));
         }
 
         [Fact]
         public void ItShouldNotHaveMissingColumnErrors() {
             var context = _fixture.GetContext();
-            Action validatingSchema = () => context.ValidateSchema(new SchemaValidationOptions {ValidateForeignKeys = false});
-            validatingSchema.Should().Throw<SchemaValidationException>()
+            Action validatingSchema = () =>
+                context.ValidateSchema(new SchemaValidationOptions { ValidateForeignKeys = false });
+            validatingSchema.Should()
+                            .Throw<SchemaValidationException>()
                             .Which.ValidationErrors
-                            .Should().NotContain(error => error.StartsWith("Missing Column", StringComparison.InvariantCultureIgnoreCase));
+                            .Should()
+                            .NotContain(
+                                error => error.StartsWith("Missing Column",
+                                                          StringComparison.InvariantCultureIgnoreCase));
         }
 
         [Fact]
         public void ItShouldNotHaveMissingIndexErrors() {
             var context = _fixture.GetContext();
-            Action validatingSchema = () => context.ValidateSchema(new SchemaValidationOptions {ValidateForeignKeys = false});
-            validatingSchema.Should().Throw<SchemaValidationException>()
+            Action validatingSchema = () =>
+                context.ValidateSchema(new SchemaValidationOptions { ValidateForeignKeys = false });
+            validatingSchema.Should()
+                            .Throw<SchemaValidationException>()
                             .Which.ValidationErrors
-                            .Should().NotContain(error => error.StartsWith("Missing Index", StringComparison.InvariantCultureIgnoreCase));
+                            .Should()
+                            .NotContain(
+                                error => error.StartsWith("Missing Index",
+                                                          StringComparison.InvariantCultureIgnoreCase));
         }
 
         [Fact]
         public void ItShouldNotHaveMissingForeignKeyErrors() {
             var context = _fixture.GetContext();
-            Action validatingSchema = () => context.ValidateSchema(new SchemaValidationOptions {ValidateForeignKeys = false});
-            validatingSchema.Should().Throw<SchemaValidationException>()
+            Action validatingSchema = () =>
+                context.ValidateSchema(new SchemaValidationOptions { ValidateForeignKeys = false });
+            validatingSchema.Should()
+                            .Throw<SchemaValidationException>()
                             .Which.ValidationErrors
-                            .Should().NotContain(error => error.StartsWith("Missing Foreign Key", StringComparison.InvariantCultureIgnoreCase));
+                            .Should()
+                            .NotContain(error => error.StartsWith("Missing Foreign Key",
+                                                                  StringComparison.InvariantCultureIgnoreCase));
         }
     }
 }

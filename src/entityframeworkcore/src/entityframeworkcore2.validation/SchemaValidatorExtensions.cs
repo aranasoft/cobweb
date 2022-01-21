@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation {
     public static class SchemaValidatorExtensions {

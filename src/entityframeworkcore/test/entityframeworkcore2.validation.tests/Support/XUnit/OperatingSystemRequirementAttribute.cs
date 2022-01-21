@@ -6,7 +6,7 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.XUnit {
     [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class)]
     public class OperatingSystemRequirementAttribute : Attribute, ITestCaseRequirementAttribute {
         public OperatingSystems OperatingSystems { get; set; }
-        public bool Exclude { get; set; } = false;
+        public bool Exclude { get; set; }
         private readonly OperatingSystems _currentOperatingSystem;
 
         public OperatingSystemRequirementAttribute(OperatingSystems operatingSystems, bool exclude = false) {

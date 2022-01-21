@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Scaffolding.Metadata;
@@ -50,7 +50,9 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation {
             return GetColumn(model, property.DeclaringEntityType.Relational(), property.Relational());
         }
 
-        public static DatabaseColumn GetColumn(this DatabaseModel model, IRelationalEntityTypeAnnotations table, IRelationalPropertyAnnotations column) {
+        public static DatabaseColumn GetColumn(this DatabaseModel model,
+                                               IRelationalEntityTypeAnnotations table,
+                                               IRelationalPropertyAnnotations column) {
             return GetColumn(model, table.Schema, table.TableName, column.ColumnName);
         }
 

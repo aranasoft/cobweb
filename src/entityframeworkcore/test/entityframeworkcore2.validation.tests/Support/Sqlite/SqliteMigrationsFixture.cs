@@ -11,7 +11,7 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.Sqlite {
         private readonly ServiceProvider _serviceProvider;
         private readonly IServiceScope _scope;
 
-        public SqliteMigrationsFixture() : base() {
+        public SqliteMigrationsFixture() {
             var services = new ServiceCollection()
                            .AddFluentMigratorCore()
                            .ConfigureRunner(run => run.AddSQLite()

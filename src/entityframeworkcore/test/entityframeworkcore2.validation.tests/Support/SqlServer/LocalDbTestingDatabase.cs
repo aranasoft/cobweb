@@ -18,11 +18,7 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.SqlServe
             LocalDbConnectionString = localDbConnectionString;
         }
 
-        public async Task EnsureDatabaseAsync() {
-            await EnsureDatabaseAsync(new CancellationToken());
-        }
-
-        public async Task EnsureDatabaseAsync(CancellationToken cancellationToken) {
+        public async Task EnsureDatabaseAsync(CancellationToken cancellationToken = default) {
             using (var connection = new SqlConnection(LocalDbConnectionString)) {
                 await connection.OpenAsync(cancellationToken);
                 var cmd = connection.CreateCommand();
@@ -49,6 +45,7 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.SqlServe
             if (!File.Exists(GetDataFilePath()))
                 throw new Exception($"Failed to create database file: {GetDataFilePath()}");
         }
+
         public string ConnectionString {
             get {
                 return
@@ -65,12 +62,13 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.SqlServe
             DeleteIfExists(GetLogFilePath());
         }
 
-        public async Task DetachDatabaseAsync() {
+        public async Task DetachDatabaseAsync(CancellationToken cancellationToken = default) {
             using (var connection = new SqlConnection(LocalDbConnectionString)) {
-                await connection.OpenAsync();
+                await connection.OpenAsync(cancellationToken);
                 var cmd = connection.CreateCommand();
-                cmd.CommandText = $"ALTER DATABASE [{DatabaseName}] SET SINGLE_USER WITH ROLLBACK IMMEDIATE; exec sp_detach_db N'{DatabaseName}'";
-                await cmd.ExecuteNonQueryAsync();
+                cmd.CommandText =
+                    $"ALTER DATABASE [{DatabaseName}] SET SINGLE_USER WITH ROLLBACK IMMEDIATE; exec sp_detach_db N'{DatabaseName}'";
+                await cmd.ExecuteNonQueryAsync(cancellationToken);
                 connection.Close();
             }
         }
@@ -79,11 +77,13 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.SqlServe
             using (var connection = new SqlConnection(LocalDbConnectionString)) {
                 connection.Open();
                 var cmd = connection.CreateCommand();
-                cmd.CommandText = $"ALTER DATABASE [{DatabaseName}] SET SINGLE_USER WITH ROLLBACK IMMEDIATE; exec sp_detach_db N'{DatabaseName}'";
+                cmd.CommandText =
+                    $"ALTER DATABASE [{DatabaseName}] SET SINGLE_USER WITH ROLLBACK IMMEDIATE; exec sp_detach_db N'{DatabaseName}'";
                 cmd.ExecuteNonQuery();
                 connection.Close();
             }
         }
+
         private string GetDataFilePath() {
             return Path.Combine(
                 Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),

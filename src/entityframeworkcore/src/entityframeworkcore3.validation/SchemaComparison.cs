@@ -80,7 +80,10 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation {
         public static bool ForeignKeyExists(this DatabaseModel model,
                                             IForeignKey foreignKey) {
             var entityType = foreignKey.DeclaringEntityType;
-            return ForeignKeyExists(model, entityType.GetSchema(), entityType.GetTableName(), foreignKey.GetConstraintName());
+            return ForeignKeyExists(model,
+                                    entityType.GetSchema(),
+                                    entityType.GetTableName(),
+                                    foreignKey.GetConstraintName());
         }
 
         public static bool ForeignKeyExists(this DatabaseModel model,
@@ -93,7 +96,10 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation {
 
         public static DatabaseForeignKey GetForeignKey(this DatabaseModel model, IForeignKey foreignKey) {
             var entityType = foreignKey.DeclaringEntityType;
-            return GetForeignKey(model, entityType.GetSchema(), entityType.GetTableName(), foreignKey.GetConstraintName());
+            return GetForeignKey(model,
+                                 entityType.GetSchema(),
+                                 entityType.GetTableName(),
+                                 foreignKey.GetConstraintName());
         }
 
         public static DatabaseForeignKey GetForeignKey(this DatabaseModel model,

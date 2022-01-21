@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Data;
 using FluentMigrator.Runner.Generators.SqlServer;
 using FluentMigrator.Runner.Initialization;
@@ -27,8 +27,6 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.SqlServe
 
         public override string DatabaseType => "SqlServer-Test";
 
-        protected override void EnsureConnectionIsClosed() {
-
-        }
+        protected override void EnsureConnectionIsClosed() {}
     }
 }

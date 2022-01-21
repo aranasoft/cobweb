@@ -7,10 +7,11 @@ using Xunit;
 
 namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.SqlServer {
     [OperatingSystemRequirement(OperatingSystems.Windows)]
-    public class WhenValidatingSchemaGivenValidDatatabase : IClassFixture<SqlServerMigrationsFixture<ValidIdentityMigrations>> {
+    public class
+        WhenValidatingSchemaGivenValidDatabase : IClassFixture<SqlServerMigrationsFixture<ValidIdentityMigrations>> {
         private readonly SqlServerMigrationsFixture<ValidIdentityMigrations> _fixture;
 
-        public WhenValidatingSchemaGivenValidDatatabase(SqlServerMigrationsFixture<ValidIdentityMigrations> fixture) {
+        public WhenValidatingSchemaGivenValidDatabase(SqlServerMigrationsFixture<ValidIdentityMigrations> fixture) {
             _fixture = fixture;
         }
 

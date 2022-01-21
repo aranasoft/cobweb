@@ -10,7 +10,7 @@ using Xunit.Sdk;
 namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.XUnit {
     public class ConditionalFactTestCase : XunitTestCase {
         [EditorBrowsable(EditorBrowsableState.Never)]
-        [Obsolete( "Called by the de-serializer; should only be called by deriving classes for de-serialization purposes")]
+        [Obsolete("Called by the deserializer; should only be called by derived classes for deserialization purposes")]
         // ReSharper disable once UnusedMember.Global
         public ConditionalFactTestCase() : base() {}
 
@@ -37,7 +37,7 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.XUnit {
                                       constructorArguments,
                                       aggregator,
                                       cancellationTokenSource)
-                : new RunSummary {Skipped = 1, Total = 1};
+                : new RunSummary { Skipped = 1, Total = 1 };
         }
 
         public async Task<bool> IsSatisfiedAsync(IMessageBus messageBus) {
@@ -67,7 +67,7 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.XUnit {
                                      .Concat(testClass.GetCustomAttributes(typeof(ITestCaseRequirementAttribute)))
                                      .Concat(testAssembly.GetCustomAttributes(typeof(ITestCaseRequirementAttribute)))
                                      .OfType<ReflectionAttributeInfo>()
-                                     .Select(attributeInfo => (ITestCaseRequirementAttribute) attributeInfo.Attribute);
+                                     .Select(attributeInfo => (ITestCaseRequirementAttribute)attributeInfo.Attribute);
             return requirements;
         }
     }

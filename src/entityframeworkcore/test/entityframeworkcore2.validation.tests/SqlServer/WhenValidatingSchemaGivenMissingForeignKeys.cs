@@ -7,10 +7,13 @@ using Xunit;
 
 namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.SqlServer {
     [OperatingSystemRequirement(OperatingSystems.Windows)]
-    public class WhenValidatingSchemaGivenMissingForeignKeys : IClassFixture<SqlServerMigrationsFixture<MigrationsMissingForeignKeys>> {
+    public class
+        WhenValidatingSchemaGivenMissingForeignKeys : IClassFixture<
+            SqlServerMigrationsFixture<MigrationsMissingForeignKeys>> {
         private readonly SqlServerMigrationsFixture<MigrationsMissingForeignKeys> _fixture;
 
-        public WhenValidatingSchemaGivenMissingForeignKeys(SqlServerMigrationsFixture<MigrationsMissingForeignKeys> fixture) {
+        public WhenValidatingSchemaGivenMissingForeignKeys(
+            SqlServerMigrationsFixture<MigrationsMissingForeignKeys> fixture) {
             _fixture = fixture;
         }
 
@@ -25,54 +28,74 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.SqlServer {
         public void ItShouldHaveValidationErrors() {
             var applicationDbContext = _fixture.GetContext();
             Action validatingSchema = () => applicationDbContext.ValidateSchema();
-            validatingSchema.Should().Throw<SchemaValidationException>()
+            validatingSchema.Should()
+                            .Throw<SchemaValidationException>()
                             .Which.ValidationErrors
-                            .Should().NotBeEmpty();
+                            .Should()
+                            .NotBeEmpty();
         }
 
         [ConditionalFact]
         public void ItShouldNotHaveMissingTableErrors() {
             var applicationDbContext = _fixture.GetContext();
             Action validatingSchema = () => applicationDbContext.ValidateSchema();
-            validatingSchema.Should().Throw<SchemaValidationException>()
+            validatingSchema.Should()
+                            .Throw<SchemaValidationException>()
                             .Which.ValidationErrors
-                            .Should().NotContain(error => error.StartsWith("Missing Table", StringComparison.InvariantCultureIgnoreCase));
+                            .Should()
+                            .NotContain(
+                                error => error.StartsWith("Missing Table",
+                                                          StringComparison.InvariantCultureIgnoreCase));
         }
 
         [ConditionalFact]
         public void ItShouldNotHaveMissingViewErrors() {
             var applicationDbContext = _fixture.GetContext();
             Action validatingSchema = () => applicationDbContext.ValidateSchema();
-            validatingSchema.Should().Throw<SchemaValidationException>()
+            validatingSchema.Should()
+                            .Throw<SchemaValidationException>()
                             .Which.ValidationErrors
-                            .Should().NotContain(error => error.StartsWith("Missing View", StringComparison.InvariantCultureIgnoreCase));
+                            .Should()
+                            .NotContain(
+                                error => error.StartsWith("Missing View", StringComparison.InvariantCultureIgnoreCase));
         }
 
         [ConditionalFact]
         public void ItShouldNotHaveMissingColumnErrors() {
             var applicationDbContext = _fixture.GetContext();
             Action validatingSchema = () => applicationDbContext.ValidateSchema();
-            validatingSchema.Should().Throw<SchemaValidationException>()
+            validatingSchema.Should()
+                            .Throw<SchemaValidationException>()
                             .Which.ValidationErrors
-                            .Should().NotContain(error => error.StartsWith("Missing Column", StringComparison.InvariantCultureIgnoreCase));
+                            .Should()
+                            .NotContain(
+                                error => error.StartsWith("Missing Column",
+                                                          StringComparison.InvariantCultureIgnoreCase));
         }
 
         [ConditionalFact]
         public void ItShouldNotHaveMissingIndexErrors() {
             var applicationDbContext = _fixture.GetContext();
             Action validatingSchema = () => applicationDbContext.ValidateSchema();
-            validatingSchema.Should().Throw<SchemaValidationException>()
+            validatingSchema.Should()
+                            .Throw<SchemaValidationException>()
                             .Which.ValidationErrors
-                            .Should().NotContain(error => error.StartsWith("Missing Index", StringComparison.InvariantCultureIgnoreCase));
+                            .Should()
+                            .NotContain(
+                                error => error.StartsWith("Missing Index",
+                                                          StringComparison.InvariantCultureIgnoreCase));
         }
 
         [ConditionalFact]
         public void ItShouldOnlyHaveMissingForeignKeyErrors() {
             var applicationDbContext = _fixture.GetContext();
             Action validatingSchema = () => applicationDbContext.ValidateSchema();
-            validatingSchema.Should().Throw<SchemaValidationException>()
+            validatingSchema.Should()
+                            .Throw<SchemaValidationException>()
                             .Which.ValidationErrors
-                            .Should().OnlyContain(error => error.StartsWith("Missing Foreign Key", StringComparison.InvariantCultureIgnoreCase));
+                            .Should()
+                            .OnlyContain(error => error.StartsWith("Missing Foreign Key",
+                                                                   StringComparison.InvariantCultureIgnoreCase));
         }
     }
 }

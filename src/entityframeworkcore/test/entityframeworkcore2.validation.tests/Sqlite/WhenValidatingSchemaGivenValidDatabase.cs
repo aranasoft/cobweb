@@ -5,7 +5,8 @@ using FluentAssertions;
 using Xunit;
 
 namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Sqlite {
-    public class WhenValidatingSchemaGivenValidDatabase : IClassFixture<SqliteMigrationsFixture<ValidIdentityMigrations>> {
+    public class
+        WhenValidatingSchemaGivenValidDatabase : IClassFixture<SqliteMigrationsFixture<ValidIdentityMigrations>> {
         private readonly SqliteMigrationsFixture<ValidIdentityMigrations> _fixture;
 
         public WhenValidatingSchemaGivenValidDatabase(SqliteMigrationsFixture<ValidIdentityMigrations> fixture) {
@@ -15,7 +16,8 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Sqlite {
         [Fact]
         public void ItShouldValidateAgainstExpectedSchema() {
             var context = _fixture.GetContext();
-            Action validatingSchema = () => context.ValidateSchema(new SchemaValidationOptions {ValidateForeignKeys = false});
+            Action validatingSchema = () =>
+                context.ValidateSchema(new SchemaValidationOptions { ValidateForeignKeys = false });
             validatingSchema.Should().NotThrow();
         }
     }

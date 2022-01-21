@@ -12,7 +12,7 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.Sqlite {
             return new ApplicationDbContext(_builder.Options);
         }
 
-        private DbContextOptionsBuilder<ApplicationDbContext> _builder;
+        private readonly DbContextOptionsBuilder<ApplicationDbContext> _builder;
         private readonly SqliteConnection _dbConnection;
 
         public SqliteDatabaseFixture() {
@@ -20,7 +20,7 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.Sqlite {
             new SqliteDesignTimeServices().ConfigureDesignTimeServices(serviceCollection);
             var serviceProvider = serviceCollection.BuildServiceProvider();
 
-            var connectionStringBuilder = new SqliteConnectionStringBuilder {DataSource = ":memory:"};
+            var connectionStringBuilder = new SqliteConnectionStringBuilder { DataSource = ":memory:" };
             var connectionString = connectionStringBuilder.ToString();
             _dbConnection = new SqliteConnection(connectionString);
             _dbConnection.Open();

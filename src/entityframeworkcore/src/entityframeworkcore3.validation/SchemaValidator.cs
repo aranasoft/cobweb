@@ -37,11 +37,13 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation {
 
                 validationErrors.AddRange(ValidateColumns(databaseModel, persistedType, validationOptions));
 
-                if (validationOptions.ValidateIndexes && persistedType.FindAnnotation(RelationalAnnotationNames.ViewDefinition) == null) {
+                if (validationOptions.ValidateIndexes &&
+                    persistedType.FindAnnotation(RelationalAnnotationNames.ViewDefinition) == null) {
                     validationErrors.AddRange(ValidateIndexes(databaseModel, persistedType));
                 }
 
-                if (validationOptions.ValidateForeignKeys && persistedType.FindAnnotation(RelationalAnnotationNames.ViewDefinition) == null) {
+                if (validationOptions.ValidateForeignKeys &&
+                    persistedType.FindAnnotation(RelationalAnnotationNames.ViewDefinition) == null) {
                     validationErrors.AddRange(ValidateForeignKeys(databaseModel, persistedType));
                 }
             }
@@ -51,12 +53,15 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation {
             }
         }
 
-        private List<string> ValidateColumns(DatabaseModel databaseModel, IEntityType persistedType, SchemaValidationOptions validationOptions) {
+        private List<string> ValidateColumns(DatabaseModel databaseModel,
+                                             IEntityType persistedType,
+                                             SchemaValidationOptions validationOptions) {
             var valErrors = new List<string>();
             foreach (var persistedColumn in persistedType.GetProperties()) {
                 var dbColumn = databaseModel.GetColumn(persistedColumn);
                 if (dbColumn == null) {
-                    valErrors.Add($"Missing column: {persistedColumn.GetColumnName()} in {persistedType.GetTableName()}");
+                    valErrors.Add(
+                        $"Missing column: {persistedColumn.GetColumnName()} in {persistedType.GetTableName()}");
                     continue;
                 }
 
@@ -68,7 +73,8 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation {
                 }
 
                 var isViewType = persistedType.FindAnnotation(RelationalAnnotationNames.ViewDefinition) != null;
-                var shouldValidateColumnNullability = (validationOptions.ValidateNullabilityForTables && !isViewType) || (validationOptions.ValidateNullabilityForViews && isViewType);
+                var shouldValidateColumnNullability = (validationOptions.ValidateNullabilityForTables && !isViewType) ||
+                                                      (validationOptions.ValidateNullabilityForViews && isViewType);
                 if (shouldValidateColumnNullability && persistedColumn.IsNullable != dbColumn.IsNullable) {
                     valErrors.Add(
                         $"Column nullability mismatch in {persistedType.GetTableName()} for column {persistedColumn.GetColumnName()}. Found: {(dbColumn.IsNullable ? "Nullable" : "NotNullable")}, Expected {(persistedColumn.IsNullable ? "Nullable" : "NotNullable")}");
@@ -95,7 +101,10 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation {
         private IEnumerable<string> ValidateForeignKeys(DatabaseModel databaseModel, IEntityType persistedType) {
             var validationErrors = new List<string>();
 
-            foreach (var foreignKey in persistedType.GetForeignKeys().Where(key => key.PrincipalEntityType.FindAnnotation(RelationalAnnotationNames.ViewDefinition) == null)) {
+            foreach (var foreignKey in persistedType.GetForeignKeys()
+                                                    .Where(key => key.PrincipalEntityType.FindAnnotation(
+                                                                      RelationalAnnotationNames.ViewDefinition) ==
+                                                                  null)) {
                 var databaseForeignKey = databaseModel.GetForeignKey(foreignKey);
                 if (databaseForeignKey == null) {
                     validationErrors.Add(

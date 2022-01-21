@@ -87,8 +87,7 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation {
             return TableColumnExists(model,
                                      type.GetSchema(),
                                      type.GetTableName(),
-                                     property.GetColumnName(
-                                         StoreObjectIdentifier.Table(type.GetTableName(), type.GetSchema())));
+                                     property.GetColumnName(StoreObjectIdentifier.Table(type.GetTableName(), type.GetSchema())));
         }
 
         public static bool TableColumnExists(this DatabaseModel model,
@@ -107,8 +106,7 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation {
             return GetTableColumn(model,
                                   type.GetSchema(),
                                   type.GetTableName(),
-                                  property.GetColumnName(
-                                      StoreObjectIdentifier.Table(type.GetTableName(), type.GetSchema())));
+                                  property.GetColumnName(StoreObjectIdentifier.Table(type.GetTableName(), type.GetSchema())));
         }
 
         public static DatabaseColumn GetTableColumn(this DatabaseModel model,

@@ -8,20 +8,17 @@ using Xunit;
 namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.SqlServer {
     [OperatingSystemRequirement(OperatingSystems.Windows)]
     public class
-        WhenValidatingSchemaIgnoringIndexesGivenMissingIndexes : IClassFixture<
-            SqlServerMigrationsFixture<MigrationsMissingIndexes>> {
-        private readonly SqlServerMigrationsFixture<MigrationsMissingIndexes> _fixture;
+        WhenValidatingSchemaGivenValidDatabase : IClassFixture<SqlServerMigrationsFixture<ValidIdentityMigrations>> {
+        private readonly SqlServerMigrationsFixture<ValidIdentityMigrations> _fixture;
 
-        public WhenValidatingSchemaIgnoringIndexesGivenMissingIndexes(
-            SqlServerMigrationsFixture<MigrationsMissingIndexes> fixture) {
+        public WhenValidatingSchemaGivenValidDatabase(SqlServerMigrationsFixture<ValidIdentityMigrations> fixture) {
             _fixture = fixture;
         }
 
         [ConditionalFact]
-        public void ItShouldNotThrowValidationExceptionWhenIgnoringIndexes() {
+        public void ItShouldValidateAgainstExpectedSchema() {
             var applicationDbContext = _fixture.GetContext();
-            Action validatingSchema = () =>
-                applicationDbContext.ValidateSchema(new SchemaValidationOptions { ValidateIndexes = false });
+            Action validatingSchema = () => applicationDbContext.ValidateSchema();
             validatingSchema.Should().NotThrow();
         }
     }

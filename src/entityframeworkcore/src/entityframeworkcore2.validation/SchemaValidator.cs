@@ -51,7 +51,9 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation {
             }
         }
 
-        private List<string> ValidateColumns(DatabaseModel databaseModel, IEntityType persistedType, SchemaValidationOptions validationOptions) {
+        private List<string> ValidateColumns(DatabaseModel databaseModel,
+                                             IEntityType persistedType,
+                                             SchemaValidationOptions validationOptions) {
             var entityTable = persistedType.Relational();
             var valErrors = new List<string>();
             foreach (var entityProperty in persistedType.GetProperties()) {
@@ -100,7 +102,8 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation {
             var entityTable = persistedType.Relational();
             var validationErrors = new List<string>();
 
-            foreach (var foreignKey in persistedType.GetForeignKeys().Where(key => !key.PrincipalEntityType.IsQueryType)) {
+            foreach (var foreignKey in persistedType.GetForeignKeys()
+                                                    .Where(key => !key.PrincipalEntityType.IsQueryType)) {
                 var databaseForeignKey = databaseModel.GetForeignKey(foreignKey);
                 if (databaseForeignKey == null) {
                     validationErrors.Add(
