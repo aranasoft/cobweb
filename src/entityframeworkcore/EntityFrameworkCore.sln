@@ -26,6 +26,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aranasoft.Cobweb.EntityFram
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aranasoft.Cobweb.EntityFrameworkCore3.Validation.Tests", "test\entityframeworkcore3.validation.tests\Aranasoft.Cobweb.EntityFrameworkCore3.Validation.Tests.csproj", "{6B754961-97C2-43FE-8132-2B7FADEC03FA}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aranasoft.Cobweb.EntityFrameworkCore5.Validation", "src\entityframeworkcore5.validation\Aranasoft.Cobweb.EntityFrameworkCore5.Validation.csproj", "{A25246BD-873C-460C-A65B-0C90740EE4F9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aranasoft.Cobweb.EntityFrameworkCore5.Validation.Tests", "test\entityframeworkcore5.validation.tests\Aranasoft.Cobweb.EntityFrameworkCore5.Validation.Tests.csproj", "{5477CEB7-5A6E-4212-BC86-65509034E371}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -74,6 +78,22 @@ Global
 		{6B754961-97C2-43FE-8132-2B7FADEC03FA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6B754961-97C2-43FE-8132-2B7FADEC03FA}.Release|x64.ActiveCfg = Release|x64
 		{6B754961-97C2-43FE-8132-2B7FADEC03FA}.Release|x64.Build.0 = Release|x64
+		{A25246BD-873C-460C-A65B-0C90740EE4F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A25246BD-873C-460C-A65B-0C90740EE4F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A25246BD-873C-460C-A65B-0C90740EE4F9}.Debug|x64.ActiveCfg = Debug|x64
+		{A25246BD-873C-460C-A65B-0C90740EE4F9}.Debug|x64.Build.0 = Debug|x64
+		{A25246BD-873C-460C-A65B-0C90740EE4F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A25246BD-873C-460C-A65B-0C90740EE4F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A25246BD-873C-460C-A65B-0C90740EE4F9}.Release|x64.ActiveCfg = Release|x64
+		{A25246BD-873C-460C-A65B-0C90740EE4F9}.Release|x64.Build.0 = Release|x64
+		{5477CEB7-5A6E-4212-BC86-65509034E371}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5477CEB7-5A6E-4212-BC86-65509034E371}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5477CEB7-5A6E-4212-BC86-65509034E371}.Debug|x64.ActiveCfg = Debug|x64
+		{5477CEB7-5A6E-4212-BC86-65509034E371}.Debug|x64.Build.0 = Debug|x64
+		{5477CEB7-5A6E-4212-BC86-65509034E371}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5477CEB7-5A6E-4212-BC86-65509034E371}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5477CEB7-5A6E-4212-BC86-65509034E371}.Release|x64.ActiveCfg = Release|x64
+		{5477CEB7-5A6E-4212-BC86-65509034E371}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -84,6 +104,8 @@ Global
 		{F743C645-C632-4692-B87E-60FCC9557C20} = {6CB010A9-4ADC-4F5B-843C-0490204A9110}
 		{B5EF01F1-5FB0-43F7-ABE4-040CC7833953} = {091B6554-596C-4EEC-B37E-271DB9B5E10A}
 		{6B754961-97C2-43FE-8132-2B7FADEC03FA} = {381B9DD8-06CA-42CA-9A5A-69577E25B584}
+		{A25246BD-873C-460C-A65B-0C90740EE4F9} = {091B6554-596C-4EEC-B37E-271DB9B5E10A}
+		{5477CEB7-5A6E-4212-BC86-65509034E371} = {381B9DD8-06CA-42CA-9A5A-69577E25B584}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {77E1A84A-D7A1-4FAE-90E7-2D5C1912349A}
