@@ -3,7 +3,7 @@
 
 ### Features
 
-* **efcore5:** add support for efcore v5 ([4b4a2dd](https://github.com/aranasoft/cobweb/commit/4b4a2dd9d3df7251afec48afc026315ac437defa)
+* **efcore5:** add support for efcore v5 ([4b4a2dd](https://github.com/aranasoft/cobweb/commit/4b4a2dd9d3df7251afec48afc026315ac437defa))
 
 
 
