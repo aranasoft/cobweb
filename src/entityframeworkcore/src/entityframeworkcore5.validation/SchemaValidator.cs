@@ -26,11 +26,11 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation {
 
             foreach (var persistedType in persistedTypes) {
                 if (databaseModel.GetView(persistedType) == null &&
-                    persistedType.FindAnnotation(RelationalAnnotationNames.ViewName) != null) {
+                    persistedType.FindAnnotation(RelationalAnnotationNames.ViewName)?.Value != null) {
                     validationErrors.Add($"Missing view: {persistedType.GetViewName()}");
                 }
 
-                if (persistedType.FindAnnotation(RelationalAnnotationNames.TableName) == null) {
+                if (persistedType.FindAnnotation(RelationalAnnotationNames.TableName)?.Value == null) {
                     continue;
                 }
 
@@ -61,25 +61,45 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation {
             var valErrors = new List<string>();
             foreach (var persistedColumn in persistedType.GetProperties()) {
                 var dbColumn = databaseModel.GetTableColumn(persistedColumn);
-                if (dbColumn == null) {
-                    valErrors.Add(
-                        $"Missing column: {persistedColumn.GetColumnName(StoreObjectIdentifier.Table(persistedType.GetTableName(), null))} in {persistedType.GetTableName()}");
-                    continue;
+
+                if (persistedType.FindAnnotation(RelationalAnnotationNames.TableName)?.Value != null) {
+                    if (dbColumn == null) {
+                        valErrors.Add(
+                            $"Missing column: {persistedColumn.GetColumnName(StoreObjectIdentifier.Table(persistedType.GetTableName(), null))} in {persistedType.GetTableName()}");
+                        continue;
+                    }
+
+                    var columnTypesMatch =
+                        dbColumn.StoreType.Equals(persistedColumn.GetColumnType(), StringComparison.OrdinalIgnoreCase);
+                    if (!columnTypesMatch) {
+                        valErrors.Add(
+                            $"Column type mismatch in {persistedType.GetTableName()} for column {persistedColumn.GetColumnName(StoreObjectIdentifier.Table(persistedType.GetTableName(), null))}. Found: {dbColumn.StoreType.ToLowerInvariant()}, Expected {persistedColumn.GetColumnType().ToLowerInvariant()}");
+                    }
+
+                    if (validationOptions.ValidateNullabilityForTables && persistedColumn.IsNullable != dbColumn.IsNullable) {
+                        valErrors.Add(
+                            $"Column nullability mismatch in {persistedType.GetTableName()} for column {persistedColumn.GetColumnName(StoreObjectIdentifier.Table(persistedType.GetTableName(), null))}. Found: {(dbColumn.IsNullable ? "Nullable" : "NotNullable")}, Expected {(persistedColumn.IsNullable ? "Nullable" : "NotNullable")}");
+                    }
                 }
 
-                var columnTypesMatch =
-                    dbColumn.StoreType.Equals(persistedColumn.GetColumnType(), StringComparison.OrdinalIgnoreCase);
-                if (!columnTypesMatch) {
-                    valErrors.Add(
-                        $"Column type mismatch in {persistedType.GetTableName()} for column {persistedColumn.GetColumnName(StoreObjectIdentifier.Table(persistedType.GetTableName(), null))}. Found: {dbColumn.StoreType.ToLowerInvariant()}, Expected {persistedColumn.GetColumnType().ToLowerInvariant()}");
-                }
+                if (persistedType.FindAnnotation(RelationalAnnotationNames.ViewName)?.Value != null) {
+                    if (dbColumn == null) {
+                        valErrors.Add(
+                            $"Missing column: {persistedColumn.GetColumnName(StoreObjectIdentifier.View(persistedType.GetViewName(), null))} in {persistedType.GetViewName()}");
+                        continue;
+                    }
 
-                var isViewType = persistedType.FindAnnotation(RelationalAnnotationNames.ViewDefinitionSql) != null;
-                var shouldValidateColumnNullability = (validationOptions.ValidateNullabilityForTables && !isViewType) ||
-                                                      (validationOptions.ValidateNullabilityForViews && isViewType);
-                if (shouldValidateColumnNullability && persistedColumn.IsNullable != dbColumn.IsNullable) {
-                    valErrors.Add(
-                        $"Column nullability mismatch in {persistedType.GetTableName()} for column {persistedColumn.GetColumnName(StoreObjectIdentifier.Table(persistedType.GetTableName(), null))}. Found: {(dbColumn.IsNullable ? "Nullable" : "NotNullable")}, Expected {(persistedColumn.IsNullable ? "Nullable" : "NotNullable")}");
+                    var columnTypesMatch =
+                        dbColumn.StoreType.Equals(persistedColumn.GetColumnType(), StringComparison.OrdinalIgnoreCase);
+                    if (!columnTypesMatch) {
+                        valErrors.Add(
+                            $"Column type mismatch in {persistedType.GetViewName()} for column {persistedColumn.GetColumnName(StoreObjectIdentifier.View(persistedType.GetViewName(), null))}. Found: {dbColumn.StoreType.ToLowerInvariant()}, Expected {persistedColumn.GetColumnType().ToLowerInvariant()}");
+                    }
+
+                    if (validationOptions.ValidateNullabilityForViews && persistedColumn.IsNullable != dbColumn.IsNullable) {
+                        valErrors.Add(
+                            $"Column nullability mismatch in {persistedType.GetViewName()} for column {persistedColumn.GetColumnName(StoreObjectIdentifier.View(persistedType.GetViewName(), null))}. Found: {(dbColumn.IsNullable ? "Nullable" : "NotNullable")}, Expected {(persistedColumn.IsNullable ? "Nullable" : "NotNullable")}");
+                    }
                 }
             }
 

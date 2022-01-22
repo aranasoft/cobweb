@@ -47,7 +47,6 @@
     <Compile Include="..\entityframeworkcore2.validation.tests\Support\TableBasedEntity.cs" Link="Support\TableBasedEntity.cs" />
     <Compile Include="..\entityframeworkcore2.validation.tests\Support\TableBasedEntityMapping.cs" Link="Support\TableBasedEntityMapping.cs" />
     <Compile Include="..\entityframeworkcore2.validation.tests\Support\ViewBasedEntity.cs" Link="Support\ViewBasedEntity.cs" />
-    <Compile Include="..\entityframeworkcore3.validation.tests\Support\ViewBasedEntityMapping.cs" Link="Support\ViewBasedEntityMapping.cs" />
     <Compile Include="..\entityframeworkcore2.validation.tests\Support\XUnit\ConditionalFactAttribute.cs" Link="Support\XUnit\ConditionalFactAttribute.cs" />
     <Compile Include="..\entityframeworkcore2.validation.tests\Support\XUnit\ConditionalFactAttributeDiscoverer.cs" Link="Support\XUnit\ConditionalFactAttributeDiscoverer.cs" />
     <Compile Include="..\entityframeworkcore2.validation.tests\Support\XUnit\ConditionalFactTestCase.cs" Link="Support\XUnit\ConditionalFactTestCase.cs" />
