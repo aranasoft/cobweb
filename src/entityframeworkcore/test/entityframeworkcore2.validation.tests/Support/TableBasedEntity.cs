@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Identity;
 
 namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support {
@@ -9,6 +10,9 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support {
 
         [MaxLength(256)]
         public string Field { get; set; }
+
+        [Column("NumberValue")]
+        public decimal Number { get; set; }
 
         [Required]
         public IdentityRole<int> Role { get; set; }

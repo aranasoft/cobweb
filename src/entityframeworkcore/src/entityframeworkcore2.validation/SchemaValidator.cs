@@ -66,7 +66,7 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation {
                 }
 
                 var columnTypesMatch =
-                    dbColumn.StoreType.Equals(entityColumn.ColumnType, StringComparison.OrdinalIgnoreCase);
+                    dbColumn.StoreType.Replace(", ",",").Equals(entityColumn.ColumnType.Replace(", ",","), StringComparison.OrdinalIgnoreCase);
                 if (!columnTypesMatch) {
                     valErrors.Add(
                         $"Column type mismatch in {entityTable.TableName} for column {entityColumn.ColumnName}. Found: {dbColumn.StoreType.ToLowerInvariant()}, Expected {entityColumn.ColumnType.ToLowerInvariant()}");

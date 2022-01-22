@@ -128,16 +128,40 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.Migratio
                   .WithColumn("Value", col => col.AsStringMax().Nullable())
                 ;
 
-            Create.Table("TableBasedEntity")
-                  .WithColumn("Id", col => col.AsInt32().NotNullable().PrimaryKey("PK_TableBasedEntity"))
-                  .WithColumn("Field", col => col.AsString(256).Nullable())
-                  .WithColumn("RoleId",
-                              col => col.AsInt32()
-                                        .NotNullable()
-                                        .Indexed("IX_TableBasedEntity_RoleId")
-                                        .ForeignKey("FK_TableBasedEntity_AspNetRoles_RoleId", "AspNetRoles", "Id")
-                                        .OnDelete(Rule.Cascade))
-                ;
+            IfDatabase(dbType => string.Equals(dbType, "SQLite-Test", StringComparison.InvariantCultureIgnoreCase))
+                .Delegate(() => {
+                    Create.Table("TableBasedEntity")
+                          .WithColumn("Id",
+                                      col => col.AsInt32().NotNullable().PrimaryKey("PK_TableBasedEntity"))
+                          .WithColumn("Field", col => col.AsString(256).Nullable())
+                          .WithColumn("NumberValue", col => col.AsString(20000).NotNullable())
+                          .WithColumn("RoleId",
+                                      col => col.AsInt32()
+                                                .NotNullable()
+                                                .Indexed("IX_TableBasedEntity_RoleId")
+                                                .ForeignKey("FK_TableBasedEntity_AspNetRoles_RoleId",
+                                                            "AspNetRoles",
+                                                            "Id")
+                                                .OnDelete(Rule.Cascade))
+                        ;
+                });
+            IfDatabase(dbType => !string.Equals(dbType, "SQLite-Test", StringComparison.InvariantCultureIgnoreCase))
+                .Delegate(() => {
+                    Create.Table("TableBasedEntity")
+                          .WithColumn("Id",
+                                      col => col.AsInt32().NotNullable().PrimaryKey("PK_TableBasedEntity"))
+                          .WithColumn("Field", col => col.AsString(256).Nullable())
+                          .WithColumn("NumberValue", col => col.AsDecimal(18, 3).NotNullable())
+                          .WithColumn("RoleId",
+                                      col => col.AsInt32()
+                                                .NotNullable()
+                                                .Indexed("IX_TableBasedEntity_RoleId")
+                                                .ForeignKey("FK_TableBasedEntity_AspNetRoles_RoleId",
+                                                            "AspNetRoles",
+                                                            "Id")
+                                                .OnDelete(Rule.Cascade))
+                        ;
+                });
 
             Execute.Sql(@"CREATE VIEW ViewBasedEntities AS SELECT Id, Field, RoleId FROM TableBasedEntity");
 

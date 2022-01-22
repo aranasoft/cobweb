@@ -70,7 +70,7 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation {
                     }
 
                     var columnTypesMatch =
-                        dbColumn.StoreType.Equals(persistedColumn.GetColumnType(), StringComparison.OrdinalIgnoreCase);
+                        dbColumn.StoreType.Replace(", ",",").Equals(persistedColumn.GetColumnType().Replace(", ",","), StringComparison.OrdinalIgnoreCase);
                     if (!columnTypesMatch) {
                         valErrors.Add(
                             $"Column type mismatch in {persistedType.GetTableName()} for column {persistedColumn.GetColumnName(StoreObjectIdentifier.Table(persistedType.GetTableName(), null))}. Found: {dbColumn.StoreType.ToLowerInvariant()}, Expected {persistedColumn.GetColumnType().ToLowerInvariant()}");
@@ -90,7 +90,7 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation {
                     }
 
                     var columnTypesMatch =
-                        dbColumn.StoreType.Equals(persistedColumn.GetColumnType(), StringComparison.OrdinalIgnoreCase);
+                        dbColumn.StoreType.Replace(", ",",").Equals(persistedColumn.GetColumnType().Replace(", ",","), StringComparison.OrdinalIgnoreCase);
                     if (!columnTypesMatch) {
                         valErrors.Add(
                             $"Column type mismatch in {persistedType.GetViewName()} for column {persistedColumn.GetColumnName(StoreObjectIdentifier.View(persistedType.GetViewName(), null))}. Found: {dbColumn.StoreType.ToLowerInvariant()}, Expected {persistedColumn.GetColumnType().ToLowerInvariant()}");
