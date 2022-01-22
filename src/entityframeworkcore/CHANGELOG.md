@@ -1,3 +1,12 @@
+# 1.50.3 (2021-01-21)
+
+
+### Fixes
+
+* **efcore:** correct column type mismatch with CSVs ([955a818](https://github.com/aranasoft/cobweb/commit/955a818e7fb2869f2c0c99d6c9b8fb9e1b872222))
+
+
+
 # 1.50.2 (2021-01-21)
 
 
@@ -13,6 +22,15 @@
 ### Features
 
 * **efcore5:** add support for efcore v5 ([4b4a2dd](https://github.com/aranasoft/cobweb/commit/4b4a2dd9d3df7251afec48afc026315ac437defa))
+
+
+
+# 1.30.5 (2021-01-21)
+
+
+### Fixes
+
+* **efcore:** correct column type mismatch with CSVs ([955a818](https://github.com/aranasoft/cobweb/commit/955a818e7fb2869f2c0c99d6c9b8fb9e1b872222))
 
 
 
@@ -57,6 +75,15 @@
 ### Features
 
 * **efcore3:** add support for efcore v3 ([5b9bdf0](https://github.com/aranasoft/cobweb/commit/5b9bdf0be1d059a2cf7a2408bc146cff5cb1bae1))
+
+
+
+# 1.20.5 (2021-01-21)
+
+
+### Fixes
+
+* **efcore:** correct column type mismatch with CSVs ([955a818](https://github.com/aranasoft/cobweb/commit/955a818e7fb2869f2c0c99d6c9b8fb9e1b872222))
 
 
 
