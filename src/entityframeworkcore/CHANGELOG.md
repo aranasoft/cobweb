@@ -1,3 +1,12 @@
+# 1.50.2 (2021-01-21)
+
+
+### Fixes
+
+* **efcore5:** correct validation when table mapping is unset ([3d6ff24](https://github.com/aranasoft/cobweb/commit/3d6ff24dd8e09cf6a4668c32e50bb53a83b23725))
+
+
+
 # 1.50.1 (2021-01-20)
 
 
