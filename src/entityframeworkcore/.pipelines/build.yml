@@ -27,6 +27,10 @@ steps:
           Write-Output ("##vso[build.updatebuildnumber]" + $env:BUILD_BUILDNUMBER+"-alpha")
         }
       }
+- task: UseDotNet@2
+  inputs:
+    packageType: 'sdk'
+    version: '6.x'
 - task: DotNetCoreCLI@2
   displayName: 'dotnet restore'
   inputs:
