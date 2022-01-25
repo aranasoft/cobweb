@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29519.87
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{091B6554-596C-4EEC-B37E-271DB9B5E10A}"
 EndProject
@@ -29,6 +29,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aranasoft.Cobweb.EntityFrameworkCore5.Validation", "src\entityframeworkcore5.validation\Aranasoft.Cobweb.EntityFrameworkCore5.Validation.csproj", "{A25246BD-873C-460C-A65B-0C90740EE4F9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aranasoft.Cobweb.EntityFrameworkCore5.Validation.Tests", "test\entityframeworkcore5.validation.tests\Aranasoft.Cobweb.EntityFrameworkCore5.Validation.Tests.csproj", "{5477CEB7-5A6E-4212-BC86-65509034E371}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aranasoft.Cobweb.EntityFrameworkCore6.Validation", "src\entityframeworkcore6.validation\Aranasoft.Cobweb.EntityFrameworkCore6.Validation.csproj", "{5885A8A3-453C-4CE1-A2BB-1B2686B3728D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aranasoft.Cobweb.EntityFrameworkCore6.Validation.Tests", "test\entityframeworkcore6.validation.tests\Aranasoft.Cobweb.EntityFrameworkCore6.Validation.Tests.csproj", "{689B40E5-6A6F-4D49-AF2D-CD9567B2DE9C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -94,6 +98,22 @@ Global
 		{5477CEB7-5A6E-4212-BC86-65509034E371}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5477CEB7-5A6E-4212-BC86-65509034E371}.Release|x64.ActiveCfg = Release|x64
 		{5477CEB7-5A6E-4212-BC86-65509034E371}.Release|x64.Build.0 = Release|x64
+		{5885A8A3-453C-4CE1-A2BB-1B2686B3728D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5885A8A3-453C-4CE1-A2BB-1B2686B3728D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5885A8A3-453C-4CE1-A2BB-1B2686B3728D}.Debug|x64.ActiveCfg = Debug|x64
+		{5885A8A3-453C-4CE1-A2BB-1B2686B3728D}.Debug|x64.Build.0 = Debug|x64
+		{5885A8A3-453C-4CE1-A2BB-1B2686B3728D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5885A8A3-453C-4CE1-A2BB-1B2686B3728D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5885A8A3-453C-4CE1-A2BB-1B2686B3728D}.Release|x64.ActiveCfg = Release|x64
+		{5885A8A3-453C-4CE1-A2BB-1B2686B3728D}.Release|x64.Build.0 = Release|x64
+		{689B40E5-6A6F-4D49-AF2D-CD9567B2DE9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{689B40E5-6A6F-4D49-AF2D-CD9567B2DE9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{689B40E5-6A6F-4D49-AF2D-CD9567B2DE9C}.Debug|x64.ActiveCfg = Debug|x64
+		{689B40E5-6A6F-4D49-AF2D-CD9567B2DE9C}.Debug|x64.Build.0 = Debug|x64
+		{689B40E5-6A6F-4D49-AF2D-CD9567B2DE9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{689B40E5-6A6F-4D49-AF2D-CD9567B2DE9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{689B40E5-6A6F-4D49-AF2D-CD9567B2DE9C}.Release|x64.ActiveCfg = Release|x64
+		{689B40E5-6A6F-4D49-AF2D-CD9567B2DE9C}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -106,6 +126,8 @@ Global
 		{6B754961-97C2-43FE-8132-2B7FADEC03FA} = {381B9DD8-06CA-42CA-9A5A-69577E25B584}
 		{A25246BD-873C-460C-A65B-0C90740EE4F9} = {091B6554-596C-4EEC-B37E-271DB9B5E10A}
 		{5477CEB7-5A6E-4212-BC86-65509034E371} = {381B9DD8-06CA-42CA-9A5A-69577E25B584}
+		{5885A8A3-453C-4CE1-A2BB-1B2686B3728D} = {091B6554-596C-4EEC-B37E-271DB9B5E10A}
+		{689B40E5-6A6F-4D49-AF2D-CD9567B2DE9C} = {381B9DD8-06CA-42CA-9A5A-69577E25B584}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {77E1A84A-D7A1-4FAE-90E7-2D5C1912349A}
