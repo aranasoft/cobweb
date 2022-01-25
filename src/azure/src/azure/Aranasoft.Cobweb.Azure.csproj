@@ -3,7 +3,7 @@
 
   <PropertyGroup>
     <Description>A base-class utility library for .NET and .NET Core.</Description>
-    <TargetFrameworks>net461;netstandard2.0;net5.0</TargetFrameworks>
+    <TargetFrameworks>net461;netstandard2.0;net5.0;net6.0</TargetFrameworks>
     <AssemblyName>Aranasoft.Cobweb.Azure</AssemblyName>
     <RootNamespace>Aranasoft.Cobweb.Azure</RootNamespace>
     <VersionPrefix>2.0</VersionPrefix>
@@ -18,7 +18,7 @@
     <PackageReference Include="Aranasoft.Cobweb" Version="[1.4.1,2)" />
     <PackageReference Include="Microsoft.Azure.Cosmos.Table" Version="[1,2)" />
     <PackageReference Include="Azure.Messaging.ServiceBus" Version="[7,8)" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="[3,6)" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="[3,6)" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="[3,7)" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="[3,7)" />
   </ItemGroup>
 </Project>
