@@ -8,9 +8,7 @@ namespace Aranasoft.Cobweb.Azure.ServiceBus.TaskQueue {
             var myType = GetType();
             if (myType != typeof(TaskRequest)) {
                 Name = myType.GetCustomAttribute<TaskRequestNameAttribute>()?.Name ??
-                       throw new TaskRequestException("Task Request " +
-                                                      myType.FullName +
-                                                      "is missing a TaskRequestNameAttribute");
+                       throw new TaskRequestException($"Task Request {myType.FullName} is missing a TaskRequestNameAttribute");
             }
 
             Parameters = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);

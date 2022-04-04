@@ -17,17 +17,19 @@ namespace Aranasoft.Cobweb.Azure.ServiceBus.TaskQueue {
 
         public async Task ProcessQueueMessage(string message) {
             var taskRequest = JsonConvert.DeserializeObject<TaskRequest>(message);
-            _log.LogDebug($"Received task {taskRequest.TrackingId:D} of type {taskRequest.Name}");
+            var taskRequestName = taskRequest.Name;
+            var taskRequestTrackingId = taskRequest.TrackingId.ToString("D");
+            _log.LogInformation("Received task {TaskRequestTrackingId} of type {TaskRequestName}", taskRequestTrackingId, taskRequestName);
 
             var handlers = _taskHandlerResolver.ResolveHandlers(taskRequest).ToList();
 
             if (!handlers.Any()) {
-                _log.LogWarning("No task handlers found for task request " + taskRequest.Name + ". Exiting.");
+                _log.LogWarning("No task handlers found for task request {TaskRequestName}; exiting", taskRequestName);
                 return;
             }
 
             if (! await ExecuteHandlersAsync(handlers))
-                _log.LogWarning($"One or more handler for {taskRequest.Name} (Tracking: {taskRequest.TrackingId:D}) did not complete successfully.");
+                _log.LogWarning("One or more handler for {TaskRequestName} (Tracking: {TaskRequestTrackingId}) did not complete successfully", taskRequestName, taskRequestTrackingId);
         }
 
         private async Task<bool> ExecuteHandlersAsync(IEnumerable<ITaskHandler> handlers) {
@@ -37,9 +39,12 @@ namespace Aranasoft.Cobweb.Azure.ServiceBus.TaskQueue {
                     handledSuccessfully &= await taskHandler.HandleTaskAsync();
                 }
                 catch (Exception ex) {
+                    var requestTrackingId = taskHandler.Request.TrackingId.ToString("D");
+                    var handlerTypeName = taskHandler.GetType().FullName;
                     _log.LogError(
-                        $"Unexpected Error with message: {taskHandler.Request.TrackingId:D} in handler {taskHandler.GetType().FullName}",
-                        ex);
+                        ex, "Unexpected Error with message: {RequestTrackingId} in handler {HandlerTypeName}",
+                        requestTrackingId, handlerTypeName);
+                    handledSuccessfully = false;
                 }
 
             return handledSuccessfully;

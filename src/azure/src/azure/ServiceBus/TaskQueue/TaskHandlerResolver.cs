@@ -15,7 +15,9 @@ namespace Aranasoft.Cobweb.Azure.ServiceBus.TaskQueue {
 
         public IEnumerable<ITaskHandler> ResolveHandlers(TaskRequest taskRequest) {
             if (_log.IsEnabled(LogLevel.Debug)) {
-                _log.LogDebug($"Resolving request {taskRequest.Name} from {_handlerContainers.Count} handlers");
+                var taskRequestName = taskRequest.Name;
+                var handlerCount = _handlerContainers.Count;
+                _log.LogDebug("Resolving request {TaskRequestName} from {HandlerCount} handlers", taskRequestName, handlerCount);
             }
 
             var matchingHandlers = _handlerContainers.Where(container => container.Key.HandlesRequest(taskRequest))
