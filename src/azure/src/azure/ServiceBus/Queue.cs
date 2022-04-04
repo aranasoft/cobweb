@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Threading;
 using System.Threading.Tasks;
 using Aranasoft.Cobweb.Azure.Configuration;
 using Aranasoft.Cobweb.Azure.ServiceBus.Extensions;
@@ -33,23 +32,20 @@ namespace Aranasoft.Cobweb.Azure.ServiceBus {
 
         protected ServiceBusAdministrationClient ManagementClient {
             get {
-                _managementClient = _managementClient ??
-                                    (_managementClient = new ServiceBusAdministrationClient(ConnectionString));
+                _managementClient = _managementClient ??= new ServiceBusAdministrationClient(ConnectionString);
                 return _managementClient;
             }
         }
 
         protected async Task<ServiceBusSender> GetQueueClientAsync() {
             await EnsureQueueAsync();
-            _queueClient = _queueClient ??
-                           (_queueClient = new ServiceBusClient(ConnectionString).CreateSender(Name));
+            _queueClient = _queueClient ??= new ServiceBusClient(ConnectionString).CreateSender(Name);
             return _queueClient;
         }
 
         protected async Task<ServiceBusProcessor> GetQueueProcessorAsync() {
             await EnsureQueueAsync();
-            _queueProcessor = _queueProcessor ??
-                              (_queueProcessor = new ServiceBusClient(ConnectionString).CreateProcessor(Name));
+            _queueProcessor = _queueProcessor ??= new ServiceBusClient(ConnectionString).CreateProcessor(Name);
             return _queueProcessor;
         }
 
@@ -72,7 +68,7 @@ namespace Aranasoft.Cobweb.Azure.ServiceBus {
         /// <summary>
         /// Sends a list of messages to Service Bus.
         /// </summary>
-        public async Task SendMessagesAsync(IList<ServiceBusMessage> messages) {
+        public async Task SendMessagesAsync(IEnumerable<ServiceBusMessage> messages) {
             var queueClient = await GetQueueClientAsync();
             await queueClient.SendMessagesAsync(messages);
         }
@@ -91,7 +87,7 @@ namespace Aranasoft.Cobweb.Azure.ServiceBus {
             message.Delay(TimeSpan.FromSeconds(delaySeconds));
         }
 
-        private void SetEnqueueTime(IList<ServiceBusMessage> messages, int delaySeconds) {
+        private void SetEnqueueTime(IEnumerable<ServiceBusMessage> messages, int delaySeconds) {
             foreach (var message in messages) {
                 message.Delay(TimeSpan.FromSeconds(delaySeconds));
             }
