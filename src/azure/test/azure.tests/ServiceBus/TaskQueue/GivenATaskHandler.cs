@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 using Aranasoft.Cobweb.Azure.ServiceBus.TaskQueue;
 using FluentAssertions;
@@ -28,7 +29,7 @@ namespace Aranasoft.Cobweb.Azure.Tests.ServiceBus.TaskQueue {
         }
         [TaskHandlesRequest(typeof(TestTaskRequest))]
         public class TestTaskHandler : TaskHandler {
-            protected override Task<bool> ExecuteAsync() {
+            protected override Task<bool> ExecuteAsync(CancellationToken cancellationToken = default) {
                 throw new NotImplementedException();
             }
         }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
@@ -15,7 +16,7 @@ namespace Aranasoft.Cobweb.Azure.ServiceBus.TaskQueue {
             _log = log;
         }
 
-        public async Task ProcessQueueMessage(string message) {
+        public async Task ProcessQueueMessageAsync(string message, CancellationToken cancellationToken = default) {
             var taskRequest = JsonConvert.DeserializeObject<TaskRequest>(message);
             var taskRequestName = taskRequest.Name;
             var taskRequestTrackingId = taskRequest.TrackingId.ToString("D");
@@ -28,11 +29,11 @@ namespace Aranasoft.Cobweb.Azure.ServiceBus.TaskQueue {
                 return;
             }
 
-            if (! await ExecuteHandlersAsync(handlers))
+            if (!await ExecuteHandlersAsync(handlers, cancellationToken))
                 _log.LogWarning("One or more handler for {TaskRequestName} (Tracking: {TaskRequestTrackingId}) did not complete successfully", taskRequestName, taskRequestTrackingId);
         }
 
-        private async Task<bool> ExecuteHandlersAsync(IEnumerable<ITaskHandler> handlers) {
+        private async Task<bool> ExecuteHandlersAsync(IEnumerable<ITaskHandler> handlers, CancellationToken cancellationToken = default) {
             var handledSuccessfully = true;
             foreach (var taskHandler in handlers)
                 try {

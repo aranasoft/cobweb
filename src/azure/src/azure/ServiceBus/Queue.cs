@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using Aranasoft.Cobweb.Azure.Configuration;
 using Aranasoft.Cobweb.Azure.ServiceBus.Extensions;
@@ -32,27 +33,26 @@ namespace Aranasoft.Cobweb.Azure.ServiceBus {
 
         protected ServiceBusAdministrationClient ManagementClient {
             get {
-                _managementClient = _managementClient ??= new ServiceBusAdministrationClient(ConnectionString);
+                _managementClient ??= new ServiceBusAdministrationClient(ConnectionString);
                 return _managementClient;
             }
         }
 
-        protected async Task<ServiceBusSender> GetQueueClientAsync() {
-            await EnsureQueueAsync();
-            _queueClient = _queueClient ??= new ServiceBusClient(ConnectionString).CreateSender(Name);
-            return _queueClient;
+        protected async Task<ServiceBusSender> GetQueueClientAsync(CancellationToken cancellationToken = default) {
+            await EnsureQueueAsync(cancellationToken);
+            return _queueClient ??= new ServiceBusClient(ConnectionString).CreateSender(Name);
         }
 
-        protected async Task<ServiceBusProcessor> GetQueueProcessorAsync() {
-            await EnsureQueueAsync();
-            _queueProcessor = _queueProcessor ??= new ServiceBusClient(ConnectionString).CreateProcessor(Name);
+        protected async Task<ServiceBusProcessor> GetQueueProcessorAsync(CancellationToken cancellationToken = default) {
+            await EnsureQueueAsync(cancellationToken);
+            _queueProcessor ??= new ServiceBusClient(ConnectionString).CreateProcessor(Name);
             return _queueProcessor;
         }
 
 
-        protected async Task EnsureQueueAsync() {
-            if (!_queueValidated && !await ManagementClient.QueueExistsAsync(Name)) {
-                await ManagementClient.CreateQueueAsync(Name);
+        protected async Task EnsureQueueAsync(CancellationToken cancellationToken = default) {
+            if (!_queueValidated && !await ManagementClient.QueueExistsAsync(Name, cancellationToken)) {
+                await ManagementClient.CreateQueueAsync(Name, cancellationToken);
                 _queueValidated = true;
             }
         }
@@ -60,17 +60,17 @@ namespace Aranasoft.Cobweb.Azure.ServiceBus {
         /// <summary>
         /// Sends a message to Service Bus.
         /// </summary>
-        public async Task SendMessageAsync(ServiceBusMessage message) {
-            var queueClient = await GetQueueClientAsync();
-            await queueClient.SendMessageAsync(message);
+        public async Task SendMessageAsync(ServiceBusMessage message, CancellationToken cancellationToken = default) {
+            var queueClient = await GetQueueClientAsync(cancellationToken);
+            await queueClient.SendMessageAsync(message, cancellationToken);
         }
 
         /// <summary>
         /// Sends a list of messages to Service Bus.
         /// </summary>
-        public async Task SendMessagesAsync(IEnumerable<ServiceBusMessage> messages) {
-            var queueClient = await GetQueueClientAsync();
-            await queueClient.SendMessagesAsync(messages);
+        public async Task SendMessagesAsync(IEnumerable<ServiceBusMessage> messages, CancellationToken cancellationToken = default) {
+            var queueClient = await GetQueueClientAsync(cancellationToken);
+            await queueClient.SendMessagesAsync(messages, cancellationToken);
         }
 
         public async Task RegisterErrorHandlerAsync(Func<ProcessErrorEventArgs, Task> exceptionCallback) {
