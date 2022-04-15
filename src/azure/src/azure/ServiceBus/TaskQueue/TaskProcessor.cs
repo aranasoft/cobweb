@@ -37,7 +37,7 @@ namespace Aranasoft.Cobweb.Azure.ServiceBus.TaskQueue {
             var handledSuccessfully = true;
             foreach (var taskHandler in handlers)
                 try {
-                    handledSuccessfully &= await taskHandler.HandleTaskAsync();
+                    handledSuccessfully &= await taskHandler.HandleTaskAsync(cancellationToken);
                 }
                 catch (Exception ex) {
                     var requestTrackingId = taskHandler.Request.TrackingId.ToString("D");

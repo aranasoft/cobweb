@@ -27,6 +27,7 @@ namespace Aranasoft.Cobweb.Azure.Tests.ServiceBus.TaskQueue {
         public void ItShouldNotHandleOtherRequest() {
             _handler.GetType().HandlesRequest(new UnhandledTestTaskRequest()).Should().BeFalse();
         }
+
         [TaskHandlesRequest(typeof(TestTaskRequest))]
         public class TestTaskHandler : TaskHandler {
             protected override Task<bool> ExecuteAsync(CancellationToken cancellationToken = default) {
