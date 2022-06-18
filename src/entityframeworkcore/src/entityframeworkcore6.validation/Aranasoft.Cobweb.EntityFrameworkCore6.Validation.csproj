@@ -5,7 +5,7 @@
     <TargetFrameworks>net6.0</TargetFrameworks>
     <AssemblyName>Aranasoft.Cobweb.EntityFrameworkCore.Validation</AssemblyName>
     <RootNamespace>Aranasoft.Cobweb.EntityFrameworkCore.Validation</RootNamespace>
-    <VersionPrefix>1.60.0</VersionPrefix>
+    <VersionPrefix>1.60.1</VersionPrefix>
     <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 

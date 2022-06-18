@@ -28,25 +28,32 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation {
                 if (databaseModel.GetView(persistedType) == null &&
                     persistedType.FindAnnotation(RelationalAnnotationNames.ViewName)?.Value != null) {
                     validationErrors.Add($"Missing view: {persistedType.GetViewName()}");
+
+                    if (persistedType.FindAnnotation(RelationalAnnotationNames.TableName)?.Value == null) {
+                        continue;
+                    }
                 }
 
-                if (persistedType.FindAnnotation(RelationalAnnotationNames.TableName)?.Value == null) {
-                    continue;
-                }
-
-                if (databaseModel.GetTable(persistedType) == null) {
+                if (databaseModel.GetTable(persistedType) == null &&
+                    persistedType.FindAnnotation(RelationalAnnotationNames.TableName)?.Value != null) {
                     validationErrors.Add($"Missing table: {persistedType.GetTableName()}");
-                    continue;
+
+                    if (persistedType.FindAnnotation(RelationalAnnotationNames.ViewName)?.Value == null) {
+                        continue;
+                    }
                 }
 
                 validationErrors.AddRange(ValidateColumns(databaseModel, persistedType, validationOptions));
 
-                if (validationOptions.ValidateIndexes) {
-                    validationErrors.AddRange(ValidateIndexes(databaseModel, persistedType));
-                }
+                // For now, only validate Indexes and FKs on Tables
+                if (persistedType.GetTableName() != null) {
+                    if (validationOptions.ValidateIndexes) {
+                        validationErrors.AddRange(ValidateIndexes(databaseModel, persistedType));
+                    }
 
-                if (validationOptions.ValidateForeignKeys) {
-                    validationErrors.AddRange(ValidateForeignKeys(databaseModel, persistedType));
+                    if (validationOptions.ValidateForeignKeys) {
+                        validationErrors.AddRange(ValidateForeignKeys(databaseModel, persistedType));
+                    }
                 }
             }
 
@@ -59,10 +66,13 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation {
                                              IEntityType persistedType,
                                              SchemaValidationOptions validationOptions) {
             var valErrors = new List<string>();
-            foreach (var persistedColumn in persistedType.GetProperties()) {
-                var dbColumn = databaseModel.GetTableColumn(persistedColumn);
-
+            foreach (var persistedColumn in persistedType.GetProperties()
+                                                         .Where(theProperty => theProperty.GetBeforeSaveBehavior() != PropertySaveBehavior.Ignore ||
+                                                                               theProperty.GetAfterSaveBehavior() != PropertySaveBehavior.Ignore ||
+                                                                               theProperty.FindAnnotation(RelationalAnnotationNames.IsStored)?.Value is true)
+                                                         ) {
                 if (persistedType.FindAnnotation(RelationalAnnotationNames.TableName)?.Value != null) {
+                    var dbColumn = databaseModel.GetTableColumn(persistedColumn);
                     if (dbColumn == null) {
                         valErrors.Add(
                             $"Missing column: {persistedColumn.GetColumnName(StoreObjectIdentifier.Table(persistedType.GetTableName(), null))} in {persistedType.GetTableName()}");
@@ -83,6 +93,7 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation {
                 }
 
                 if (persistedType.FindAnnotation(RelationalAnnotationNames.ViewName)?.Value != null) {
+                    var dbColumn = databaseModel.GetViewColumn(persistedColumn);
                     if (dbColumn == null) {
                         valErrors.Add(
                             $"Missing column: {persistedColumn.GetColumnName(StoreObjectIdentifier.View(persistedType.GetViewName(), null))} in {persistedType.GetViewName()}");

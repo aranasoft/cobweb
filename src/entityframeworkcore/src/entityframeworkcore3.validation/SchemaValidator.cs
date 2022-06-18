@@ -31,7 +31,6 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation {
                     validationErrors.Add(persistedType.FindAnnotation(RelationalAnnotationNames.ViewDefinition) != null
                                              ? $"Missing view: {persistedType.GetTableName()}"
                                              : $"Missing table: {persistedType.GetTableName()}");
-
                     continue;
                 }
 
@@ -57,7 +56,9 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation {
                                              IEntityType persistedType,
                                              SchemaValidationOptions validationOptions) {
             var valErrors = new List<string>();
-            foreach (var persistedColumn in persistedType.GetProperties()) {
+            foreach (var persistedColumn in persistedType.GetProperties()
+                                                         .Where(theProperty => theProperty.GetBeforeSaveBehavior() != PropertySaveBehavior.Ignore &&
+                                                                               theProperty.GetAfterSaveBehavior() != PropertySaveBehavior.Ignore)) {
                 var dbColumn = databaseModel.GetColumn(persistedColumn);
                 if (dbColumn == null) {
                     valErrors.Add(

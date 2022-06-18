@@ -12,6 +12,7 @@
   <ItemGroup>
     <Compile Include="..\entityframeworkcore2.validation.tests\Sqlite\WhenValidatingSchemaGivenIncorrectColumnNullability.cs" Link="Sqlite\WhenValidatingSchemaGivenIncorrectColumnNullability.cs" />
     <Compile Include="..\entityframeworkcore2.validation.tests\Sqlite\WhenValidatingSchemaGivenIncorrectColumnTypes.cs" Link="Sqlite\WhenValidatingSchemaGivenIncorrectColumnTypes.cs" />
+    <Compile Include="..\entityframeworkcore2.validation.tests\Sqlite\WhenValidatingSchemaGivenMissingColumns.cs" Link="Sqlite\WhenValidatingSchemaGivenMissingColumns.cs" />
     <Compile Include="..\entityframeworkcore2.validation.tests\Sqlite\WhenValidatingSchemaGivenMissingForeignKeys.cs" Link="Sqlite\WhenValidatingSchemaGivenMissingForeignKeys.cs" />
     <Compile Include="..\entityframeworkcore2.validation.tests\Sqlite\WhenValidatingSchemaGivenMissingIndexes.cs" Link="Sqlite\WhenValidatingSchemaGivenMissingIndexes.cs" />
     <Compile Include="..\entityframeworkcore2.validation.tests\Sqlite\WhenValidatingSchemaGivenValidDatabase.cs" Link="Sqlite\WhenValidatingSchemaGivenValidDatabase.cs" />
@@ -19,15 +20,17 @@
     <Compile Include="..\entityframeworkcore2.validation.tests\Sqlite\WhenValidatingSchemaIgnoringIndexesGivenMissingIndexes.cs" Link="Sqlite\WhenValidatingSchemaIgnoringIndexesGivenMissingIndexes.cs" />
     <Compile Include="..\entityframeworkcore2.validation.tests\SqlServer\WhenValidatingSchemaGivenIncorrectColumnNullability.cs" Link="SqlServer\WhenValidatingSchemaGivenIncorrectColumnNullability.cs" />
     <Compile Include="..\entityframeworkcore2.validation.tests\SqlServer\WhenValidatingSchemaGivenIncorrectColumnTypes.cs" Link="SqlServer\WhenValidatingSchemaGivenIncorrectColumnTypes.cs" />
+    <Compile Include="..\entityframeworkcore2.validation.tests\SqlServer\WhenValidatingSchemaGivenMissingColumns.cs" Link="SqlServer\WhenValidatingSchemaGivenMissingColumns.cs" />
     <Compile Include="..\entityframeworkcore2.validation.tests\SqlServer\WhenValidatingSchemaGivenMissingForeignKeys.cs" Link="SqlServer\WhenValidatingSchemaGivenMissingForeignKeys.cs" />
     <Compile Include="..\entityframeworkcore2.validation.tests\SqlServer\WhenValidatingSchemaGivenMissingIndexes.cs" Link="SqlServer\WhenValidatingSchemaGivenMissingIndexes.cs" />
+    <Compile Include="..\entityframeworkcore2.validation.tests\SqlServer\WhenValidatingSchemaGivenValidDatabase.cs" Link="SqlServer\WhenValidatingSchemaGivenValidDatabase.cs" />
     <Compile Include="..\entityframeworkcore2.validation.tests\SqlServer\WhenValidatingSchemaIgnoringForeignKeysGivenMissingForeignKeys.cs" Link="SqlServer\WhenValidatingSchemaIgnoringForeignKeysGivenMissingForeignKeys.cs" />
     <Compile Include="..\entityframeworkcore2.validation.tests\SqlServer\WhenValidatingSchemaIgnoringIndexesGivenIncorrectColumnNullability.cs" Link="SqlServer\WhenValidatingSchemaIgnoringIndexesGivenIncorrectColumnNullability.cs" />
     <Compile Include="..\entityframeworkcore2.validation.tests\SqlServer\WhenValidatingSchemaIgnoringIndexesGivenMissingIndexes.cs" Link="SqlServer\WhenValidatingSchemaIgnoringIndexesGivenMissingIndexes.cs" />
     <Compile Include="..\entityframeworkcore2.validation.tests\Support\ApplicationDbContext.cs" Link="Support\ApplicationDbContext.cs" />
+    <Compile Include="..\entityframeworkcore2.validation.tests\Support\Migrations\MigrationsMissingColumns.cs" Link="Support\Migrations\MigrationsMissingColumns.cs" />
     <Compile Include="..\entityframeworkcore2.validation.tests\Support\Migrations\MigrationsMissingForeignKeys.cs" Link="Support\Migrations\MigrationsMissingForeignKeys.cs" />
     <Compile Include="..\entityframeworkcore2.validation.tests\Support\Migrations\MigrationsMissingIndexes.cs" Link="Support\Migrations\MigrationsMissingIndexes.cs" />
-    <Compile Include="..\entityframeworkcore2.validation.tests\Support\Migrations\MigrationsMissingViews.cs" Link="Support\Migrations\MigrationsMissingViews.cs" />
     <Compile Include="..\entityframeworkcore2.validation.tests\Support\Migrations\MigrationsWithIncorrectColumnNullability.cs" Link="Support\Migrations\MigrationsWithIncorrectColumnNullability.cs" />
     <Compile Include="..\entityframeworkcore2.validation.tests\Support\Migrations\MigrationsWithIncorrectColumnTypes.cs" Link="Support\Migrations\MigrationsWithIncorrectColumnTypes.cs" />
     <Compile Include="..\entityframeworkcore2.validation.tests\Support\Migrations\ValidIdentityMigrations.cs" Link="Support\Migrations\ValidIdentityMigrations.cs" />
@@ -78,7 +81,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Support\Migrations\" />
     <Folder Include="Support\XUnit\" />
     <Folder Include="Support\SqlServer\" />
     <Folder Include="Support\Sqlite\" />

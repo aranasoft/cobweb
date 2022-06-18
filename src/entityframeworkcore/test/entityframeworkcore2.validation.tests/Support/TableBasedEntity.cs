@@ -8,6 +8,9 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support {
         [Key]
         public int Id { get; set; }
 
+        [NotMapped]
+        public string IgnoredColumn { get; set; }
+
         [MaxLength(256)]
         public string Field { get; set; }
 
@@ -16,5 +19,7 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support {
 
         [Required]
         public IdentityRole<int> Role { get; set; }
+
+        public int ComputedNumber { get;set; }
     }
 }

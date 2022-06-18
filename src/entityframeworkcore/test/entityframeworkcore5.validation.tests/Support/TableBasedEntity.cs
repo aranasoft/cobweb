@@ -8,10 +8,10 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support {
         public int Id { get; set; }
 
         [NotMapped]
-        public string? IgnoredColumn { get; set; }
+        public string IgnoredColumn { get; set; }
 
         [MaxLength(256)]
-        public string? Field { get; set; }
+        public string Field { get; set; }
 
         [Column("NumberValue")]
         public decimal Number { get; set; }

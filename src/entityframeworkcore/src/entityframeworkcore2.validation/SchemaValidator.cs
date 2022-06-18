@@ -56,7 +56,9 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation {
                                              SchemaValidationOptions validationOptions) {
             var entityTable = persistedType.Relational();
             var valErrors = new List<string>();
-            foreach (var entityProperty in persistedType.GetProperties()) {
+            foreach (var entityProperty in persistedType.GetProperties()
+                                                        .Where(theProperty => theProperty.BeforeSaveBehavior != PropertySaveBehavior.Ignore &&
+                                                                              theProperty.AfterSaveBehavior != PropertySaveBehavior.Ignore)) {
                 var entityColumn = entityProperty.Relational();
 
                 var dbColumn = databaseModel.GetColumn(entityProperty);
