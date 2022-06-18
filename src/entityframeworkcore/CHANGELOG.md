@@ -1,9 +1,27 @@
+# 1.60.1 (2022-06-17)
+
+
+### Features
+
+* **efcore:** add support for not-stored columns, view columns ([9235464](https://github.com/aranasoft/cobweb/commit/9235464cb4b5bea1707d802a948baf724e0f26a6))
+
+
+
 # 1.60.0 (2021-01-24)
 
 
 ### Features
 
 * **efcore6:** add support for efcore v6 ([5042133](https://github.com/aranasoft/cobweb/commit/50421337eccae886d724194870ae49522589b656))
+
+
+
+# 1.50.4 (2022-06-17)
+
+
+### Features
+
+* **efcore:** add support for not-stored columns, view columns ([9235464](https://github.com/aranasoft/cobweb/commit/9235464cb4b5bea1707d802a948baf724e0f26a6))
 
 
 
@@ -31,6 +49,15 @@
 ### Features
 
 * **efcore5:** add support for efcore v5 ([4b4a2dd](https://github.com/aranasoft/cobweb/commit/4b4a2dd9d3df7251afec48afc026315ac437defa))
+
+
+
+# 1.30.6 (2022-06-17)
+
+
+### Features
+
+* **efcore:** add support for not-stored columns ([9235464](https://github.com/aranasoft/cobweb/commit/9235464cb4b5bea1707d802a948baf724e0f26a6))
 
 
 
@@ -84,6 +111,15 @@
 ### Features
 
 * **efcore3:** add support for efcore v3 ([5b9bdf0](https://github.com/aranasoft/cobweb/commit/5b9bdf0be1d059a2cf7a2408bc146cff5cb1bae1))
+
+
+
+# 1.20.6 (2022-06-17)
+
+
+### Features
+
+* **efcore:** add support for not-stored columns ([9235464](https://github.com/aranasoft/cobweb/commit/9235464cb4b5bea1707d802a948baf724e0f26a6))
 
 
 
