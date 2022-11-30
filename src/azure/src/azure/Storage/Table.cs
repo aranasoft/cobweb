@@ -1,40 +1,31 @@
-using Microsoft.Azure.Cosmos.Table;
+using Azure.Data.Tables;
 
 namespace Aranasoft.Cobweb.Azure.Storage {
     public abstract class Table {
-        private CloudStorageAccount _account;
+        private TableServiceClient _client;
 
-        private CloudTableClient _client;
-
-        private CloudTable _tableReference;
+        private TableClient _tableReference;
         public abstract string Name { get; set; }
         protected abstract string ConnectionString { get; set; }
 
-        protected CloudStorageAccount Account {
+        protected TableServiceClient ServiceClient {
             get {
-                _account = _account ?? CloudStorageAccount.Parse(ConnectionString);
-                return _account;
-            }
-        }
-
-        protected CloudTableClient Client {
-            get {
-                _client = _client ?? Account.CreateCloudTableClient();
+                _client = _client ?? new TableServiceClient(ConnectionString);
                 return _client;
             }
             set { _client = value; }
         }
 
-        protected CloudTable TableReference {
+        protected TableClient GetTableClient {
             get {
-                _tableReference = _tableReference ?? Client.GetTableReference(Name);
+                _tableReference = _tableReference ?? ServiceClient.GetTableClient(Name);
                 return _tableReference;
             }
             set { _tableReference = value; }
         }
 
         protected void EnsureTable() {
-            TableReference.CreateIfNotExists();
+            GetTableClient.CreateIfNotExists();
         }
     }
 }
