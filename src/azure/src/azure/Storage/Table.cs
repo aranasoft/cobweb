@@ -1,3 +1,5 @@
+using System.Threading;
+using System.Threading.Tasks;
 using Azure.Data.Tables;
 
 namespace Aranasoft.Cobweb.Azure.Storage {
@@ -26,6 +28,10 @@ namespace Aranasoft.Cobweb.Azure.Storage {
 
         protected void EnsureTable() {
             GetTableClient.CreateIfNotExists();
+        }
+
+        protected Task EnsureTableAsync(CancellationToken cancellationToken = default) {
+            return GetTableClient.CreateIfNotExistsAsync(cancellationToken);
         }
     }
 }

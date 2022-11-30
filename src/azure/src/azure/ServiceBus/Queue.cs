@@ -56,13 +56,13 @@ namespace Aranasoft.Cobweb.Azure.ServiceBus {
             await queueClient.SendMessagesAsync(messages, cancellationToken);
         }
 
-        public async Task RegisterErrorHandlerAsync(Func<ProcessErrorEventArgs, Task> exceptionCallback) {
-            var processor = await GetQueueProcessorAsync();
+        public async Task RegisterErrorHandlerAsync(Func<ProcessErrorEventArgs, Task> exceptionCallback, CancellationToken cancellationToken = default) {
+            var processor = await GetQueueProcessorAsync(cancellationToken);
             processor.ProcessErrorAsync += exceptionCallback;
         }
 
-        public async Task RegisterMessageHandlerAsync(Func<ProcessMessageEventArgs, Task> callback) {
-            var processorAsync = await GetQueueProcessorAsync();
+        public async Task RegisterMessageHandlerAsync(Func<ProcessMessageEventArgs, Task> callback, CancellationToken cancellationToken = default) {
+            var processorAsync = await GetQueueProcessorAsync(cancellationToken);
             processorAsync.ProcessMessageAsync += callback;
         }
     }
