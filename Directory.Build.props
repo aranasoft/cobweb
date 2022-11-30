@@ -52,6 +52,17 @@
     </AssemblyAttribute>
   </ItemGroup>
 
+  <PropertyGroup Condition=" '$(IsTestProject)' == 'false' ">
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+
   <PropertyGroup>
     <!--
       Building MSIs from dev build requires file versions to be increasing.
@@ -69,14 +80,14 @@
     <_BuildNumberDD>$(_BuildNumber.Substring(6, 2))</_BuildNumberDD>
     <_BuildNumberR>$(_BuildNumber.Substring(9))</_BuildNumberR>
 
-    <!-- SHORT_DATE := yy * 1000 + mm * 50 + dd -->
-    <VersionSuffixDateStamp>$([MSBuild]::Add($([MSBuild]::Add($([MSBuild]::Multiply($(_BuildNumberYY), 1000)), $([MSBuild]::Multiply($(_BuildNumberMM), 50)))), $(_BuildNumberDD)))</VersionSuffixDateStamp>
+    <!-- SHORT_DATE := yy * 372 + mm * 31 + dd -->
+    <VersionSuffixDateStamp>$([MSBuild]::Add($([MSBuild]::Add($([MSBuild]::Multiply($(_BuildNumberYY), 372)), $([MSBuild]::Multiply($(_BuildNumberMM), 31)))), $(_BuildNumberDD)))</VersionSuffixDateStamp>
 
     <!-- REVISION := r -->
     <VersionSuffixBuildOfTheDay>$(_BuildNumberR)</VersionSuffixBuildOfTheDay>
     <VersionSuffixBuildOfTheDayPadded>$(VersionSuffixBuildOfTheDay.PadLeft(2, $([System.Convert]::ToChar(`0`))))</VersionSuffixBuildOfTheDayPadded>
 
     <!-- PATCH_NUMBER := (SHORT_DATE - VersionBaseShortDate) * 100 + r -->
-    <_PatchNumber>$([MSBuild]::Add($([MSBuild]::Multiply($([MSBuild]::Subtract($(VersionSuffixDateStamp), $([MSBuild]::ValueOrDefault($(VersionBaseShortDate), 19500)))), 100)), $(_BuildNumberR)))</_PatchNumber>
+    <_PatchNumber>$([MSBuild]::Add($([MSBuild]::Multiply($([MSBuild]::Subtract($(VersionSuffixDateStamp), $([MSBuild]::ValueOrDefault($(VersionBaseShortDate), 8120)))), 30)), $(_BuildNumberR)))</_PatchNumber>
   </PropertyGroup>
 </Project>

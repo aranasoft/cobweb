@@ -7,19 +7,11 @@
     <AssemblyName>Aranasoft.Cobweb.Azure</AssemblyName>
     <RootNamespace>Aranasoft.Cobweb.Azure</RootNamespace>
     <VersionPrefix>2.0</VersionPrefix>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
   </PropertyGroup>
 
   <PropertyGroup>
     <Description>Azure utilities and classes for Cobweb, a base-class utility library for .NET</Description>
     <PackageTags>azure;$(PackageTags)</PackageTags>
-  </PropertyGroup>
-
-  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>true</Optimize>
   </PropertyGroup>
 
   <ItemGroup>
