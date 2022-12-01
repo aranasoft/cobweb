@@ -3,10 +3,10 @@
 
   <PropertyGroup>
     <Description>A base-class utility library for .NET and .NET Core.</Description>
-    <TargetFrameworks>net40;net45;netstandard2.0</TargetFrameworks>
+    <TargetFrameworks>net45;netstandard2.0</TargetFrameworks>
     <AssemblyName>Aranasoft.Cobweb</AssemblyName>
     <RootNamespace>Aranasoft.Cobweb</RootNamespace>
-    <VersionPrefix>1.4.2</VersionPrefix>
+    <VersionPrefix>1.5.0</VersionPrefix>
     <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 </Project>

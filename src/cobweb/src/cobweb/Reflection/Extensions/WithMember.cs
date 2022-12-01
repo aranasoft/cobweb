@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Aranasoft.Cobweb.Extensions.ObjectExtensions;
 
 namespace Aranasoft.Cobweb.Reflection.Extensions {
     public static class WithMember {
@@ -43,7 +42,8 @@ namespace Aranasoft.Cobweb.Reflection.Extensions {
         public static TAttribute GetCustomAttribute<TAttribute>(this ICustomAttributeProvider member,
                                                                 bool inherit = true)
             where TAttribute : Attribute {
-            return GetCustomAttributes<TAttribute>(member, inherit).IfExists(collection => Enumerable.FirstOrDefault<TAttribute>(collection));
+
+            return GetCustomAttributes<TAttribute>(member, inherit)?.FirstOrDefault();
         }
     }
 }
