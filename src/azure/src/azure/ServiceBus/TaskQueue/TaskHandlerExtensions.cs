@@ -1,73 +1,30 @@
 using System;
-using System.Reflection;
 using System.Linq;
-using Microsoft.Extensions.DependencyInjection;
+using Aranasoft.Cobweb.Extensions;
 
 namespace Aranasoft.Cobweb.Azure.ServiceBus.TaskQueue {
     public static class TaskHandlerExtensions {
-        private static bool IsTaskHandler(Type handlerType) {
+        public static bool IsTaskHandler(this Type handlerType) {
             return handlerType.IsClass &&
                    !handlerType.IsAbstract &&
-                   handlerType.GetInterfaces().Any(typeInterfaces => typeInterfaces == typeof(ITaskHandler));
+                   handlerType.BaseType?.IsAssignableToGeneric(typeof(TaskHandler<>)) == true;
         }
 
-        public static bool HandlesRequests(this Type handlerType) {
-            var handledRequestsField = handlerType.GetCustomAttribute<TaskHandlesRequestAttribute>();
-            return handledRequestsField != null && handledRequestsField.RequestTypes.Any();
-        }
-
-        public static bool HandlesRequest(this Type handlerType, TaskRequest taskRequest) {
-            var taskRequestName = taskRequest.Name;
-
-            var handledRequestsField = handlerType.GetCustomAttribute<TaskHandlesRequestAttribute>();
-            if (handledRequestsField == null) {
-                return false;
+        public static Type GetHandledRequestType(this Type handlerType) {
+            if (!handlerType.IsAssignableToGeneric(typeof(TaskHandler<>))) {
+                throw new ArgumentException($"Type is not assignable to {typeof(TaskHandler<>).Name}", nameof(handlerType));
             }
 
-            return handledRequestsField.RequestTypes.Any(handledRequest => {
-                var handledName = handledRequest.GetCustomAttribute<TaskRequestNameAttribute>()?.Name;
-                return string.Equals(handledName, taskRequestName);
-            });
+            var handlerBaseType = handlerType.GetGenericParentType(typeof(TaskHandler<>));
+            var requestType = handlerBaseType.GenericTypeArguments.First();
+
+            return requestType;
         }
 
-        public static IServiceCollection AddTaskHandlers(this IServiceCollection services, Assembly assembly) {
-            var currentServices = services;
-            currentServices = AddTaskHandlerServices(currentServices);
-            return AddTaskHandlersFromAssembly(currentServices, assembly);
-        }
+        public static bool HandlesRequest(this Type handlerType, Type taskRequestType) {
+            var handledRequestType = handlerType.GetHandledRequestType();
 
-        public static IServiceCollection AddTaskHandlers(this IServiceCollection services, Assembly[] assemblies) {
-            var currentServices = services;
-            currentServices = AddTaskHandlerServices(currentServices);
-            return assemblies.Aggregate(currentServices, AddTaskHandlersFromAssembly);
-        }
-
-        private static IServiceCollection AddTaskHandlerServices(IServiceCollection services) {
-            var currentServices = services;
-            currentServices = currentServices.AddTransient<ITaskHandlerResolver, TaskHandlerResolver>();
-            return currentServices;
-        }
-
-        private static IServiceCollection AddTaskHandlersFromAssembly(IServiceCollection services, Assembly assembly) {
-            var handlerTypes = assembly.GetTypes().Where(IsTaskHandler).Where(HandlesRequests).ToList();
-
-            var currentServices = services;
-            foreach (var type in handlerTypes) {
-                currentServices = currentServices.AddTransient(type);
-                currentServices = currentServices.AddTransient(typeof(ITaskHandler), type);
-                currentServices = currentServices.AddTransient(typeof(TaskHandler), type);
-            }
-
-            currentServices.AddTransient(provider => handlerTypes
-                                         .ToDictionary(type => type,
-                                                       type => new Lazy<TaskHandler>(
-                                                       () => provider.GetService(type) as TaskHandler)));
-            currentServices.AddTransient(provider => handlerTypes
-                                         .ToDictionary(type => type,
-                                                       type => new Lazy<ITaskHandler>(
-                                                       () => provider.GetService(type) as ITaskHandler)));
-
-            return currentServices;
+            return taskRequestType.IsAssignableTo(handledRequestType);
         }
     }
 }

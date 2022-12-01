@@ -5,7 +5,7 @@ using FluentAssertions;
 using Xunit;
 
 namespace Aranasoft.Cobweb.Azure.Tests.ServiceBus.Extensions {
-    public class GivenAMessage {
+    public class GivenServiceBusMessage {
         [Fact]
         public void ItShouldHaveAFutureEnqueueTime() {
             new ServiceBusMessage().Delay(TimeSpan.FromDays(3))

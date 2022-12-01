@@ -1,21 +1,19 @@
 using System;
 using System.Collections.Generic;
-using Aranasoft.Cobweb.Reflection.Extensions;
+using Newtonsoft.Json;
 
 namespace Aranasoft.Cobweb.Azure.ServiceBus.TaskQueue {
     public class TaskRequest {
-        protected TaskRequest() {
-            var myType = GetType();
-            if (myType != typeof(TaskRequest)) {
-                Name = myType.GetCustomAttribute<TaskRequestNameAttribute>()?.Name ??
-                       throw new TaskRequestException($"Task Request {myType.FullName} is missing a TaskRequestNameAttribute");
-            }
-
-            Parameters = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
-        }
-
-        public string Name { get; set; }
-        public Dictionary<string, string> Parameters { get; set; }
+        /// <summary>
+        /// Property bag to store serialized values
+        /// </summary>
+        public Dictionary<string, string> Parameters { get; set; } =
+            new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
         public Guid TrackingId { get; set; }
+
+        public string ToJson()
+            => JsonConvert.SerializeObject(this,
+                                           Formatting.None,
+                                           new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All });
     }
 }

@@ -1,33 +1,27 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
 namespace Aranasoft.Cobweb.Azure.ServiceBus.TaskQueue {
     public class TaskHandlerResolver : ITaskHandlerResolver {
-        private readonly Dictionary<Type, Lazy<ITaskHandler>> _handlerContainers;
+        private readonly IServiceProvider _serviceProvider;
         private readonly ILogger<TaskHandlerResolver> _log;
 
-        public TaskHandlerResolver(Dictionary<Type, Lazy<ITaskHandler>> handlerContainers, ILogger<TaskHandlerResolver> log) {
-            _handlerContainers = handlerContainers;
+        public TaskHandlerResolver(IServiceProvider serviceProvider, ILogger<TaskHandlerResolver> log) {
+            _serviceProvider = serviceProvider;
             _log = log;
         }
 
-        public IEnumerable<ITaskHandler> ResolveHandlers(TaskRequest taskRequest) {
-            if (_log.IsEnabled(LogLevel.Debug)) {
-                var taskRequestName = taskRequest.Name;
-                var handlerCount = _handlerContainers.Count;
-                _log.LogDebug("Resolving request {TaskRequestName} from {HandlerCount} handlers", taskRequestName, handlerCount);
-            }
+        public IEnumerable<ITaskHandler> ResolveHandlers(Type taskRequestType) {
+            var handlerGenericType = typeof(TaskHandler<>);
+            Type[] requestType = { taskRequestType };
+            var handlerType = handlerGenericType.MakeGenericType(requestType);
 
-            var matchingHandlers = _handlerContainers.Where(container => container.Key.HandlesRequest(taskRequest))
-            .Select(handlerContainer => {
-                var handler = handlerContainer.Value.Value;
-                handler.Request = taskRequest;
-                return handler;
-            });
+            var services = _serviceProvider.GetServices(handlerType).Cast<ITaskHandler>();
 
-            return matchingHandlers;
+            return services;
         }
     }
 }

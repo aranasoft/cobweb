@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Azure.Messaging.ServiceBus;
 
 namespace Aranasoft.Cobweb.Azure.ServiceBus.Extensions {

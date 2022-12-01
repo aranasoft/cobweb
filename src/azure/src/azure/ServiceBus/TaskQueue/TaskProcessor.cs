@@ -17,30 +17,36 @@ namespace Aranasoft.Cobweb.Azure.ServiceBus.TaskQueue {
         }
 
         public async Task ProcessQueueMessageAsync(string message, CancellationToken cancellationToken = default) {
-            var taskRequest = JsonConvert.DeserializeObject<TaskRequest>(message);
-            var taskRequestName = taskRequest.Name;
+            var taskRequest = DeserializeTaskRequest(message);
+            var taskRequestType = taskRequest.GetType();
             var taskRequestTrackingId = taskRequest.TrackingId.ToString("D");
-            _log.LogInformation("Received task {TaskRequestTrackingId} of type {TaskRequestName}", taskRequestTrackingId, taskRequestName);
+            _log.LogInformation("Received task {TaskRequestTrackingId} of type {TaskRequestType}",
+                                taskRequestTrackingId,
+                                taskRequestType);
 
-            var handlers = _taskHandlerResolver.ResolveHandlers(taskRequest).ToList();
+            var handlers = _taskHandlerResolver.ResolveHandlers(taskRequestType).ToList();
 
             if (!handlers.Any()) {
-                _log.LogWarning("No task handlers found for task request {TaskRequestName}; exiting", taskRequestName);
+                _log.LogWarning("No task handlers found for task request {TaskRequestType}; exiting", taskRequestType);
                 return;
             }
 
-            if (!await ExecuteHandlersAsync(handlers, cancellationToken))
-                _log.LogWarning("One or more handler for {TaskRequestName} (Tracking: {TaskRequestTrackingId}) did not complete successfully", taskRequestName, taskRequestTrackingId);
+            if (!await ExecuteHandlersAsync(handlers, taskRequest, cancellationToken))
+                _log.LogWarning("One or more handler for {TaskRequestType} (Tracking: {TaskRequestTrackingId}) did not complete successfully", taskRequestType, taskRequestTrackingId);
         }
 
-        private async Task<bool> ExecuteHandlersAsync(IEnumerable<ITaskHandler> handlers, CancellationToken cancellationToken = default) {
+        public TaskRequest DeserializeTaskRequest(string message) {
+            return JsonConvert.DeserializeObject<TaskRequest>(message, new JsonSerializerSettings{TypeNameHandling = TypeNameHandling.Auto});
+        }
+
+        private async Task<bool> ExecuteHandlersAsync(IEnumerable<ITaskHandler> handlers, TaskRequest taskRequest, CancellationToken cancellationToken = default) {
             var handledSuccessfully = true;
             foreach (var taskHandler in handlers)
                 try {
-                    handledSuccessfully &= await taskHandler.HandleTaskAsync(cancellationToken);
+                    handledSuccessfully &= await taskHandler.HandleTaskAsync(taskRequest, cancellationToken);
                 }
                 catch (Exception ex) {
-                    var requestTrackingId = taskHandler.Request.TrackingId.ToString("D");
+                    var requestTrackingId = taskRequest.TrackingId.ToString("D");
                     var handlerTypeName = taskHandler.GetType().FullName;
                     _log.LogError(
                         ex, "Unexpected Error with message: {RequestTrackingId} in handler {HandlerTypeName}",
