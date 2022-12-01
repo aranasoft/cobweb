@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Aranasoft.Cobweb.Extentions.ObjectExtentions;
+using Aranasoft.Cobweb.Extensions.ObjectExtensions;
 
 namespace Aranasoft.Cobweb.Reflection.Extensions {
     public static class WithMember {

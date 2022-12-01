@@ -1,4 +1,4 @@
-﻿using Aranasoft.Cobweb.Extentions.ObjectExtentions;
+﻿using Aranasoft.Cobweb.Extensions.ObjectExtensions;
 using FluentAssertions;
 using Xunit;
 

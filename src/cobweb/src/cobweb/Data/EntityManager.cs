@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Reflection;
-using Aranasoft.Cobweb.Extentions;
+using Aranasoft.Cobweb.Extensions;
 
 namespace Aranasoft.Cobweb.Data {
     /// <summary>

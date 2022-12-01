@@ -1,5 +1,5 @@
 ﻿using System;
-using Aranasoft.Cobweb.Extentions;
+using Aranasoft.Cobweb.Extensions;
 using FluentAssertions;
 using Xunit;
 

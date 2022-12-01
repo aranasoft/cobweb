@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Linq;
 
+// ReSharper disable once IdentifierTypo
 namespace Aranasoft.Cobweb.Extentions {
+    [Obsolete("Use Aranasoft.Cobweb.Extensions.WithType")]
     public static class WithType {
         /// <summary>
         ///     Identify if a class derives from a specified generic base class.
@@ -9,25 +11,9 @@ namespace Aranasoft.Cobweb.Extentions {
         /// <param name="currentType">The derived type to analyze.</param>
         /// <param name="genericBaseType">The generic base type to check against.</param>
         /// <returns>true if <paramref name="currentType" /> derives from <paramref name="genericBaseType" />, otherwise false.</returns>
+        [Obsolete("Use Aranasoft.Cobweb.Extensions.WithType")]
         public static bool IsAssignableToGeneric(this Type currentType, Type genericBaseType) {
-            if (genericBaseType == null) {
-                throw new ArgumentNullException(nameof(genericBaseType));
-            }
-
-            if (!genericBaseType.IsGenericType) {
-                throw new ArgumentException("Type must be generic", nameof(genericBaseType));
-            }
-
-            if (currentType.IsGenericType && currentType.GetGenericTypeDefinition() == genericBaseType) {
-                return true;
-            }
-
-            if (!genericBaseType.IsInterface) {
-                return currentType.BaseType != null && IsAssignableToGeneric(currentType.BaseType, genericBaseType);
-            }
-
-            return currentType.GetInterfaces()
-                              .Any(interfaceType => IsAssignableToGeneric(interfaceType, genericBaseType));
+            return Extensions.WithType.IsAssignableToGeneric(currentType, genericBaseType);
         }
 
         /// <summary>
@@ -36,12 +22,9 @@ namespace Aranasoft.Cobweb.Extentions {
         /// <param name="currentType">The derived type to analyze.</param>
         /// <param name="baseType">The type to compare with the current type.</param>
         /// <returns>true if <paramref name="currentType" /> derives from <paramref name="baseType" />, otherwise false.</returns>
+        [Obsolete("Use Aranasoft.Cobweb.Extensions.WithType")]
         public static bool IsAssignableTo(this Type currentType, Type baseType) {
-            if (baseType == null) {
-                throw new ArgumentNullException(nameof(baseType));
-            }
-
-            return baseType.IsAssignableFrom(currentType);
+            return Extensions.WithType.IsAssignableTo(currentType, baseType);
         }
 
         /// <summary>
@@ -50,8 +33,9 @@ namespace Aranasoft.Cobweb.Extentions {
         /// <param name="currentType">The derived type to analyze.</param>
         /// <typeparam name="TBase">The type to compare with the current type.</typeparam>
         /// <returns>true if <paramref name="currentType" /> derives from <typeparamref name="TBase" />, otherwise false.</returns>
+        [Obsolete("Use Aranasoft.Cobweb.Extensions.WithType")]
         public static bool IsAssignableTo<TBase>(this Type currentType) {
-            return IsAssignableTo(currentType, typeof(TBase));
+            return Extensions.WithType.IsAssignableTo<TBase>(currentType);
         }
 
         /// <summary>
@@ -60,8 +44,9 @@ namespace Aranasoft.Cobweb.Extentions {
         /// <param name="baseType">The base type to analyze.</param>
         /// <typeparam name="TDerived">The type to compare with the current type.</typeparam>
         /// <returns>true if <typeparamref name="TDerived" /> derives from <paramref name="baseType" />, otherwise false.</returns>
+        [Obsolete("Use Aranasoft.Cobweb.Extensions.WithType")]
         public static bool IsAssignableFrom<TDerived>(this Type baseType) {
-            return IsAssignableTo(typeof(TDerived), baseType);
+            return Extensions.WithType.IsAssignableFrom<TDerived>(baseType);
         }
 
         /// <summary>
@@ -69,50 +54,9 @@ namespace Aranasoft.Cobweb.Extentions {
         /// </summary>
         /// <param name="type">The specified type.</param>
         /// <returns>true if a variable of the specified type can be assigned null, otherwise false</returns>
+        [Obsolete("Use Aranasoft.Cobweb.Extensions.WithType")]
         public static bool CanBeNull(this Type type) {
-            return !type.IsValueType || (Nullable.GetUnderlyingType(type) != null);
-        }
-
-        /// <summary>
-        /// Returns the parent type definition of a matching generic type
-        /// </summary>
-        /// <param name="currentType">The type to analyze</param>
-        /// <param name="genericBaseType">The generic parent type</param>
-        /// <returns>The matching parent type definition</returns>
-        /// <exception cref="ArgumentNullException"></exception>
-        /// <exception cref="ArgumentException"></exception>
-        /// <exception cref="Exception"></exception>
-        public static Type GetGenericParentType(this Type currentType, Type genericBaseType) {
-            while (true) {
-                if (genericBaseType == null) {
-                    throw new ArgumentNullException(nameof(genericBaseType));
-                }
-
-                if (!genericBaseType.IsGenericType) {
-                    throw new ArgumentException("Type must be generic", nameof(genericBaseType));
-                }
-
-                if (!currentType.IsAssignableToGeneric(genericBaseType)) {
-                    throw new ArgumentException($"Type {currentType.FullName} is not assignable to {genericBaseType.FullName}", nameof(genericBaseType));
-                }
-
-                if (currentType.IsGenericType && currentType.GetGenericTypeDefinition() == genericBaseType) {
-                    return currentType;
-                }
-
-                if (!genericBaseType.IsInterface) {
-                    currentType = currentType.BaseType ?? throw new Exception("Unable to find matching parent type definition");
-                    continue;
-                }
-
-                foreach (var @interface in currentType.GetInterfaces()) {
-                    var matchingInterface = GetGenericParentType(@interface, genericBaseType);
-
-                    if (matchingInterface != null) return matchingInterface;
-                }
-
-                throw new Exception("Unable to find matching parent type definition");
-            }
+            return Extensions.WithType.CanBeNull(type);
         }
     }
 }

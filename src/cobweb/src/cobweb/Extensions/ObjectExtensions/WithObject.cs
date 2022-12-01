@@ -1,9 +1,6 @@
 ﻿using System;
 
-// ReSharper disable IdentifierTypo
-namespace Aranasoft.Cobweb.Extentions.ObjectExtentions {
-    // ReSharper restore IdentifierTypo
-    [Obsolete("Use Aranasoft.Cobweb.Extensions.ObjectExtensions.WithObject")]
+namespace Aranasoft.Cobweb.Extensions.ObjectExtensions {
     public static class WithObject {
         /// <summary>
         ///     Returns the result of <paramref name="delegate" /> if <paramref name="object" /> is not null.
@@ -22,12 +19,11 @@ namespace Aranasoft.Cobweb.Extentions.ObjectExtentions {
         ///     The result of the <paramref name="delegate" /> or, if the <paramref name="object" /> is null,
         ///     <paramref name="default" />.
         /// </returns>
-        [Obsolete("Use Aranasoft.Cobweb.Extensions.ObjectExtensions.WithObject")]
         public static TResult IfExists<T, TResult>(this T @object,
                                                    Func<T, TResult> @delegate,
                                                    TResult @default = default(TResult))
             where T : class {
-            return Extensions.ObjectExtensions.WithObject.IfExists(@object, @delegate, @default);
+            return @object != null ? @delegate(@object) : @default;
         }
     }
 }

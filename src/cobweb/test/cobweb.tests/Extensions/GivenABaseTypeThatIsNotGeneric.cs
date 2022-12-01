@@ -1,5 +1,5 @@
 ﻿using System;
-using Aranasoft.Cobweb.Extentions;
+using Aranasoft.Cobweb.Extensions;
 using FluentAssertions;
 using Xunit;
 
@@ -13,7 +13,7 @@ namespace Aranasoft.Cobweb.Tests.Extensions {
 
         public class Animal {}
 
-    
+
         public class GivenANonGenericDerivedType {
             [Fact]
             public void ItShouldIdentifyBaseClassAsAssignableTo() {
