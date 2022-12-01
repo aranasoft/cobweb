@@ -72,5 +72,47 @@ namespace Aranasoft.Cobweb.Extentions {
         public static bool CanBeNull(this Type type) {
             return !type.IsValueType || (Nullable.GetUnderlyingType(type) != null);
         }
+
+        /// <summary>
+        /// Returns the parent type definition of a matching generic type
+        /// </summary>
+        /// <param name="currentType">The type to analyze</param>
+        /// <param name="genericBaseType">The generic parent type</param>
+        /// <returns>The matching parent type definition</returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="ArgumentException"></exception>
+        /// <exception cref="Exception"></exception>
+        public static Type GetGenericParentType(this Type currentType, Type genericBaseType) {
+            while (true) {
+                if (genericBaseType == null) {
+                    throw new ArgumentNullException(nameof(genericBaseType));
+                }
+
+                if (!genericBaseType.IsGenericType) {
+                    throw new ArgumentException("Type must be generic", nameof(genericBaseType));
+                }
+
+                if (!currentType.IsAssignableToGeneric(genericBaseType)) {
+                    throw new ArgumentException($"Type {currentType.FullName} is not assignable to {genericBaseType.FullName}", nameof(genericBaseType));
+                }
+
+                if (currentType.IsGenericType && currentType.GetGenericTypeDefinition() == genericBaseType) {
+                    return currentType;
+                }
+
+                if (!genericBaseType.IsInterface) {
+                    currentType = currentType.BaseType ?? throw new Exception("Unable to find matching parent type definition");
+                    continue;
+                }
+
+                foreach (var @interface in currentType.GetInterfaces()) {
+                    var matchingInterface = GetGenericParentType(@interface, genericBaseType);
+
+                    if (matchingInterface != null) return matchingInterface;
+                }
+
+                throw new Exception("Unable to find matching parent type definition");
+            }
+        }
     }
 }

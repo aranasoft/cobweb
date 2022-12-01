@@ -2,7 +2,7 @@
   <Import Project="..\..\..\..\netfx.props" />
 
   <PropertyGroup>
-    <TargetFrameworks>net452;netcoreapp2.1</TargetFrameworks>
+    <TargetFrameworks>net452;netcoreapp2.1;netcoreapp3.1;net6.0</TargetFrameworks>
     <AssemblyName>Aranasoft.Cobweb.Tests</AssemblyName>
     <RootNamespace>Aranasoft.Cobweb.Tests</RootNamespace>
   </PropertyGroup>
