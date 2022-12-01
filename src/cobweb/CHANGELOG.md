@@ -1,3 +1,22 @@
+<a name="1.5.0"></a>
+# 1.5.0 (2022-12-01)
+
+
+### Bug Fixes
+
+* **typo:** correct misspelled extentions to extensions ([b4f19c2](https://github.com/aranasoft/cobweb/commit/b4f19c284186a16fdd85a09d0e18444778f74169))
+
+
+### Features
+
+* **core:** remove net40 support ([6e210e7](https://github.com/aranasoft/cobweb/commit/6e210e708620db9fc47d4c332fa340a31fac3fbc))
+* **core:** remove netcoreapp2.1 support ([077023b](https://github.com/aranasoft/cobweb/commit/077023b9d316e4c1a4e2724107a670ba6d9c6e49))
+* **extensions:** add GetGenericParentType method to Type extensions ([37991f4](https://github.com/aranasoft/cobweb/commit/37991f4050e80fccf22537c73afbef0c9d34a2cd))
+* **x64:** add x64 compile ([7bc1eec](https://github.com/aranasoft/cobweb/commit/7bc1eecde3bc216208c540be3acca1ea9b4b32fe))
+
+
+
+<a name="1.4.2"></a>
 # 1.4.2 (2019-12-14)
 
 
