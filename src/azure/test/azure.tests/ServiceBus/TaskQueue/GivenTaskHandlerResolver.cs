@@ -2,6 +2,8 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Aranasoft.Cobweb.Azure.ServiceBus.TaskQueue;
+using Azure.Messaging.ServiceBus;
+using Azure.Messaging.ServiceBus.Administration;
 using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging.Abstractions;
@@ -13,7 +15,7 @@ namespace Aranasoft.Cobweb.Azure.Tests.ServiceBus.TaskQueue {
 
         public GivenTaskHandlerResolver() {
             var serviceCollection = new ServiceCollection();
-            serviceCollection.AddTaskQueue();
+            serviceCollection.AddTaskQueue<TestTaskRequestQueue>();
             serviceCollection.AddTaskHandler<TestTaskHandler, TestTaskRequest>();
             var serviceProvider = serviceCollection.BuildServiceProvider();
 
@@ -38,6 +40,13 @@ namespace Aranasoft.Cobweb.Azure.Tests.ServiceBus.TaskQueue {
             CancellationToken cancellationToken = default) {
                 throw new NotImplementedException();
             }
+        }
+
+        public class TestTaskRequestQueue : TaskRequestQueue {
+            public TestTaskRequestQueue(
+            ServiceBusAdministrationClient managementClient,
+            ServiceBusClient queueClient,
+            string taskQueueName) : base(managementClient, queueClient, taskQueueName) {}
         }
 
         public class TestTaskRequest : TaskRequest {}

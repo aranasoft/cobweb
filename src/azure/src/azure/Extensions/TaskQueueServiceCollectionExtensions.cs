@@ -16,11 +16,15 @@ namespace Microsoft.Extensions.DependencyInjection {
         /// </summary>
         /// <param name="serviceCollection">The <see cref="IServiceCollection" /> to add services to.</param>
         /// <param name="assemblies">The assemblies to scan for types deriving from <see cref="TaskHandler{TTaskRequest}" />.</param>
+        /// <typeparam name="TTaskRequestQueue">Type of the <see cref="TaskRequestQueue" /> implementation to register with the <see cref="IServiceCollection" />.</typeparam>
         /// <returns>The same service collection so that multiple calls can be chained.</returns>
-        public static IServiceCollection AddTaskQueue(
+        public static IServiceCollection AddTaskQueue<TTaskRequestQueue>(
         this IServiceCollection serviceCollection,
-        params Assembly[] assemblies) {
-            serviceCollection = serviceCollection.AddTaskQueueExecutionServices();
+        params Assembly[] assemblies) where TTaskRequestQueue : TaskRequestQueue {
+            serviceCollection = serviceCollection
+            .AddTaskQueueExecutionServices()
+            .AddSingleton<ITaskRequestQueue, TTaskRequestQueue>();
+
             if (assemblies?.Any() == true)
                 serviceCollection = serviceCollection.AddTaskHandlersFromAssemblies(assemblies);
             return serviceCollection;
