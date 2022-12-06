@@ -2,16 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 
 namespace Aranasoft.Cobweb.Azure.ServiceBus.TaskQueue {
     public class TaskHandlerResolver : ITaskHandlerResolver {
         private readonly IServiceProvider _serviceProvider;
-        private readonly ILogger<TaskHandlerResolver> _log;
 
-        public TaskHandlerResolver(IServiceProvider serviceProvider, ILogger<TaskHandlerResolver> log) {
+        public TaskHandlerResolver(IServiceProvider serviceProvider) {
             _serviceProvider = serviceProvider;
-            _log = log;
         }
 
         public IEnumerable<ITaskHandler> ResolveHandlers(Type taskRequestType) {

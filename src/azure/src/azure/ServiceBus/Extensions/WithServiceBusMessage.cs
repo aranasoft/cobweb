@@ -3,7 +3,7 @@ using System.Linq;
 using Azure.Messaging.ServiceBus;
 
 namespace Aranasoft.Cobweb.Azure.ServiceBus.Extensions {
-    public static class WithMessage {
+    public static class WithServiceBusMessage {
         public static ServiceBusMessage Delay(this ServiceBusMessage message, TimeSpan delay) {
             if (delay <= TimeSpan.Zero) return message;
 

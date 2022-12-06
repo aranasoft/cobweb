@@ -7,17 +7,21 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
 namespace Aranasoft.Cobweb.Azure.ServiceBus.TaskQueue {
-    public class TaskProcessor : ITaskProcessor {
-        private readonly ILogger<TaskProcessor> _log;
+    public class TaskCoordinator : ITaskCoordinator {
+        private readonly ILogger<TaskCoordinator> _log;
         private readonly ITaskHandlerResolver _taskHandlerResolver;
 
-        public TaskProcessor(ITaskHandlerResolver taskHandlerResolver, ILogger<TaskProcessor> log) {
+        public TaskCoordinator(ITaskHandlerResolver taskHandlerResolver, ILogger<TaskCoordinator> log) {
             _taskHandlerResolver = taskHandlerResolver;
             _log = log;
         }
 
-        public async Task ProcessQueueMessageAsync(string message, CancellationToken cancellationToken = default) {
+        public Task ProcessQueueMessageAsync(string message, CancellationToken cancellationToken = default) {
             var taskRequest = DeserializeTaskRequest(message);
+            return ProcessTaskAsync(taskRequest, cancellationToken);
+        }
+
+        public async Task ProcessTaskAsync(TaskRequest taskRequest, CancellationToken cancellationToken = default) {
             var taskRequestType = taskRequest.GetType();
             var taskRequestTrackingId = taskRequest.TrackingId.ToString("D");
             _log.LogInformation("Received task {TaskRequestTrackingId} of type {TaskRequestType}",
@@ -32,7 +36,9 @@ namespace Aranasoft.Cobweb.Azure.ServiceBus.TaskQueue {
             }
 
             if (!await ExecuteHandlersAsync(handlers, taskRequest, cancellationToken))
-                _log.LogWarning("One or more handler for {TaskRequestType} (Tracking: {TaskRequestTrackingId}) did not complete successfully", taskRequestType, taskRequestTrackingId);
+                _log.LogWarning("One or more handler for {TaskRequestType} (Tracking: {TaskRequestTrackingId}) did not complete successfully",
+                                taskRequestType,
+                                taskRequestTrackingId);
         }
 
         public TaskRequest DeserializeTaskRequest(string message) {

@@ -6,11 +6,11 @@ using Newtonsoft.Json;
 using Xunit;
 
 namespace Aranasoft.Cobweb.Azure.Tests.ServiceBus.TaskQueue {
-    public class GivenTaskProcessor {
-        private readonly TaskProcessor _taskProcessor;
+    public class GivenTaskCoordinator {
+        private readonly TaskCoordinator _taskCoordinator;
 
-        public GivenTaskProcessor() {
-            _taskProcessor = new TaskProcessor(null, new NullLogger<TaskProcessor>());
+        public GivenTaskCoordinator() {
+            _taskCoordinator = new TaskCoordinator(null, new NullLogger<TaskCoordinator>());
         }
 
         [Fact]
@@ -18,7 +18,7 @@ namespace Aranasoft.Cobweb.Azure.Tests.ServiceBus.TaskQueue {
             var request = new TestTaskRequest(Guid.NewGuid(), 5);
             var message = request.ToJson();
 
-            var deserializedRequest = _taskProcessor.DeserializeTaskRequest(message);
+            var deserializedRequest = _taskCoordinator.DeserializeTaskRequest(message);
 
             deserializedRequest.Should().BeOfType<TestTaskRequest>().Which.TrackingId.Should().Be(request.TrackingId);
             (deserializedRequest as TestTaskRequest)?.GetPayload().Should().Be(5);

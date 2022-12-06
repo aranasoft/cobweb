@@ -4,6 +4,8 @@ using System.Linq;
 using System.Reflection;
 using Aranasoft.Cobweb.Azure.ServiceBus.TaskQueue;
 using Aranasoft.Cobweb.Extensions;
+using Azure.Core.Extensions;
+using Azure.Messaging.ServiceBus;
 
 // ReSharper disable once CheckNamespace
 namespace Microsoft.Extensions.DependencyInjection {
@@ -12,27 +14,52 @@ namespace Microsoft.Extensions.DependencyInjection {
     /// </summary>
     public static class TaskQueueServiceCollectionExtensions {
         /// <summary>
-        ///     Registers the task queue services and handlers in the <see cref="IServiceCollection" />.
+        ///   Registers a <see cref="TaskRequestQueue "/> instance with the provided <paramref name="connectionString"/>.
+        /// </summary>
+        public static IAzureClientBuilder<TaskRequestQueue, TaskRequestQueueOptions> AddTaskQueue<TBuilder>(this TBuilder builder, string connectionString)
+        where TBuilder : IAzureClientFactoryBuilder
+        {
+            return builder.RegisterClientFactory<TaskRequestQueue, TaskRequestQueueOptions>(options => new TaskRequestQueue(new ServiceBusClient(connectionString, options), options.QueueName));
+        }
+
+        /// <summary>
+        ///   Registers a <see cref="TaskRequestQueue"/> instance with the provided <paramref name="fullyQualifiedNamespace"/>.
+        /// </summary>
+        public static IAzureClientBuilder<TaskRequestQueue, TaskRequestQueueOptions> AddTaskQueueWithNamespace<TBuilder>(this TBuilder builder, string fullyQualifiedNamespace)
+        where TBuilder : IAzureClientFactoryBuilderWithCredential
+        {
+            return builder.RegisterClientFactory<TaskRequestQueue, TaskRequestQueueOptions>((options, token) => new TaskRequestQueue(new ServiceBusClient(fullyQualifiedNamespace, token, options), options.QueueName));
+        }
+
+        /// <summary>
+        ///   Registers a <see cref="TaskRequestQueue"/> instance with connection options loaded from the provided <paramref name="configuration"/> instance.
+        /// </summary>
+        public static IAzureClientBuilder<TaskRequestQueue, TaskRequestQueueOptions> AddTaskQueue<TBuilder, TConfiguration>(this TBuilder builder, TConfiguration configuration)
+        where TBuilder : IAzureClientFactoryBuilderWithConfiguration<TConfiguration>
+        {
+            return builder.RegisterClientFactory<TaskRequestQueue, TaskRequestQueueOptions>(configuration);
+        }
+
+        /// <summary>
+        ///     Registers the task queue processing services and handlers in the <see cref="IServiceCollection" />.
         /// </summary>
         /// <param name="serviceCollection">The <see cref="IServiceCollection" /> to add services to.</param>
         /// <param name="assemblies">The assemblies to scan for types deriving from <see cref="TaskHandler{TTaskRequest}" />.</param>
-        /// <typeparam name="TTaskRequestQueue">Type of the <see cref="TaskRequestQueue" /> implementation to register with the <see cref="IServiceCollection" />.</typeparam>
         /// <returns>The same service collection so that multiple calls can be chained.</returns>
-        public static IServiceCollection AddTaskQueue<TTaskRequestQueue>(
+        public static IServiceCollection AddTaskQueueProcessing(
         this IServiceCollection serviceCollection,
-        params Assembly[] assemblies) where TTaskRequestQueue : TaskRequestQueue {
+        params Assembly[] assemblies) {
             serviceCollection = serviceCollection
-            .AddTaskQueueExecutionServices()
-            .AddSingleton<ITaskRequestQueue, TTaskRequestQueue>();
+            .AddTaskQueueProcessorServices();
 
             if (assemblies?.Any() == true)
                 serviceCollection = serviceCollection.AddTaskHandlersFromAssemblies(assemblies);
             return serviceCollection;
         }
 
-        private static IServiceCollection AddTaskQueueExecutionServices(this IServiceCollection serviceCollection) =>
+        private static IServiceCollection AddTaskQueueProcessorServices(this IServiceCollection serviceCollection) =>
             serviceCollection.AddTransient<ITaskHandlerResolver, TaskHandlerResolver>()
-            .AddTransient<ITaskProcessor, TaskProcessor>();
+            .AddTransient<ITaskCoordinator, TaskCoordinator>();
 
         private static IServiceCollection AddTaskHandlersFromAssemblies(
         this IServiceCollection serviceCollection,
