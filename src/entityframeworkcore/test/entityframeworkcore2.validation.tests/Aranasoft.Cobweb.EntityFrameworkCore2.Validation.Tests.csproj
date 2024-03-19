@@ -1,8 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <Import Project="..\..\..\..\netfx.props" />
 
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp3.1</TargetFrameworks>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <AssemblyName>Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests</AssemblyName>
     <RootNamespace>Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests</RootNamespace>
     <Platforms>AnyCPU;x64</Platforms>
