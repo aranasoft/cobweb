@@ -1,3 +1,13 @@
+# 1.60.2 (2024-03-19)
+
+
+### Features
+
+* **efcore:** add support for unique indexes, column default values ([a28d8ec](https://github.com/aranasoft/cobweb/commit/a28d8ecbf7d58a18f4f6715757e6f4045ae7b9b2))
+* **efcore:** improve documentation of all versions ([927922f](https://github.com/aranasoft/cobweb/commit/927922faf7fa82c5d0b77ab49a3c92d66f77decb))
+
+
+
 # 1.60.1 (2022-06-17)
 
 
@@ -13,6 +23,16 @@
 ### Features
 
 * **efcore6:** add support for efcore v6 ([5042133](https://github.com/aranasoft/cobweb/commit/50421337eccae886d724194870ae49522589b656))
+
+
+
+# 1.50.5 (2024-03-19)
+
+
+### Features
+
+* **efcore:** add support for unique indexes, column default values ([a28d8ec](https://github.com/aranasoft/cobweb/commit/a28d8ecbf7d58a18f4f6715757e6f4045ae7b9b2))
+* **efcore:** improve documentation of all versions ([927922f](https://github.com/aranasoft/cobweb/commit/927922faf7fa82c5d0b77ab49a3c92d66f77decb))
 
 
 
@@ -49,6 +69,16 @@
 ### Features
 
 * **efcore5:** add support for efcore v5 ([4b4a2dd](https://github.com/aranasoft/cobweb/commit/4b4a2dd9d3df7251afec48afc026315ac437defa))
+
+
+
+# 1.30.7 (2024-03-19)
+
+
+### Features
+
+* **efcore:** add support for unique indexes, column default values ([a28d8ec](https://github.com/aranasoft/cobweb/commit/a28d8ecbf7d58a18f4f6715757e6f4045ae7b9b2))
+* **efcore:** improve documentation of all versions ([927922f](https://github.com/aranasoft/cobweb/commit/927922faf7fa82c5d0b77ab49a3c92d66f77decb))
 
 
 
@@ -111,6 +141,15 @@
 ### Features
 
 * **efcore3:** add support for efcore v3 ([5b9bdf0](https://github.com/aranasoft/cobweb/commit/5b9bdf0be1d059a2cf7a2408bc146cff5cb1bae1))
+
+
+
+# 1.20.7 (2024-03-19)
+
+
+### Features
+
+* **efcore:** improve documentation of all versions ([927922f](https://github.com/aranasoft/cobweb/commit/927922faf7fa82c5d0b77ab49a3c92d66f77decb))
 
 
 
