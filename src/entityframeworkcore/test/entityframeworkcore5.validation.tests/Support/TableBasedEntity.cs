@@ -16,6 +16,9 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support {
         [Column("NumberValue")]
         public decimal Number { get; set; }
 
+        [Column("DefaultedNumberValue")]
+        public int DefaultedNumber { get; set; }
+
         [Required]
         public IdentityRole<int> Role { get; set; }
 

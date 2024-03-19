@@ -8,12 +8,10 @@ using Xunit;
 namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.SqlServer {
     [OperatingSystemRequirement(OperatingSystems.Windows)]
     public class
-        WhenValidatingSchemaGivenIncorrectColumnNullability : IClassFixture<
-            SqlServerMigrationsFixture<MigrationsWithIncorrectColumnNullability>> {
-        private readonly SqlServerMigrationsFixture<MigrationsWithIncorrectColumnNullability> _fixture;
+        WhenValidatingSchemaGivenIncorrectIndexUniqueness : IClassFixture<SqlServerMigrationsFixture<MigrationsWithIncorrectIndexUniqueness>> {
+        private readonly SqlServerMigrationsFixture<MigrationsWithIncorrectIndexUniqueness> _fixture;
 
-        public WhenValidatingSchemaGivenIncorrectColumnNullability(
-            SqlServerMigrationsFixture<MigrationsWithIncorrectColumnNullability> fixture) {
+        public WhenValidatingSchemaGivenIncorrectIndexUniqueness(SqlServerMigrationsFixture<MigrationsWithIncorrectIndexUniqueness> fixture) {
             _fixture = fixture;
         }
 
@@ -74,43 +72,6 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.SqlServer {
         }
 
         [ConditionalFact]
-        public void ItShouldNotHaveColumnTypeMismatchErrors() {
-            var applicationDbContext = _fixture.GetContext();
-            Action validatingSchema = () => applicationDbContext.ValidateSchema();
-            validatingSchema.Should()
-                            .Throw<SchemaValidationException>()
-                            .Which.ValidationErrors
-                            .Should()
-                            .NotContain(error => error.StartsWith("Column type mismatch",
-                                                                  StringComparison.InvariantCultureIgnoreCase));
-        }
-
-        [ConditionalFact]
-        public void ItShouldOnlyHaveColumnNullabilityMismatchErrors() {
-            var context = _fixture.GetContext();
-            Action validatingSchema = () =>
-                context.ValidateSchema(new SchemaValidationOptions { ValidateForeignKeys = false });
-            validatingSchema.Should()
-                            .Throw<SchemaValidationException>()
-                            .Which.ValidationErrors
-                            .Should()
-                            .OnlyContain(error => error.StartsWith("Column nullability mismatch",
-                                                                   StringComparison.InvariantCultureIgnoreCase));
-        }
-
-        [ConditionalFact]
-        public void ItShouldNotHaveColumnDefaultValueMismatchErrors() {
-            var applicationDbContext = _fixture.GetContext();
-            Action validatingSchema = () => applicationDbContext.ValidateSchema();
-            validatingSchema.Should()
-                            .Throw<SchemaValidationException>()
-                            .Which.ValidationErrors
-                            .Should()
-                            .NotContain(error => error.StartsWith("Column default value mismatch",
-                                                                  StringComparison.InvariantCultureIgnoreCase));
-        }
-
-        [ConditionalFact]
         public void ItShouldNotHaveMissingIndexErrors() {
             var applicationDbContext = _fixture.GetContext();
             Action validatingSchema = () => applicationDbContext.ValidateSchema();
@@ -120,6 +81,19 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.SqlServer {
                             .Should()
                             .NotContain(
                                 error => error.StartsWith("Missing Index",
+                                                          StringComparison.InvariantCultureIgnoreCase));
+        }
+
+        [ConditionalFact]
+        public void ItShouldOnlyHaveIndexUniqueMismatchErrors() {
+            var applicationDbContext = _fixture.GetContext();
+            Action validatingSchema = () => applicationDbContext.ValidateSchema();
+            validatingSchema.Should()
+                            .Throw<SchemaValidationException>()
+                            .Which.ValidationErrors
+                            .Should()
+                            .OnlyContain(
+                                error => error.StartsWith("Index uniqueness mismatch",
                                                           StringComparison.InvariantCultureIgnoreCase));
         }
 

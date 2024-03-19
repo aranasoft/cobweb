@@ -90,6 +90,23 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation {
                         valErrors.Add(
                             $"Column nullability mismatch in {persistedType.GetTableName()} for column {persistedColumn.GetColumnName(StoreObjectIdentifier.Table(persistedType.GetTableName(), null))}. Found: {(dbColumn.IsNullable ? "Nullable" : "NotNullable")}, Expected {(persistedColumn.IsNullable ? "Nullable" : "NotNullable")}");
                     }
+
+                    if (persistedColumn.FindAnnotation(RelationalAnnotationNames.DefaultValue) != null || persistedColumn.GetDefaultValueSql() != null || dbColumn.DefaultValueSql != null) {
+                        if (persistedColumn.FindAnnotation(RelationalAnnotationNames.DefaultValue) != null && persistedColumn.FindAnnotation(RelationalAnnotationNames.DefaultValue).Value.ToString() != dbColumn.DefaultValueSql) {
+                            valErrors.Add(
+                                $"Column default value mismatch in {persistedType.GetTableName()} for column {persistedColumn.GetColumnName(StoreObjectIdentifier.Table(persistedType.GetTableName(), null))}. Found: {dbColumn.DefaultValueSql ?? "<none>"}, Expected: {persistedColumn.FindAnnotation(RelationalAnnotationNames.DefaultValue).Value.ToString() ?? "<none>"}");
+                        }
+
+                        if (persistedColumn.FindAnnotation(RelationalAnnotationNames.DefaultValueSql) != null && persistedColumn.FindAnnotation(RelationalAnnotationNames.DefaultValueSql).Value.ToString() != dbColumn.DefaultValueSql) {
+                            valErrors.Add(
+                                $"Column default value mismatch in {persistedType.GetTableName()} for column {persistedColumn.GetColumnName(StoreObjectIdentifier.Table(persistedType.GetTableName(), null))}. Found: {dbColumn.DefaultValueSql ?? "<none>"}, Expected: {persistedColumn.FindAnnotation(RelationalAnnotationNames.DefaultValueSql).Value.ToString() ?? "<none>"}");
+                        }
+
+                        if (persistedColumn.FindAnnotation(RelationalAnnotationNames.DefaultValue) == null && persistedColumn.GetDefaultValueSql() == null && dbColumn.DefaultValueSql != null) {
+                            valErrors.Add(
+                                $"Column default value mismatch in {persistedType.GetTableName()} for column {persistedColumn.GetColumnName(StoreObjectIdentifier.Table(persistedType.GetTableName(), null))}. Found: {dbColumn.DefaultValueSql ?? "<none>"}, Expected: <none>");
+                        }
+                    }
                 }
 
                 if (persistedType.FindAnnotation(RelationalAnnotationNames.ViewName)?.Value != null) {
@@ -125,6 +142,12 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation {
                 if (dbIndex == null) {
                     validationErrors.Add(
                         $"Missing index: {index.GetDatabaseName()} on {persistedType.GetTableName()}");
+                    continue;
+                }
+
+                if (index.IsUnique != dbIndex.IsUnique) {
+                    validationErrors.Add(
+                        $"Index uniqueness mismatch: {index.GetDatabaseName()} on {persistedType.GetTableName()}. Found: {(dbIndex.IsUnique ? "Unique" : "Non-Unique")}, Expected: {(index.IsUnique ? "Unique" : "Non-Unique")}");
                 }
             }
 
@@ -142,6 +165,7 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation {
                 if (databaseForeignKey == null) {
                     validationErrors.Add(
                         $"Missing Foreign Key: {foreignKey.GetConstraintName()} on {persistedType.GetTableName()}");
+                    continue;
                 }
             }
 

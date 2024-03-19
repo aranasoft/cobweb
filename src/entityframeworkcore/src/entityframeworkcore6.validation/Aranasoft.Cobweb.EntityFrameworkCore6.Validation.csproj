@@ -1,11 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <Import Project="..\..\..\..\netfx.props" />
 
   <PropertyGroup>
-    <TargetFrameworks>net6.0</TargetFrameworks>
+    <TargetFramework>net6.0</TargetFramework>
     <AssemblyName>Aranasoft.Cobweb.EntityFrameworkCore.Validation</AssemblyName>
     <RootNamespace>Aranasoft.Cobweb.EntityFrameworkCore.Validation</RootNamespace>
-    <VersionPrefix>1.60.1</VersionPrefix>
+    <VersionPrefix>1.60.2</VersionPrefix>
     <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 

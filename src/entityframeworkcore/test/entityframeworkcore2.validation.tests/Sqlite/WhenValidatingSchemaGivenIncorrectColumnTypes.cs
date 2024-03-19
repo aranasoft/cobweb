@@ -103,6 +103,19 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Sqlite {
         }
 
         [Fact]
+        public void ItShouldNotHaveColumnDefaultValueMismatchErrors() {
+            var context = _fixture.GetContext();
+            Action validatingSchema = () =>
+                context.ValidateSchema(new SchemaValidationOptions { ValidateForeignKeys = false });
+            validatingSchema.Should()
+                            .Throw<SchemaValidationException>()
+                            .Which.ValidationErrors
+                            .Should()
+                            .NotContain(error => error.StartsWith("Column default value mismatch",
+                                                                  StringComparison.InvariantCultureIgnoreCase));
+        }
+
+        [Fact]
         public void ItShouldNotHaveMissingIndexErrors() {
             var context = _fixture.GetContext();
             Action validatingSchema = () =>

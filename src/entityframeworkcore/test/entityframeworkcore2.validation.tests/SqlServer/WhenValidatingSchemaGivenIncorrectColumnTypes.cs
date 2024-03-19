@@ -99,6 +99,18 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.SqlServer {
         }
 
         [ConditionalFact]
+        public void ItShouldNotHaveColumnDefaultValueMismatchErrors() {
+            var applicationDbContext = _fixture.GetContext();
+            Action validatingSchema = () => applicationDbContext.ValidateSchema();
+            validatingSchema.Should()
+                            .Throw<SchemaValidationException>()
+                            .Which.ValidationErrors
+                            .Should()
+                            .NotContain(error => error.StartsWith("Column default value mismatch",
+                                                                  StringComparison.InvariantCultureIgnoreCase));
+        }
+
+        [ConditionalFact]
         public void ItShouldNotHaveMissingIndexErrors() {
             var applicationDbContext = _fixture.GetContext();
             Action validatingSchema = () => applicationDbContext.ValidateSchema();

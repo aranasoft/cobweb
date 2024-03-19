@@ -1,33 +1,33 @@
 using System;
 using Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.Migrations;
-using Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.SqlServer;
-using Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.XUnit;
+using Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.Sqlite;
 using FluentAssertions;
 using Xunit;
 
-namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.SqlServer {
-    [OperatingSystemRequirement(OperatingSystems.Windows)]
+namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Sqlite {
     public class
-        WhenValidatingSchemaGivenIncorrectColumnNullability : IClassFixture<
-            SqlServerMigrationsFixture<MigrationsWithIncorrectColumnNullability>> {
-        private readonly SqlServerMigrationsFixture<MigrationsWithIncorrectColumnNullability> _fixture;
+        WhenValidatingSchemaGivenIncorrectColumnDefaults : IClassFixture<
+            SqliteMigrationsFixture<MigrationsWithIncorrectColumnDefaults>> {
+        private readonly SqliteMigrationsFixture<MigrationsWithIncorrectColumnDefaults> _fixture;
 
-        public WhenValidatingSchemaGivenIncorrectColumnNullability(
-            SqlServerMigrationsFixture<MigrationsWithIncorrectColumnNullability> fixture) {
+        public WhenValidatingSchemaGivenIncorrectColumnDefaults(
+            SqliteMigrationsFixture<MigrationsWithIncorrectColumnDefaults> fixture) {
             _fixture = fixture;
         }
 
-        [ConditionalFact]
+        [Fact]
         public void ItShouldThrowValidationException() {
-            var applicationDbContext = _fixture.GetContext();
-            Action validatingSchema = () => applicationDbContext.ValidateSchema();
+            var context = _fixture.GetContext();
+            Action validatingSchema = () =>
+                context.ValidateSchema(new SchemaValidationOptions { ValidateForeignKeys = false });
             validatingSchema.Should().ThrowExactly<SchemaValidationException>();
         }
 
-        [ConditionalFact]
+        [Fact]
         public void ItShouldHaveValidationErrors() {
-            var applicationDbContext = _fixture.GetContext();
-            Action validatingSchema = () => applicationDbContext.ValidateSchema();
+            var context = _fixture.GetContext();
+            Action validatingSchema = () =>
+                context.ValidateSchema(new SchemaValidationOptions { ValidateForeignKeys = false });
             validatingSchema.Should()
                             .Throw<SchemaValidationException>()
                             .Which.ValidationErrors
@@ -35,10 +35,11 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.SqlServer {
                             .NotBeEmpty();
         }
 
-        [ConditionalFact]
+        [Fact]
         public void ItShouldNotHaveMissingTableErrors() {
-            var applicationDbContext = _fixture.GetContext();
-            Action validatingSchema = () => applicationDbContext.ValidateSchema();
+            var context = _fixture.GetContext();
+            Action validatingSchema = () =>
+                context.ValidateSchema(new SchemaValidationOptions { ValidateForeignKeys = false });
             validatingSchema.Should()
                             .Throw<SchemaValidationException>()
                             .Which.ValidationErrors
@@ -48,10 +49,11 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.SqlServer {
                                                           StringComparison.InvariantCultureIgnoreCase));
         }
 
-        [ConditionalFact]
+        [Fact]
         public void ItShouldNotHaveMissingViewErrors() {
-            var applicationDbContext = _fixture.GetContext();
-            Action validatingSchema = () => applicationDbContext.ValidateSchema();
+            var context = _fixture.GetContext();
+            Action validatingSchema = () =>
+                context.ValidateSchema(new SchemaValidationOptions { ValidateForeignKeys = false });
             validatingSchema.Should()
                             .Throw<SchemaValidationException>()
                             .Which.ValidationErrors
@@ -60,10 +62,11 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.SqlServer {
                                 error => error.StartsWith("Missing View", StringComparison.InvariantCultureIgnoreCase));
         }
 
-        [ConditionalFact]
+        [Fact]
         public void ItShouldNotHaveMissingColumnErrors() {
-            var applicationDbContext = _fixture.GetContext();
-            Action validatingSchema = () => applicationDbContext.ValidateSchema();
+            var context = _fixture.GetContext();
+            Action validatingSchema = () =>
+                context.ValidateSchema(new SchemaValidationOptions { ValidateForeignKeys = false });
             validatingSchema.Should()
                             .Throw<SchemaValidationException>()
                             .Which.ValidationErrors
@@ -73,10 +76,11 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.SqlServer {
                                                           StringComparison.InvariantCultureIgnoreCase));
         }
 
-        [ConditionalFact]
+        [Fact]
         public void ItShouldNotHaveColumnTypeMismatchErrors() {
-            var applicationDbContext = _fixture.GetContext();
-            Action validatingSchema = () => applicationDbContext.ValidateSchema();
+            var context = _fixture.GetContext();
+            Action validatingSchema = () =>
+                context.ValidateSchema(new SchemaValidationOptions { ValidateForeignKeys = false });
             validatingSchema.Should()
                             .Throw<SchemaValidationException>()
                             .Which.ValidationErrors
@@ -85,8 +89,8 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.SqlServer {
                                                                   StringComparison.InvariantCultureIgnoreCase));
         }
 
-        [ConditionalFact]
-        public void ItShouldOnlyHaveColumnNullabilityMismatchErrors() {
+        [Fact]
+        public void ItShouldNotHaveColumnNullabilityMismatchErrors() {
             var context = _fixture.GetContext();
             Action validatingSchema = () =>
                 context.ValidateSchema(new SchemaValidationOptions { ValidateForeignKeys = false });
@@ -94,26 +98,28 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.SqlServer {
                             .Throw<SchemaValidationException>()
                             .Which.ValidationErrors
                             .Should()
-                            .OnlyContain(error => error.StartsWith("Column nullability mismatch",
-                                                                   StringComparison.InvariantCultureIgnoreCase));
+                            .NotContain(error => error.StartsWith("Column nullability mismatch",
+                                                                  StringComparison.InvariantCultureIgnoreCase));
         }
 
-        [ConditionalFact]
-        public void ItShouldNotHaveColumnDefaultValueMismatchErrors() {
-            var applicationDbContext = _fixture.GetContext();
-            Action validatingSchema = () => applicationDbContext.ValidateSchema();
+        [Fact]
+        public void ItShouldOnlyHaveColumnDefaultValueMismatchErrors() {
+            var context = _fixture.GetContext();
+            Action validatingSchema = () =>
+                context.ValidateSchema(new SchemaValidationOptions { ValidateForeignKeys = false });
             validatingSchema.Should()
                             .Throw<SchemaValidationException>()
                             .Which.ValidationErrors
                             .Should()
-                            .NotContain(error => error.StartsWith("Column default value mismatch",
-                                                                  StringComparison.InvariantCultureIgnoreCase));
+                            .OnlyContain(error => error.StartsWith("Column default value mismatch",
+                                                                   StringComparison.InvariantCultureIgnoreCase));
         }
 
-        [ConditionalFact]
+        [Fact]
         public void ItShouldNotHaveMissingIndexErrors() {
-            var applicationDbContext = _fixture.GetContext();
-            Action validatingSchema = () => applicationDbContext.ValidateSchema();
+            var context = _fixture.GetContext();
+            Action validatingSchema = () =>
+                context.ValidateSchema(new SchemaValidationOptions { ValidateForeignKeys = false });
             validatingSchema.Should()
                             .Throw<SchemaValidationException>()
                             .Which.ValidationErrors
@@ -123,10 +129,11 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.SqlServer {
                                                           StringComparison.InvariantCultureIgnoreCase));
         }
 
-        [ConditionalFact]
+        [Fact]
         public void ItShouldNotHaveMissingForeignKeyErrors() {
-            var applicationDbContext = _fixture.GetContext();
-            Action validatingSchema = () => applicationDbContext.ValidateSchema();
+            var context = _fixture.GetContext();
+            Action validatingSchema = () =>
+                context.ValidateSchema(new SchemaValidationOptions { ValidateForeignKeys = false });
             validatingSchema.Should()
                             .Throw<SchemaValidationException>()
                             .Which.ValidationErrors

@@ -133,6 +133,7 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.Migratio
                                       col => col.AsInt32().NotNullable().PrimaryKey("PK_TableBasedEntity"))
                           .WithColumn("Field", col => col.AsString(256).Nullable())
                           .WithColumn("NumberValue", col => col.AsString(20000).NotNullable())
+                          .WithColumn("DefaultedNumberValue", col => col.AsInt32().NotNullable().WithDefaultValue(900))
                           .WithColumn("RoleId",
                                       col => col.AsInt32()
                                                 .NotNullable()
@@ -150,6 +151,7 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.Migratio
                                       col => col.AsInt32().NotNullable().PrimaryKey("PK_TableBasedEntity"))
                           .WithColumn("Field", col => col.AsString(256).Nullable())
                           .WithColumn("NumberValue", col => col.AsDecimal(18, 2).NotNullable())
+                          .WithColumn("DefaultedNumberValue", col => col.AsInt32().NotNullable().WithDefaultValue(900))
                           .WithColumn("RoleId",
                                       col => col.AsInt32()
                                                 .NotNullable()

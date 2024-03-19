@@ -91,6 +91,23 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation {
                         valErrors.Add(
                             $"Column nullability mismatch in {persistedType.GetTableName()} for column {persistedColumn.GetColumnName(StoreObjectIdentifier.Table(persistedType.GetTableName(), null))}. Found: {(dbColumn.IsNullable ? "Nullable" : "NotNullable")}, Expected {(persistedColumn.IsNullable ? "Nullable" : "NotNullable")}");
                     }
+
+                    if (persistedColumn.GetDefaultValue() != null || persistedColumn.GetDefaultValueSql() != null || dbColumn.DefaultValueSql != null) {
+                        if (persistedColumn.GetDefaultValue() != null && persistedColumn.GetDefaultValue()?.ToString() != dbColumn.DefaultValueSql) {
+                            valErrors.Add(
+                                $"Column default value mismatch in {persistedType.GetTableName()} for column {persistedColumn.GetColumnName(StoreObjectIdentifier.Table(persistedType.GetTableName(), null))}. Found: {dbColumn.DefaultValueSql ?? "<none>"}, Expected: {persistedColumn.GetDefaultValue() ?? "<none>"}");
+                        }
+
+                        if (persistedColumn.GetDefaultValueSql() != null && persistedColumn.GetDefaultValueSql() != dbColumn.DefaultValueSql) {
+                            valErrors.Add(
+                                $"Column default value mismatch in {persistedType.GetTableName()} for column {persistedColumn.GetColumnName(StoreObjectIdentifier.Table(persistedType.GetTableName(), null))}. Found: {dbColumn.DefaultValueSql ?? "<none>"}, Expected: {persistedColumn.GetDefaultValueSql() ?? "<none>"}");
+                        }
+
+                        if (persistedColumn.GetDefaultValue() == null && persistedColumn.GetDefaultValueSql() == null && dbColumn.DefaultValueSql != null) {
+                            valErrors.Add(
+                                $"Column default value mismatch in {persistedType.GetTableName()} for column {persistedColumn.GetColumnName(StoreObjectIdentifier.Table(persistedType.GetTableName(), null))}. Found: {dbColumn.DefaultValueSql ?? "<none>"}, Expected: <none>");
+                        }
+                    }
                 }
 
                 if (persistedType.GetViewName() != null) {
@@ -126,6 +143,12 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation {
                 if (dbIndex == null) {
                     validationErrors.Add(
                         $"Missing index: {index.GetDatabaseName()} on {persistedType.GetTableName()}");
+                    continue;
+                }
+
+                if (index.IsUnique != dbIndex.IsUnique) {
+                    validationErrors.Add(
+                        $"Index uniqueness mismatch: {index.GetDatabaseName()} on {persistedType.GetTableName()}. Found: {(dbIndex.IsUnique ? "Unique" : "Non-Unique")}, Expected: {(index.IsUnique ? "Unique" : "Non-Unique")}");
                 }
             }
 

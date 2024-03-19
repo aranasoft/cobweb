@@ -8,12 +8,12 @@ using Xunit;
 namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.SqlServer {
     [OperatingSystemRequirement(OperatingSystems.Windows)]
     public class
-        WhenValidatingSchemaGivenIncorrectColumnNullability : IClassFixture<
-            SqlServerMigrationsFixture<MigrationsWithIncorrectColumnNullability>> {
-        private readonly SqlServerMigrationsFixture<MigrationsWithIncorrectColumnNullability> _fixture;
+        WhenValidatingSchemaGivenIncorrectColumnDefaults : IClassFixture<
+            SqlServerMigrationsFixture<MigrationsWithIncorrectColumnDefaults>> {
+        private readonly SqlServerMigrationsFixture<MigrationsWithIncorrectColumnDefaults> _fixture;
 
-        public WhenValidatingSchemaGivenIncorrectColumnNullability(
-            SqlServerMigrationsFixture<MigrationsWithIncorrectColumnNullability> fixture) {
+        public WhenValidatingSchemaGivenIncorrectColumnDefaults(
+            SqlServerMigrationsFixture<MigrationsWithIncorrectColumnDefaults> fixture) {
             _fixture = fixture;
         }
 
@@ -75,8 +75,9 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.SqlServer {
 
         [ConditionalFact]
         public void ItShouldNotHaveColumnTypeMismatchErrors() {
-            var applicationDbContext = _fixture.GetContext();
-            Action validatingSchema = () => applicationDbContext.ValidateSchema();
+            var context = _fixture.GetContext();
+            Action validatingSchema = () =>
+                context.ValidateSchema(new SchemaValidationOptions { ValidateForeignKeys = false });
             validatingSchema.Should()
                             .Throw<SchemaValidationException>()
                             .Which.ValidationErrors
@@ -86,7 +87,7 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.SqlServer {
         }
 
         [ConditionalFact]
-        public void ItShouldOnlyHaveColumnNullabilityMismatchErrors() {
+        public void ItShouldNotHaveColumnNullabilityMismatchErrors() {
             var context = _fixture.GetContext();
             Action validatingSchema = () =>
                 context.ValidateSchema(new SchemaValidationOptions { ValidateForeignKeys = false });
@@ -94,20 +95,20 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.SqlServer {
                             .Throw<SchemaValidationException>()
                             .Which.ValidationErrors
                             .Should()
-                            .OnlyContain(error => error.StartsWith("Column nullability mismatch",
-                                                                   StringComparison.InvariantCultureIgnoreCase));
+                            .NotContain(error => error.StartsWith("Column nullability mismatch",
+                                                                  StringComparison.InvariantCultureIgnoreCase));
         }
 
         [ConditionalFact]
-        public void ItShouldNotHaveColumnDefaultValueMismatchErrors() {
+        public void ItShouldOnlyHaveColumnDefaultValueMismatchErrors() {
             var applicationDbContext = _fixture.GetContext();
             Action validatingSchema = () => applicationDbContext.ValidateSchema();
             validatingSchema.Should()
                             .Throw<SchemaValidationException>()
                             .Which.ValidationErrors
                             .Should()
-                            .NotContain(error => error.StartsWith("Column default value mismatch",
-                                                                  StringComparison.InvariantCultureIgnoreCase));
+                            .OnlyContain(error => error.StartsWith("Column default value mismatch",
+                                                                   StringComparison.InvariantCultureIgnoreCase));
         }
 
         [ConditionalFact]

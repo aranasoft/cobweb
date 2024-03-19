@@ -2,11 +2,10 @@ using System;
 using System.Data;
 using Aranasoft.Cobweb.FluentMigrator.Extensions;
 using FluentMigrator;
-using FluentMigrator.SqlServer;
 
 namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.Migrations {
     [Migration(12345, "Add Identity Tables")]
-    public class MigrationsMissingColumns : Migration {
+    public class MigrationsWithIncorrectIndexUniqueness : Migration {
         public override void Up() {
             Create.Table("AspNetRoles")
                   .WithColumn("Id", col => col.AsInt32().NotNullable().PrimaryKey("PK_AspNetRoles"))
@@ -16,7 +15,7 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.Migratio
                 ;
             Create.Index("RoleNameIndex")
                   .OnTable("AspNetRoles")
-                  .OnColumn("NormalizedName", col => col.Unique().NullsNotDistinct())
+                  .OnColumn("NormalizedName")
                 ;
 
             IfDatabase(dbType => string.Equals(dbType, "SQLite-Test", StringComparison.InvariantCultureIgnoreCase))
@@ -61,11 +60,12 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.Migratio
                 });
             Create.Index("UserNameIndex")
                   .OnTable("AspNetUsers")
-                  .OnColumn("NormalizedUserName", col => col.Unique().NullsNotDistinct())
+                  .OnColumn("NormalizedUserName")
                 ;
 
             Create.Table("AspNetRoleClaims")
                   .WithColumn("Id", col => col.AsInt32().NotNullable().Identity().PrimaryKey("PK_AspNetRoleClaims"))
+                  .WithColumn("ClaimType", col => col.AsStringMax().Nullable())
                   .WithColumn("ClaimValue", col => col.AsStringMax().Nullable())
                   .WithColumn("RoleId",
                               col => col.AsInt32()
@@ -89,6 +89,7 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.Migratio
 
             Create.Table("AspNetUserLogins")
                   .WithColumn("LoginProvider", col => col.AsString(450).NotNullable().PrimaryKey("PK_AspNetUserLogins"))
+                  .WithColumn("ProviderKey", col => col.AsString(450).NotNullable().PrimaryKey("PK_AspNetUserLogins"))
                   .WithColumn("ProviderDisplayName", col => col.AsStringMax().Nullable())
                   .WithColumn("UserId",
                               col => col.AsInt32()
@@ -142,7 +143,6 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.Migratio
                                                             "AspNetRoles",
                                                             "Id")
                                                 .OnDelete(Rule.Cascade))
-                          .WithColumn("ComputedAndStoredNumber", col => col.AsInt32().NotNullable())
                         ;
                 });
             IfDatabase(dbType => !string.Equals(dbType, "SQLite-Test", StringComparison.InvariantCultureIgnoreCase))
@@ -161,7 +161,6 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.Migratio
                                                             "AspNetRoles",
                                                             "Id")
                                                 .OnDelete(Rule.Cascade))
-                          .WithColumn("ComputedAndStoredNumber", col => col.AsInt32().NotNullable())
                         ;
                 });
 

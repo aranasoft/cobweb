@@ -7,6 +7,7 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support {
             builder.HasOne(table => table.Role).WithMany();
             builder.Property(table => table.ComputedNumber).HasComputedColumnSql("[Id] * 2");
             builder.Property(table => table.ComputedAndStoredNumber).HasComputedColumnSql("[Id] * 5", stored: true);
+            builder.Property(table => table.DefaultedNumber).HasDefaultValue(900);
         }
     }
 }

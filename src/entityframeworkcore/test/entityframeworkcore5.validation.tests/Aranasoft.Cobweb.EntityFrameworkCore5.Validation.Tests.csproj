@@ -1,8 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <Import Project="..\..\..\..\netfx.props" />
 
   <PropertyGroup>
-    <TargetFrameworks>net5.0</TargetFrameworks>
+    <TargetFramework>net5.0</TargetFramework>
     <AssemblyName>Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests</AssemblyName>
     <RootNamespace>Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests</RootNamespace>
     <Platforms>AnyCPU;x64</Platforms>
@@ -11,8 +10,10 @@
 
   <ItemGroup>
     <Compile Include="..\entityframeworkcore3.validation.tests\Sqlite\WhenValidatingSchemaGivenAnEmptyDatabase.cs" Link="Sqlite\WhenValidatingSchemaGivenAnEmptyDatabase.cs" />
+    <Compile Include="..\entityframeworkcore3.validation.tests\Sqlite\WhenValidatingSchemaGivenIncorrectColumnDefaults.cs" Link="Sqlite\WhenValidatingSchemaGivenIncorrectColumnDefaults.cs" />
     <Compile Include="..\entityframeworkcore2.validation.tests\Sqlite\WhenValidatingSchemaGivenIncorrectColumnNullability.cs" Link="Sqlite\WhenValidatingSchemaGivenIncorrectColumnNullability.cs" />
     <Compile Include="..\entityframeworkcore2.validation.tests\Sqlite\WhenValidatingSchemaGivenIncorrectColumnTypes.cs" Link="Sqlite\WhenValidatingSchemaGivenIncorrectColumnTypes.cs" />
+    <Compile Include="..\entityframeworkcore3.validation.tests\Sqlite\WhenValidatingSchemaGivenIncorrectIndexUniqueness.cs" Link="Sqlite\WhenValidatingSchemaGivenIncorrectIndexUniqueness.cs" />
     <Compile Include="..\entityframeworkcore2.validation.tests\Sqlite\WhenValidatingSchemaGivenMissingColumns.cs" Link="Sqlite\WhenValidatingSchemaGivenMissingColumns.cs" />
     <Compile Include="..\entityframeworkcore2.validation.tests\Sqlite\WhenValidatingSchemaGivenMissingForeignKeys.cs" Link="Sqlite\WhenValidatingSchemaGivenMissingForeignKeys.cs" />
     <Compile Include="..\entityframeworkcore2.validation.tests\Sqlite\WhenValidatingSchemaGivenMissingIndexes.cs" Link="Sqlite\WhenValidatingSchemaGivenMissingIndexes.cs" />
@@ -22,8 +23,10 @@
     <Compile Include="..\entityframeworkcore2.validation.tests\Sqlite\WhenValidatingSchemaIgnoringIndexesGivenIncorrectColumnNullability.cs" Link="Sqlite\WhenValidatingSchemaIgnoringIndexesGivenIncorrectColumnNullability.cs" />
     <Compile Include="..\entityframeworkcore2.validation.tests\Sqlite\WhenValidatingSchemaIgnoringIndexesGivenMissingIndexes.cs" Link="Sqlite\WhenValidatingSchemaIgnoringIndexesGivenMissingIndexes.cs" />
     <Compile Include="..\entityframeworkcore3.validation.tests\SqlServer\WhenValidatingSchemaGivenEmptyDatabase.cs" Link="SqlServer\WhenValidatingSchemaGivenEmptyDatabase.cs" />
+    <Compile Include="..\entityframeworkcore3.validation.tests\SqlServer\WhenValidatingSchemaGivenIncorrectColumnDefaults.cs" Link="SqlServer\WhenValidatingSchemaGivenIncorrectColumnDefaults.cs" />
     <Compile Include="..\entityframeworkcore2.validation.tests\SqlServer\WhenValidatingSchemaGivenIncorrectColumnNullability.cs" Link="SqlServer\WhenValidatingSchemaGivenIncorrectColumnNullability.cs" />
     <Compile Include="..\entityframeworkcore2.validation.tests\SqlServer\WhenValidatingSchemaGivenIncorrectColumnTypes.cs" Link="SqlServer\WhenValidatingSchemaGivenIncorrectColumnTypes.cs" />
+    <Compile Include="..\entityframeworkcore3.validation.tests\SqlServer\WhenValidatingSchemaGivenIncorrectIndexUniqueness.cs" Link="SqlServer\WhenValidatingSchemaGivenIncorrectIndexUniqueness.cs" />
     <Compile Include="..\entityframeworkcore2.validation.tests\SqlServer\WhenValidatingSchemaGivenMissingColumns.cs" Link="SqlServer\WhenValidatingSchemaGivenMissingColumns.cs" />
     <Compile Include="..\entityframeworkcore2.validation.tests\SqlServer\WhenValidatingSchemaGivenMissingForeignKeys.cs" Link="SqlServer\WhenValidatingSchemaGivenMissingForeignKeys.cs" />
     <Compile Include="..\entityframeworkcore2.validation.tests\SqlServer\WhenValidatingSchemaGivenMissingIndexes.cs" Link="SqlServer\WhenValidatingSchemaGivenMissingIndexes.cs" />

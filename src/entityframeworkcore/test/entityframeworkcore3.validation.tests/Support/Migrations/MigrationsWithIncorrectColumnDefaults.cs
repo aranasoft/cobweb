@@ -6,7 +6,7 @@ using FluentMigrator.SqlServer;
 
 namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.Migrations {
     [Migration(12345, "Add Identity Tables")]
-    public class MigrationsMissingColumns : Migration {
+    public class MigrationsWithIncorrectColumnDefaults : Migration {
         public override void Up() {
             Create.Table("AspNetRoles")
                   .WithColumn("Id", col => col.AsInt32().NotNullable().PrimaryKey("PK_AspNetRoles"))
@@ -23,40 +23,40 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.Migratio
                 .Delegate(() => {
                     Create.Table("AspNetUsers")
                           .WithColumn("Id", col => col.AsInt32().NotNullable().PrimaryKey("PK_AspNetUsers"))
-                          .WithColumn("AccessFailedCount", col => col.AsInt32().NotNullable())
+                          .WithColumn("AccessFailedCount", col => col.AsInt32().NotNullable().WithDefaultValue(900))
                           .WithColumn("ConcurrencyStamp", col => col.AsStringMax().Nullable())
                           .WithColumn("Email", col => col.AsString(256).Nullable())
-                          .WithColumn("EmailConfirmed", col => col.AsBoolean().NotNullable())
-                          .WithColumn("LockoutEnabled", col => col.AsBoolean().NotNullable())
+                          .WithColumn("EmailConfirmed", col => col.AsBoolean().NotNullable().WithDefaultValue(true))
+                          .WithColumn("LockoutEnabled", col => col.AsBoolean().NotNullable().WithDefaultValue(true))
                           .WithColumn("LockoutEnd", col => col.AsString().Nullable())
                           .WithColumn("NormalizedEmail",
                                       col => col.AsString(256).Nullable().Indexed("EmailIndex"))
                           .WithColumn("NormalizedUserName", col => col.AsString(256).Nullable())
                           .WithColumn("PasswordHash", col => col.AsStringMax().Nullable())
                           .WithColumn("PhoneNumber", col => col.AsStringMax().Nullable())
-                          .WithColumn("PhoneNumberConfirmed", col => col.AsBoolean().NotNullable())
+                          .WithColumn("PhoneNumberConfirmed", col => col.AsBoolean().NotNullable().WithDefaultValue(true))
                           .WithColumn("SecurityStamp", col => col.AsStringMax().Nullable())
-                          .WithColumn("TwoFactorEnabled", col => col.AsBoolean().NotNullable())
+                          .WithColumn("TwoFactorEnabled", col => col.AsBoolean().NotNullable().WithDefaultValue(true))
                           .WithColumn("UserName", col => col.AsString(256).Nullable());
                 });
             IfDatabase(dbType => !string.Equals(dbType, "SQLite-Test", StringComparison.InvariantCultureIgnoreCase))
                 .Delegate(() => {
                     Create.Table("AspNetUsers")
                           .WithColumn("Id", col => col.AsInt32().NotNullable().PrimaryKey("PK_AspNetUsers"))
-                          .WithColumn("AccessFailedCount", col => col.AsInt32().NotNullable())
+                          .WithColumn("AccessFailedCount", col => col.AsInt32().NotNullable().WithDefaultValue(900))
                           .WithColumn("ConcurrencyStamp", col => col.AsStringMax().Nullable())
                           .WithColumn("Email", col => col.AsString(256).Nullable())
-                          .WithColumn("EmailConfirmed", col => col.AsBoolean().NotNullable())
-                          .WithColumn("LockoutEnabled", col => col.AsBoolean().NotNullable())
+                          .WithColumn("EmailConfirmed", col => col.AsBoolean().NotNullable().WithDefaultValue(true))
+                          .WithColumn("LockoutEnabled", col => col.AsBoolean().NotNullable().WithDefaultValue(true))
                           .WithColumn("LockoutEnd", col => col.AsDateTimeOffset().Nullable())
                           .WithColumn("NormalizedEmail",
                                       col => col.AsString(256).Nullable().Indexed("EmailIndex"))
                           .WithColumn("NormalizedUserName", col => col.AsString(256).Nullable())
                           .WithColumn("PasswordHash", col => col.AsStringMax().Nullable())
                           .WithColumn("PhoneNumber", col => col.AsStringMax().Nullable())
-                          .WithColumn("PhoneNumberConfirmed", col => col.AsBoolean().NotNullable())
+                          .WithColumn("PhoneNumberConfirmed", col => col.AsBoolean().NotNullable().WithDefaultValue(true))
                           .WithColumn("SecurityStamp", col => col.AsStringMax().Nullable())
-                          .WithColumn("TwoFactorEnabled", col => col.AsBoolean().NotNullable())
+                          .WithColumn("TwoFactorEnabled", col => col.AsBoolean().NotNullable().WithDefaultValue(true))
                           .WithColumn("UserName", col => col.AsString(256).Nullable());
                 });
             Create.Index("UserNameIndex")
@@ -66,6 +66,7 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.Migratio
 
             Create.Table("AspNetRoleClaims")
                   .WithColumn("Id", col => col.AsInt32().NotNullable().Identity().PrimaryKey("PK_AspNetRoleClaims"))
+                  .WithColumn("ClaimType", col => col.AsStringMax().Nullable())
                   .WithColumn("ClaimValue", col => col.AsStringMax().Nullable())
                   .WithColumn("RoleId",
                               col => col.AsInt32()
@@ -89,6 +90,7 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.Migratio
 
             Create.Table("AspNetUserLogins")
                   .WithColumn("LoginProvider", col => col.AsString(450).NotNullable().PrimaryKey("PK_AspNetUserLogins"))
+                  .WithColumn("ProviderKey", col => col.AsString(450).NotNullable().PrimaryKey("PK_AspNetUserLogins"))
                   .WithColumn("ProviderDisplayName", col => col.AsStringMax().Nullable())
                   .WithColumn("UserId",
                               col => col.AsInt32()
@@ -142,7 +144,6 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.Migratio
                                                             "AspNetRoles",
                                                             "Id")
                                                 .OnDelete(Rule.Cascade))
-                          .WithColumn("ComputedAndStoredNumber", col => col.AsInt32().NotNullable())
                         ;
                 });
             IfDatabase(dbType => !string.Equals(dbType, "SQLite-Test", StringComparison.InvariantCultureIgnoreCase))
@@ -151,7 +152,7 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.Migratio
                           .WithColumn("Id",
                                       col => col.AsInt32().NotNullable().PrimaryKey("PK_TableBasedEntity"))
                           .WithColumn("Field", col => col.AsString(256).Nullable())
-                          .WithColumn("NumberValue", col => col.AsDecimal(18, 2).NotNullable())
+                          .WithColumn("NumberValue", col => col.AsDecimal(18, 2).NotNullable().WithDefaultValue(900d))
                           .WithColumn("DefaultedNumberValue", col => col.AsInt32().NotNullable().WithDefaultValue(900))
                           .WithColumn("RoleId",
                                       col => col.AsInt32()
@@ -161,7 +162,6 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.Migratio
                                                             "AspNetRoles",
                                                             "Id")
                                                 .OnDelete(Rule.Cascade))
-                          .WithColumn("ComputedAndStoredNumber", col => col.AsInt32().NotNullable())
                         ;
                 });
 

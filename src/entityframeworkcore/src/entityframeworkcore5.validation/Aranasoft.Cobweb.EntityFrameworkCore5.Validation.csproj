@@ -1,11 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <Import Project="..\..\..\..\netfx.props" />
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.1</TargetFrameworks>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <AssemblyName>Aranasoft.Cobweb.EntityFrameworkCore.Validation</AssemblyName>
     <RootNamespace>Aranasoft.Cobweb.EntityFrameworkCore.Validation</RootNamespace>
-    <VersionPrefix>1.50.4</VersionPrefix>
+    <VersionPrefix>1.50.5</VersionPrefix>
     <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
