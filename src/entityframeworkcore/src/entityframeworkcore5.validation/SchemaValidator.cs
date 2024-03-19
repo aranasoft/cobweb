@@ -4,18 +4,32 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.EntityFrameworkCore.Scaffolding;
 using Microsoft.EntityFrameworkCore.Scaffolding.Metadata;
 
 namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation {
+    /// <summary>
+    /// Class responsible for validating the schema of a <see cref="DbContext"/>.
+    /// </summary>
     public class SchemaValidator {
+        /// <summary>
+        /// The <see cref="DbContext"/> to validate.
+        /// </summary>
         protected DbContext Context { get; }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SchemaValidator"/> class.
+        /// </summary>
+        /// <param name="context">The <see cref="DbContext"/> to validate.</param>
         public SchemaValidator(DbContext context) {
             Context = context;
         }
 
+        /// <summary>
+        /// Validates the schema of the <see cref="DbContext"/>.
+        /// </summary>
+        /// <param name="validationOptions">The options for schema validation.</param>
+        /// <exception cref="SchemaValidationException">Thrown when there are validation errors in the schema.</exception>
         public void ValidateSchema(SchemaValidationOptions validationOptions = null) {
             validationOptions ??= new SchemaValidationOptions();
 
@@ -63,6 +77,13 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation {
             }
         }
 
+        /// <summary>
+        /// Validates the columns of a persisted type.
+        /// </summary>
+        /// <param name="databaseModel">The database model.</param>
+        /// <param name="persistedType">The persisted type to validate.</param>
+        /// <param name="validationOptions">The options for schema validation.</param>
+        /// <returns>A list of validation errors.</returns>
         private List<string> ValidateColumns(DatabaseModel databaseModel,
                                              IEntityType persistedType,
                                              SchemaValidationOptions validationOptions) {
@@ -135,6 +156,12 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation {
             return valErrors;
         }
 
+        /// <summary>
+        /// Validates the indexes of a persisted type.
+        /// </summary>
+        /// <param name="databaseModel">The database model.</param>
+        /// <param name="persistedType">The persisted type to validate.</param>
+        /// <returns>A list of validation errors.</returns>
         private IEnumerable<string> ValidateIndexes(DatabaseModel databaseModel, IEntityType persistedType) {
             var validationErrors = new List<string>();
 
@@ -155,6 +182,12 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation {
             return validationErrors;
         }
 
+        /// <summary>
+        /// Validates the foreign keys of a persisted type.
+        /// </summary>
+        /// <param name="databaseModel">The database model.</param>
+        /// <param name="persistedType">The persisted type to validate.</param>
+        /// <returns>A list of validation errors.</returns>
         private IEnumerable<string> ValidateForeignKeys(DatabaseModel databaseModel, IEntityType persistedType) {
             var validationErrors = new List<string>();
 
@@ -172,6 +205,10 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation {
             return validationErrors;
         }
 
+        /// <summary>
+        /// Gets the database model.
+        /// </summary>
+        /// <returns>The database model.</returns>
         private DatabaseModel GetDatabaseModel() {
             var factory = Context.GetService<IDatabaseModelFactory>();
             var databaseModel = factory.Create(Context.Database.GetDbConnection(), new DatabaseModelFactoryOptions());
