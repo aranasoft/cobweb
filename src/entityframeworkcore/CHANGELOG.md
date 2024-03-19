@@ -1,3 +1,12 @@
+# 1.80.0 (2024-03-19)
+
+
+### Features
+
+* **efcore:** support EF Core v8 ([11dff20](https://github.com/aranasoft/cobweb/commit/11dff20aa9046f37d3786cd1b1fabcd7da3d3a76))
+
+
+
 # 1.70.0 (2024-03-19)
 
 
