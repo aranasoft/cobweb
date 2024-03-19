@@ -72,10 +72,14 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation {
         public static bool ViewColumnExists(this DatabaseModel model,
                                             IEntityType type,
                                             IProperty property) {
+            var viewName = type.GetViewName();
+            if (viewName == null) {
+                return false;
+            }
             return ViewColumnExists(model,
                                     type.GetViewSchema(),
-                                    type.GetViewName(),
-                                    property.GetColumnName(StoreObjectIdentifier.View(type.GetViewName(), type.GetSchema())));
+                                    viewName,
+                                    property.GetColumnName(StoreObjectIdentifier.View(viewName, type.GetSchema())));
         }
 
         /// <summary>
@@ -112,10 +116,14 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation {
         /// <param name="property">The property.</param>
         /// <returns>The database column.</returns>
         public static DatabaseColumn GetViewColumn(this DatabaseModel model, IEntityType type, IProperty property) {
+            var viewName = type.GetViewName();
+            if (viewName == null) {
+                return null;
+            }
             return GetViewColumn(model,
                                  type.GetViewSchema(),
-                                 type.GetViewName(),
-                                 property.GetColumnName(StoreObjectIdentifier.View(type.GetViewName(), type.GetSchema())));
+                                 viewName,
+                                 property.GetColumnName(StoreObjectIdentifier.View(viewName, type.GetSchema())));
         }
 
         /// <summary>
@@ -188,10 +196,14 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation {
         public static bool TableColumnExists(this DatabaseModel model,
                                              IEntityType type,
                                              IProperty property) {
+            var tableName = type.GetTableName();
+            if (tableName == null) {
+                return false;
+            }
             return TableColumnExists(model,
                                      type.GetSchema(),
-                                     type.GetTableName(),
-                                     property.GetColumnName(StoreObjectIdentifier.Table(type.GetTableName(), type.GetSchema())));
+                                     tableName,
+                                     property.GetColumnName(StoreObjectIdentifier.Table(tableName, type.GetSchema())));
         }
 
         /// <summary>
@@ -228,10 +240,14 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation {
         /// <param name="property">The property.</param>
         /// <returns>The database column.</returns>
         public static DatabaseColumn GetTableColumn(this DatabaseModel model, IEntityType type, IProperty property) {
+            var tableName = type.GetTableName();
+            if (tableName == null) {
+                return null;
+            }
             return GetTableColumn(model,
                                   type.GetSchema(),
-                                  type.GetTableName(),
-                                  property.GetColumnName(StoreObjectIdentifier.Table(type.GetTableName(), type.GetSchema())));
+                                  tableName,
+                                  property.GetColumnName(StoreObjectIdentifier.Table(tableName, type.GetSchema())));
         }
 
         /// <summary>
