@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <AssemblyName>Aranasoft.Cobweb.EntityFrameworkCore.Validation</AssemblyName>
+    <RootNamespace>Aranasoft.Cobweb.EntityFrameworkCore.Validation</RootNamespace>
+    <VersionPrefix>1.70.0</VersionPrefix>
+    <Platforms>AnyCPU;x64</Platforms>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Description>Schema validation and testing components for Entity Framework Core.</Description>
+    <PackageTags>entityframeworkcore;efcore;validation;$(PackageTags)</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\entityframeworkcore6.validation\SchemaComparison.cs" Link="SchemaComparison.cs" />
+    <Compile Include="..\entityframeworkcore2.validation\SchemaValidationException.cs" Link="SchemaValidationException.cs" />
+    <Compile Include="..\entityframeworkcore3.validation\SchemaValidationOptions.cs" Link="SchemaValidationOptions.cs" />
+    <Compile Include="..\entityframeworkcore6.validation\SchemaValidator.cs" Link="SchemaValidator.cs" />
+    <Compile Include="..\entityframeworkcore2.validation\SchemaValidatorExtensions.cs" Link="SchemaValidatorExtensions.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="[7,8)" />
+  </ItemGroup>
+
+</Project>
