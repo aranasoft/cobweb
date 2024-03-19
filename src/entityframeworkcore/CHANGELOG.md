@@ -1,3 +1,12 @@
+# 1.70.0 (2024-03-19)
+
+
+### Features
+
+* **efcore:** support EF Core v7 ([a8534de](https://github.com/aranasoft/cobweb/commit/a8534dede8c277079e2a959dd1eb8a89c763ae66))
+
+
+
 # 1.60.2 (2024-03-19)
 
 
