@@ -1,0 +1,98 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <AssemblyName>Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests</AssemblyName>
+    <RootNamespace>Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests</RootNamespace>
+    <Platforms>AnyCPU;x64</Platforms>
+    <NoWarn>EF1001</NoWarn>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\entityframeworkcore3.validation.tests\Sqlite\WhenValidatingSchemaGivenAnEmptyDatabase.cs" Link="Sqlite\WhenValidatingSchemaGivenAnEmptyDatabase.cs" />
+    <Compile Include="..\entityframeworkcore3.validation.tests\Sqlite\WhenValidatingSchemaGivenIncorrectColumnDefaults.cs" Link="Sqlite\WhenValidatingSchemaGivenIncorrectColumnDefaults.cs" />
+    <Compile Include="..\entityframeworkcore2.validation.tests\Sqlite\WhenValidatingSchemaGivenIncorrectColumnNullability.cs" Link="Sqlite\WhenValidatingSchemaGivenIncorrectColumnNullability.cs" />
+    <Compile Include="..\entityframeworkcore2.validation.tests\Sqlite\WhenValidatingSchemaGivenIncorrectColumnTypes.cs" Link="Sqlite\WhenValidatingSchemaGivenIncorrectColumnTypes.cs" />
+    <Compile Include="..\entityframeworkcore3.validation.tests\Sqlite\WhenValidatingSchemaGivenIncorrectIndexUniqueness.cs" Link="Sqlite\WhenValidatingSchemaGivenIncorrectIndexUniqueness.cs" />
+    <Compile Include="..\entityframeworkcore2.validation.tests\Sqlite\WhenValidatingSchemaGivenMissingColumns.cs" Link="Sqlite\WhenValidatingSchemaGivenMissingColumns.cs" />
+    <Compile Include="..\entityframeworkcore2.validation.tests\Sqlite\WhenValidatingSchemaGivenMissingForeignKeys.cs" Link="Sqlite\WhenValidatingSchemaGivenMissingForeignKeys.cs" />
+    <Compile Include="..\entityframeworkcore2.validation.tests\Sqlite\WhenValidatingSchemaGivenMissingIndexes.cs" Link="Sqlite\WhenValidatingSchemaGivenMissingIndexes.cs" />
+    <Compile Include="..\entityframeworkcore5.validation.tests\Sqlite\WhenValidatingSchemaGivenMissingStoredComputedColumns.cs" Link="Sqlite\WhenValidatingSchemaGivenMissingStoredComputedColumns.cs" />
+    <Compile Include="..\entityframeworkcore3.validation.tests\Sqlite\WhenValidatingSchemaGivenMissingViewColumns.cs" Link="Sqlite\WhenValidatingSchemaGivenMissingViewColumns.cs" />
+    <Compile Include="..\entityframeworkcore3.validation.tests\Sqlite\WhenValidatingSchemaGivenMissingViews.cs" Link="Sqlite\WhenValidatingSchemaGivenMissingViews.cs" />
+    <Compile Include="..\entityframeworkcore2.validation.tests\Sqlite\WhenValidatingSchemaGivenValidDatabase.cs" Link="Sqlite\WhenValidatingSchemaGivenValidDatabase.cs" />
+    <Compile Include="..\entityframeworkcore2.validation.tests\Sqlite\WhenValidatingSchemaIgnoringIndexesGivenIncorrectColumnNullability.cs" Link="Sqlite\WhenValidatingSchemaIgnoringIndexesGivenIncorrectColumnNullability.cs" />
+    <Compile Include="..\entityframeworkcore2.validation.tests\Sqlite\WhenValidatingSchemaIgnoringIndexesGivenMissingIndexes.cs" Link="Sqlite\WhenValidatingSchemaIgnoringIndexesGivenMissingIndexes.cs" />
+    <Compile Include="..\entityframeworkcore3.validation.tests\SqlServer\WhenValidatingSchemaGivenEmptyDatabase.cs" Link="SqlServer\WhenValidatingSchemaGivenEmptyDatabase.cs" />
+    <Compile Include="..\entityframeworkcore3.validation.tests\SqlServer\WhenValidatingSchemaGivenIncorrectColumnDefaults.cs" Link="SqlServer\WhenValidatingSchemaGivenIncorrectColumnDefaults.cs" />
+    <Compile Include="..\entityframeworkcore2.validation.tests\SqlServer\WhenValidatingSchemaGivenIncorrectColumnNullability.cs" Link="SqlServer\WhenValidatingSchemaGivenIncorrectColumnNullability.cs" />
+    <Compile Include="..\entityframeworkcore2.validation.tests\SqlServer\WhenValidatingSchemaGivenIncorrectColumnTypes.cs" Link="SqlServer\WhenValidatingSchemaGivenIncorrectColumnTypes.cs" />
+    <Compile Include="..\entityframeworkcore3.validation.tests\SqlServer\WhenValidatingSchemaGivenIncorrectIndexUniqueness.cs" Link="SqlServer\WhenValidatingSchemaGivenIncorrectIndexUniqueness.cs" />
+    <Compile Include="..\entityframeworkcore2.validation.tests\SqlServer\WhenValidatingSchemaGivenMissingColumns.cs" Link="SqlServer\WhenValidatingSchemaGivenMissingColumns.cs" />
+    <Compile Include="..\entityframeworkcore2.validation.tests\SqlServer\WhenValidatingSchemaGivenMissingForeignKeys.cs" Link="SqlServer\WhenValidatingSchemaGivenMissingForeignKeys.cs" />
+    <Compile Include="..\entityframeworkcore2.validation.tests\SqlServer\WhenValidatingSchemaGivenMissingIndexes.cs" Link="SqlServer\WhenValidatingSchemaGivenMissingIndexes.cs" />
+    <Compile Include="..\entityframeworkcore5.validation.tests\SqlServer\WhenValidatingSchemaGivenMissingStoredComputedColumns.cs" Link="SqlServer\WhenValidatingSchemaGivenMissingStoredComputedColumns.cs" />
+    <Compile Include="..\entityframeworkcore3.validation.tests\SqlServer\WhenValidatingSchemaGivenMissingViewColumns.cs" Link="SqlServer\WhenValidatingSchemaGivenMissingViewColumns.cs" />
+    <Compile Include="..\entityframeworkcore3.validation.tests\SqlServer\WhenValidatingSchemaGivenMissingViews.cs" Link="SqlServer\WhenValidatingSchemaGivenMissingViews.cs" />
+    <Compile Include="..\entityframeworkcore2.validation.tests\SqlServer\WhenValidatingSchemaGivenValidDatabase.cs" Link="SqlServer\WhenValidatingSchemaGivenValidDatabase.cs" />
+    <Compile Include="..\entityframeworkcore2.validation.tests\SqlServer\WhenValidatingSchemaIgnoringForeignKeysGivenMissingForeignKeys.cs" Link="SqlServer\WhenValidatingSchemaIgnoringForeignKeysGivenMissingForeignKeys.cs" />
+    <Compile Include="..\entityframeworkcore2.validation.tests\SqlServer\WhenValidatingSchemaIgnoringIndexesGivenIncorrectColumnNullability.cs" Link="SqlServer\WhenValidatingSchemaIgnoringIndexesGivenIncorrectColumnNullability.cs" />
+    <Compile Include="..\entityframeworkcore2.validation.tests\SqlServer\WhenValidatingSchemaIgnoringIndexesGivenMissingIndexes.cs" Link="SqlServer\WhenValidatingSchemaIgnoringIndexesGivenMissingIndexes.cs" />
+    <Compile Include="..\entityframeworkcore2.validation.tests\Support\ApplicationDbContext.cs" Link="Support\ApplicationDbContext.cs" />
+    <Compile Include="..\entityframeworkcore5.validation.tests\Support\Migrations\MigrationsMissingColumns.cs" Link="Support\Migrations\MigrationsMissingColumns.cs" />
+    <Compile Include="..\entityframeworkcore5.validation.tests\Support\Migrations\MigrationsMissingForeignKeys.cs" Link="Support\Migrations\MigrationsMissingForeignKeys.cs" />
+    <Compile Include="..\entityframeworkcore5.validation.tests\Support\Migrations\MigrationsMissingIndexes.cs" Link="Support\Migrations\MigrationsMissingIndexes.cs" />
+    <Compile Include="..\entityframeworkcore5.validation.tests\Support\Migrations\MigrationsMissingStoredComputedColumns.cs" Link="Support\Migrations\MigrationsMissingStoredComputedColumns.cs" />
+    <Compile Include="..\entityframeworkcore5.validation.tests\Support\Migrations\MigrationsMissingViewColumns.cs" Link="Support\Migrations\MigrationsMissingViewColumns.cs" />
+    <Compile Include="..\entityframeworkcore5.validation.tests\Support\Migrations\MigrationsMissingViews.cs" Link="Support\Migrations\MigrationsMissingViews.cs" />
+    <Compile Include="..\entityframeworkcore5.validation.tests\Support\Migrations\MigrationsWithIncorrectColumnDefaults.cs" Link="Support\Migrations\MigrationsWithIncorrectColumnDefaults.cs" />
+    <Compile Include="..\entityframeworkcore5.validation.tests\Support\Migrations\MigrationsWithIncorrectColumnNullability.cs" Link="Support\Migrations\MigrationsWithIncorrectColumnNullability.cs" />
+    <Compile Include="..\entityframeworkcore5.validation.tests\Support\Migrations\MigrationsWithIncorrectColumnTypes.cs" Link="Support\Migrations\MigrationsWithIncorrectColumnTypes.cs" />
+    <Compile Include="..\entityframeworkcore5.validation.tests\Support\Migrations\MigrationsWithIncorrectIndexUniqueness.cs" Link="Support\Migrations\MigrationsWithIncorrectIndexUniqueness.cs" />
+    <Compile Include="..\entityframeworkcore5.validation.tests\Support\Migrations\ValidIdentityMigrations.cs" Link="Support\Migrations\ValidIdentityMigrations.cs" />
+    <Compile Include="..\entityframeworkcore2.validation.tests\Support\Sqlite\SqliteDatabaseFixture.cs" Link="Support\Sqlite\SqliteDatabaseFixture.cs" />
+    <Compile Include="..\entityframeworkcore2.validation.tests\Support\Sqlite\SqliteMigrationsFixture.cs" Link="Support\Sqlite\SqliteMigrationsFixture.cs" />
+    <Compile Include="..\entityframeworkcore2.validation.tests\Support\SqlServer\SqlServerMigrationsFixture.cs" Link="Support\SqlServer\SqlServerMigrationsFixture.cs" />
+    <Compile Include="..\entityframeworkcore2.validation.tests\Support\TableBasedChildEntityMapping.cs" Link="Support\TableBasedChildEntityMapping.cs" />
+    <Compile Include="..\entityframeworkcore5.validation.tests\Support\TableBasedEntityMapping.cs" Link="Support\TableBasedEntityMapping.cs" />
+    <Compile Include="..\entityframeworkcore2.validation.tests\Support\XUnit\ConditionalFactAttribute.cs" Link="Support\XUnit\ConditionalFactAttribute.cs" />
+    <Compile Include="..\entityframeworkcore2.validation.tests\Support\XUnit\ConditionalFactAttributeDiscoverer.cs" Link="Support\XUnit\ConditionalFactAttributeDiscoverer.cs" />
+    <Compile Include="..\entityframeworkcore2.validation.tests\Support\XUnit\ConditionalFactTestCase.cs" Link="Support\XUnit\ConditionalFactTestCase.cs" />
+    <Compile Include="..\entityframeworkcore2.validation.tests\Support\XUnit\ITestCaseRequirementAttribute.cs" Link="Support\XUnit\ITestCaseRequirementAttribute.cs" />
+    <Compile Include="..\entityframeworkcore2.validation.tests\Support\XUnit\OperatingSystemRequirementAttribute.cs" Link="Support\XUnit\OperatingSystemRequirementAttribute.cs" />
+    <Compile Include="..\entityframeworkcore2.validation.tests\Support\XUnit\OperatingSystems.cs" Link="Support\XUnit\OperatingSystems.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="..\entityframeworkcore2.validation.tests\xunit.runner.json" Link="xunit.runner.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.0.0" />
+    <PackageReference Include="FluentAssertions" Version="6.4.0" />
+    <PackageReference Include="FluentMigrator" version="3.3.2" />
+    <PackageReference Include="FluentMigrator.Runner" version="3.3.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.1" />
+    <PackageReference Include="xunit" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\fluentmigrator\src\fluentmigrator3.extensions\Aranasoft.Cobweb.FluentMigrator3.Extensions.csproj" />
+    <ProjectReference Include="..\..\src\entityframeworkcore8.validation\Aranasoft.Cobweb.EntityFrameworkCore8.Validation.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Support\Migrations\" />
+    <Folder Include="Support\XUnit\" />
+  </ItemGroup>
+
+</Project>
