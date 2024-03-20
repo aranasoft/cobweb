@@ -1,3 +1,13 @@
 <Project>
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props" />
+
+  <PropertyGroup Condition=" '$(IsTestProject)' == 'false' ">
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageReleaseNotes>CHANGELOG.md</PackageReleaseNotes>
+  </PropertyGroup>
+
+  <ItemGroup Condition=" '$(IsTestProject)' == 'false' ">
+    <None Include="$(MSBuildThisFileDirectory)\README.md" Pack="true" PackagePath="\"/>
+    <None Include="$(MSBuildThisFileDirectory)\CHANGELOG.md" Pack="true" PackagePath="\"/>
+  </ItemGroup>
 </Project>
