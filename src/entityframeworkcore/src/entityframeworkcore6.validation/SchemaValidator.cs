@@ -84,15 +84,21 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation {
         /// <param name="persistedType">The persisted type to validate.</param>
         /// <param name="validationOptions">The options for schema validation.</param>
         /// <returns>A list of validation errors.</returns>
-        private List<string> ValidateColumns(DatabaseModel databaseModel,
-                                             IEntityType persistedType,
-                                             SchemaValidationOptions validationOptions) {
+        private List<string> ValidateColumns(
+            DatabaseModel databaseModel,
+            IEntityType persistedType,
+            SchemaValidationOptions validationOptions) {
             var valErrors = new List<string>();
             foreach (var persistedColumn in persistedType.GetProperties()
-                                                         .Where(theProperty => theProperty.GetBeforeSaveBehavior() != PropertySaveBehavior.Ignore ||
-                                                                               theProperty.GetAfterSaveBehavior() != PropertySaveBehavior.Ignore ||
-                                                                               theProperty.FindAnnotation(RelationalAnnotationNames.IsStored)?.Value is true)
-                                                         ) {
+                                                         .Where(theProperty =>
+                                                                    theProperty.GetBeforeSaveBehavior() !=
+                                                                    PropertySaveBehavior.Ignore ||
+                                                                    theProperty.GetAfterSaveBehavior() !=
+                                                                    PropertySaveBehavior.Ignore ||
+                                                                    theProperty.FindAnnotation(
+                                                                                   RelationalAnnotationNames.IsStored)
+                                                                               ?.Value is true)
+                    ) {
                 if (persistedType.FindAnnotation(RelationalAnnotationNames.TableName)?.Value != null) {
                     var dbColumn = databaseModel.GetTableColumn(persistedColumn);
                     if (dbColumn == null) {
@@ -102,31 +108,44 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation {
                     }
 
                     var columnTypesMatch =
-                        dbColumn.StoreType.Replace(", ",",").Equals(persistedColumn.GetColumnType().Replace(", ",","), StringComparison.OrdinalIgnoreCase);
+                        dbColumn.StoreType.Replace(", ", ",")
+                                .Equals(persistedColumn.GetColumnType().Replace(", ", ","),
+                                        StringComparison.OrdinalIgnoreCase);
                     if (!columnTypesMatch) {
                         valErrors.Add(
                             $"Column type mismatch in {persistedType.GetTableName()} for column {persistedColumn.GetColumnName(StoreObjectIdentifier.Table(persistedType.GetTableName(), null))}. Found: {dbColumn.StoreType.ToLowerInvariant()}, Expected {persistedColumn.GetColumnType().ToLowerInvariant()}");
                     }
 
-                    if (validationOptions.ValidateNullabilityForTables && persistedColumn.IsNullable != dbColumn.IsNullable) {
+                    if (validationOptions.ValidateNullabilityForTables &&
+                        persistedColumn.IsNullable != dbColumn.IsNullable) {
                         valErrors.Add(
                             $"Column nullability mismatch in {persistedType.GetTableName()} for column {persistedColumn.GetColumnName(StoreObjectIdentifier.Table(persistedType.GetTableName(), null))}. Found: {(dbColumn.IsNullable ? "Nullable" : "NotNullable")}, Expected {(persistedColumn.IsNullable ? "Nullable" : "NotNullable")}");
                     }
 
-                    if (persistedColumn.FindAnnotation(RelationalAnnotationNames.DefaultValue) != null || persistedColumn.GetDefaultValueSql() != null || dbColumn.DefaultValueSql != null) {
-                        if (persistedColumn.FindAnnotation(RelationalAnnotationNames.DefaultValue) != null && persistedColumn.FindAnnotation(RelationalAnnotationNames.DefaultValue).Value.ToString() != dbColumn.DefaultValueSql) {
+                    if (persistedColumn.FindAnnotation(RelationalAnnotationNames.DefaultValue) != null ||
+                        persistedColumn.GetDefaultValueSql() != null ||
+                        dbColumn.DefaultValueSql != null) {
+                        if (persistedColumn.FindAnnotation(RelationalAnnotationNames.DefaultValue) != null &&
+                            persistedColumn.FindAnnotation(RelationalAnnotationNames.DefaultValue)
+                                           .Value.ToString().TrimParentheses() !=
+                            dbColumn.DefaultValueSql.TrimParentheses()) {
                             valErrors.Add(
-                                $"Column default value mismatch in {persistedType.GetTableName()} for column {persistedColumn.GetColumnName(StoreObjectIdentifier.Table(persistedType.GetTableName(), null))}. Found: {dbColumn.DefaultValueSql ?? "<none>"}, Expected: {persistedColumn.FindAnnotation(RelationalAnnotationNames.DefaultValue).Value.ToString() ?? "<none>"}");
+                                $"Column default value mismatch in {persistedType.GetTableName()} for column {persistedColumn.GetColumnName(StoreObjectIdentifier.Table(persistedType.GetTableName(), null))}. Found: {dbColumn.DefaultValueSql.TrimParentheses() ?? "<none>"}, Expected: {persistedColumn.FindAnnotation(RelationalAnnotationNames.DefaultValue).Value.ToString().TrimParentheses() ?? "<none>"}");
                         }
 
-                        if (persistedColumn.FindAnnotation(RelationalAnnotationNames.DefaultValueSql) != null && persistedColumn.FindAnnotation(RelationalAnnotationNames.DefaultValueSql).Value.ToString() != dbColumn.DefaultValueSql) {
+                        if (persistedColumn.FindAnnotation(RelationalAnnotationNames.DefaultValueSql) != null &&
+                            persistedColumn.FindAnnotation(RelationalAnnotationNames.DefaultValueSql)
+                                           .Value.ToString().TrimParentheses() !=
+                            dbColumn.DefaultValueSql.TrimParentheses()) {
                             valErrors.Add(
-                                $"Column default value mismatch in {persistedType.GetTableName()} for column {persistedColumn.GetColumnName(StoreObjectIdentifier.Table(persistedType.GetTableName(), null))}. Found: {dbColumn.DefaultValueSql ?? "<none>"}, Expected: {persistedColumn.FindAnnotation(RelationalAnnotationNames.DefaultValueSql).Value.ToString() ?? "<none>"}");
+                                $"Column default value mismatch in {persistedType.GetTableName()} for column {persistedColumn.GetColumnName(StoreObjectIdentifier.Table(persistedType.GetTableName(), null))}. Found: {dbColumn.DefaultValueSql.TrimParentheses() ?? "<none>"}, Expected: {persistedColumn.FindAnnotation(RelationalAnnotationNames.DefaultValueSql).Value.ToString().TrimParentheses() ?? "<none>"}");
                         }
 
-                        if (persistedColumn.FindAnnotation(RelationalAnnotationNames.DefaultValue) == null && persistedColumn.GetDefaultValueSql() == null && dbColumn.DefaultValueSql != null) {
+                        if (persistedColumn.FindAnnotation(RelationalAnnotationNames.DefaultValue) == null &&
+                            persistedColumn.GetDefaultValueSql() == null &&
+                            dbColumn.DefaultValueSql != null) {
                             valErrors.Add(
-                                $"Column default value mismatch in {persistedType.GetTableName()} for column {persistedColumn.GetColumnName(StoreObjectIdentifier.Table(persistedType.GetTableName(), null))}. Found: {dbColumn.DefaultValueSql ?? "<none>"}, Expected: <none>");
+                                $"Column default value mismatch in {persistedType.GetTableName()} for column {persistedColumn.GetColumnName(StoreObjectIdentifier.Table(persistedType.GetTableName(), null))}. Found: {dbColumn.DefaultValueSql.TrimParentheses() ?? "<none>"}, Expected: <none>");
                         }
                     }
                 }
@@ -140,13 +159,16 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation {
                     }
 
                     var columnTypesMatch =
-                        dbColumn.StoreType.Replace(", ",",").Equals(persistedColumn.GetColumnType().Replace(", ",","), StringComparison.OrdinalIgnoreCase);
+                        dbColumn.StoreType.Replace(", ", ",")
+                                .Equals(persistedColumn.GetColumnType().Replace(", ", ","),
+                                        StringComparison.OrdinalIgnoreCase);
                     if (!columnTypesMatch) {
                         valErrors.Add(
                             $"Column type mismatch in {persistedType.GetViewName()} for column {persistedColumn.GetColumnName(StoreObjectIdentifier.View(persistedType.GetViewName(), null))}. Found: {dbColumn.StoreType.ToLowerInvariant()}, Expected {persistedColumn.GetColumnType().ToLowerInvariant()}");
                     }
 
-                    if (validationOptions.ValidateNullabilityForViews && persistedColumn.IsNullable != dbColumn.IsNullable) {
+                    if (validationOptions.ValidateNullabilityForViews &&
+                        persistedColumn.IsNullable != dbColumn.IsNullable) {
                         valErrors.Add(
                             $"Column nullability mismatch in {persistedType.GetViewName()} for column {persistedColumn.GetColumnName(StoreObjectIdentifier.View(persistedType.GetViewName(), null))}. Found: {(dbColumn.IsNullable ? "Nullable" : "NotNullable")}, Expected {(persistedColumn.IsNullable ? "Nullable" : "NotNullable")}");
                     }

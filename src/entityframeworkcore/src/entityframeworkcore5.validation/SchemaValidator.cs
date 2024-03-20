@@ -114,19 +114,19 @@ namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation {
                     }
 
                     if (persistedColumn.GetDefaultValue() != null || persistedColumn.GetDefaultValueSql() != null || dbColumn.DefaultValueSql != null) {
-                        if (persistedColumn.GetDefaultValue() != null && persistedColumn.GetDefaultValue()?.ToString() != dbColumn.DefaultValueSql) {
+                        if (persistedColumn.GetDefaultValue() != null && persistedColumn.GetDefaultValue()?.ToString().TrimParentheses() != dbColumn.DefaultValueSql.TrimParentheses()) {
                             valErrors.Add(
-                                $"Column default value mismatch in {persistedType.GetTableName()} for column {persistedColumn.GetColumnName(StoreObjectIdentifier.Table(persistedType.GetTableName(), null))}. Found: {dbColumn.DefaultValueSql ?? "<none>"}, Expected: {persistedColumn.GetDefaultValue() ?? "<none>"}");
+                                $"Column default value mismatch in {persistedType.GetTableName()} for column {persistedColumn.GetColumnName(StoreObjectIdentifier.Table(persistedType.GetTableName(), null))}. Found: {dbColumn.DefaultValueSql.TrimParentheses() ?? "<none>"}, Expected: {persistedColumn.GetDefaultValue().ToString().TrimParentheses() ?? "<none>"}");
                         }
 
-                        if (persistedColumn.GetDefaultValueSql() != null && persistedColumn.GetDefaultValueSql() != dbColumn.DefaultValueSql) {
+                        if (persistedColumn.GetDefaultValueSql() != null && persistedColumn.GetDefaultValueSql().TrimParentheses() != dbColumn.DefaultValueSql.TrimParentheses()) {
                             valErrors.Add(
-                                $"Column default value mismatch in {persistedType.GetTableName()} for column {persistedColumn.GetColumnName(StoreObjectIdentifier.Table(persistedType.GetTableName(), null))}. Found: {dbColumn.DefaultValueSql ?? "<none>"}, Expected: {persistedColumn.GetDefaultValueSql() ?? "<none>"}");
+                                $"Column default value mismatch in {persistedType.GetTableName()} for column {persistedColumn.GetColumnName(StoreObjectIdentifier.Table(persistedType.GetTableName(), null))}. Found: {dbColumn.DefaultValueSql.TrimParentheses() ?? "<none>"}, Expected: {persistedColumn.GetDefaultValueSql().TrimParentheses() ?? "<none>"}");
                         }
 
                         if (persistedColumn.GetDefaultValue() == null && persistedColumn.GetDefaultValueSql() == null && dbColumn.DefaultValueSql != null) {
                             valErrors.Add(
-                                $"Column default value mismatch in {persistedType.GetTableName()} for column {persistedColumn.GetColumnName(StoreObjectIdentifier.Table(persistedType.GetTableName(), null))}. Found: {dbColumn.DefaultValueSql ?? "<none>"}, Expected: <none>");
+                                $"Column default value mismatch in {persistedType.GetTableName()} for column {persistedColumn.GetColumnName(StoreObjectIdentifier.Table(persistedType.GetTableName(), null))}. Found: {dbColumn.DefaultValueSql.TrimParentheses() ?? "<none>"}, Expected: <none>");
                         }
                     }
                 }

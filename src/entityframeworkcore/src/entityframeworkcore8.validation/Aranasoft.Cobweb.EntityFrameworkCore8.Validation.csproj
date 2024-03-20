@@ -18,6 +18,7 @@
     <Compile Include="..\entityframeworkcore3.validation\SchemaValidationOptions.cs" Link="SchemaValidationOptions.cs" />
     <Compile Include="..\entityframeworkcore6.validation\SchemaValidator.cs" Link="SchemaValidator.cs" />
     <Compile Include="..\entityframeworkcore2.validation\SchemaValidatorExtensions.cs" Link="SchemaValidatorExtensions.cs" />
+    <Compile Include="..\entityframeworkcore3.validation\StringExtensions.cs" Link="StringExtensions.cs" />
   </ItemGroup>
 
   <ItemGroup>
