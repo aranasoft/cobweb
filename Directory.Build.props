@@ -64,30 +64,8 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <!--
-      Building MSIs from dev build requires file versions to be increasing.
-      Use the current date in non-official builds. Note that this reduces the deterministic properties of the build
-      and should only be enabled when it's necessary to test-install the MSIs produced by the build.
-    -->
     <_BuildNumber>$(BuildNumber)</_BuildNumber>
-    <_BuildNumber Condition="'$(BuildNumber)' == ''">$([System.DateTime]::Now.ToString(yyyyMMdd)).1</_BuildNumber>
-
-    <!--
-      OfficialBuildId is assumed to have format "20yymmdd.r" (the assumption is checked later in a target).
-    -->
-    <_BuildNumberYY>$(_BuildNumber.Substring(2, 2))</_BuildNumberYY>
-    <_BuildNumberMM>$(_BuildNumber.Substring(4, 2))</_BuildNumberMM>
-    <_BuildNumberDD>$(_BuildNumber.Substring(6, 2))</_BuildNumberDD>
-    <_BuildNumberR>$(_BuildNumber.Substring(9))</_BuildNumberR>
-
-    <!-- SHORT_DATE := yy * 372 + mm * 31 + dd -->
-    <VersionSuffixDateStamp>$([MSBuild]::Add($([MSBuild]::Add($([MSBuild]::Multiply($(_BuildNumberYY), 372)), $([MSBuild]::Multiply($(_BuildNumberMM), 31)))), $(_BuildNumberDD)))</VersionSuffixDateStamp>
-
-    <!-- REVISION := r -->
-    <VersionSuffixBuildOfTheDay>$(_BuildNumberR)</VersionSuffixBuildOfTheDay>
-    <VersionSuffixBuildOfTheDayPadded>$(VersionSuffixBuildOfTheDay.PadLeft(2, $([System.Convert]::ToChar(`0`))))</VersionSuffixBuildOfTheDayPadded>
-
-    <!-- PATCH_NUMBER := (SHORT_DATE - VersionBaseShortDate) * 100 + r -->
-    <_PatchNumber>$([MSBuild]::Add($([MSBuild]::Multiply($([MSBuild]::Subtract($(VersionSuffixDateStamp), $([MSBuild]::ValueOrDefault($(VersionBaseShortDate), 8120)))), 30)), $(_BuildNumberR)))</_PatchNumber>
+    <_BuildNumber Condition="'$(BuildNumber)' == ''">$([System.DateTime]::Now.ToString(yyMM.ddHH))</_BuildNumber>
+    <_PatchNumber>$(_BuildNumber)</_PatchNumber>
   </PropertyGroup>
 </Project>
