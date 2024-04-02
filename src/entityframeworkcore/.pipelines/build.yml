@@ -40,20 +40,6 @@ steps:
     version: '8.x'
 
 
-- task: PowerShell@1
-  displayName: 'Set Branch Quality'
-  inputs:
-    scriptType: inlineScript
-    inlineScript: |
-      if ($env:BUILD_SOURCEBRANCHNAME -eq "Develop"){
-        Write-Output ("##vso[build.updatebuildnumber]" + $env:BUILD_BUILDNUMBER+"-beta")
-      }
-      else 
-      {
-        if ($env:BUILD_SOURCEBRANCHNAME -ne "master"){
-          Write-Output ("##vso[build.updatebuildnumber]" + $env:BUILD_BUILDNUMBER+"-alpha")
-        }
-      }
 - task: DotNetCoreCLI@2
   displayName: 'dotnet restore'
   inputs:
@@ -65,7 +51,7 @@ steps:
   inputs:
     command: 'build'
     projects: $(solutionFolder)
-    arguments: '--no-restore --configuration $(Build.Configuration) /p:ContinuousIntegrationBuild=true /p:BuildNumber=$(Build.BuildNumber)'
+    arguments: '--no-restore --configuration $(Build.Configuration) /p:ContinuousIntegrationBuild=true /p:BuildNumber=$(Build.BuildId)'
 - task: PowerShell@2
   displayName: 'sqllocaldb start'
   inputs:
@@ -76,13 +62,13 @@ steps:
   inputs:
     command: 'test'
     projects: $(solutionFolder)
-    arguments: '--no-restore --no-build --configuration $(Build.Configuration) /p:ContinuousIntegrationBuild=true /p:BuildNumber=$(Build.BuildNumber)'
+    arguments: '--no-restore --no-build --configuration $(Build.Configuration) /p:ContinuousIntegrationBuild=true /p:BuildNumber=$(Build.BuildId)'
 - task: DotNetCoreCLI@2
   displayName: 'dotnet pack'
   inputs:
     command: 'pack'
     packagesToPack: $(solutionFolder)/**/*.csproj
-    arguments: '--no-restore --no-build --configuration $(Build.Configuration) --output $(Build.ArtifactStagingDirectory) /p:ContinuousIntegrationBuild=true /p:BuildNumber=$(Build.BuildNumber)'
+    arguments: '--no-restore --no-build --configuration $(Build.Configuration) --output $(Build.ArtifactStagingDirectory) /p:ContinuousIntegrationBuild=true /p:BuildNumber=$(Build.BuildId)'
     versioningScheme: 'off'
 - task: PublishBuildArtifacts@1
   displayName: 'publish packages'
