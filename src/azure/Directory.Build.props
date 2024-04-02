@@ -2,6 +2,6 @@
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props" />
 
   <PropertyGroup>
-    <VersionSuffix>$(_PatchNumber)</VersionSuffix>
+    <!-- <VersionSuffix>preview-$(_PatchNumber)</VersionSuffix> -->
   </PropertyGroup>
 </Project>
