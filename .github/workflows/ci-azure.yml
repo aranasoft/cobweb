@@ -1,0 +1,52 @@
+name: Azure Utilities
+
+on:
+  workflow_dispatch:
+  push:
+
+env:
+  solutionFolder: 'src/azure'
+  buildConfiguration: 'Release'
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  build:
+    name: Build and Pack
+    runs-on: windows-2022
+    strategy:
+      matrix:
+        dotnet: ['3.1.x', '5.0.x', '6.0.x', '7.0.x', '8.0.x']
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: ${{ matrix.dotnet }}
+
+      - name: Set Build Number
+        run: |
+          echo "BUILD_NUMBER=$((3000+${{ github.run_number }}))" >> "${{ github.env }}"
+
+      - name: Restore dependencies
+        run: dotnet restore ${{ env.solutionFolder }}
+
+      - name: Build
+        run: dotnet build ${{ env.solutionFolder }} --no-restore --configuration ${{ env.buildConfiguration }} /p:ContinuousIntegrationBuild=true /p:BuildNumber=${{ env.BUILD_NUMBER }}
+
+      - name: Test
+        run: dotnet test ${{ env.solutionFolder }} --no-restore --no-build --configuration ${{ env.buildConfiguration }} /p:ContinuousIntegrationBuild=true /p:BuildNumber=${{ env.BUILD_BUILDNUMBER }}
+
+      - name: Pack
+        run: dotnet pack ${{ env.solutionFolder }}/**/*.csproj --no-restore --no-build --configuration ${{ env.buildConfiguration }} --output ${{ github.workspace }}/artifacts /p:ContinuousIntegrationBuild=true /p:BuildNumber=${{ env.BUILD_NUMBER }}
+
+      - name: Publish packages
+        uses: actions/upload-artifact@v2
+        with:
+          name: nuget
+          path: ${{ github.workspace }}/artifacts/*.nupkg
