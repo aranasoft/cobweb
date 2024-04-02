@@ -57,10 +57,10 @@ jobs:
         run: dotnet build ${{ env.solutionFolder }} --no-restore --configuration ${{ env.buildConfiguration }} /p:ContinuousIntegrationBuild=true /p:BuildNumber=${{ env.BUILD_NUMBER }}
 
       - name: Test
-        run: dotnet test ${{ env.solutionFolder }} --no-restore --no-build --configuration ${{ env.buildConfiguration }} /p:ContinuousIntegrationBuild=true /p:BuildNumber=${{ env.BUILD_BUILDNUMBER }}
+        run: dotnet test ${{ env.solutionFolder }} --no-restore --no-build --configuration ${{ env.buildConfiguration }}
 
       - name: Pack
-        run: dotnet pack ${{ env.solutionFolder }}/**/*.csproj --no-restore --no-build --configuration ${{ env.buildConfiguration }} --output ${{ github.workspace }}/artifacts /p:ContinuousIntegrationBuild=true /p:BuildNumber=${{ env.BUILD_NUMBER }}
+        run: dotnet pack ${{ env.solutionFolder }} --no-restore --no-build --configuration ${{ env.buildConfiguration }} --output ${{ github.workspace }}/artifacts /p:ContinuousIntegrationBuild=true /p:BuildNumber=${{ env.BUILD_NUMBER }}
 
       - name: Publish packages
         uses: actions/upload-artifact@v2
