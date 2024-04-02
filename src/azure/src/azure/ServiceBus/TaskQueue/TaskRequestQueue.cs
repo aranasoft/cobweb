@@ -11,6 +11,13 @@ namespace Aranasoft.Cobweb.Azure.ServiceBus.TaskQueue {
 
         private string QueueName { get; }
 
+        /// <summary>
+        /// Can be used for mocking.
+        /// </summary>
+        protected TaskRequestQueue()
+        {
+        }
+
         public TaskRequestQueue(ServiceBusClient queueClient, string taskQueueName) {
             _queueClient = queueClient;
             QueueName = taskQueueName ?? throw new ArgumentNullException(nameof(taskQueueName), "Queue name for Task Queue is not specified");
