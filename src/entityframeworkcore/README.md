@@ -7,7 +7,13 @@ Cobweb was created by [Arana Software](https://www.aranasoft.com), a software ag
 
 ## Details
 
-A utility for Entity Framework Core. It includes a schema validation tool that can be used to validate the schema of a database against the schema of an Entity Framework Core `DbContext`.
+This library provides a set of tools for validating the schema of a DbContext in Entity Framework Core against the connected database. It is useful for ensuring that your EF Core model is in sync with your database schema.
+
+## Features
+
+ - Validates tables, views, columns, indexes, and foreign keys.
+ - Allows you to specify which aspects of the schema to validate.
+ - Provides detailed error messages when validation fails.
 
 ### Validations
 
@@ -33,29 +39,32 @@ A utility for Entity Framework Core. It includes a schema validation tool that c
 
 ## Installation
 
-From Package Manager Console:
+You can install the Aranasoft.Cobweb.EntityFrameworkCore.Validation NuGet package into your project.
 
 ```bash
-PM> install-package aranasoft.cobweb.entityframeworkcore.validation
+dotnet add package Aranasoft.Cobweb.EntityFrameworkCore.Validation
 ```
 
-From .NET CLI:
+Or via the NuGet Package Manager:
 
 ```bash
-> dotnet add package aranasoft.cobweb.entityframeworkcore.validation
+Install-Package Aranasoft.Cobweb.EntityFrameworkCore.Validation
 ```
+
 
 ## Usage
 
 ```csharp
-// using Aranasoft.Cobweb.EntityFrameworkCore.Validation
+using Aranasoft.Cobweb.EntityFrameworkCore.Validation
+
+// ...
 
 myApplicationContext.ValidateSchema([options]);
 ```
 
-`ValidateSchema` requires that the `DbContext` uses an
-Application Service Provider configured with platform-specific design
-time services.
+This will validate the schema of the DbContext against the connected database. If there are any discrepancies, a SchemaValidationException will be thrown.
+
+`ValidateSchema` requires that the `DbContext` uses an Application Service Provider configured with platform-specific design time services.
 
 Example:
 ```csharp
@@ -73,7 +82,9 @@ Example:
 ## Options
 
 ```csharp
-// using Aranasoft.Cobweb.EntityFrameworkCore.Validation
+using Aranasoft.Cobweb.EntityFrameworkCore.Validation
+
+// ...
 
 var options = new SchemaValidationOptions{
                       ValidateIndexes = true,
