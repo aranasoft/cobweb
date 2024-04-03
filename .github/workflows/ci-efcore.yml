@@ -51,7 +51,16 @@ jobs:
         run: sqllocaldb start mssqllocaldb
 
       - name: Test
-        run: dotnet test ${{ env.solutionFolder }} --no-restore --no-build --configuration ${{ env.buildConfiguration }}
+        run: dotnet test ${{ env.solutionFolder }} --no-restore --no-build --configuration ${{ env.buildConfiguration }} --logger "trx;LogFileName=test_results.trx" --results-directory "TestResults"
+
+      - name: Publish Test Results
+        uses: dorny/test-reporter@v1
+        if: always()
+        with:
+          name: Test Results
+          path: 'TestResults/**/*.trx'
+          reporter: dotnet-trx
+          fail-on-error: true
 
       - name: Pack
         run: dotnet pack ${{ env.solutionFolder }} --no-restore --no-build --configuration ${{ env.buildConfiguration }} --output ${{ github.workspace }}/artifacts /p:ContinuousIntegrationBuild=true /p:BuildNumber=${{ env.BUILD_NUMBER }}
@@ -59,6 +68,6 @@ jobs:
       - name: Publish packages
         uses: actions/upload-artifact@v4
         with:
-          name: nuget
+          name: NuGet Packages
           path: ${{ github.workspace }}/artifacts/*.nupkg
 
