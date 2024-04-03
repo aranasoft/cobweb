@@ -1,3 +1,12 @@
+## 2.0.1 (2024-04-03)
+
+
+### Features
+
+* **taskqueue**: improve mocking support for Task Queue and Coordinator ([890b845](https://github.com/aranasoft/cobweb/commit/890b84534af13188540d35f807e95913ac097842))
+
+
+
 ## 2.0.0 (2024-04-03)
 
 
