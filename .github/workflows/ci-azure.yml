@@ -3,6 +3,8 @@ name: Azure Utilities
 on:
   workflow_dispatch:
   push:
+    paths:
+      - 'src/azure/**'
 
 env:
   solutionFolder: 'src/azure'
