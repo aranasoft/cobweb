@@ -1,3 +1,15 @@
+## 2.0.0 (2024-04-03)
+
+
+### Features
+
+* **taskqueue**: add serivce collection registration for task queue processing
+* **taskqueue**: improved async and cancellation support
+* updated to use `Azure.Messaging.ServiceBus` library
+* combine Azure and Azure.TaskQueue libraries
+
+
+
 ## 1.1.1 (2019-04-02)
 
 

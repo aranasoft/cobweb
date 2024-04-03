@@ -1,5 +1,5 @@
 # Aranasoft.Cobweb.Azure
-![Azure DevOps](https://dev.azure.com/aranasoft/Cobweb/_apis/build/status/Aranasoft.Cobweb.Azure?branchName=master)
+[![Azure Utilities](https://github.com/aranasoft/cobweb/actions/workflows/ci-azure.yml/badge.svg)](https://github.com/aranasoft/cobweb/actions/workflows/ci-azure.yml)
 
 `Aranasoft.Cobweb.Azure` is a utility library for Azure. It provides a set of tools and classes for working with Azure services, with a focus on Azure Service Bus and task queue management. The library is designed to be used with .NET and supports multiple target frameworks.
 
