@@ -12,6 +12,8 @@ env:
 
 permissions:
   contents: read
+  actions: read
+  checks: write
   packages: write
 
 jobs:
