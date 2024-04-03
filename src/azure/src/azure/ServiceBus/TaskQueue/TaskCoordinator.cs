@@ -15,6 +15,14 @@ namespace Aranasoft.Cobweb.Azure.ServiceBus.TaskQueue {
         private readonly ITaskHandlerResolver _taskHandlerResolver;
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="TaskRequestQueue"/> class.
+        /// This constructor is intended for mocking purposes.
+        /// </summary>
+        protected TaskCoordinator()
+        {
+        }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="TaskCoordinator"/> class.
         /// </summary>
         /// <param name="taskHandlerResolver">The <see cref="ITaskHandlerResolver"/> to use for resolving task handlers.</param>
@@ -25,7 +33,7 @@ namespace Aranasoft.Cobweb.Azure.ServiceBus.TaskQueue {
         }
 
         /// <inheritdoc />
-        public Task ProcessQueueMessageAsync(string message, CancellationToken cancellationToken = default) {
+        public virtual Task ProcessQueueMessageAsync(string message, CancellationToken cancellationToken = default) {
             var taskRequest = DeserializeTaskRequest(message);
             return ProcessTaskAsync(taskRequest, cancellationToken);
         }
@@ -36,7 +44,7 @@ namespace Aranasoft.Cobweb.Azure.ServiceBus.TaskQueue {
         /// <param name="taskRequest">The <see cref="TaskRequest"/> to process.</param>
         /// <param name="cancellationToken">A <see cref="CancellationToken"/> that can be used to cancel the operation.</param>
         /// <returns>A <see cref="Task"/> that represents the asynchronous operation.</returns>
-        public async Task ProcessTaskAsync(TaskRequest taskRequest, CancellationToken cancellationToken = default) {
+        public virtual async Task ProcessTaskAsync(TaskRequest taskRequest, CancellationToken cancellationToken = default) {
             var taskRequestType = taskRequest.GetType();
             var taskRequestTrackingId = taskRequest.TrackingId.ToString("D");
             _log.LogInformation("Received task {TaskRequestTrackingId} of type {TaskRequestType}",

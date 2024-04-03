@@ -37,14 +37,14 @@ namespace Aranasoft.Cobweb.Azure.ServiceBus.TaskQueue {
         }
 
         /// <inheritdoc />
-        public Task AddTaskAsync(TaskRequest request, CancellationToken cancellationToken = default) {
+        public virtual Task AddTaskAsync(TaskRequest request, CancellationToken cancellationToken = default) {
             var serializedRequest = request.ToJson();
             var message = new ServiceBusMessage(Encoding.UTF8.GetBytes(serializedRequest));
             return GetQueueSender().SendMessageAsync(message, cancellationToken);
         }
 
         /// <inheritdoc />
-        public Task ScheduleTaskAsync(TaskRequest request, DateTimeOffset scheduledMessageEnqueueTime, CancellationToken cancellationToken = default) {
+        public virtual Task ScheduleTaskAsync(TaskRequest request, DateTimeOffset scheduledMessageEnqueueTime, CancellationToken cancellationToken = default) {
             var serializedRequest = request.ToJson();
             var message = new ServiceBusMessage(Encoding.UTF8.GetBytes(serializedRequest));
             return GetQueueSender().ScheduleMessageAsync(message, scheduledMessageEnqueueTime, cancellationToken);
