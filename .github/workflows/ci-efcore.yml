@@ -23,6 +23,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Install SQL LocalDB
+        run: ${{ env.solutionFolder }}/InstallLocalDB.ps1
+        shell: pwsh
+
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
@@ -42,6 +46,9 @@ jobs:
 
       - name: Build
         run: dotnet build ${{ env.solutionFolder }} --no-restore --configuration ${{ env.buildConfiguration }} /p:ContinuousIntegrationBuild=true /p:BuildNumber=${{ env.BUILD_NUMBER }}
+
+      - name: Start SQL LocalDB
+        run: sqllocaldb start mssqllocaldb
 
       - name: Test
         run: dotnet test ${{ env.solutionFolder }} --no-restore --no-build --configuration ${{ env.buildConfiguration }}
