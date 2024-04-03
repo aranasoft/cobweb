@@ -16,7 +16,7 @@ namespace Aranasoft.Cobweb.Azure.ServiceBus.TaskQueue {
         /// <summary>
         /// Executes before the main execution of the task. This method can be overridden in derived classes.
         /// </summary>
-        /// <param name="taskRequest">The <see cref="TTaskRequest"/> to handle.</param>
+        /// <param name="taskRequest">The <typeparamref name="TTaskRequest"/> to handle.</param>
         /// <param name="cancellationToken">A <see cref="CancellationToken"/> that can be used to cancel the operation.</param>
         /// <returns>A <see cref="Task"/> that represents the asynchronous operation. The task result contains a boolean indicating whether the operation was successful.</returns>
         protected virtual Task<bool> BeforeExecuteAsync(TTaskRequest taskRequest, CancellationToken cancellationToken = default) {
@@ -26,7 +26,7 @@ namespace Aranasoft.Cobweb.Azure.ServiceBus.TaskQueue {
         /// <summary>
         /// Executes the main logic of the task. This method must be overridden in derived classes.
         /// </summary>
-        /// <param name="taskRequest">The <see cref="TTaskRequest"/> to handle.</param>
+        /// <param name="taskRequest">The <typeparamref name="TTaskRequest"/> to handle.</param>
         /// <param name="cancellationToken">A <see cref="CancellationToken"/> that can be used to cancel the operation.</param>
         /// <returns>A <see cref="Task"/> that represents the asynchronous operation. The task result contains a boolean indicating whether the operation was successful.</returns>
         protected abstract Task<bool> ExecuteAsync(TTaskRequest taskRequest, CancellationToken cancellationToken = default);
@@ -34,7 +34,7 @@ namespace Aranasoft.Cobweb.Azure.ServiceBus.TaskQueue {
         /// <summary>
         /// Executes after the main execution of the task. This method can be overridden in derived classes.
         /// </summary>
-        /// <param name="taskRequest">The <see cref="TTaskRequest"/> to handle.</param>
+        /// <param name="taskRequest">The <typeparamref name="TTaskRequest"/> to handle.</param>
         /// <param name="cancellationToken">A <see cref="CancellationToken"/> that can be used to cancel the operation.</param>
         /// <returns>A <see cref="Task"/> that represents the asynchronous operation. The task result contains a boolean indicating whether the operation was successful.</returns>
         protected virtual Task<bool> AfterExecuteAsync(TTaskRequest taskRequest, CancellationToken cancellationToken = default) {
