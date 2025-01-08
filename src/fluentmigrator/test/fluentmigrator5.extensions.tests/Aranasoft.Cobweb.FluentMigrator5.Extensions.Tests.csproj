@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\..\..\netfx.props" />
+
+  <PropertyGroup>
+    <TargetFrameworks>net48;netstandard2.0</TargetFrameworks>
+    <AssemblyName>Aranasoft.Cobweb.FluentMigrator.Extensions.Tests</AssemblyName>
+    <RootNamespace>Aranasoft.Cobweb.FluentMigrator.Extensions.Tests</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\fluentmigrator.extensions.tests\CompileTests.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentMigrator" Version="[5,6)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\fluentmigrator5.extensions\Aranasoft.Cobweb.FluentMigrator5.Extensions.csproj" />
+  </ItemGroup>
+
+</Project>
