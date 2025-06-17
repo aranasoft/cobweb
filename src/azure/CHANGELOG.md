@@ -1,3 +1,12 @@
+## 2.1 (2025-06-16)
+
+
+### Features
+
+* **taskqueue**: add support for .NET 9.0 ([90b92da](https://github.com/aranasoft/cobweb/commit/90b92daf35a24790ff747d48601b84475c6c02a3))
+
+
+
 ## 2.0.1 (2024-04-03)
 
 
