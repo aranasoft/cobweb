@@ -1,3 +1,12 @@
+<a name="7.0.0"></a>
+# [7.0.0](https://github.com/aranasoft/cobweb-data-fluentmigrator/compare/v2.0.0...v3.0.0) (2025-06-17)
+
+### Features
+
+* **v7:** provide support for FluentMigrator v7 ([ce47d63](https://github.com/aranasoft/cobweb/commit/ce47d63a0619c73b65f4bf05b872436f6c0ac196))
+
+
+
 <a name="6.0.0"></a>
 # [6.0.0](https://github.com/aranasoft/cobweb-data-fluentmigrator/compare/v2.0.0...v3.0.0) (2025-01-07)
 
