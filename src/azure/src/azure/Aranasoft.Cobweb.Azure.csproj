@@ -2,10 +2,10 @@
 
   <PropertyGroup>
     <Description>A utility library for Azure</Description>
-    <TargetFrameworks>netstandard2.1;netcoreapp3.1;net5.0;net6.0;net7.0;net8.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.1;netcoreapp3.1;net5.0;net6.0;net7.0;net8.0;net9.0</TargetFrameworks>
     <AssemblyName>Aranasoft.Cobweb.Azure</AssemblyName>
     <RootNamespace>Aranasoft.Cobweb.Azure</RootNamespace>
-    <VersionPrefix>2.0.1</VersionPrefix>
+    <VersionPrefix>2.1</VersionPrefix>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -48,5 +48,10 @@
   <ItemGroup Condition=" '$(TargetFramework)' == 'net8.0' ">
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="[8,9)" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="[8,9)" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net9.0' ">
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="[9,10)" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="[9,10)" />
   </ItemGroup>
 </Project>
