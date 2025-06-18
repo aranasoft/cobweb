@@ -1,3 +1,12 @@
+# 1.90.0 (2025-06-18)
+
+
+### Features
+
+* **efcore:** support EF Core v9 ([40921b7](https://github.com/aranasoft/cobweb/commit/40921b7a6ed74cff28d70d267ef60a0a3614b34c))
+
+
+
 # 1.80.0 (2024-03-19)
 
 
