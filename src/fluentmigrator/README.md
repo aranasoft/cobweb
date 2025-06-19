@@ -28,7 +28,7 @@ Cobweb uses lambda expressions to define column properties.
 ```
 Create.Table("TestTable")
       .WithColumn("FirstColumn", col => col.AsString().Nullable().WithDefaultValue("test"))
-      .WithColumn("SecondColumn, col => col.AsString().NotNullable().WithDefaultValue("sample"));
+      .WithColumn("SecondColumn", col => col.AsString().NotNullable().WithDefaultValue("sample"));
 ```
 
 Under the covers, Cobweb passes these lambda expressions to FluentMigrator's method chains. The lambda syntax will naturally group column properties and delineate from other columns. This grouping also enables code formating support from editor tooling.
@@ -56,7 +56,7 @@ Syntax: `WithColumn(string columnName, Func columnOptions)`
 ```
 Create.Table("TestTable")
       .WithColumn("FirstColumn", col => col.AsString().Nullable())
-      .WithColumn("SecondColumn, col => col.AsString().NotNullable().WithDefaultValue("sample"));
+      .WithColumn("SecondColumn", col => col.AsString().NotNullable().WithDefaultValue("sample"));
 ```
 
 ### Alter Table: `AddColumn`

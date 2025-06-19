@@ -1,3 +1,15 @@
 <Project>
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)..\, Directory.Build.props))\Directory.Build.props" />
+
+  <PropertyGroup>
+    <!-- <VersionSuffix>preview-$(_PatchNumber)</VersionSuffix> -->
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(IsTestProject)' == 'false' ">
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+
+  <ItemGroup Condition=" '$(IsTestProject)' == 'false' ">
+    <None Include="$(MSBuildThisFileDirectory)\README.md" Pack="true" PackagePath="\"/>
+  </ItemGroup>
 </Project>

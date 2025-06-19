@@ -13,6 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 		.pipelines\build.yml = .pipelines\build.yml
 		..\..\LICENSE-BSD = ..\..\LICENSE-BSD
+		Directory.Build.props = Directory.Build.props
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aranasoft.Cobweb.FluentMigrator2.Extensions", "src\fluentmigrator2.extensions\Aranasoft.Cobweb.FluentMigrator2.Extensions.csproj", "{16AC8D08-3AC5-4529-821B-312F96CA07D2}"
