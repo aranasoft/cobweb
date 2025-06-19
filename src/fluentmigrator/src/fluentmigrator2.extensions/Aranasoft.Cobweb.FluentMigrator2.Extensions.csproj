@@ -14,7 +14,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="..\fluentmigrator.extensions\MigrationExtensions.cs" />
+    <Compile Include="..\fluentmigrator.extensions\MigrationExtensions.cs" Link="MigrationExtensions.cs" />
+    <Compile Include="..\fluentmigrator.extensions\SqlServer\SqlServerExtensions.RowVersion.cs" Link="SqlServer\SqlServerExtensions.RowVersion.cs" />
   </ItemGroup>
 
   <ItemGroup>
