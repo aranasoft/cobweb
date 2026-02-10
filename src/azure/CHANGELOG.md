@@ -1,3 +1,17 @@
+## 2.2 (2026-02-10)
+
+
+### Features
+
+* add .NET 10 support ([53363b5](https://github.com/aranasoft/cobweb/commit/53363b5))
+
+
+### Breaking Changes
+
+* drop support for .NET 7 and earlier frameworks ([11d0aed](https://github.com/aranasoft/cobweb/commit/11d0aed))
+
+
+
 ## 2.1 (2025-06-16)
 
 
