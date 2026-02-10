@@ -6,41 +6,40 @@ using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 
-namespace Aranasoft.Cobweb.Azure.Tests.ServiceBus.TaskQueue {
-    public class GivenTaskHandlerResolver {
-        private readonly TaskHandlerResolver _resolver;
+namespace Aranasoft.Cobweb.Azure.Tests.ServiceBus.TaskQueue;
+public class GivenTaskHandlerResolver {
+    private readonly TaskHandlerResolver _resolver;
 
-        public GivenTaskHandlerResolver() {
-            var serviceCollection = new ServiceCollection();
-            serviceCollection.AddTaskQueueProcessing();
-            serviceCollection.AddTaskHandler<TestTaskHandler, TestTaskRequest>();
-            var serviceProvider = serviceCollection.BuildServiceProvider();
+    public GivenTaskHandlerResolver() {
+        var serviceCollection = new ServiceCollection();
+        serviceCollection.AddTaskQueueProcessing();
+        serviceCollection.AddTaskHandler<TestTaskHandler, TestTaskRequest>();
+        var serviceProvider = serviceCollection.BuildServiceProvider();
 
-            _resolver = new TaskHandlerResolver(serviceProvider);
-        }
-
-        [Fact]
-        public void ItShouldResolveHandlerForHandledRequestType() {
-            var handlers = _resolver.ResolveHandlers(typeof(TestTaskRequest));
-            handlers.Should().HaveCount(1).And.ContainItemsAssignableTo<TestTaskHandler>();
-        }
-
-        [Fact]
-        public void ItShouldNotResolveHandlerForUnhandledRequestType() {
-            var handlers = _resolver.ResolveHandlers(typeof(UnhandledTestTaskRequest));
-            handlers.Should().BeEmpty();
-        }
-
-        public class TestTaskHandler : TaskHandler<TestTaskRequest> {
-            protected override Task<bool> ExecuteAsync(
-            TestTaskRequest taskRequest,
-            CancellationToken cancellationToken = default) {
-                throw new NotImplementedException();
-            }
-        }
-
-        public class TestTaskRequest : TaskRequest {}
-
-        public class UnhandledTestTaskRequest : TaskRequest {}
+        _resolver = new TaskHandlerResolver(serviceProvider);
     }
+
+    [Fact]
+    public void ItShouldResolveHandlerForHandledRequestType() {
+        var handlers = _resolver.ResolveHandlers(typeof(TestTaskRequest));
+        handlers.Should().HaveCount(1).And.ContainItemsAssignableTo<TestTaskHandler>();
+    }
+
+    [Fact]
+    public void ItShouldNotResolveHandlerForUnhandledRequestType() {
+        var handlers = _resolver.ResolveHandlers(typeof(UnhandledTestTaskRequest));
+        handlers.Should().BeEmpty();
+    }
+
+    public class TestTaskHandler : TaskHandler<TestTaskRequest> {
+        protected override Task<bool> ExecuteAsync(
+        TestTaskRequest taskRequest,
+        CancellationToken cancellationToken = default) {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class TestTaskRequest : TaskRequest {}
+
+    public class UnhandledTestTaskRequest : TaskRequest {}
 }

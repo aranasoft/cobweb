@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0</TargetFrameworks>
+    <LangVersion>latest</LangVersion>
     <AssemblyName>Aranasoft.Cobweb.FluentMigrator.Extensions</AssemblyName>
     <RootNamespace>Aranasoft.Cobweb.FluentMigrator.Extensions</RootNamespace>
     <VersionPrefix>5.0</VersionPrefix>

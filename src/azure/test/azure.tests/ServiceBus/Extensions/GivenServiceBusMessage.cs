@@ -4,13 +4,12 @@ using Azure.Messaging.ServiceBus;
 using FluentAssertions;
 using Xunit;
 
-namespace Aranasoft.Cobweb.Azure.Tests.ServiceBus.Extensions {
-    public class GivenServiceBusMessage {
-        [Fact]
-        public void ItShouldHaveAFutureEnqueueTime() {
-            new ServiceBusMessage().Delay(TimeSpan.FromDays(3))
-            .ScheduledEnqueueTime.Should()
-            .BeCloseTo(DateTime.UtcNow.AddDays(3), TimeSpan.FromMinutes(1));
-        }
+namespace Aranasoft.Cobweb.Azure.Tests.ServiceBus.Extensions;
+public class GivenServiceBusMessage {
+    [Fact]
+    public void ItShouldHaveAFutureEnqueueTime() {
+        new ServiceBusMessage().Delay(TimeSpan.FromDays(3))
+        .ScheduledEnqueueTime.Should()
+        .BeCloseTo(DateTime.UtcNow.AddDays(3), TimeSpan.FromMinutes(1));
     }
 }

@@ -5,21 +5,20 @@ using Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.XUnit;
 using FluentAssertions;
 using Xunit;
 
-namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.SqlServer {
-    [OperatingSystemRequirement(OperatingSystems.Windows)]
-    public class
-        WhenValidatingSchemaGivenValidDatabase : IClassFixture<SqlServerMigrationsFixture<ValidIdentityMigrations>> {
-        private readonly SqlServerMigrationsFixture<ValidIdentityMigrations> _fixture;
+namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.SqlServer;
+[OperatingSystemRequirement(OperatingSystems.Windows)]
+public class
+    WhenValidatingSchemaGivenValidDatabase : IClassFixture<SqlServerMigrationsFixture<ValidIdentityMigrations>> {
+    private readonly SqlServerMigrationsFixture<ValidIdentityMigrations> _fixture;
 
-        public WhenValidatingSchemaGivenValidDatabase(SqlServerMigrationsFixture<ValidIdentityMigrations> fixture) {
-            _fixture = fixture;
-        }
+    public WhenValidatingSchemaGivenValidDatabase(SqlServerMigrationsFixture<ValidIdentityMigrations> fixture) {
+        _fixture = fixture;
+    }
 
-        [ConditionalFact]
-        public void ItShouldValidateAgainstExpectedSchema() {
-            var applicationDbContext = _fixture.GetContext();
-            Action validatingSchema = () => applicationDbContext.ValidateSchema();
-            validatingSchema.Should().NotThrow();
-        }
+    [ConditionalFact]
+    public void ItShouldValidateAgainstExpectedSchema() {
+        var applicationDbContext = _fixture.GetContext();
+        Action validatingSchema = () => applicationDbContext.ValidateSchema();
+        validatingSchema.Should().NotThrow();
     }
 }

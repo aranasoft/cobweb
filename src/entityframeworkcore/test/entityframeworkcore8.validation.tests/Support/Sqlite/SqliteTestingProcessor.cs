@@ -7,28 +7,27 @@ using FluentMigrator.Runner.Processors.SQLite;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.Sqlite {
-    public class SqliteTestingProcessor : SQLiteProcessor {
-        public SqliteTestingProcessor(IDbConnection connection,
-                                      SQLiteDbFactory factory,
-                                      SQLiteGenerator generator,
-                                      ILogger<SQLiteProcessor> logger,
-                                      IOptionsSnapshot<ProcessorOptions> options,
-                                      IConnectionStringAccessor connectionStringAccessor,
-                                      IServiceProvider serviceProvider,
-                                      SQLiteQuoter quoter) : base(
-            factory,
-            generator,
-            logger,
-            options,
-            connectionStringAccessor,
-            serviceProvider,
-            quoter) {
-            Connection = connection;
-        }
-
-        public override string DatabaseType => "SQLite-Test";
-
-        protected override void EnsureConnectionIsClosed() {}
+namespace Aranasoft.Cobweb.EntityFrameworkCore.Validation.Tests.Support.Sqlite;
+public class SqliteTestingProcessor : SQLiteProcessor {
+    public SqliteTestingProcessor(IDbConnection connection,
+                                  SQLiteDbFactory factory,
+                                  SQLiteGenerator generator,
+                                  ILogger<SQLiteProcessor> logger,
+                                  IOptionsSnapshot<ProcessorOptions> options,
+                                  IConnectionStringAccessor connectionStringAccessor,
+                                  IServiceProvider serviceProvider,
+                                  SQLiteQuoter quoter) : base(
+        factory,
+        generator,
+        logger,
+        options,
+        connectionStringAccessor,
+        serviceProvider,
+        quoter) {
+        Connection = connection;
     }
+
+    public override string DatabaseType => "SQLite-Test";
+
+    protected override void EnsureConnectionIsClosed() {}
 }
