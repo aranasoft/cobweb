@@ -1,9 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <Import Project="..\..\..\..\netfx.props" />
 
   <PropertyGroup>
     <Description>A base-class utility library for .NET and .NET Core.</Description>
-    <TargetFrameworks>net45;netstandard2.0;net10.0</TargetFrameworks>
+    <TargetFrameworks>net8.0;net9.0;net10.0</TargetFrameworks>
     <AssemblyName>Aranasoft.Cobweb</AssemblyName>
     <RootNamespace>Aranasoft.Cobweb</RootNamespace>
     <VersionPrefix>1.5.0</VersionPrefix>

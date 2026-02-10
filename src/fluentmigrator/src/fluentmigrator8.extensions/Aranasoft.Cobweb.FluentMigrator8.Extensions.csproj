@@ -1,8 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <Import Project="..\..\..\..\netfx.props" />
 
   <PropertyGroup>
-    <TargetFrameworks>net48;netstandard2.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <AssemblyName>Aranasoft.Cobweb.FluentMigrator.Extensions</AssemblyName>
     <RootNamespace>Aranasoft.Cobweb.FluentMigrator.Extensions</RootNamespace>
     <VersionPrefix>8.0</VersionPrefix>
@@ -15,8 +14,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="..\fluentmigrator.extensions\MigrationExtensions.cs" Link="MigrationExtensions.cs" />
-    <Compile Include="..\fluentmigrator.extensions\SqlServer\SqlServerExtensions.RowVersion.cs" Link="SqlServer\SqlServerExtensions.RowVersion.cs" />
+    <Compile Include="..\fluentmigrator5.extensions\MigrationExtensions.cs" Link="MigrationExtensions.cs" />
+    <Compile Include="..\fluentmigrator5.extensions\SqlServer\SqlServerExtensions.RowVersion.cs" Link="SqlServer\SqlServerExtensions.RowVersion.cs" />
   </ItemGroup>
 
   <ItemGroup>
