@@ -1,3 +1,25 @@
+<a name="1.6.0"></a>
+# 1.6.0 (2026-02-10)
+
+
+### Features
+
+* **core:** add .NET 10 support ([53363b5](https://github.com/aranasoft/cobweb/commit/53363b5))
+
+
+### Code Refactoring
+
+* **extensions:** remove `IsAssignableTo(Type)`, `GetCustomAttribute<T>`, and `GetCustomAttributes<T>` extension methods now provided by the .NET runtime ([37bfeee](https://github.com/aranasoft/cobweb/commit/37bfeee))
+
+
+### BREAKING CHANGES
+
+* **core:** drop support for .NET 7 and earlier frameworks; minimum target is now net8.0 ([11d0aed](https://github.com/aranasoft/cobweb/commit/11d0aed))
+* **extensions:** remove deprecated `Extentions` namespace shims ([37bfeee](https://github.com/aranasoft/cobweb/commit/37bfeee))
+* **extensions:** `IsAssignableTo(Type)`, `GetCustomAttribute<T>`, and `GetCustomAttributes<T>` have been removed; use the framework equivalents ([37bfeee](https://github.com/aranasoft/cobweb/commit/37bfeee))
+
+
+
 <a name="1.5.0"></a>
 # 1.5.0 (2022-12-01)
 
