@@ -1,3 +1,12 @@
+# 1.100.0 (2026-02-10)
+
+
+### Features
+
+* **efcore:** support EF Core v10 ([53363b5](https://github.com/aranasoft/cobweb/commit/53363b5))
+
+
+
 # 1.90.0 (2025-06-18)
 
 
