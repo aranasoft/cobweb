@@ -15,15 +15,14 @@ public class SqliteTestingProcessor : SQLiteProcessor {
                                   ILogger<SQLiteProcessor> logger,
                                   IOptionsSnapshot<ProcessorOptions> options,
                                   IConnectionStringAccessor connectionStringAccessor,
-                                  IServiceProvider serviceProvider,
-                                  SQLiteQuoter quoter) : base(
+                                  IServiceProvider serviceProvider) : base(
         factory,
         generator,
         logger,
         options,
         connectionStringAccessor,
         serviceProvider,
-        quoter) {
+        new SQLiteQuoter()) {
         Connection = connection;
     }
 
