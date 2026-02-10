@@ -49,10 +49,16 @@ public abstract class Entity<TEntity, TIdentifier> : IEntity<TEntity>
         return other != null && Equals(other);
     }
 
+    /// <summary>
+    ///     Determines whether two entities are equal.
+    /// </summary>
     public static bool operator ==(Entity<TEntity, TIdentifier> entity1, Entity<TEntity, TIdentifier> entity2) {
         return Equals(entity1, null) ? Equals(entity2, null) : entity1.Equals(entity2);
     }
 
+    /// <summary>
+    ///     Determines whether two entities are not equal.
+    /// </summary>
     public static bool operator !=(Entity<TEntity, TIdentifier> entity1, Entity<TEntity, TIdentifier> entity2) {
         return !(entity1 == entity2);
     }

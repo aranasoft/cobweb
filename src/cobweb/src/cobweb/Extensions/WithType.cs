@@ -2,6 +2,10 @@ using System;
 using System.Linq;
 
 namespace Aranasoft.Cobweb.Extensions;
+
+/// <summary>
+///     Extension methods for <see cref="Type" /> providing generic type analysis and assignability checks.
+/// </summary>
 public static class WithType {
     /// <summary>
     ///     Identify if a class derives from a specified generic base class.

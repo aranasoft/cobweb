@@ -2,6 +2,10 @@ using System;
 using System.Reflection;
 
 namespace Aranasoft.Cobweb.Reflection.Extensions;
+
+/// <summary>
+///     Extension methods for <see cref="ICustomAttributeProvider" /> to check for attribute definitions.
+/// </summary>
 public static class WithMember {
     /// <summary>
     ///     Indicates whether one or more instance of <typeparamref name="TAttribute" /> is defined on the
