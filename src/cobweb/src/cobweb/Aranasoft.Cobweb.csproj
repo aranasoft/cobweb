@@ -5,7 +5,7 @@
     <TargetFrameworks>net8.0;net9.0;net10.0</TargetFrameworks>
     <AssemblyName>Aranasoft.Cobweb</AssemblyName>
     <RootNamespace>Aranasoft.Cobweb</RootNamespace>
-    <VersionPrefix>1.5.0</VersionPrefix>
+    <VersionPrefix>1.6.0</VersionPrefix>
     <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 </Project>
