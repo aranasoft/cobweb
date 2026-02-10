@@ -5,7 +5,7 @@
     <LangVersion>latest</LangVersion>
     <AssemblyName>Aranasoft.Cobweb.FluentMigrator.Extensions</AssemblyName>
     <RootNamespace>Aranasoft.Cobweb.FluentMigrator.Extensions</RootNamespace>
-    <VersionPrefix>7.0</VersionPrefix>
+    <VersionPrefix>7.1</VersionPrefix>
     <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
