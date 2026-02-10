@@ -1,3 +1,26 @@
+<a name="8.0.0"></a>
+# 8.0.0 (2026-02-10)
+
+### Features
+
+* **v8:** provide support for FluentMigrator v8 ([11d0aed](https://github.com/aranasoft/cobweb/commit/11d0aed))
+* **sqlserver:** add SqlServer 'rowversion' column extension method ([ea98d1c](https://github.com/aranasoft/cobweb/commit/ea98d1c))
+
+
+
+<a name="7.1.0"></a>
+# 7.1.0 (2026-02-10)
+
+### Features
+
+* **sqlserver:** add SqlServer 'rowversion' column extension method ([ea98d1c](https://github.com/aranasoft/cobweb/commit/ea98d1c))
+
+### Breaking Changes
+
+* drop support for .NET Framework 4.8 ([11d0aed](https://github.com/aranasoft/cobweb/commit/11d0aed))
+
+
+
 <a name="7.0.0"></a>
 # [7.0.0](https://github.com/aranasoft/cobweb-data-fluentmigrator/compare/v2.0.0...v3.0.0) (2025-06-17)
 
@@ -7,12 +30,38 @@
 
 
 
+<a name="6.1.0"></a>
+# 6.1.0 (2026-02-10)
+
+### Features
+
+* **sqlserver:** add SqlServer 'rowversion' column extension method ([ea98d1c](https://github.com/aranasoft/cobweb/commit/ea98d1c))
+
+### Breaking Changes
+
+* drop support for .NET Framework 4.8 ([11d0aed](https://github.com/aranasoft/cobweb/commit/11d0aed))
+
+
+
 <a name="6.0.0"></a>
 # [6.0.0](https://github.com/aranasoft/cobweb-data-fluentmigrator/compare/v2.0.0...v3.0.0) (2025-01-07)
 
 ### Features
 
 * **v6:** provide support for FluentMigrator v6 ([07ff544](https://github.com/aranasoft/cobweb/commit/07ff544))
+
+
+
+<a name="5.1.0"></a>
+# 5.1.0 (2026-02-10)
+
+### Features
+
+* **sqlserver:** add SqlServer 'rowversion' column extension method ([ea98d1c](https://github.com/aranasoft/cobweb/commit/ea98d1c))
+
+### Breaking Changes
+
+* drop support for .NET Framework 4.8 ([11d0aed](https://github.com/aranasoft/cobweb/commit/11d0aed))
 
 
 
@@ -129,4 +178,3 @@
 ### Features
 
 * **migrations:** add Cobweb.Data.FluentMigrator utility extensions
-
