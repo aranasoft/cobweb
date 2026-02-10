@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Cobweb\Aranasoft.Cobweb.csproj" />
+    <ProjectReference Include="..\..\src\cobweb\Aranasoft.Cobweb.csproj" />
   </ItemGroup>
 
   <ItemGroup>
