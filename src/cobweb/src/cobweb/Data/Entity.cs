@@ -10,14 +10,23 @@ namespace Aranasoft.Cobweb.Data {
     public abstract class Entity<TEntity, TIdentifier> : IEntity<TEntity>
         where TEntity : Entity<TEntity, TIdentifier>, IEquatable<TEntity>
         where TIdentifier : IComparable, IComparable<TIdentifier>, IEquatable<TIdentifier> {
+        /// <summary>
+        ///     Gets or sets the unique identifier for the entity.
+        /// </summary>
         public virtual TIdentifier Id { get; set; }
 
+        /// <inheritdoc />
         public override int GetHashCode() {
             unchecked {
                 return GetType().GetHashCode() * 29 * Id.GetHashCode();
             }
         }
 
+        /// <summary>
+        ///     Determines whether the specified entity is equal to the current entity based on identifier value.
+        /// </summary>
+        /// <param name="other">The entity to compare with the current entity.</param>
+        /// <returns>true if the entities share the same non-default identifier; otherwise, false.</returns>
         public virtual bool Equals(TEntity other) {
             if (ReferenceEquals(null, other)) {
                 return false;
@@ -34,6 +43,7 @@ namespace Aranasoft.Cobweb.Data {
             return Id.Equals(other.Id);
         }
 
+        /// <inheritdoc />
         public override bool Equals(object obj) {
             var other = obj as TEntity;
             return other != null && Equals(other);

@@ -4,6 +4,9 @@ using System.Linq.Expressions;
 using System.Reflection;
 
 namespace Aranasoft.Cobweb.Reflection.Extensions {
+    /// <summary>
+    ///     Extension methods for <see cref="Expression{TDelegate}" /> to inspect method call arguments.
+    /// </summary>
     public static class WithExpression {
         /// <summary>
         ///     Gather KeyValuePairs of a method's arguments and the agument value expressions used when executing the method.

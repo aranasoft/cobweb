@@ -4,6 +4,9 @@ using System.Linq;
 using System.Reflection;
 
 namespace Aranasoft.Cobweb.Extensions {
+    /// <summary>
+    ///     Extension methods for <see cref="Enum" /> types.
+    /// </summary>
     public static class WithEnum {
         /// <summary>
         ///     Returns the value of an enum element's DescriptionAttribute or the name of the element.
