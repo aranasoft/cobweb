@@ -34,24 +34,10 @@ namespace Aranasoft.Cobweb.Extensions {
         ///     Determines whether an instance of the current System.Type can be assigned to an instance of the specified Type.
         /// </summary>
         /// <param name="currentType">The derived type to analyze.</param>
-        /// <param name="baseType">The type to compare with the current type.</param>
-        /// <returns>true if <paramref name="currentType" /> derives from <paramref name="baseType" />, otherwise false.</returns>
-        public static bool IsAssignableTo(this Type currentType, Type baseType) {
-            if (baseType == null) {
-                throw new ArgumentNullException(nameof(baseType));
-            }
-
-            return baseType.IsAssignableFrom(currentType);
-        }
-
-        /// <summary>
-        ///     Determines whether an instance of the current System.Type can be assigned to an instance of the specified Type.
-        /// </summary>
-        /// <param name="currentType">The derived type to analyze.</param>
         /// <typeparam name="TBase">The type to compare with the current type.</typeparam>
         /// <returns>true if <paramref name="currentType" /> derives from <typeparamref name="TBase" />, otherwise false.</returns>
         public static bool IsAssignableTo<TBase>(this Type currentType) {
-            return IsAssignableTo(currentType, typeof(TBase));
+            return currentType.IsAssignableTo(typeof(TBase));
         }
 
         /// <summary>
@@ -61,7 +47,7 @@ namespace Aranasoft.Cobweb.Extensions {
         /// <typeparam name="TDerived">The type to compare with the current type.</typeparam>
         /// <returns>true if <typeparamref name="TDerived" /> derives from <paramref name="baseType" />, otherwise false.</returns>
         public static bool IsAssignableFrom<TDerived>(this Type baseType) {
-            return IsAssignableTo(typeof(TDerived), baseType);
+            return typeof(TDerived).IsAssignableTo(baseType);
         }
 
         /// <summary>

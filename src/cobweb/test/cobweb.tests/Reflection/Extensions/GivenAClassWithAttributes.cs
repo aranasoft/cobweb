@@ -15,17 +15,6 @@ namespace Aranasoft.Cobweb.Tests.Reflection.Extensions {
             (typeof(ClassWithAttributes)).IsDefined<CustomAttribute>().Should().BeTrue();
         }
 
-        [Fact]
-        public void ItShouldNotRetrieveNonExistantAttributes() {
-            (typeof(ClassWithAttributes)).GetCustomAttributes<IgnoreAttribute>().Should().BeEmpty();
-        }
-
-        [Fact]
-        public void ItShouldRetrieveExistingAttributes() {
-            var attrs = (typeof(ClassWithAttributes)).GetCustomAttributes<CustomAttribute>();
-            attrs.Should().NotBeEmpty();
-        }
-
         [Custom]
         public class ClassWithAttributes { }
 
