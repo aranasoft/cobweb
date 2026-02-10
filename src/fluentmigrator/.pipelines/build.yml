@@ -10,7 +10,7 @@ trigger:
       - "*"
 
 pool:
-  vmImage: 'windows-latest'
+  vmImage: 'ubuntu-latest'
 
 steps:
 - task: DotNetCoreCLI@2
