@@ -1,3 +1,12 @@
+## 2.2.1 (2026-04-01)
+
+
+### Bug Fixes
+
+* **vulnerability:** set minimum Microsoft.Extensions.Azure to 1.7.4 to resolve Azure.Identity vulnerabilities ([71e5c0b](https://github.com/aranasoft/cobweb/commit/71e5c0b))
+
+
+
 ## 2.2 (2026-02-10)
 
 
